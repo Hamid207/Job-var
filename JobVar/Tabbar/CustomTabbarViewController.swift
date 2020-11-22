@@ -13,6 +13,7 @@ class CustomTabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = UIColor(named: "MainColor")
+        
         //UITabBar.appearance().barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 //        let vc1 = genaretaNavcontroller(vc: (viewModel?.nav)!, title: "MAinvc")
 //        let vc2 = genaretaNavcontroller(vc: (viewModel?.nav2)!, title: "User")
