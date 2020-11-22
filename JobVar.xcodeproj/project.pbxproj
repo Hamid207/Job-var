@@ -9,12 +9,60 @@
 /* Begin PBXBuildFile section */
 		612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9336256B20E0009DBCBF /* AppDelegate.swift */; };
 		612B9339256B20E0009DBCBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9338256B20E0009DBCBF /* SceneDelegate.swift */; };
-		612B933B256B20E0009DBCBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B933A256B20E0009DBCBF /* ViewController.swift */; };
-		612B933E256B20E0009DBCBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612B933C256B20E0009DBCBF /* Main.storyboard */; };
 		612B9340256B20E2009DBCBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612B933F256B20E2009DBCBF /* Assets.xcassets */; };
 		612B9343256B20E2009DBCBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 612B9341256B20E2009DBCBF /* LaunchScreen.storyboard */; };
 		612B934E256B20E2009DBCBF /* JobVarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B934D256B20E2009DBCBF /* JobVarTests.swift */; };
 		612B9359256B20E2009DBCBF /* JobVarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9358256B20E2009DBCBF /* JobVarUITests.swift */; };
+		612B9370256B22DE009DBCBF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B936F256B22DE009DBCBF /* Router.swift */; };
+		612B9376256B2327009DBCBF /* AssemblyModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9375256B2327009DBCBF /* AssemblyModuleBuilder.swift */; };
+		612B9382256B236C009DBCBF /* FeedResponSe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9381256B236C009DBCBF /* FeedResponSe.swift */; };
+		612B938E256B23E7009DBCBF /* CustomTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B938D256B23E7009DBCBF /* CustomTabbarViewController.swift */; };
+		612B9398256B2439009DBCBF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9397256B2439009DBCBF /* MainViewController.swift */; };
+		612B93A0256B2459009DBCBF /* MainViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B939F256B2459009DBCBF /* MainViewController + Extension.swift */; };
+		612B93A5256B247F009DBCBF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93A4256B247F009DBCBF /* MainViewModel.swift */; };
+		612B93AB256B24A7009DBCBF /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93AA256B24A7009DBCBF /* MainTableViewCell.swift */; };
+		612B93B0256B24DF009DBCBF /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93AF256B24DF009DBCBF /* MainCollectionViewCell.swift */; };
+		612B93B6256B2513009DBCBF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93B5256B2513009DBCBF /* DetailViewController.swift */; };
+		612B93BB256B2540009DBCBF /* DetailViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93BA256B2540009DBCBF /* DetailViewController + Extension.swift */; };
+		612B93C0256B2559009DBCBF /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93BF256B2559009DBCBF /* DetailViewModel.swift */; };
+		612B93C6256B2583009DBCBF /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93C5256B2583009DBCBF /* DetailTableViewCell.swift */; };
+		612B93CF256B2654009DBCBF /* KateqoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93CE256B2654009DBCBF /* KateqoryModel.swift */; };
+		612B93DB256B2688009DBCBF /* CreateResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93DA256B2688009DBCBF /* CreateResumeViewController.swift */; };
+		612B93E0256B2693009DBCBF /* CreateResumeViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93DF256B2693009DBCBF /* CreateResumeViewController + Extension.swift */; };
+		612B93ED256B2716009DBCBF /* PreciselyCreatResumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93EC256B2716009DBCBF /* PreciselyCreatResumeViewController.swift */; };
+		612B93F2256B2725009DBCBF /* PreciselyCreatResumeViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93F1256B2725009DBCBF /* PreciselyCreatResumeViewController + Extension.swift */; };
+		612B93FE256B2793009DBCBF /* CreatResumeTargetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B93FD256B2793009DBCBF /* CreatResumeTargetViewController.swift */; };
+		612B9403256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9402256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift */; };
+		612B940C256B2819009DBCBF /* CreateResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B940B256B2819009DBCBF /* CreateResumeViewModel.swift */; };
+		612B9414256B2833009DBCBF /* PreciselyCreatResumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9413256B2833009DBCBF /* PreciselyCreatResumeViewModel.swift */; };
+		612B9419256B285E009DBCBF /* CreatResumeTargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9418256B285E009DBCBF /* CreatResumeTargetViewModel.swift */; };
+		612B941F256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B941E256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift */; };
+		612B942B256B28B8009DBCBF /* CreateResumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B942A256B28B8009DBCBF /* CreateResumeTableViewCell.swift */; };
+		612B9430256B28D6009DBCBF /* TargetCreatResumeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B942F256B28D6009DBCBF /* TargetCreatResumeTableViewCell.swift */; };
+		612B9436256B2932009DBCBF /* JobVacancyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9435256B2932009DBCBF /* JobVacancyViewController.swift */; };
+		612B943E256B294A009DBCBF /* JobVacancyViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B943D256B294A009DBCBF /* JobVacancyViewController + Extension.swift */; };
+		612B9443256B296A009DBCBF /* JobVacancyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9442256B296A009DBCBF /* JobVacancyViewModel.swift */; };
+		612B9449256B2993009DBCBF /* JobVacancyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9448256B2993009DBCBF /* JobVacancyTableViewCell.swift */; };
+		612B9452256B29FD009DBCBF /* IshAxtaranlarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9451256B29FD009DBCBF /* IshAxtaranlarViewController.swift */; };
+		612B9457256B2A1C009DBCBF /* IshAxtaranlarViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9456256B2A1C009DBCBF /* IshAxtaranlarViewController + Extension.swift */; };
+		612B945C256B2A33009DBCBF /* IshAxtaranlarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B945B256B2A33009DBCBF /* IshAxtaranlarViewModel.swift */; };
+		612B9462256B2A5C009DBCBF /* JobSeekersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9461256B2A5C009DBCBF /* JobSeekersTableViewCell.swift */; };
+		612B946D256B2B0D009DBCBF /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B946C256B2B0D009DBCBF /* FavoritesViewController.swift */; };
+		612B9472256B2B25009DBCBF /* FavoritesViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9471256B2B25009DBCBF /* FavoritesViewController + Extension.swift */; };
+		612B9478256B2B56009DBCBF /* FavoritesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9477256B2B56009DBCBF /* FavoritesDetailViewController.swift */; };
+		612B9480256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B947F256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift */; };
+		612B9486256B2B95009DBCBF /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9485256B2B95009DBCBF /* FavoritesViewModel.swift */; };
+		612B948E256B2BAB009DBCBF /* FavoritesDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B948D256B2BAB009DBCBF /* FavoritesDetailViewModel.swift */; };
+		612B9494256B2C27009DBCBF /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9493256B2C27009DBCBF /* FavoritesTableViewCell.swift */; };
+		612B949C256B2C3D009DBCBF /* FavoritesDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B949B256B2C3D009DBCBF /* FavoritesDetailTableViewCell.swift */; };
+		612B94A4256B2CB6009DBCBF /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94A3256B2CB6009DBCBF /* UserViewController.swift */; };
+		612B94AC256B2CCF009DBCBF /* UserViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94AB256B2CCF009DBCBF /* UserViewController + Extension.swift */; };
+		612B94B2256B2D0E009DBCBF /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94B1256B2D0E009DBCBF /* UserSettingViewController.swift */; };
+		612B94B7256B2D22009DBCBF /* UserSettingViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94B6256B2D22009DBCBF /* UserSettingViewController + Extension.swift */; };
+		612B94BD256B2D4D009DBCBF /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94BC256B2D4D009DBCBF /* UserViewModel.swift */; };
+		612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94C1256B2D5A009DBCBF /* UserSettingViewModel.swift */; };
+		612B94C8256B2D97009DBCBF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94C7256B2D97009DBCBF /* UserTableViewCell.swift */; };
+		612B94D0256B2DB3009DBCBF /* UserSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94CF256B2DB3009DBCBF /* UserSettingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +86,6 @@
 		612B9333256B20E0009DBCBF /* JobVar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobVar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		612B9336256B20E0009DBCBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		612B9338256B20E0009DBCBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		612B933A256B20E0009DBCBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		612B933D256B20E0009DBCBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		612B933F256B20E2009DBCBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612B9342256B20E2009DBCBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		612B9344256B20E2009DBCBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +95,56 @@
 		612B9354256B20E2009DBCBF /* JobVarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JobVarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		612B9358256B20E2009DBCBF /* JobVarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobVarUITests.swift; sourceTree = "<group>"; };
 		612B935A256B20E2009DBCBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		612B936F256B22DE009DBCBF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		612B9375256B2327009DBCBF /* AssemblyModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssemblyModuleBuilder.swift; sourceTree = "<group>"; };
+		612B9381256B236C009DBCBF /* FeedResponSe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponSe.swift; sourceTree = "<group>"; };
+		612B938D256B23E7009DBCBF /* CustomTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarViewController.swift; sourceTree = "<group>"; };
+		612B9397256B2439009DBCBF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		612B939F256B2459009DBCBF /* MainViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B93A4256B247F009DBCBF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		612B93AA256B24A7009DBCBF /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		612B93AF256B24DF009DBCBF /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		612B93B5256B2513009DBCBF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		612B93BA256B2540009DBCBF /* DetailViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B93BF256B2559009DBCBF /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		612B93C5256B2583009DBCBF /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		612B93CE256B2654009DBCBF /* KateqoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KateqoryModel.swift; sourceTree = "<group>"; };
+		612B93DA256B2688009DBCBF /* CreateResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateResumeViewController.swift; sourceTree = "<group>"; };
+		612B93DF256B2693009DBCBF /* CreateResumeViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateResumeViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B93EC256B2716009DBCBF /* PreciselyCreatResumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreciselyCreatResumeViewController.swift; sourceTree = "<group>"; };
+		612B93F1256B2725009DBCBF /* PreciselyCreatResumeViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreciselyCreatResumeViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B93FD256B2793009DBCBF /* CreatResumeTargetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatResumeTargetViewController.swift; sourceTree = "<group>"; };
+		612B9402256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreatResumeTargetViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B940B256B2819009DBCBF /* CreateResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateResumeViewModel.swift; sourceTree = "<group>"; };
+		612B9413256B2833009DBCBF /* PreciselyCreatResumeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreciselyCreatResumeViewModel.swift; sourceTree = "<group>"; };
+		612B9418256B285E009DBCBF /* CreatResumeTargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatResumeTargetViewModel.swift; sourceTree = "<group>"; };
+		612B941E256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreciselyCreatResumeTableViewCell.swift; sourceTree = "<group>"; };
+		612B942A256B28B8009DBCBF /* CreateResumeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateResumeTableViewCell.swift; sourceTree = "<group>"; };
+		612B942F256B28D6009DBCBF /* TargetCreatResumeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetCreatResumeTableViewCell.swift; sourceTree = "<group>"; };
+		612B9435256B2932009DBCBF /* JobVacancyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobVacancyViewController.swift; sourceTree = "<group>"; };
+		612B943D256B294A009DBCBF /* JobVacancyViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JobVacancyViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B9442256B296A009DBCBF /* JobVacancyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobVacancyViewModel.swift; sourceTree = "<group>"; };
+		612B9448256B2993009DBCBF /* JobVacancyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobVacancyTableViewCell.swift; sourceTree = "<group>"; };
+		612B9451256B29FD009DBCBF /* IshAxtaranlarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IshAxtaranlarViewController.swift; sourceTree = "<group>"; };
+		612B9456256B2A1C009DBCBF /* IshAxtaranlarViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IshAxtaranlarViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B945B256B2A33009DBCBF /* IshAxtaranlarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IshAxtaranlarViewModel.swift; sourceTree = "<group>"; };
+		612B9461256B2A5C009DBCBF /* JobSeekersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSeekersTableViewCell.swift; sourceTree = "<group>"; };
+		612B946C256B2B0D009DBCBF /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		612B9471256B2B25009DBCBF /* FavoritesViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B9477256B2B56009DBCBF /* FavoritesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDetailViewController.swift; sourceTree = "<group>"; };
+		612B947F256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesDetailViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B9485256B2B95009DBCBF /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		612B948D256B2BAB009DBCBF /* FavoritesDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDetailViewModel.swift; sourceTree = "<group>"; };
+		612B9493256B2C27009DBCBF /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		612B949B256B2C3D009DBCBF /* FavoritesDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDetailTableViewCell.swift; sourceTree = "<group>"; };
+		612B94A3256B2CB6009DBCBF /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		612B94AB256B2CCF009DBCBF /* UserViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B94B1256B2D0E009DBCBF /* UserSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
+		612B94B6256B2D22009DBCBF /* UserSettingViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserSettingViewController + Extension.swift"; sourceTree = "<group>"; };
+		612B94BC256B2D4D009DBCBF /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		612B94C1256B2D5A009DBCBF /* UserSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewModel.swift; sourceTree = "<group>"; };
+		612B94C7256B2D97009DBCBF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		612B94CF256B2DB3009DBCBF /* UserSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +197,17 @@
 			children = (
 				612B9336256B20E0009DBCBF /* AppDelegate.swift */,
 				612B9338256B20E0009DBCBF /* SceneDelegate.swift */,
-				612B933A256B20E0009DBCBF /* ViewController.swift */,
-				612B933C256B20E0009DBCBF /* Main.storyboard */,
+				612B9374256B22E4009DBCBF /* Routers */,
+				612B937D256B2338009DBCBF /* Builder */,
+				612B938C256B2392009DBCBF /* Service */,
+				612B9392256B23F9009DBCBF /* Tabbar */,
+				612B9396256B2418009DBCBF /* Main */,
+				612B93B4256B24FD009DBCBF /* Detail */,
+				612B93CD256B2640009DBCBF /* CreateResume */,
+				612B9434256B291D009DBCBF /* JobVacancy */,
+				612B9450256B29DF009DBCBF /* IshAxtaranlar */,
+				612B9469256B2AC4009DBCBF /* Favorites */,
+				612B94A0256B2C86009DBCBF /* User */,
 				612B933F256B20E2009DBCBF /* Assets.xcassets */,
 				612B9341256B20E2009DBCBF /* LaunchScreen.storyboard */,
 				612B9344256B20E2009DBCBF /* Info.plist */,
@@ -126,6 +231,301 @@
 				612B935A256B20E2009DBCBF /* Info.plist */,
 			);
 			path = JobVarUITests;
+			sourceTree = "<group>";
+		};
+		612B9374256B22E4009DBCBF /* Routers */ = {
+			isa = PBXGroup;
+			children = (
+				612B936F256B22DE009DBCBF /* Router.swift */,
+			);
+			path = Routers;
+			sourceTree = "<group>";
+		};
+		612B937D256B2338009DBCBF /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				612B9375256B2327009DBCBF /* AssemblyModuleBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		612B938C256B2392009DBCBF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				612B9381256B236C009DBCBF /* FeedResponSe.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		612B9392256B23F9009DBCBF /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				612B938D256B23E7009DBCBF /* CustomTabbarViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		612B9396256B2418009DBCBF /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				612B9397256B2439009DBCBF /* MainViewController.swift */,
+				612B939F256B2459009DBCBF /* MainViewController + Extension.swift */,
+				612B93A4256B247F009DBCBF /* MainViewModel.swift */,
+				612B93A9256B248E009DBCBF /* Cell */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		612B93A9256B248E009DBCBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612B93AA256B24A7009DBCBF /* MainTableViewCell.swift */,
+				612B93AF256B24DF009DBCBF /* MainCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		612B93B4256B24FD009DBCBF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				612B93B5256B2513009DBCBF /* DetailViewController.swift */,
+				612B93BA256B2540009DBCBF /* DetailViewController + Extension.swift */,
+				612B93BF256B2559009DBCBF /* DetailViewModel.swift */,
+				612B93C4256B256F009DBCBF /* Cell */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		612B93C4256B256F009DBCBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612B93C5256B2583009DBCBF /* DetailTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		612B93CD256B2640009DBCBF /* CreateResume */ = {
+			isa = PBXGroup;
+			children = (
+				612B93D6256B2664009DBCBF /* Model */,
+				612B93E4256B269C009DBCBF /* Controller */,
+				612B941D256B286C009DBCBF /* ViewModel */,
+				612B9426256B2892009DBCBF /* Cell */,
+			);
+			path = CreateResume;
+			sourceTree = "<group>";
+		};
+		612B93D6256B2664009DBCBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				612B93CE256B2654009DBCBF /* KateqoryModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		612B93E4256B269C009DBCBF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				612B93E5256B26DE009DBCBF /* Category */,
+				612B93F6256B2751009DBCBF /* Pecisely */,
+				612B9407256B27D6009DBCBF /* Target */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		612B93E5256B26DE009DBCBF /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				612B93DA256B2688009DBCBF /* CreateResumeViewController.swift */,
+				612B93DF256B2693009DBCBF /* CreateResumeViewController + Extension.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		612B93F6256B2751009DBCBF /* Pecisely */ = {
+			isa = PBXGroup;
+			children = (
+				612B93EC256B2716009DBCBF /* PreciselyCreatResumeViewController.swift */,
+				612B93F1256B2725009DBCBF /* PreciselyCreatResumeViewController + Extension.swift */,
+			);
+			path = Pecisely;
+			sourceTree = "<group>";
+		};
+		612B9407256B27D6009DBCBF /* Target */ = {
+			isa = PBXGroup;
+			children = (
+				612B93FD256B2793009DBCBF /* CreatResumeTargetViewController.swift */,
+				612B9402256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift */,
+			);
+			path = Target;
+			sourceTree = "<group>";
+		};
+		612B941D256B286C009DBCBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				612B940B256B2819009DBCBF /* CreateResumeViewModel.swift */,
+				612B9413256B2833009DBCBF /* PreciselyCreatResumeViewModel.swift */,
+				612B9418256B285E009DBCBF /* CreatResumeTargetViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		612B9426256B2892009DBCBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612B941E256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift */,
+				612B942A256B28B8009DBCBF /* CreateResumeTableViewCell.swift */,
+				612B942F256B28D6009DBCBF /* TargetCreatResumeTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		612B9434256B291D009DBCBF /* JobVacancy */ = {
+			isa = PBXGroup;
+			children = (
+				612B9435256B2932009DBCBF /* JobVacancyViewController.swift */,
+				612B943D256B294A009DBCBF /* JobVacancyViewController + Extension.swift */,
+				612B9442256B296A009DBCBF /* JobVacancyViewModel.swift */,
+				612B9447256B297D009DBCBF /* Cell */,
+			);
+			path = JobVacancy;
+			sourceTree = "<group>";
+		};
+		612B9447256B297D009DBCBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612B9448256B2993009DBCBF /* JobVacancyTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		612B9450256B29DF009DBCBF /* IshAxtaranlar */ = {
+			isa = PBXGroup;
+			children = (
+				612B9451256B29FD009DBCBF /* IshAxtaranlarViewController.swift */,
+				612B9456256B2A1C009DBCBF /* IshAxtaranlarViewController + Extension.swift */,
+				612B945B256B2A33009DBCBF /* IshAxtaranlarViewModel.swift */,
+				612B9460256B2A4C009DBCBF /* Cell */,
+			);
+			path = IshAxtaranlar;
+			sourceTree = "<group>";
+		};
+		612B9460256B2A4C009DBCBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612B9461256B2A5C009DBCBF /* JobSeekersTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		612B9469256B2AC4009DBCBF /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				612B946A256B2AE8009DBCBF /* Controller */,
+				612B9484256B2B8A009DBCBF /* ViewModel */,
+				612B9492256B2C05009DBCBF /* Cell */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		612B946A256B2AE8009DBCBF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				612B946B256B2AFA009DBCBF /* FavaritesVC */,
+				612B9476256B2B42009DBCBF /* FavoritesDetailVC */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		612B946B256B2AFA009DBCBF /* FavaritesVC */ = {
+			isa = PBXGroup;
+			children = (
+				612B946C256B2B0D009DBCBF /* FavoritesViewController.swift */,
+				612B9471256B2B25009DBCBF /* FavoritesViewController + Extension.swift */,
+			);
+			path = FavaritesVC;
+			sourceTree = "<group>";
+		};
+		612B9476256B2B42009DBCBF /* FavoritesDetailVC */ = {
+			isa = PBXGroup;
+			children = (
+				612B9477256B2B56009DBCBF /* FavoritesDetailViewController.swift */,
+				612B947F256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift */,
+			);
+			path = FavoritesDetailVC;
+			sourceTree = "<group>";
+		};
+		612B9484256B2B8A009DBCBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				612B9485256B2B95009DBCBF /* FavoritesViewModel.swift */,
+				612B948D256B2BAB009DBCBF /* FavoritesDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		612B9492256B2C05009DBCBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612B9493256B2C27009DBCBF /* FavoritesTableViewCell.swift */,
+				612B949B256B2C3D009DBCBF /* FavoritesDetailTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		612B94A0256B2C86009DBCBF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				612B94A1256B2C96009DBCBF /* Controller */,
+				612B94BB256B2D3F009DBCBF /* ViewModel */,
+				612B94C6256B2D7B009DBCBF /* Cell */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		612B94A1256B2C96009DBCBF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				612B94A2256B2CA3009DBCBF /* UserVc */,
+				612B94B0256B2CEC009DBCBF /* UserSettingsVc */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		612B94A2256B2CA3009DBCBF /* UserVc */ = {
+			isa = PBXGroup;
+			children = (
+				612B94A3256B2CB6009DBCBF /* UserViewController.swift */,
+				612B94AB256B2CCF009DBCBF /* UserViewController + Extension.swift */,
+			);
+			path = UserVc;
+			sourceTree = "<group>";
+		};
+		612B94B0256B2CEC009DBCBF /* UserSettingsVc */ = {
+			isa = PBXGroup;
+			children = (
+				612B94B1256B2D0E009DBCBF /* UserSettingViewController.swift */,
+				612B94B6256B2D22009DBCBF /* UserSettingViewController + Extension.swift */,
+			);
+			path = UserSettingsVc;
+			sourceTree = "<group>";
+		};
+		612B94BB256B2D3F009DBCBF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				612B94BC256B2D4D009DBCBF /* UserViewModel.swift */,
+				612B94C1256B2D5A009DBCBF /* UserSettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		612B94C6256B2D7B009DBCBF /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				612B94C7256B2D97009DBCBF /* UserTableViewCell.swift */,
+				612B94CF256B2DB3009DBCBF /* UserSettingTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +633,6 @@
 			files = (
 				612B9343256B20E2009DBCBF /* LaunchScreen.storyboard in Resources */,
 				612B9340256B20E2009DBCBF /* Assets.xcassets in Resources */,
-				612B933E256B20E0009DBCBF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,9 +657,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612B933B256B20E0009DBCBF /* ViewController.swift in Sources */,
+				612B9443256B296A009DBCBF /* JobVacancyViewModel.swift in Sources */,
+				612B943E256B294A009DBCBF /* JobVacancyViewController + Extension.swift in Sources */,
+				612B93B6256B2513009DBCBF /* DetailViewController.swift in Sources */,
+				612B9478256B2B56009DBCBF /* FavoritesDetailViewController.swift in Sources */,
+				612B94C8256B2D97009DBCBF /* UserTableViewCell.swift in Sources */,
+				612B93AB256B24A7009DBCBF /* MainTableViewCell.swift in Sources */,
+				612B93ED256B2716009DBCBF /* PreciselyCreatResumeViewController.swift in Sources */,
+				612B9452256B29FD009DBCBF /* IshAxtaranlarViewController.swift in Sources */,
+				612B948E256B2BAB009DBCBF /* FavoritesDetailViewModel.swift in Sources */,
+				612B9457256B2A1C009DBCBF /* IshAxtaranlarViewController + Extension.swift in Sources */,
+				612B9376256B2327009DBCBF /* AssemblyModuleBuilder.swift in Sources */,
+				612B93F2256B2725009DBCBF /* PreciselyCreatResumeViewController + Extension.swift in Sources */,
+				612B9462256B2A5C009DBCBF /* JobSeekersTableViewCell.swift in Sources */,
+				612B946D256B2B0D009DBCBF /* FavoritesViewController.swift in Sources */,
+				612B94D0256B2DB3009DBCBF /* UserSettingTableViewCell.swift in Sources */,
+				612B9370256B22DE009DBCBF /* Router.swift in Sources */,
+				612B93DB256B2688009DBCBF /* CreateResumeViewController.swift in Sources */,
+				612B94B7256B2D22009DBCBF /* UserSettingViewController + Extension.swift in Sources */,
+				612B9403256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift in Sources */,
+				612B9414256B2833009DBCBF /* PreciselyCreatResumeViewModel.swift in Sources */,
+				612B9436256B2932009DBCBF /* JobVacancyViewController.swift in Sources */,
+				612B9419256B285E009DBCBF /* CreatResumeTargetViewModel.swift in Sources */,
+				612B93BB256B2540009DBCBF /* DetailViewController + Extension.swift in Sources */,
+				612B9472256B2B25009DBCBF /* FavoritesViewController + Extension.swift in Sources */,
+				612B94BD256B2D4D009DBCBF /* UserViewModel.swift in Sources */,
+				612B94B2256B2D0E009DBCBF /* UserSettingViewController.swift in Sources */,
 				612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */,
+				612B938E256B23E7009DBCBF /* CustomTabbarViewController.swift in Sources */,
+				612B93A5256B247F009DBCBF /* MainViewModel.swift in Sources */,
+				612B93FE256B2793009DBCBF /* CreatResumeTargetViewController.swift in Sources */,
+				612B93B0256B24DF009DBCBF /* MainCollectionViewCell.swift in Sources */,
+				612B940C256B2819009DBCBF /* CreateResumeViewModel.swift in Sources */,
+				612B942B256B28B8009DBCBF /* CreateResumeTableViewCell.swift in Sources */,
+				612B93C6256B2583009DBCBF /* DetailTableViewCell.swift in Sources */,
+				612B945C256B2A33009DBCBF /* IshAxtaranlarViewModel.swift in Sources */,
+				612B9382256B236C009DBCBF /* FeedResponSe.swift in Sources */,
 				612B9339256B20E0009DBCBF /* SceneDelegate.swift in Sources */,
+				612B9494256B2C27009DBCBF /* FavoritesTableViewCell.swift in Sources */,
+				612B9449256B2993009DBCBF /* JobVacancyTableViewCell.swift in Sources */,
+				612B9480256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift in Sources */,
+				612B93A0256B2459009DBCBF /* MainViewController + Extension.swift in Sources */,
+				612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */,
+				612B941F256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift in Sources */,
+				612B9486256B2B95009DBCBF /* FavoritesViewModel.swift in Sources */,
+				612B9430256B28D6009DBCBF /* TargetCreatResumeTableViewCell.swift in Sources */,
+				612B93C0256B2559009DBCBF /* DetailViewModel.swift in Sources */,
+				612B949C256B2C3D009DBCBF /* FavoritesDetailTableViewCell.swift in Sources */,
+				612B93CF256B2654009DBCBF /* KateqoryModel.swift in Sources */,
+				612B94A4256B2CB6009DBCBF /* UserViewController.swift in Sources */,
+				612B9398256B2439009DBCBF /* MainViewController.swift in Sources */,
+				612B93E0256B2693009DBCBF /* CreateResumeViewController + Extension.swift in Sources */,
+				612B94AC256B2CCF009DBCBF /* UserViewController + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,14 +744,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		612B933C256B20E0009DBCBF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				612B933D256B20E0009DBCBF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		612B9341256B20E2009DBCBF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -439,6 +879,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 73HJ76FZZD;
 				INFOPLIST_FILE = JobVar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -446,7 +887,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = HM.JobVar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -458,6 +899,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 73HJ76FZZD;
 				INFOPLIST_FILE = JobVar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -465,7 +907,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = HM.JobVar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

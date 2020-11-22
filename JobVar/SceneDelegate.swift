@@ -7,16 +7,39 @@
 
 import UIKit
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        
+        let navigationController = UINavigationController()
+        let userNavigationController = UINavigationController()
+        let favoritesNavigationController = UINavigationController()
+        
+        let tabBarController = CustomTabbarViewController()
+        let assemblyBuilder = AsseblyModelBuilder()
+        
+        let router = Router(naviGationController: navigationController, userNaviGationController: userNavigationController, favoritesNavigationController: favoritesNavigationController, assemblyBuilder: assemblyBuilder)
+        
+        tabBarController.setViewControllers([navigationController, favoritesNavigationController, userNavigationController], animated: false)
+        
+        navigationController.tabBarItem = UITabBarItem(title: "Axtarış", image: UIImage(named: "magnifier"), tag: 0)
+        favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favoritlər", image: UIImage(named: "star"), tag: 1)
+        userNavigationController.tabBarItem = UITabBarItem(title: "İstifadəçi", image: UIImage(named: "user"), tag: 2)
+        
+        router.initialViewController()
+        router.favoritesViewController()
+        router.userInitialViewController()
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
