@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         router.favoritesViewController()
         router.userInitialViewController()
         
-        window?.rootViewController = tabBarController
+        window?.rootViewController = AuthiewController()
         window?.makeKeyAndVisible()
     }
 

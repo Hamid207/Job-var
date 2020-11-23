@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesTableViewCell: UITableViewCell {
 
-    var buttonTarget = false
+    var buttonTarget: Bool = false
   //nameLabel
     private let nameLabel: UILabel = {
         let label = UILabel()
