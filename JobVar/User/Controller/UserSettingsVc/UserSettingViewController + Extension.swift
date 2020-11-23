@@ -61,7 +61,7 @@ extension UserSettingViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension UserSettingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 700
+        return 750
     }
 }
 

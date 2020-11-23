@@ -89,6 +89,16 @@ extension MainViewController: UITableViewDataSource {
 
     }
     
+    //tableVIew section desing
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        view.tintColor = UIColor.white
+        view.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        let header = view as! UITableViewHeaderFooterView
+        //header.textLabel?.textColor =  UIColor(named: "MainColor")
+        header.textLabel?.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        header.textLabel?.textColor =  UIColor.black
+    }
+    
 }
 
 //MARK: - UITableViewDelegate
@@ -104,9 +114,12 @@ extension MainViewController: UITableViewDelegate {
     //        }
             return 170
         }
+    
+    
 }
 
-//MARK: - ----------------------------------
+
+//MARK: - ---------------------------------- UICollectionView
 
 //MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {

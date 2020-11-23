@@ -113,12 +113,22 @@ class UserSettingTableViewCell: UITableViewCell {
     }()
     
     //cityTextField
-    private let cityTextFiled: UITextField = {
-        let textFiled = UITextField()
-        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        textFiled.placeholder = "Daxil et..."
-        textFiled.translatesAutoresizingMaskIntoConstraints = false
-        return textFiled
+//    private let cityTextFiled: UITextField = {
+//        let textFiled = UITextField()
+//        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+//        textFiled.placeholder = "Daxil et..."
+//        textFiled.translatesAutoresizingMaskIntoConstraints = false
+//        return textFiled
+//    }()
+    
+    //cityButton
+    private let cityButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //button.setTitle("Seher secin", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        return button
     }()
     
     //citylineVIew
@@ -156,6 +166,17 @@ class UserSettingTableViewCell: UITableViewCell {
         return textFiled
     }()
     
+    //dateButton
+    private let dateButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //button.setTitle("Seher secin", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        return button
+    }()
+    
     //datelineVIew
     private let dateLineVIew: UIView = {
         let view = UIView()
@@ -183,12 +204,22 @@ class UserSettingTableViewCell: UITableViewCell {
     }()
     
     //emailTextField
-    private let emailTextField: UITextField = {
-        let textFiled = UITextField()
-        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        textFiled.placeholder = "Daxil et..."
-        textFiled.translatesAutoresizingMaskIntoConstraints = false
-        return textFiled
+//    private let emailTextField: UITextField = {
+//        let textFiled = UITextField()
+//        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+//        textFiled.placeholder = "Daxil et..."
+//        textFiled.translatesAutoresizingMaskIntoConstraints = false
+//        return textFiled
+//    }()
+    
+    //emailButton
+    private let emailButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        //button.setTitle("Seher secin", for: .normal)
+        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        return button
     }()
     
     //emailLineVIew
@@ -252,6 +283,21 @@ class UserSettingTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cityButton.layer.borderWidth = 0.5
+        cityButton.layer.cornerRadius = 5
+        cityButton.layer.borderColor = UIColor.black.cgColor
+        
+        dateButton.layer.borderWidth = 0.5
+        dateButton.layer.cornerRadius = 5
+        dateButton.layer.borderColor = UIColor.black.cgColor
+        
+        emailButton.layer.borderWidth = 0.5
+        emailButton.layer.cornerRadius = 5
+        emailButton.layer.borderColor = UIColor.black.cgColor
     }
     
 
@@ -343,16 +389,22 @@ class UserSettingTableViewCell: UITableViewCell {
         userCityLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         userCityLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
-        //cityTextFiled
-        addSubview(cityTextFiled)
-        cityTextFiled.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor, constant: -20).isActive = true
-        cityTextFiled.leadingAnchor.constraint(equalTo: userCityLabel.leadingAnchor).isActive = true
-        cityTextFiled.trailingAnchor.constraint(equalTo: userCityLabel.trailingAnchor).isActive = true
-        cityTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        //cityButton
+        addSubview(cityButton)
+        cityButton.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor, constant: 10).isActive = true
+        cityButton.leadingAnchor.constraint(equalTo: userCityLabel.leadingAnchor).isActive = true
+        cityButton.trailingAnchor.constraint(equalTo: userCityLabel.trailingAnchor).isActive = true
+        cityButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
+//        addSubview(cityTextFiled)
+//        cityTextFiled.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor, constant: -20).isActive = true
+//        cityTextFiled.leadingAnchor.constraint(equalTo: userCityLabel.leadingAnchor).isActive = true
+//        cityTextFiled.trailingAnchor.constraint(equalTo: userCityLabel.trailingAnchor).isActive = true
+//        cityTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//
         //citylineVIew
         addSubview(citylineVIew)
-        citylineVIew.topAnchor.constraint(equalTo: cityTextFiled.bottomAnchor, constant: -15).isActive = true
+        citylineVIew.topAnchor.constraint(equalTo: cityButton.bottomAnchor, constant: 15).isActive = true
         citylineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         citylineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         citylineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
@@ -365,16 +417,24 @@ class UserSettingTableViewCell: UITableViewCell {
         dateLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
-        //dateTextField
-        addSubview(dateTextField)
-        dateTextField.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: -20).isActive = true
-        dateTextField.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
-        dateTextField.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
-        dateTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        //dateButton
+        addSubview(dateButton)
+        dateButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
+        dateButton.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
+        dateButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
+        dateButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+          
         
+        //dateTextField
+//        addSubview(dateTextField)
+//        dateTextField.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: -20).isActive = true
+//        dateTextField.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
+//        dateTextField.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
+//        dateTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//
         //dateLineVIew
         addSubview(dateLineVIew)
-        dateLineVIew.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: -15).isActive = true
+        dateLineVIew.topAnchor.constraint(equalTo: dateButton.bottomAnchor, constant: 15).isActive = true
         dateLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         dateLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         dateLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
@@ -387,16 +447,24 @@ class UserSettingTableViewCell: UITableViewCell {
         emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         emailLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
+        //emailButton
+        addSubview(emailButton)
+        emailButton.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10).isActive = true
+        emailButton.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
+        emailButton.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
+        emailButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        
         //dateTextField
-        addSubview(emailTextField)
-        emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: -20).isActive = true
-        emailTextField.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
-        emailTextField.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//        addSubview(emailTextField)
+//        emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: -20).isActive = true
+//        emailTextField.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
+//        emailTextField.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
+//        emailTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         //emailLineVIew
         addSubview(emailLineVIew)
-        emailLineVIew.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: -15).isActive = true
+        emailLineVIew.topAnchor.constraint(equalTo: emailButton.bottomAnchor, constant: 15).isActive = true
         emailLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         emailLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         emailLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true

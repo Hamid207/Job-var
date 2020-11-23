@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>908726901409-apsiraggqi49leusi6s46cehhraq2bts.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.908726901409-apsiraggqi49leusi6s46cehhraq2bts</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCUDhtE8tbsJeMwxpCqZruazbTVuRh8uuE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>908726901409</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>HM.JobVar</string>
+	<key>PROJECT_ID</key>
+	<string>jobsearch-3d528</string>
+	<key>STORAGE_BUCKET</key>
+	<string>jobsearch-3d528.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:908726901409:ios:4abb62f9b520da5f292ee0</string>
+	<key>DATABASE_URL</key>
+	<string>https://jobsearch-3d528.firebaseio.com</string>
+</dict>
+</plist>

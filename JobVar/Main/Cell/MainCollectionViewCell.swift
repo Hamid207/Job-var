@@ -12,12 +12,12 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         label.textColor = UIColor(named: "TextColor")
         label.backgroundColor = UIColor(named: "MainColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
-        label.numberOfLines = 3
+        label.numberOfLines = 2
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
@@ -30,7 +30,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         setup()
     }
     
-    func setup() {
+    private func setup() {
         backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         addSubview(nameLabel)
         nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
