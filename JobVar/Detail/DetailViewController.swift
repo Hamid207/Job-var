@@ -20,7 +20,6 @@ class DetailViewController: UIViewController {
         setupNavigationBar()
         setupView()
         navigationItem.title = "DetailViewController"
-
     }
     
 }
