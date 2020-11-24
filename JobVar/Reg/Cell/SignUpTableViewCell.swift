@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUpTableViewCell: UITableViewCell {
     //mainLabel
@@ -28,7 +29,7 @@ class SignUpTableViewCell: UITableViewCell {
      private let emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = UIColor(named: "TextColor")
+        label.textColor = UIColor(named: "authTextFieldColor")
         label.backgroundColor = .white
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
@@ -51,6 +52,7 @@ class SignUpTableViewCell: UITableViewCell {
         textFiled.keyboardType = .emailAddress
         textFiled.textContentType = .emailAddress
         textFiled.autocapitalizationType = .none
+        textFiled.returnKeyType = .done
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -59,7 +61,7 @@ class SignUpTableViewCell: UITableViewCell {
      private let passwordLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = UIColor(named: "TextColor")
+        label.textColor = UIColor(named: "authTextFieldColor")
         label.backgroundColor = .white
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
@@ -76,9 +78,12 @@ class SignUpTableViewCell: UITableViewCell {
     private let pasTextField: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        textFiled.textAlignment = .natural
+        //textFiled.textAlignment = .natural
         //textFiled.backgroundColor = .blue
         textFiled.borderStyle = .none
+        textFiled.autocapitalizationType = .none
+        textFiled.returnKeyType = .done
+        //textFiled.textContentType = .password
        // textFiled.textContentType = .password // bulari secende strong password verir duzelt
         //textFiled.isSecureTextEntry = true
         textFiled.translatesAutoresizingMaskIntoConstraints = false
@@ -90,7 +95,7 @@ class SignUpTableViewCell: UITableViewCell {
         let button = UIButton(type: .roundedRect)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
-        button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         button.setTitle("Sign up", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button
@@ -111,9 +116,9 @@ class SignUpTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        emailTextFiled.layer.borderWidth = 0.7
+        emailTextFiled.layer.borderWidth = 1
         emailTextFiled.layer.cornerRadius = 10
-        emailTextFiled.layer.borderColor = UIColor(named: "TextColor")?.cgColor
+        emailTextFiled.layer.borderColor = UIColor(named: "authTextFieldColor")?.cgColor
         
 //        passwordTextField.layer.borderWidth = 0.7
 //        passwordTextField.layer.cornerRadius = 10
@@ -121,12 +126,15 @@ class SignUpTableViewCell: UITableViewCell {
         
         signInButton.layer.cornerRadius = 10
         
-        pasTextField.layer.borderWidth = 0.7
+        pasTextField.layer.borderWidth = 1
         pasTextField.layer.cornerRadius = 10
-        pasTextField.layer.borderColor = UIColor(named: "TextColor")?.cgColor
+        pasTextField.layer.borderColor = UIColor(named: "authTextFieldColor")?.cgColor
     }
     
     private func setupItem() {
+        emailTextFiled.delegate = self
+        pasTextField.delegate = self
+        
         //mainLabel
         addSubview(mainLabel)
         mainLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 70).isActive = true
@@ -167,4 +175,22 @@ class SignUpTableViewCell: UITableViewCell {
         
     }
 
+}
+
+extension SignUpTableViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        let email = emailTextFiled.text!
+        let pas = pasTextField.text!
+        if (!email.isEmpty && !pas.isEmpty) {
+            Auth.auth().signIn(withEmail: email, password: pas) { (result, error) in
+                if error == nil {
+                    print("Signin \(result?.user.uid)")
+                }
+            }
+        }else {
+            print("Melumati daxet SignUpTableViewCell") //burda alert olamlidi
+        }
+        return true
+    }
 }

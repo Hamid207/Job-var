@@ -18,26 +18,21 @@ class ChoiceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.backgroundColor = UIColor(named: "TextColor")
         setupItem()
     }
     
-//    override func viewWillLayoutSubviews() {
-//        logInButton.layer.borderWidth = 0.7
-//        logInButton.layer.borderColor = UIColor(named: "MainColor")?.cgColor
-//        logInButton.layer.cornerRadius = 5
-//
-//        signUpButton.layer.cornerRadius = 5
-//
-//    }
-    
     
     override func viewDidLayoutSubviews() {
-        logInButton.layer.borderWidth = 0.7
-        logInButton.layer.borderColor = UIColor(named: "MainColor")?.cgColor
+        logInButton.layer.borderWidth = 1.5
+        //logInButton.layer.borderColor = UIColor(named: "MainColor")?.cgColor
+        logInButton.layer.borderColor = UIColor.black.cgColor
+
         logInButton.layer.cornerRadius = 10
         
         signUpButton.layer.cornerRadius = 10
+        
+        logoImage.layer.cornerRadius = 50
     }
     
 

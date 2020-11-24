@@ -75,7 +75,6 @@
 		61A29FA5256C92CA00580990 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FA4256C92CA00580990 /* ChoiceViewController.swift */; };
 		61A29FB1256C932300580990 /* ChoiceViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FB0256C932300580990 /* ChoiceViewController + Extension.swift */; };
 		61A29FB6256C93B500580990 /* ChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FB5256C93B500580990 /* ChoiceViewModel.swift */; };
-		61A29FBB256C946100580990 /* ChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FBA256C946100580990 /* ChoiceTableViewCell.swift */; };
 		61B29119256B36F1006D13D1 /* AuthiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B29118256B36F1006D13D1 /* AuthiewController.swift */; };
 		61B29121256B3D19006D13D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B29120256B3D19006D13D1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -171,7 +170,6 @@
 		61A29FA4256C92CA00580990 /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		61A29FB0256C932300580990 /* ChoiceViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChoiceViewController + Extension.swift"; sourceTree = "<group>"; };
 		61A29FB5256C93B500580990 /* ChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewModel.swift; sourceTree = "<group>"; };
-		61A29FBA256C946100580990 /* ChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		61B29118256B36F1006D13D1 /* AuthiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthiewController.swift; sourceTree = "<group>"; };
 		61B29120256B3D19006D13D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FCFDD5AE836BE612351A5B0 /* Pods_JobVar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobVar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -594,7 +592,6 @@
 		61A29F72256C69D300580990 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				61A29FBA256C946100580990 /* ChoiceTableViewCell.swift */,
 				61A29F6D256C69C500580990 /* LogInTableViewCell.swift */,
 				61A29F99256C8EEF00580990 /* SignUpTableViewCell.swift */,
 			);
@@ -858,7 +855,6 @@
 				612B9472256B2B25009DBCBF /* FavoritesViewController + Extension.swift in Sources */,
 				612B94BD256B2D4D009DBCBF /* UserViewModel.swift in Sources */,
 				61A29F69256C67E100580990 /* LogInViewModel.swift in Sources */,
-				61A29FBB256C946100580990 /* ChoiceTableViewCell.swift in Sources */,
 				612B94B2256B2D0E009DBCBF /* UserSettingViewController.swift in Sources */,
 				61A29F81256C827600580990 /* SignUpViewController + Etension.swift in Sources */,
 				612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */,

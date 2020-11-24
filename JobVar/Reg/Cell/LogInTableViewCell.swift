@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LogInTableViewCell: UITableViewCell {
     
@@ -31,7 +32,7 @@ class LogInTableViewCell: UITableViewCell {
      private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = UIColor(named: "TextColor")
+        label.textColor = UIColor(named: "authTextFieldColor")
         label.backgroundColor = .white
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
@@ -64,7 +65,7 @@ class LogInTableViewCell: UITableViewCell {
      private let emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = UIColor(named: "TextColor")
+        label.textColor = UIColor(named: "authTextFieldColor")
         label.backgroundColor = .white
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
@@ -87,6 +88,7 @@ class LogInTableViewCell: UITableViewCell {
         textFiled.keyboardType = .emailAddress
         textFiled.textContentType = .emailAddress
         textFiled.autocapitalizationType = .none
+        textFiled.returnKeyType = .done
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -95,7 +97,7 @@ class LogInTableViewCell: UITableViewCell {
      private let passwordLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = UIColor(named: "TextColor")
+        label.textColor = UIColor(named: "authTextFieldColor")
         label.backgroundColor = .white
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
@@ -117,6 +119,7 @@ class LogInTableViewCell: UITableViewCell {
         textFiled.borderStyle = .none
         textFiled.textContentType = .password
         textFiled.isSecureTextEntry = true
+        textFiled.returnKeyType = .done
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -126,7 +129,7 @@ class LogInTableViewCell: UITableViewCell {
         let button = UIButton(type: .roundedRect)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
-        button.setTitleColor(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         button.setTitle("Login", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button
@@ -141,21 +144,25 @@ class LogInTableViewCell: UITableViewCell {
         super.layoutSubviews()
         nameTextFiled.layer.borderWidth = 0.7
         nameTextFiled.layer.cornerRadius = 10
-        nameTextFiled.layer.borderColor = UIColor(named: "TextColor")?.cgColor
+        nameTextFiled.layer.borderColor = UIColor(named: "authTextFieldColor")?.cgColor
         
         emailTextFiled.layer.borderWidth = 0.7
         emailTextFiled.layer.cornerRadius = 10
-        emailTextFiled.layer.borderColor = UIColor(named: "TextColor")?.cgColor
+        emailTextFiled.layer.borderColor = UIColor(named: "authTextFieldColor")?.cgColor
         
         passwordTextField.layer.borderWidth = 0.7
         passwordTextField.layer.cornerRadius = 10
-        passwordTextField.layer.borderColor = UIColor(named: "TextColor")?.cgColor
+        passwordTextField.layer.borderColor = UIColor(named: "authTextFieldColor")?.cgColor
         
         logInButton.layer.cornerRadius = 10
         
     }
     
     func setupItem() {
+        nameTextFiled.delegate = self
+        emailTextFiled.delegate = self
+        passwordTextField.delegate = self
+        
         //mainLabel
         addSubview(mainLabel)
         mainLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 55).isActive = true
@@ -209,4 +216,26 @@ class LogInTableViewCell: UITableViewCell {
         logInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 
+}
+
+extension LogInTableViewCell: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let name = nameTextFiled.text!
+        let email = emailTextFiled.text!
+        let pas = passwordTextField.text!
+        if (!name.isEmpty && !email.isEmpty && !pas.isEmpty) {
+            Auth.auth().createUser(withEmail: email, password: pas) { (result, error) in
+                if error == nil {
+                    if let result = result {
+                        print(result.user.uid)
+                        let ref = Database.database().reference().child("usersss")
+                        ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
+                    }
+                }
+            }
+        }else{
+            print("Melumati daxil edin")//burda alert olmalidi
+        }
+        return true
+    }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class UserTableViewCell: UITableViewCell {
     
@@ -215,6 +216,15 @@ class UserTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private let dateButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Exit", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        return button
+    }()
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -300,6 +310,19 @@ class UserTableViewCell: UITableViewCell {
         refreshNumberLabel.topAnchor.constraint(equalTo: numberLabel.bottomAnchor).isActive = true
         refreshNumberLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshNumberLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
+        
+        addSubview(dateButton)
+        dateButton.topAnchor.constraint(equalTo: refreshNumberLabel.bottomAnchor, constant: 30).isActive = true
+        dateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        dateButton.addTarget(self, action: #selector(exitButtonTarget), for: .touchDown)
+    }
+    
+    @objc func exitButtonTarget() {
+        do {
+            try Auth.auth().signOut()
+        } catch  {
+            print(error)
+        }
     }
 
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -38,7 +39,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         router.favoritesViewController()
         router.userInitialViewController()
         
-        window?.rootViewController = ChoiceViewController()
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user == nil {
+                self.window?.rootViewController = SignUpViewController()
+            }else {
+                self.window?.rootViewController = tabBarController
+            }
+        }
+        
+        //window?.rootViewController = ChoiceViewController()
         window?.makeKeyAndVisible()
     }
 
