@@ -1,69 +1,55 @@
 //
-//  FavoritesViewController + Extension.swift
+//  LogInViewController + Extension.swift
 //  JobVar
 //
-//  Created by Hamid Manafov on 23.11.20.
+//  Created by Hamid Manafov on 24.11.20.
 //
 
 import UIKit
 
-extension FavoritesViewController {
+extension LogInViewController {
     
     func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+            topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: nil)
             topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
         }
     }
-
-    func setupIem() {
+    
+    func setupItem() {
         //tableView
-        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.register(FavoritesTableViewCell.self, forCellReuseIdentifier: "favoritesTableViewCellId")
-        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //createResumeTableView.sectionFooterHeight = 10
-        tableView.sectionHeaderHeight = 10
         view.addSubview(tableView)
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = false
+        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tableView.register(LogInTableViewCell.self, forCellReuseIdentifier: "logInTableViewCellId")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
-    
 }
 
 //MARK: - UITableViewDataSource
-extension FavoritesViewController: UITableViewDataSource {
+extension LogInViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArray.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "favoritesTableViewCellId", for: indexPath) as? FavoritesTableViewCell {
-            let item = testArray[indexPath.row]
-            cell.refresh(item)
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "logInTableViewCellId", for: indexPath) as? LogInTableViewCell {
             return cell
         }
         return UITableViewCell()
     }
-    
-    
 }
 
-//MARK: - UITableViewDelegate
-extension FavoritesViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = testArray[indexPath.row]
-        viewModel?.tapOnTheSgowDetail(testArray: item)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+extension LogInViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return 600
     }
 }
 

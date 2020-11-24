@@ -10,6 +10,7 @@ import UIKit
 extension MainViewController {
     
     func setupView() {
+        
     //MARK: - MAINCOLLECTIONVIEW
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
@@ -106,6 +107,7 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setArray = tesarray[indexPath.row]
         mainViewModel?.tapOnTheComment(testArray: setArray)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -115,7 +117,7 @@ extension MainViewController: UITableViewDelegate {
             return 170
         }
     
-    
+   
 }
 
 

@@ -10,7 +10,6 @@ import UIKit
 class MainTableViewViewCell: UITableViewCell {
     
     var buttonTarget: Bool = false
-    
     //nameLabel
      private let nameLabel: UILabel = {
         let label = UILabel()

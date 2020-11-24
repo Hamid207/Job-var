@@ -74,5 +74,6 @@ extension JobVacancyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setArray = tesarray[indexPath.row]
         jobVacancyViewModel?.test(test: setArray)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

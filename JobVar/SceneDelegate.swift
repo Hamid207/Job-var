@@ -38,7 +38,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         router.favoritesViewController()
         router.userInitialViewController()
         
-        window?.rootViewController = AuthiewController()
+        window?.rootViewController = ChoiceViewController()
         window?.makeKeyAndVisible()
     }
 

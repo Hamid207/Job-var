@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -64,6 +64,18 @@
 		612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94C1256B2D5A009DBCBF /* UserSettingViewModel.swift */; };
 		612B94C8256B2D97009DBCBF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94C7256B2D97009DBCBF /* UserTableViewCell.swift */; };
 		612B94D0256B2DB3009DBCBF /* UserSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94CF256B2DB3009DBCBF /* UserSettingTableViewCell.swift */; };
+		61A29F5F256C679A00580990 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F5E256C679A00580990 /* LogInViewController.swift */; };
+		61A29F64256C67BB00580990 /* LogInViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F63256C67BB00580990 /* LogInViewController + Extension.swift */; };
+		61A29F69256C67E100580990 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F68256C67E100580990 /* LogInViewModel.swift */; };
+		61A29F6E256C69C500580990 /* LogInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F6D256C69C500580990 /* LogInTableViewCell.swift */; };
+		61A29F7C256C826200580990 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F7B256C826200580990 /* SignUpViewController.swift */; };
+		61A29F81256C827600580990 /* SignUpViewController + Etension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F80256C827600580990 /* SignUpViewController + Etension.swift */; };
+		61A29F86256C842000580990 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F85256C842000580990 /* SignUpViewModel.swift */; };
+		61A29F9A256C8EEF00580990 /* SignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F99256C8EEF00580990 /* SignUpTableViewCell.swift */; };
+		61A29FA5256C92CA00580990 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FA4256C92CA00580990 /* ChoiceViewController.swift */; };
+		61A29FB1256C932300580990 /* ChoiceViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FB0256C932300580990 /* ChoiceViewController + Extension.swift */; };
+		61A29FB6256C93B500580990 /* ChoiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FB5256C93B500580990 /* ChoiceViewModel.swift */; };
+		61A29FBB256C946100580990 /* ChoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FBA256C946100580990 /* ChoiceTableViewCell.swift */; };
 		61B29119256B36F1006D13D1 /* AuthiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B29118256B36F1006D13D1 /* AuthiewController.swift */; };
 		61B29121256B3D19006D13D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B29120256B3D19006D13D1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -148,6 +160,18 @@
 		612B94C1256B2D5A009DBCBF /* UserSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewModel.swift; sourceTree = "<group>"; };
 		612B94C7256B2D97009DBCBF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		612B94CF256B2DB3009DBCBF /* UserSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingTableViewCell.swift; sourceTree = "<group>"; };
+		61A29F5E256C679A00580990 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		61A29F63256C67BB00580990 /* LogInViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInViewController + Extension.swift"; sourceTree = "<group>"; };
+		61A29F68256C67E100580990 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		61A29F6D256C69C500580990 /* LogInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInTableViewCell.swift; sourceTree = "<group>"; };
+		61A29F7B256C826200580990 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		61A29F80256C827600580990 /* SignUpViewController + Etension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController + Etension.swift"; sourceTree = "<group>"; };
+		61A29F85256C842000580990 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		61A29F99256C8EEF00580990 /* SignUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTableViewCell.swift; sourceTree = "<group>"; };
+		61A29FA4256C92CA00580990 /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
+		61A29FB0256C932300580990 /* ChoiceViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChoiceViewController + Extension.swift"; sourceTree = "<group>"; };
+		61A29FB5256C93B500580990 /* ChoiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewModel.swift; sourceTree = "<group>"; };
+		61A29FBA256C946100580990 /* ChoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceTableViewCell.swift; sourceTree = "<group>"; };
 		61B29118256B36F1006D13D1 /* AuthiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthiewController.swift; sourceTree = "<group>"; };
 		61B29120256B3D19006D13D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7FCFDD5AE836BE612351A5B0 /* Pods_JobVar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobVar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,7 +219,6 @@
 				BE7B914EEDD3D501CC3A6564 /* Pods-JobVar.debug.xcconfig */,
 				BF1C1A646EB9B46F0867170E /* Pods-JobVar.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -559,10 +582,70 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		61A29F5D256C676E00580990 /* LogInVc */ = {
+			isa = PBXGroup;
+			children = (
+				61A29F5E256C679A00580990 /* LogInViewController.swift */,
+				61A29F63256C67BB00580990 /* LogInViewController + Extension.swift */,
+			);
+			path = LogInVc;
+			sourceTree = "<group>";
+		};
+		61A29F72256C69D300580990 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				61A29FBA256C946100580990 /* ChoiceTableViewCell.swift */,
+				61A29F6D256C69C500580990 /* LogInTableViewCell.swift */,
+				61A29F99256C8EEF00580990 /* SignUpTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		61A29F73256C69EB00580990 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				61A29FB5256C93B500580990 /* ChoiceViewModel.swift */,
+				61A29F68256C67E100580990 /* LogInViewModel.swift */,
+				61A29F85256C842000580990 /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		61A29F7A256C823700580990 /* SignUpVc */ = {
+			isa = PBXGroup;
+			children = (
+				61A29F7B256C826200580990 /* SignUpViewController.swift */,
+				61A29F80256C827600580990 /* SignUpViewController + Etension.swift */,
+			);
+			path = SignUpVc;
+			sourceTree = "<group>";
+		};
+		61A29FA9256C92D000580990 /* ChoiceVc */ = {
+			isa = PBXGroup;
+			children = (
+				61A29FA4256C92CA00580990 /* ChoiceViewController.swift */,
+				61A29FB0256C932300580990 /* ChoiceViewController + Extension.swift */,
+			);
+			path = ChoiceVc;
+			sourceTree = "<group>";
+		};
+		61A29FC5256C951300580990 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				61A29FA9256C92D000580990 /* ChoiceVc */,
+				61A29F5D256C676E00580990 /* LogInVc */,
+				61A29F7A256C823700580990 /* SignUpVc */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		61B29117256B36C4006D13D1 /* Reg */ = {
 			isa = PBXGroup;
 			children = (
 				61B29118256B36F1006D13D1 /* AuthiewController.swift */,
+				61A29FC5256C951300580990 /* Controllers */,
+				61A29F73256C69EB00580990 /* ViewModel */,
+				61A29F72256C69D300580990 /* Cell */,
 			);
 			path = Reg;
 			sourceTree = "<group>";
@@ -748,26 +831,36 @@
 				612B94C8256B2D97009DBCBF /* UserTableViewCell.swift in Sources */,
 				612B93AB256B24A7009DBCBF /* MainTableViewCell.swift in Sources */,
 				612B93ED256B2716009DBCBF /* PreciselyCreatResumeViewController.swift in Sources */,
+				61A29FB6256C93B500580990 /* ChoiceViewModel.swift in Sources */,
 				612B9452256B29FD009DBCBF /* IshAxtaranlarViewController.swift in Sources */,
 				612B948E256B2BAB009DBCBF /* FavoritesDetailViewModel.swift in Sources */,
 				612B9457256B2A1C009DBCBF /* IshAxtaranlarViewController + Extension.swift in Sources */,
+				61A29F6E256C69C500580990 /* LogInTableViewCell.swift in Sources */,
+				61A29FA5256C92CA00580990 /* ChoiceViewController.swift in Sources */,
 				612B9376256B2327009DBCBF /* AssemblyModuleBuilder.swift in Sources */,
 				612B93F2256B2725009DBCBF /* PreciselyCreatResumeViewController + Extension.swift in Sources */,
 				612B9462256B2A5C009DBCBF /* JobSeekersTableViewCell.swift in Sources */,
 				612B946D256B2B0D009DBCBF /* FavoritesViewController.swift in Sources */,
 				612B94D0256B2DB3009DBCBF /* UserSettingTableViewCell.swift in Sources */,
+				61A29F7C256C826200580990 /* SignUpViewController.swift in Sources */,
 				612B9370256B22DE009DBCBF /* Router.swift in Sources */,
 				612B93DB256B2688009DBCBF /* CreateResumeViewController.swift in Sources */,
 				612B94B7256B2D22009DBCBF /* UserSettingViewController + Extension.swift in Sources */,
 				612B9403256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift in Sources */,
 				61B29119256B36F1006D13D1 /* AuthiewController.swift in Sources */,
+				61A29F86256C842000580990 /* SignUpViewModel.swift in Sources */,
+				61A29F5F256C679A00580990 /* LogInViewController.swift in Sources */,
 				612B9414256B2833009DBCBF /* PreciselyCreatResumeViewModel.swift in Sources */,
 				612B9436256B2932009DBCBF /* JobVacancyViewController.swift in Sources */,
 				612B9419256B285E009DBCBF /* CreatResumeTargetViewModel.swift in Sources */,
+				61A29F64256C67BB00580990 /* LogInViewController + Extension.swift in Sources */,
 				612B93BB256B2540009DBCBF /* DetailViewController + Extension.swift in Sources */,
 				612B9472256B2B25009DBCBF /* FavoritesViewController + Extension.swift in Sources */,
 				612B94BD256B2D4D009DBCBF /* UserViewModel.swift in Sources */,
+				61A29F69256C67E100580990 /* LogInViewModel.swift in Sources */,
+				61A29FBB256C946100580990 /* ChoiceTableViewCell.swift in Sources */,
 				612B94B2256B2D0E009DBCBF /* UserSettingViewController.swift in Sources */,
+				61A29F81256C827600580990 /* SignUpViewController + Etension.swift in Sources */,
 				612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */,
 				612B938E256B23E7009DBCBF /* CustomTabbarViewController.swift in Sources */,
 				612B93A5256B247F009DBCBF /* MainViewModel.swift in Sources */,
@@ -786,7 +879,9 @@
 				612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */,
 				612B941F256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift in Sources */,
 				612B9486256B2B95009DBCBF /* FavoritesViewModel.swift in Sources */,
+				61A29FB1256C932300580990 /* ChoiceViewController + Extension.swift in Sources */,
 				612B9430256B28D6009DBCBF /* TargetCreatResumeTableViewCell.swift in Sources */,
+				61A29F9A256C8EEF00580990 /* SignUpTableViewCell.swift in Sources */,
 				612B93C0256B2559009DBCBF /* DetailViewModel.swift in Sources */,
 				612B949C256B2C3D009DBCBF /* FavoritesDetailTableViewCell.swift in Sources */,
 				612B93CF256B2654009DBCBF /* KateqoryModel.swift in Sources */,
@@ -965,7 +1060,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 73HJ76FZZD;
 				INFOPLIST_FILE = JobVar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -986,7 +1081,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 73HJ76FZZD;
 				INFOPLIST_FILE = JobVar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

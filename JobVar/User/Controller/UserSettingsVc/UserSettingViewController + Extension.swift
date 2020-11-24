@@ -27,7 +27,7 @@ extension UserSettingViewController {
         userTabeleView.allowsSelection = false // tableViewnu basmaq olmur
         userTabeleView.register(UserSettingTableViewCell.self, forCellReuseIdentifier: "iserSettingTableViewCellId")
         userTabeleView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //        userTabeleView.sectionFooterHeight = 10
+        //userTabeleView.sectionFooterHeight = 10
         userTabeleView.sectionHeaderHeight = 10
         view.addSubview(userTabeleView)
         userTabeleView.translatesAutoresizingMaskIntoConstraints = false
