@@ -8,12 +8,12 @@
 import Foundation
 
 protocol LogInViewModelProtocol {
-    init(router: RouterProtocol)
+    init(router: AuthRouterProtocol)
 }
 
 final class LogInViewModel: LogInViewModelProtocol {
-    private let router: RouterProtocol?
-    init(router: RouterProtocol) {
+    private let router: AuthRouterProtocol?
+    init(router: AuthRouterProtocol) {
         self.router = router
     }
 }

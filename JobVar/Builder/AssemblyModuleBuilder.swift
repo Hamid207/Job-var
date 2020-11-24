@@ -19,6 +19,11 @@ protocol AsseblyBuilderProtocol {
     func creatUserSettingViewControllerModule(router: RouterProtocol) -> UIViewController
     func creatFavoritesViewControllerModeule(router: RouterProtocol) -> UIViewController
     func creatFavaritesDetailModeule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController
+    
+    //AUTH
+    func creatChoiceModule(authRouter: AuthRouterProtocol) -> UIViewController
+    func creatLogInModule(authRouter: AuthRouterProtocol) -> UIViewController
+    func creatSignUpModule(authRouter: AuthRouterProtocol) -> UIViewController
 }
 
 class AsseblyModelBuilder: AsseblyBuilderProtocol {
@@ -107,6 +112,30 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     func creatFavaritesDetailModeule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController {
         let view = FavoritesDetailViewController()
         let viewModel = FavoritesDetailViewModel(router: router, testArray: testArray)
+        view.viewModel = viewModel
+        return view
+    }
+    
+    //MARK: - AUTH
+    //creatChoiceModule
+    func creatChoiceModule(authRouter: AuthRouterProtocol) -> UIViewController {
+        let view = ChoiceViewController()
+        let viewModel = ChoiceViewModel(router: authRouter)
+        view.viewModel = viewModel
+        return view
+    }
+    //creatLogInModule
+    func creatLogInModule(authRouter: AuthRouterProtocol) -> UIViewController {
+        let view = LogInViewController()
+        let viewModel = LogInViewModel(router: authRouter)
+        view.viewModel = viewModel
+        return view
+    }
+    
+    //creatSignUp
+    func creatSignUpModule(authRouter: AuthRouterProtocol) -> UIViewController {
+        let view = SignUpViewController()
+        let viewModel = SignUpViewModel(router: authRouter)
         view.viewModel = viewModel
         return view
     }

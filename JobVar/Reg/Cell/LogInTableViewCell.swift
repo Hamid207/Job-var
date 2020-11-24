@@ -33,7 +33,7 @@ class LogInTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor(named: "authTextFieldColor")
-        label.backgroundColor = .white
+        label.backgroundColor = UIColor(named: "TextColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 1
@@ -66,7 +66,7 @@ class LogInTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor(named: "authTextFieldColor")
-        label.backgroundColor = .white
+        label.backgroundColor = UIColor(named: "TextColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 1
@@ -98,7 +98,7 @@ class LogInTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         label.textColor = UIColor(named: "authTextFieldColor")
-        label.backgroundColor = .white
+        label.backgroundColor = UIColor(named: "TextColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 1
@@ -137,6 +137,7 @@ class LogInTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        backgroundColor = UIColor(named: "TextColor")
         setupItem()
     }
     

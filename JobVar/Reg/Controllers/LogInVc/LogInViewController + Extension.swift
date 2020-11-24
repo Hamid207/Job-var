@@ -23,7 +23,7 @@ extension LogInViewController {
         view.addSubview(tableView)
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
-        tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        tableView.backgroundColor = UIColor(named: "TextColor")
         tableView.register(LogInTableViewCell.self, forCellReuseIdentifier: "logInTableViewCellId")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true

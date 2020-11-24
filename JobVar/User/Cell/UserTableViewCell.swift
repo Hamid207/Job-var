@@ -217,7 +217,7 @@ class UserTableViewCell: UITableViewCell {
         return label
     }()
     
-    private let dateButton: UIButton = {
+    private let exitButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Exit", for: .normal)
@@ -311,18 +311,20 @@ class UserTableViewCell: UITableViewCell {
         refreshNumberLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshNumberLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
-        addSubview(dateButton)
-        dateButton.topAnchor.constraint(equalTo: refreshNumberLabel.bottomAnchor, constant: 30).isActive = true
-        dateButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        dateButton.addTarget(self, action: #selector(exitButtonTarget), for: .touchDown)
+        addSubview(exitButton)
+        exitButton.topAnchor.constraint(equalTo: refreshNumberLabel.bottomAnchor, constant: 30).isActive = true
+        exitButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        exitButton.addTarget(self, action: #selector(exitButtonTarget), for: .touchDown)
     }
     
     @objc func exitButtonTarget() {
+        let viewController = UIViewController()
         do {
             try Auth.auth().signOut()
         } catch  {
             print(error)
         }
+        
     }
 
 }

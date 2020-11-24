@@ -15,10 +15,14 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.backgroundColor = UIColor(named: "TextColor")
         setupNavigationBar()
         setupItem()
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.barTintColor = UIColor(named: "TextColor")
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
 }

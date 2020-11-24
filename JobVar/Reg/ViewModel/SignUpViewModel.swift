@@ -8,12 +8,12 @@
 import Foundation
 
 protocol SignUpViewModelProtocol {
-    init(router: RouterProtocol)
+    init(router: AuthRouterProtocol)
 }
 
 final class SignUpViewModel: SignUpViewModelProtocol {
-    private let router: RouterProtocol?
-    init(router: RouterProtocol) {
+    private let router: AuthRouterProtocol?
+    init(router: AuthRouterProtocol) {
         self.router = router
     }
 }

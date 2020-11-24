@@ -46,6 +46,8 @@ class Router: RouterProtocol {
             guard let mainViewController = assemblyBuilder?.creatMainModule(router: self) else { return }
             navigationController.viewControllers = [mainViewController]
         }
+        favoritesViewController()
+        userInitialViewController()
     }
     
     //UserViewController

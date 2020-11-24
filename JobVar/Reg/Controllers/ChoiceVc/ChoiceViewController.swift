@@ -11,7 +11,6 @@ class ChoiceViewController: UIViewController {
     
     var viewModel: ChoiceViewModelProtocol?
     
-    //var tableView = UITableView(frame: .zero, style: .plain)
     var logoImage = UIImageView()
     var logInButton = UIButton()
     var signUpButton = UIButton()
@@ -21,19 +20,19 @@ class ChoiceViewController: UIViewController {
         view.backgroundColor = UIColor(named: "TextColor")
         setupItem()
     }
-    
-    
+
     override func viewDidLayoutSubviews() {
         logInButton.layer.borderWidth = 1.5
-        //logInButton.layer.borderColor = UIColor(named: "MainColor")?.cgColor
         logInButton.layer.borderColor = UIColor.black.cgColor
-
         logInButton.layer.cornerRadius = 10
-        
         signUpButton.layer.cornerRadius = 10
-        
-        logoImage.layer.cornerRadius = 50
+        logoImage.layer.cornerRadius = 60
+       
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.barTintColor = UIColor(named: "TextColor")
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
 }

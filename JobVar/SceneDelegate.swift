@@ -23,11 +23,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = UINavigationController()
         let userNavigationController = UINavigationController()
         let favoritesNavigationController = UINavigationController()
+        let choiceNavigationController = UINavigationController()
         
         let tabBarController = CustomTabbarViewController()
+        
         let assemblyBuilder = AsseblyModelBuilder()
         
         let router = Router(naviGationController: navigationController, userNaviGationController: userNavigationController, favoritesNavigationController: favoritesNavigationController, assemblyBuilder: assemblyBuilder)
+        
+        let authRouter = AuthRouter(choiceNavigationController: choiceNavigationController, assemblyBuilder: assemblyBuilder)
         
         tabBarController.setViewControllers([navigationController, favoritesNavigationController, userNavigationController], animated: false)
         
@@ -36,18 +40,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         userNavigationController.tabBarItem = UITabBarItem(title: "İstifadəçi", image: UIImage(named: "user"), tag: 2)
         
         router.initialViewController()
-        router.favoritesViewController()
-        router.userInitialViewController()
-        
+        authRouter.initialAuthViewController()
+
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user == nil {
-                self.window?.rootViewController = SignUpViewController()
+                self.window?.rootViewController = choiceNavigationController
             }else {
                 self.window?.rootViewController = tabBarController
             }
         }
         
-        //window?.rootViewController = ChoiceViewController()
+        //window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 

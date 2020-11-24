@@ -10,17 +10,17 @@ import UIKit
 extension ChoiceViewController {
     
     func setupItem() {
-
         //logoImage
         view.addSubview(logoImage)
         logoImage.translatesAutoresizingMaskIntoConstraints = false
-        logoImage.contentMode = .scaleAspectFit
         logoImage.image = UIImage(named: "logo1")
-        //logoImage.backgroundColor = UIColor(named: "TextColor")
-        logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
-        logoImage.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 30).isActive = true
-        logoImage.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -30).isActive = true
-        logoImage.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -450).isActive = true
+        logoImage.contentMode = .scaleAspectFill
+        logoImage.clipsToBounds = true
+        logoImage.backgroundColor = .red
+        logoImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        logoImage.centerXAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        logoImage.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        logoImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
         
         //logInButton
         view.addSubview(logInButton)
@@ -35,6 +35,7 @@ extension ChoiceViewController {
         logInButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         logInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         logInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -120).isActive = true
+        logInButton.addTarget(self, action: #selector(logInButtonTarget), for: .touchDown)
         
         //signUp
         view.addSubview(signUpButton)
@@ -47,7 +48,15 @@ extension ChoiceViewController {
         signUpButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         signUpButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
-     
+        signUpButton.addTarget(self, action: #selector(signUpButtonTarget), for: .touchDown)
+    }
+    
+    @objc func logInButtonTarget() {
+        viewModel?.tapOnTheLoigInVc()
+    }
+    
+    @objc func signUpButtonTarget() {
+        viewModel?.tapOnTheSignUpVc()
     }
     
 }
