@@ -16,6 +16,7 @@ protocol AuthRouterProtocol: AuthRouterMain {
     func initialAuthViewController()
     func showLoginVc()
     func showSingUpVc()
+    func popToRoot()
 }
 
 class AuthRouter: AuthRouterProtocol {
@@ -47,6 +48,12 @@ class AuthRouter: AuthRouterProtocol {
         if let choiceNavigationController = choiceNavigationController {
             guard let signUpViewController = assemblyBuilder?.creatSignUpModule(authRouter: self) else { return }
             choiceNavigationController.pushViewController(signUpViewController, animated: true)
+        }
+    }
+    
+    func popToRoot() {
+        if let choiceNavigationController = choiceNavigationController {
+            choiceNavigationController.popToRootViewController(animated: true)
         }
     }
 }

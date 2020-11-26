@@ -56,6 +56,7 @@ class LogInTableViewCell: UITableViewCell {
         textFiled.textContentType = .name
         textFiled.returnKeyType = .next
         textFiled.autocapitalizationType = .words
+        textFiled.autocorrectionType = .no
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -89,6 +90,7 @@ class LogInTableViewCell: UITableViewCell {
         textFiled.textContentType = .emailAddress
         textFiled.autocapitalizationType = .none
         textFiled.returnKeyType = .done
+        textFiled.autocorrectionType = .no
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -118,6 +120,7 @@ class LogInTableViewCell: UITableViewCell {
         //textFiled.backgroundColor = .blue
         textFiled.borderStyle = .none
         textFiled.textContentType = .password
+        textFiled.autocapitalizationType = .none
         textFiled.isSecureTextEntry = true
         textFiled.returnKeyType = .done
         textFiled.translatesAutoresizingMaskIntoConstraints = false
@@ -138,8 +141,10 @@ class LogInTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         backgroundColor = UIColor(named: "TextColor")
+        
         setupItem()
     }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -158,6 +163,7 @@ class LogInTableViewCell: UITableViewCell {
         logInButton.layer.cornerRadius = 10
         
     }
+   
     
     func setupItem() {
         nameTextFiled.delegate = self
@@ -215,6 +221,27 @@ class LogInTableViewCell: UITableViewCell {
         logInButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         logInButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         logInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        logInButton.addTarget(self, action: #selector(logInButtonTarget), for: .touchDown)
+    }
+    
+    
+    @objc func logInButtonTarget(closure: @escaping () ->()) {
+        let name = nameTextFiled.text!
+        let email = emailTextFiled.text!
+        let pas = passwordTextField.text!
+        if (!name.isEmpty && !email.isEmpty && !pas.isEmpty) {
+            Auth.auth().createUser(withEmail: email, password: pas) { (result, error) in
+                if error == nil {
+                    if let result = result {
+                        print(result.user.uid)
+                        let ref = Database.database().reference().child("usersss")
+                        ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
+                    }
+                }
+            }
+        }else{
+            print("Melumati daxil edin")//burda alert olmalidi
+        }
     }
 
 }

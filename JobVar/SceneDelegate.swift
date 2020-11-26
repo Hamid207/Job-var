@@ -7,12 +7,19 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    
+    // Swift faceboook
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) { guard let url = URLContexts.first?.url else { return }
+        ApplicationDelegate.shared.application( UIApplication.shared, open: url, sourceApplication: nil, annotation: [UIApplication.OpenURLOptionsKey.annotation] )
+        
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -26,15 +33,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let choiceNavigationController = UINavigationController()
         
         let tabBarController = CustomTabbarViewController()
-        
         let assemblyBuilder = AsseblyModelBuilder()
         
         let router = Router(naviGationController: navigationController, userNaviGationController: userNavigationController, favoritesNavigationController: favoritesNavigationController, assemblyBuilder: assemblyBuilder)
-        
         let authRouter = AuthRouter(choiceNavigationController: choiceNavigationController, assemblyBuilder: assemblyBuilder)
         
         tabBarController.setViewControllers([navigationController, favoritesNavigationController, userNavigationController], animated: false)
-        
         navigationController.tabBarItem = UITabBarItem(title: "Axtarış", image: UIImage(named: "magnifier"), tag: 0)
         favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favoritlər", image: UIImage(named: "star"), tag: 1)
         userNavigationController.tabBarItem = UITabBarItem(title: "İstifadəçi", image: UIImage(named: "user"), tag: 2)

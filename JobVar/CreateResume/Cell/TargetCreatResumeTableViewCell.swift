@@ -121,7 +121,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        itemSetup()
+       itemSetup()
     }
     
     override func layoutSubviews() {
@@ -147,10 +147,10 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         
         //cityLabel
         addSubview(cityLbael)
-        cityLbael.topAnchor.constraint(equalTo: secondNameLabel.bottomAnchor, constant: 20).isActive = true
+        cityLbael.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 30).isActive = true
         //cityLbael.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         cityLbael.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        
+       
         //cityButton
         addSubview(citButton)
         citButton.topAnchor.constraint(equalTo: cityLbael.bottomAnchor, constant: 15).isActive = true

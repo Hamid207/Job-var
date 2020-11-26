@@ -7,21 +7,26 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
 
 @available(iOS 13.0, *)
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    //faceboook
+    func application( _ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:] ) -> Bool {
+        ApplicationDelegate.shared.application( app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation] )
+        
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )//faceboook
         FirebaseApp.configure()
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user == nil {
-                
-            }
-        }
+//        Auth.auth().addStateDidChangeListener { (auth, user) in
+//            if user == nil {
+//
+//            }
+//        }
         return true
     }
 

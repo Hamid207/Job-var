@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 
+
 class SignUpTableViewCell: UITableViewCell {
     //mainLabel
      private let mainLabel: UILabel = {
@@ -46,13 +47,14 @@ class SignUpTableViewCell: UITableViewCell {
     private let emailTextFiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        textFiled.textAlignment = .natural
+        textFiled.textAlignment = .left
         //textFiled.backgroundColor = .blue
         textFiled.borderStyle = .none
         textFiled.keyboardType = .emailAddress
         textFiled.textContentType = .emailAddress
         textFiled.autocapitalizationType = .none
         textFiled.returnKeyType = .done
+        textFiled.autocorrectionType = .no
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -78,14 +80,13 @@ class SignUpTableViewCell: UITableViewCell {
     private let pasTextField: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        //textFiled.textAlignment = .natural
+        textFiled.textAlignment = .natural
         //textFiled.backgroundColor = .blue
         textFiled.borderStyle = .none
+        textFiled.textContentType = .none
         textFiled.autocapitalizationType = .none
+       // textFiled.isSecureTextEntry = true  //bunu yerine delegate yazilib
         textFiled.returnKeyType = .done
-        //textFiled.textContentType = .password
-       // textFiled.textContentType = .password // bulari secende strong password verir duzelt
-        //textFiled.isSecureTextEntry = true
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -106,7 +107,6 @@ class SignUpTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         backgroundColor = UIColor(named: "TextColor")
         setupItem()
-        // Configure the view for the selected state
     }
     
     override func layoutSubviews() {
@@ -115,9 +115,6 @@ class SignUpTableViewCell: UITableViewCell {
         emailTextFiled.layer.cornerRadius = 10
         emailTextFiled.layer.borderColor = UIColor(named: "authTextFieldColor")?.cgColor
         
-//        passwordTextField.layer.borderWidth = 0.7
-//        passwordTextField.layer.cornerRadius = 10
-//        passwordTextField.layer.borderColor = UIColor(named: "TextColor")?.cgColor
         
         signInButton.layer.cornerRadius = 10
         
@@ -160,14 +157,30 @@ class SignUpTableViewCell: UITableViewCell {
         passwordLabel.topAnchor.constraint(equalTo: pasTextField.topAnchor, constant: -10).isActive = true
         passwordLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 35).isActive = true
         passwordLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+
         
-        //logInButton
+        //signInButton
         addSubview(signInButton)
-        signInButton.topAnchor.constraint(equalTo: pasTextField.bottomAnchor, constant: 100).isActive = true
+        signInButton.topAnchor.constraint(equalTo: pasTextField .bottomAnchor, constant: 60).isActive = true
         signInButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         signInButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+        signInButton.addTarget(self, action: #selector(signInButtonTarget), for: .touchDown)
+    }
+    
+    @objc func signInButtonTarget() {
+        let email = emailTextFiled.text!
+        let pas = pasTextField.text!
+        if (!email.isEmpty && !pas.isEmpty) {
+            Auth.auth().signIn(withEmail: email, password: pas) { (result, error) in
+                if error == nil {
+                    print("Signin \(result?.user.uid)")
+                   
+                }
+            }
+        }else {
+            print("Melumati daxilet SignUpTableViewCell") //burda alert olamlidi
+        }
     }
 
 }
@@ -188,4 +201,16 @@ extension SignUpTableViewCell: UITextFieldDelegate {
         }
         return true
     }
+    
+    //password stong olanda bunu ele textFiled.isSecureTextEntry = true nin yerine
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+           if (textField == self.pasTextField
+               && !self.pasTextField.isSecureTextEntry) {
+               self.pasTextField.isSecureTextEntry = true
+           }
+           
+           return true
+       }
 }
+
+
