@@ -138,6 +138,7 @@ class AuthiewController: UIViewController {
     
     @objc func regButtonTarget() {
         signUp = !signUp
+        print(signUp)
     }
     
     func showAlert() {

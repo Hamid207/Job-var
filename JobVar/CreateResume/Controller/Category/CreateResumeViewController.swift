@@ -17,12 +17,13 @@ class CreateResumeViewController: UIViewController { //Elan yerleesdirmek yeni i
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupIem()
         navigationItem.title = "Kateqoriya CreateResumeViewController"
-        add(string: "Maliyye")
-        add(string: "Marketinq")
-        add(string: "İnzibati")
-        add(string: "Satış")
-        add(string: "Programlasdirma")
+//        add(string: "Maliyye")
+//        add(string: "Marketinq")
+//        add(string: "İnzibati")
+//        add(string: "Satış")
+//        add(string: "Programlasdirma")
         setupNavigationBar()
+        creatResumeViewModel?.getKateqory(table: createResumeTableView)
     }
     
     func add(string: String) {

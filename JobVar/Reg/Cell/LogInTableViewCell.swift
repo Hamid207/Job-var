@@ -133,7 +133,7 @@ class LogInTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
         button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Daxil ol", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button
     }()
@@ -234,9 +234,11 @@ class LogInTableViewCell: UITableViewCell {
                 if error == nil {
                     if let result = result {
                         print(result.user.uid)
-                        let ref = Database.database().reference().child("usersss")
+                        let ref = Database.database().reference().child("istifadeciler")
                         ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
                     }
+                }else {
+                    print("MELUMAT SEFFFF")
                 }
             }
         }else{
@@ -256,9 +258,11 @@ extension LogInTableViewCell: UITextFieldDelegate {
                 if error == nil {
                     if let result = result {
                         print(result.user.uid)
-                        let ref = Database.database().reference().child("usersss")
+                        let ref = Database.database().reference().child("istifadeciler")
                         ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
                     }
+                }else {
+                    print("MELUMAT SEFFFF")
                 }
             }
         }else{

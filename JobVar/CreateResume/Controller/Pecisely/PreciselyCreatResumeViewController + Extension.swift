@@ -48,6 +48,7 @@ extension PreciselyCreatResumeViewController: UITableViewDataSource {
 extension PreciselyCreatResumeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel?.tapOnThePreciselyCreatResumeVc()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

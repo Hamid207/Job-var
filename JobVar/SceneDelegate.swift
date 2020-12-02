@@ -49,7 +49,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user == nil {
                 self.window?.rootViewController = choiceNavigationController
+                tabBarController.selectedIndex = 0
             }else {
+                choiceNavigationController.popViewController(animated: true)
                 self.window?.rootViewController = tabBarController
             }
         }

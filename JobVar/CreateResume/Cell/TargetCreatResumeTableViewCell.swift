@@ -183,6 +183,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         saveButton.topAnchor.constraint(equalTo: minMaasButton.bottomAnchor, constant: 35).isActive = true
         saveButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         saveButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        
     }
 
     @objc func cityButtonTarget() {

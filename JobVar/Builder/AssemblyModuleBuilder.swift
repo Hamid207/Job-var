@@ -55,7 +55,8 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     //creatCreateResumeViewControllerModlue
     func creatCreateResumeViewControllerModlue(router: RouterProtocol) -> UIViewController {
         let view = CreateResumeViewController()
-        let viewModel = CreateResumeViewModel(router: router)
+        let networkService = NetworkService()
+        let viewModel = CreateResumeViewModel(router: router, networkService: networkService)
         view.creatResumeViewModel = viewModel
         return view
     }

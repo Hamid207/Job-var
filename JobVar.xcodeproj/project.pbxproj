@@ -64,6 +64,8 @@
 		612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94C1256B2D5A009DBCBF /* UserSettingViewModel.swift */; };
 		612B94C8256B2D97009DBCBF /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94C7256B2D97009DBCBF /* UserTableViewCell.swift */; };
 		612B94D0256B2DB3009DBCBF /* UserSettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B94CF256B2DB3009DBCBF /* UserSettingTableViewCell.swift */; };
+		613B0411257689340029EB2C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B0410257689340029EB2C /* NetworkService.swift */; };
+		613B04192576895A0029EB2C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613B04182576895A0029EB2C /* Comment.swift */; };
 		61A29F5F256C679A00580990 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F5E256C679A00580990 /* LogInViewController.swift */; };
 		61A29F64256C67BB00580990 /* LogInViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F63256C67BB00580990 /* LogInViewController + Extension.swift */; };
 		61A29F69256C67E100580990 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29F68256C67E100580990 /* LogInViewModel.swift */; };
@@ -160,6 +162,8 @@
 		612B94C1256B2D5A009DBCBF /* UserSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingViewModel.swift; sourceTree = "<group>"; };
 		612B94C7256B2D97009DBCBF /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		612B94CF256B2DB3009DBCBF /* UserSettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingTableViewCell.swift; sourceTree = "<group>"; };
+		613B0410257689340029EB2C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		613B04182576895A0029EB2C /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		61A29F5E256C679A00580990 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		61A29F63256C67BB00580990 /* LogInViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogInViewController + Extension.swift"; sourceTree = "<group>"; };
 		61A29F68256C67E100580990 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
@@ -308,6 +312,8 @@
 			isa = PBXGroup;
 			children = (
 				612B9381256B236C009DBCBF /* FeedResponSe.swift */,
+				613B04182576895A0029EB2C /* Comment.swift */,
+				613B0410257689340029EB2C /* NetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -842,12 +848,14 @@
 				612B9462256B2A5C009DBCBF /* JobSeekersTableViewCell.swift in Sources */,
 				612B946D256B2B0D009DBCBF /* FavoritesViewController.swift in Sources */,
 				612B94D0256B2DB3009DBCBF /* UserSettingTableViewCell.swift in Sources */,
+				613B04192576895A0029EB2C /* Comment.swift in Sources */,
 				61A29F7C256C826200580990 /* SignUpViewController.swift in Sources */,
 				612B9370256B22DE009DBCBF /* Router.swift in Sources */,
 				612B93DB256B2688009DBCBF /* CreateResumeViewController.swift in Sources */,
 				612B94B7256B2D22009DBCBF /* UserSettingViewController + Extension.swift in Sources */,
 				612B9403256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift in Sources */,
 				61B29119256B36F1006D13D1 /* AuthiewController.swift in Sources */,
+				613B0411257689340029EB2C /* NetworkService.swift in Sources */,
 				61A29F86256C842000580990 /* SignUpViewModel.swift in Sources */,
 				61A29F5F256C679A00580990 /* LogInViewController.swift in Sources */,
 				612B9414256B2833009DBCBF /* PreciselyCreatResumeViewModel.swift in Sources */,

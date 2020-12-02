@@ -21,7 +21,7 @@ class SignUpTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Sign un"
+        label.text = "Daxil ol"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -97,7 +97,7 @@ class SignUpTableViewCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
         button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        button.setTitle("Sign up", for: .normal)
+        button.setTitle("Daxil ol", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button
     }()
@@ -175,7 +175,8 @@ class SignUpTableViewCell: UITableViewCell {
             Auth.auth().signIn(withEmail: email, password: pas) { (result, error) in
                 if error == nil {
                     print("Signin \(result?.user.uid)")
-                   
+                }else{
+                    print("MELUMATI DUNGUN DAXIL EDIN")
                 }
             }
         }else {
@@ -187,7 +188,6 @@ class SignUpTableViewCell: UITableViewCell {
 
 extension SignUpTableViewCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         let email = emailTextFiled.text!
         let pas = pasTextField.text!
         if (!email.isEmpty && !pas.isEmpty) {

@@ -25,7 +25,7 @@ extension ChoiceViewController {
         //logInButton
         view.addSubview(logInButton)
         logInButton.translatesAutoresizingMaskIntoConstraints = false
-        logInButton.setTitle("Log in", for: .normal)
+        logInButton.setTitle("Qeydiyyat", for: .normal)
         //logInButton.backgroundColor = .black
         //logInButton.setTitleColor(UIColor(named: "MainColor"), for: .normal)
         logInButton.setTitleColor(UIColor.black, for: .normal)
@@ -40,7 +40,7 @@ extension ChoiceViewController {
         //signUp
         view.addSubview(signUpButton)
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.setTitle("Sign up", for: .normal)
+        signUpButton.setTitle("Daxil ol", for: .normal)
         signUpButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         signUpButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         signUpButton.backgroundColor = UIColor(named: "MainColor")
