@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 extension UserViewController {
-    
     func setupItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .done, target: self, action: #selector(barButtonTarget))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")

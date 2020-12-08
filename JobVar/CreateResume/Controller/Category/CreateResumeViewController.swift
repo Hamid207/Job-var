@@ -23,6 +23,7 @@ class CreateResumeViewController: UIViewController { //Elan yerleesdirmek yeni i
 //        add(string: "Satış")
 //        add(string: "Programlasdirma")
         setupNavigationBar()
+        tabBarController?.tabBar.isHidden = true
         creatResumeViewModel?.getKateqory(table: createResumeTableView)
     }
     

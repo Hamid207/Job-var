@@ -15,10 +15,12 @@ protocol AsseblyBuilderProtocol {
     func creatPreciselyCreatResumeViewControllerModule(router: RouterProtocol) -> UIViewController
     func creatCreatResumeTargetViewControllerModule(router: RouterProtocol) -> UIViewController
     func creatIshAxtaranlarModule(router: RouterProtocol) -> UIViewController
-    func creatUserViewController(router: RouterProtocol) -> UIViewController
+    func creatUserViewController(router: RouterProtocol, userInfoModel: String?) -> UIViewController
     func creatUserSettingViewControllerModule(router: RouterProtocol) -> UIViewController
     func creatFavoritesViewControllerModeule(router: RouterProtocol) -> UIViewController
     func creatFavaritesDetailModeule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController
+    
+    func testcreatUserViewController(router: RouterProtocol, userInfoModel: UserInfoModel?)
     
     //AUTH
     func creatChoiceModule(authRouter: AuthRouterProtocol) -> UIViewController
@@ -86,9 +88,10 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     }
     
     //creatUserViewControllerModeule
-    func creatUserViewController(router: RouterProtocol) -> UIViewController {
+    func creatUserViewController(router: RouterProtocol, userInfoModel: String?) -> UIViewController {
         let view = UserViewController()
-        let viewModel = UserViewModel(router: router)
+        let firebaseSet = FirebaseSet()
+        let viewModel = UserViewModel(router: router, firebaseSet: firebaseSet, userInfoModel: userInfoModel)
         view.viewModel = viewModel
         return view
     }
@@ -116,6 +119,11 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
         view.viewModel = viewModel
         return view
     }
+    
+    func testcreatUserViewController(router: RouterProtocol, userInfoModel: UserInfoModel?) {
+        //UserViewModel(router: router, userInfoModel: userInfoModel)
+    }
+
     
     //MARK: - AUTH
     //creatChoiceModule

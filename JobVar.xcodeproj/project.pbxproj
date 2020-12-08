@@ -80,6 +80,10 @@
 		61A29FCD256D733D00580990 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A29FCC256D733D00580990 /* AuthRouter.swift */; };
 		61B29119256B36F1006D13D1 /* AuthiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B29118256B36F1006D13D1 /* AuthiewController.swift */; };
 		61B29121256B3D19006D13D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B29120256B3D19006D13D1 /* GoogleService-Info.plist */; };
+		61D695F0257D7A3700326B53 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695EF257D7A3700326B53 /* UserModel.swift */; };
+		61D695F5257D7ADE00326B53 /* AddResumeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695F4257D7ADE00326B53 /* AddResumeModel.swift */; };
+		61D695FF257D844200326B53 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695FE257D844200326B53 /* UserInfoModel.swift */; };
+		61D6960F25801DA200326B53 /* FirebaseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D6960E25801DA200326B53 /* FirebaseSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +182,10 @@
 		61A29FCC256D733D00580990 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		61B29118256B36F1006D13D1 /* AuthiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthiewController.swift; sourceTree = "<group>"; };
 		61B29120256B3D19006D13D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61D695EF257D7A3700326B53 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		61D695F4257D7ADE00326B53 /* AddResumeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResumeModel.swift; sourceTree = "<group>"; };
+		61D695FE257D844200326B53 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
+		61D6960E25801DA200326B53 /* FirebaseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSet.swift; sourceTree = "<group>"; };
 		7FCFDD5AE836BE612351A5B0 /* Pods_JobVar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobVar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7B914EEDD3D501CC3A6564 /* Pods-JobVar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobVar.debug.xcconfig"; path = "Target Support Files/Pods-JobVar/Pods-JobVar.debug.xcconfig"; sourceTree = "<group>"; };
 		BF1C1A646EB9B46F0867170E /* Pods-JobVar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobVar.release.xcconfig"; path = "Target Support Files/Pods-JobVar/Pods-JobVar.release.xcconfig"; sourceTree = "<group>"; };
@@ -314,6 +322,8 @@
 				612B9381256B236C009DBCBF /* FeedResponSe.swift */,
 				613B04182576895A0029EB2C /* Comment.swift */,
 				613B0410257689340029EB2C /* NetworkService.swift */,
+				61D695F9257D7B9100326B53 /* Model */,
+				61D6960E25801DA200326B53 /* FirebaseSet.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -537,6 +547,7 @@
 		612B94A0256B2C86009DBCBF /* User */ = {
 			isa = PBXGroup;
 			children = (
+				61D695FD257D842100326B53 /* Model */,
 				612B94A1256B2C96009DBCBF /* Controller */,
 				612B94BB256B2D3F009DBCBF /* ViewModel */,
 				612B94C6256B2D7B009DBCBF /* Cell */,
@@ -654,6 +665,23 @@
 				61A29F72256C69D300580990 /* Cell */,
 			);
 			path = Reg;
+			sourceTree = "<group>";
+		};
+		61D695F9257D7B9100326B53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61D695EF257D7A3700326B53 /* UserModel.swift */,
+				61D695F4257D7ADE00326B53 /* AddResumeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		61D695FD257D842100326B53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61D695FE257D844200326B53 /* UserInfoModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -834,6 +862,7 @@
 				612B943E256B294A009DBCBF /* JobVacancyViewController + Extension.swift in Sources */,
 				612B93B6256B2513009DBCBF /* DetailViewController.swift in Sources */,
 				612B9478256B2B56009DBCBF /* FavoritesDetailViewController.swift in Sources */,
+				61D695FF257D844200326B53 /* UserInfoModel.swift in Sources */,
 				612B94C8256B2D97009DBCBF /* UserTableViewCell.swift in Sources */,
 				612B93AB256B24A7009DBCBF /* MainTableViewCell.swift in Sources */,
 				612B93ED256B2716009DBCBF /* PreciselyCreatResumeViewController.swift in Sources */,
@@ -868,10 +897,12 @@
 				61A29F69256C67E100580990 /* LogInViewModel.swift in Sources */,
 				612B94B2256B2D0E009DBCBF /* UserSettingViewController.swift in Sources */,
 				61A29F81256C827600580990 /* SignUpViewController + Etension.swift in Sources */,
+				61D695F5257D7ADE00326B53 /* AddResumeModel.swift in Sources */,
 				612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */,
 				612B938E256B23E7009DBCBF /* CustomTabbarViewController.swift in Sources */,
 				612B93A5256B247F009DBCBF /* MainViewModel.swift in Sources */,
 				612B93FE256B2793009DBCBF /* CreatResumeTargetViewController.swift in Sources */,
+				61D695F0257D7A3700326B53 /* UserModel.swift in Sources */,
 				612B93B0256B24DF009DBCBF /* MainCollectionViewCell.swift in Sources */,
 				612B940C256B2819009DBCBF /* CreateResumeViewModel.swift in Sources */,
 				612B942B256B28B8009DBCBF /* CreateResumeTableViewCell.swift in Sources */,
@@ -885,6 +916,7 @@
 				612B9480256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift in Sources */,
 				612B93A0256B2459009DBCBF /* MainViewController + Extension.swift in Sources */,
 				612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */,
+				61D6960F25801DA200326B53 /* FirebaseSet.swift in Sources */,
 				612B941F256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift in Sources */,
 				612B9486256B2B95009DBCBF /* FavoritesViewModel.swift in Sources */,
 				61A29FB1256C932300580990 /* ChoiceViewController + Extension.swift in Sources */,

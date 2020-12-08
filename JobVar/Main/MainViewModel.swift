@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 protocol MainViewModelProtocol {
     var mainTableViewCellId: String { get set }
@@ -18,6 +19,10 @@ protocol MainViewModelProtocol {
 }
 
 final class MainViewModel: MainViewModelProtocol {
+    var user: UserModel?
+    var ref: DatabaseReference!
+    var resumeArray = Array<AddResumeModel>()
+    
     var mainTableViewCellId: String = "MainTableViewCellId"
     var secondTableVIewCellId: String = "SecondTableVIewCellId"
     private let router: RouterProtocol?
@@ -39,6 +44,10 @@ final class MainViewModel: MainViewModelProtocol {
     
     func tapOnTheIsAxtaranlar() {
         router?.showIshAxtaranlar()
+    }
+    
+    func add() {
+        
     }
     
 }

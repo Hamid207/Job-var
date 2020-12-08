@@ -6,10 +6,13 @@
 //
 
 import UIKit
+protocol SetDelegate {
+    func setItem(userInfoModel: String)
+}
 
 class UserSettingTableViewCell: UITableViewCell {
-    
     var buttonTarget = false
+    var delegate: SetDelegate?
     
     //userImage
     private let userImage: UIImageView = {
@@ -42,11 +45,12 @@ class UserSettingTableViewCell: UITableViewCell {
     }()
     
     //nameTextField
-    private let nameTextFiled: UITextField = {
+     let nameTextFiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
+        textFiled.text = "hamiddd"
         return textFiled
     }()
     
@@ -125,7 +129,8 @@ class UserSettingTableViewCell: UITableViewCell {
     private let cityButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.setTitle("Seher secin", for: .normal)
+        button.setTitle("Baki", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button
@@ -157,20 +162,21 @@ class UserSettingTableViewCell: UITableViewCell {
         return label
     }()
     
-    //dateTextField
-    private let dateTextField: UITextField = {
-        let textFiled = UITextField()
-        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        textFiled.placeholder = "Daxil et..."
-        textFiled.translatesAutoresizingMaskIntoConstraints = false
-        return textFiled
-    }()
+//    //dateTextField
+//    private let dateTextField: UITextField = {
+//        let textFiled = UITextField()
+//        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+//        textFiled.placeholder = "Daxil et..."
+//        textFiled.translatesAutoresizingMaskIntoConstraints = false
+//        return textFiled
+//    }()
     
     //dateButton
     private let dateButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.setTitle("Seher secin", for: .normal)
+        button.setTitle("03.26.1994", for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
@@ -204,24 +210,32 @@ class UserSettingTableViewCell: UITableViewCell {
     }()
     
     //emailTextField
-//    private let emailTextField: UITextField = {
-//        let textFiled = UITextField()
-//        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-//        textFiled.placeholder = "Daxil et..."
-//        textFiled.translatesAutoresizingMaskIntoConstraints = false
-//        return textFiled
-//    }()
-    
-    //emailButton
-    private let emailButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        //button.setTitle("Seher secin", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        return button
+    private let emailTextField: UITextField = {
+        let textFiled = UITextField()
+        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        textFiled.placeholder = "Daxil et..."
+        textFiled.textAlignment = .natural
+        //textFiled.backgroundColor = .blue
+        textFiled.borderStyle = .none
+        textFiled.keyboardType = .emailAddress
+        textFiled.textContentType = .emailAddress
+        textFiled.autocapitalizationType = .none
+        textFiled.returnKeyType = .done
+        textFiled.autocorrectionType = .no
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
+        return textFiled
     }()
     
+//    //emailButton
+//    private let emailButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        //button.setTitle("Seher secin", for: .normal)
+//        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+//        return button
+//    }()
+//
     //emailLineVIew
     private let emailLineVIew: UIView = {
         let view = UIView()
@@ -273,13 +287,17 @@ class UserSettingTableViewCell: UITableViewCell {
         segment.translatesAutoresizingMaskIntoConstraints = false
         return segment
     }()
-
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        print("HAMIDMISMIAM")
+        print("test1")
+        
         
         //textLineViewColor()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -295,17 +313,17 @@ class UserSettingTableViewCell: UITableViewCell {
         dateButton.layer.cornerRadius = 5
         dateButton.layer.borderColor = UIColor.black.cgColor
         
-        emailButton.layer.borderWidth = 0.5
-        emailButton.layer.cornerRadius = 5
-        emailButton.layer.borderColor = UIColor.black.cgColor
+//        emailButton.layer.borderWidth = 0.5
+//        emailButton.layer.cornerRadius = 5
+//        emailButton.layer.borderColor = UIColor.black.cgColor
     }
     
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setupItem()
-        // Configure the view for the selected state
+        setData()
     }
+    
     
     @objc func textrFirledTarget() { // bu isdemir sora bax
 //                    namelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
@@ -448,23 +466,23 @@ class UserSettingTableViewCell: UITableViewCell {
         emailLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
         //emailButton
-        addSubview(emailButton)
-        emailButton.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10).isActive = true
-        emailButton.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
-        emailButton.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
-        emailButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+//        addSubview(emailButton)
+//        emailButton.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10).isActive = true
+//        emailButton.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
+//        emailButton.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
+//        emailButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         
-        //dateTextField
-//        addSubview(emailTextField)
-//        emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: -20).isActive = true
-//        emailTextField.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
-//        emailTextField.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
-//        emailTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        //emailTextField
+        addSubview(emailTextField)
+        emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: -20).isActive = true
+        emailTextField.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
+        emailTextField.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
+        emailTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         //emailLineVIew
         addSubview(emailLineVIew)
-        emailLineVIew.topAnchor.constraint(equalTo: emailButton.bottomAnchor, constant: 15).isActive = true
+        emailLineVIew.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15).isActive = true
         emailLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         emailLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         emailLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
@@ -492,5 +510,11 @@ class UserSettingTableViewCell: UITableViewCell {
         numberLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
     }
     
+    func setData() {
+        guard let name = nameTextFiled.text, let lastName = lastNameTextFiled.text, let city = cityButton.titleLabel?.text, let dateOfBirth = dateButton.titleLabel?.text, let email = emailTextField.text, let number = numberTextField.text  else { return}
+        
+        let userInfoModel = UserInfoModel(name: name, lastName: lastName, userId: " ", city: city, image: "nil", dateOfBirth: dateOfBirth, number: number)
+        delegate?.setItem(userInfoModel: "HAMIDDDDD")
+    }
 }
 

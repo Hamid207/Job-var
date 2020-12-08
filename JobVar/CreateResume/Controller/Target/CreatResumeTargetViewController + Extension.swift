@@ -52,8 +52,10 @@ extension CreatResumeTargetViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TargetCreatResumeTableViewCell", for: indexPath) as? TargetCreatResumeTableViewCell {
             cell.nameLabel.text = "Proqramlasdirma"
+            cell.saveButton.addTarget(self, action: #selector(sil), for: .touchDown)
             return cell
         }
+        
         return UITableViewCell()
     }
     

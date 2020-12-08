@@ -52,7 +52,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Hamid"
+        label.text = " "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -84,7 +84,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Manafov"
+        label.text = " "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -116,7 +116,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Baki"
+        label.text = " "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -148,7 +148,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "26.03.1994"
+        label.text = " "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -180,7 +180,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "hamidmanafov@gmail.com"
+        label.text = " "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -212,7 +212,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "+994 534 94 34"
+        label.text = " "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

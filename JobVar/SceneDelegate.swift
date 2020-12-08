@@ -52,6 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 tabBarController.selectedIndex = 0
             }else {
                 choiceNavigationController.popViewController(animated: true)
+                tabBarController.selectedIndex = 0
                 self.window?.rootViewController = tabBarController
             }
         }

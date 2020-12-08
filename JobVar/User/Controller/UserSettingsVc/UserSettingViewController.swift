@@ -12,7 +12,6 @@ class UserSettingViewController: UIViewController {
     var userTabeleView = UITableView(frame: .zero, style: .plain)
     
     var viewModel: UserSettingViewModelProtocol?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -20,5 +19,12 @@ class UserSettingViewController: UIViewController {
         setupNavigationBar()
         itemSetup()
     }
+}
 
+extension UserSettingViewController: SetDelegate {
+    func setItem(userInfoModel: String) {
+        viewModel?.set(userInfoModel: userInfoModel)
+    }
+    
+    
 }

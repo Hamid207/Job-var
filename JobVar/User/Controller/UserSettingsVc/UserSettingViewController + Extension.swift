@@ -38,7 +38,7 @@ extension UserSettingViewController {
     }
     
     @objc func saveBarbutton() {
-        print("Save")
+        viewModel?.popUser()
     }
 }
 
@@ -50,6 +50,7 @@ extension UserSettingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "iserSettingTableViewCellId", for: indexPath) as? UserSettingTableViewCell {
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
@@ -60,6 +61,10 @@ extension UserSettingViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 extension UserSettingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 750
     }

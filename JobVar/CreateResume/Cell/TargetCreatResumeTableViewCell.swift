@@ -9,7 +9,7 @@
 import UIKit
 
 class TargetCreatResumeTableViewCell: UITableViewCell {
-
+    let vc = CreatResumeTargetViewController() //
     //nameLabel
       let nameLabel: UILabel = {
         let label = UILabel()
@@ -105,7 +105,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         return button
     }()
     
-    private let saveButton: UIButton = {
+     let saveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -183,6 +183,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         saveButton.topAnchor.constraint(equalTo: minMaasButton.bottomAnchor, constant: 35).isActive = true
         saveButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         saveButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        saveButton.addTarget(self, action: #selector(saveButtonTarget), for: .touchDown)
         
     }
 
@@ -196,6 +197,10 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     
     @objc func maxButtonTarget() {
         maxMaasButton.setTitle("1500 AZN", for: .normal)
+    }
+    
+    @objc func saveButtonTarget() {
+        
     }
 }
 
