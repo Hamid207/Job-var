@@ -26,7 +26,6 @@ protocol RouterProtocol: RouterMain {
     func showIshAxtaranlar()
     func showFavaritesDetail(testArray: FeedResponse)
     func showUserSettings()
-    func popToRootUserViewController(userInfoModel: String)
     func popUser()
 }
 
@@ -55,7 +54,7 @@ class Router: RouterProtocol {
     //UserViewController
     func userInitialViewController() {
         if let userNavigationController = userNaviGationController {
-            guard let creatUserVC = assemblyBuilder?.creatUserViewController(router: self, userInfoModel: nil) else { return }
+            guard let creatUserVC = assemblyBuilder?.creatUserViewController(router: self) else { return }
             userNavigationController.pushViewController(creatUserVC, animated: false)
         }
     }
@@ -133,12 +132,6 @@ class Router: RouterProtocol {
         }
     }
     
-    func popToRootUserViewController(userInfoModel: String) {
-        if let userNaviGationController = userNaviGationController {
-            guard let userViewController = assemblyBuilder?.creatUserViewController(router: self, userInfoModel: userInfoModel) else { return }
-            userNaviGationController.popToViewController(userViewController, animated: true)
-        }
-    }
     
     func popUser() {
         if let userNaviGationController = userNaviGationController {

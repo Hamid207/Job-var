@@ -42,7 +42,7 @@ class UserTableViewCell: UITableViewCell {
     
     //refReshNameLabel
     
-    private let refReshNamelabel: UILabel = {
+     let refReshNamelabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -230,6 +230,12 @@ class UserTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         setupItem()
         // Configure the view for the selected state
+    }
+    
+    func addCell(model: UserInfoModel) {
+        refReshNamelabel.text = model.name
+        refReshLastNamelabel.text = model.lastName
+        refreshDateLabel.text = model.dateOfBirth
     }
     
     func setupItem() {

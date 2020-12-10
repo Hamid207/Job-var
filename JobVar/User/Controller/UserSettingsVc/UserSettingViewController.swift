@@ -18,13 +18,25 @@ class UserSettingViewController: UIViewController {
         navigationItem.title = "UserViewController"
         setupNavigationBar()
         itemSetup()
+        viewModel?.firebaseSet?.currentUser(withPath: "istifadeciler", child: "userInfo")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.viewModel?.firebaseSet?.observe()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        viewModel?.firebaseSet?.removeAllObserverr()
+    }
+    
+    
 }
 
+//MARK: DELGATE
 extension UserSettingViewController: SetDelegate {
-    func setItem(userInfoModel: String) {
-        viewModel?.set(userInfoModel: userInfoModel)
+    func setItem(userInfoModel: UserInfoModel) {
+        viewModel?.firebaseSet?.set(userInfoModel: userInfoModel, withPath: "istifadeciler", child: "userInfo")
     }
-    
-    
 }

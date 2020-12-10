@@ -17,7 +17,6 @@ extension UserSettingViewController {
     }
     
     func itemSetup() {
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarbutton))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
         //MARK - USERTABLEVIEW
@@ -39,6 +38,9 @@ extension UserSettingViewController {
     
     @objc func saveBarbutton() {
         viewModel?.popUser()
+        DispatchQueue.main.async {
+            self.userTabeleView.reloadData()
+        }
     }
 }
 
@@ -51,6 +53,7 @@ extension UserSettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "iserSettingTableViewCellId", for: indexPath) as? UserSettingTableViewCell {
             cell.delegate = self
+            cell.setData()
             return cell
         }
         return UITableViewCell()

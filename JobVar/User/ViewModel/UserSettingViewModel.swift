@@ -5,27 +5,22 @@
 //  Created by Hamid Manafov on 23.11.20.
 //
 
-import Firebase
+import Foundation
 
 protocol UserSettingViewModelProtocol {
     var userInfoModel: UserInfoModel? { get set }
-    func set(userInfoModel: String)
+    var firebaseSet: FirebaseSetProtocol? { get set }
     func popUser()
-    init(router: RouterProtocol)
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?)
 }
 
 final class UserSettingViewModel: UserSettingViewModelProtocol {
     var userInfoModel: UserInfoModel?
-//    private var user: UserModel?
-//    private var ref: DatabaseReference!
-//    private var userInfoModelArray = Array<UserInfoModel>()
+    var firebaseSet: FirebaseSetProtocol?
     private let router: RouterProtocol?
-    init(router: RouterProtocol) {
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?) {
         self.router = router
-    }
-    
-    func set(userInfoModel: String) {
-        router?.popToRootUserViewController(userInfoModel: userInfoModel)
+        self.firebaseSet = firebaseSet
     }
     
     func popUser() {

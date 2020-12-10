@@ -5,32 +5,23 @@
 //  Created by Hamid Manafov on 23.11.20.
 //
 
-import Firebase
+import Foundation
 
 protocol UserViewModelProtocol {
-    var userInfoModel: String? { get set }
     var firebaseSet: FirebaseSetProtocol? { get set }
     func tapOnTheUserSettingsVc()
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol, userInfoModel: String?)
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol)
 }
 
 final class UserViewModel: UserViewModelProtocol {
     var firebaseSet: FirebaseSetProtocol?
     private let router: RouterProtocol?
-    var userInfoModel: String?
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol, userInfoModel: String?) {
-        self.userInfoModel = userInfoModel
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol) {
         self.router = router
         self.firebaseSet = firebaseSet
-        print("VIEWMODEEE22 == \(userInfoModel)")
-        print("VIEWMODEEE44 == \(self.userInfoModel)")
-
     }
     
     func tapOnTheUserSettingsVc() {
         router?.showUserSettings()
     }
-    
-
-    
 }

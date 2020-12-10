@@ -7,7 +7,7 @@
 
 import UIKit
 protocol SetDelegate {
-    func setItem(userInfoModel: String)
+    func setItem(userInfoModel: UserInfoModel)
 }
 
 class UserSettingTableViewCell: UITableViewCell {
@@ -85,6 +85,7 @@ class UserSettingTableViewCell: UITableViewCell {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.placeholder = "Daxil et..."
+        textFiled.text = "Manafov"
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -321,7 +322,7 @@ class UserSettingTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setupItem()
-        setData()
+        //setData()
     }
     
     
@@ -511,10 +512,11 @@ class UserSettingTableViewCell: UITableViewCell {
     }
     
     func setData() {
-        guard let name = nameTextFiled.text, let lastName = lastNameTextFiled.text, let city = cityButton.titleLabel?.text, let dateOfBirth = dateButton.titleLabel?.text, let email = emailTextField.text, let number = numberTextField.text  else { return}
-        
-        let userInfoModel = UserInfoModel(name: name, lastName: lastName, userId: " ", city: city, image: "nil", dateOfBirth: dateOfBirth, number: number)
-        delegate?.setItem(userInfoModel: "HAMIDDDDD")
+//        guard let name = nameTextFiled.text, let lastName = lastNameTextFiled.text, let city = cityButton.titleLabel?.text, let dateOfBirth = dateButton.titleLabel?.text, let email = emailTextField.text, let number = numberTextField.text  else { return}
+        guard let name = nameTextFiled.text else { return  }
+       // let lastName = lastNameTextFiled.text
+        let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: " ", city: (cityButton.titleLabel?.text)!, image: "nil", dateOfBirth: dateButton.titleLabel?.text, number: numberTextField.text, fbADD: "test")
+        delegate?.setItem(userInfoModel: userInfoModel)
     }
 }
 

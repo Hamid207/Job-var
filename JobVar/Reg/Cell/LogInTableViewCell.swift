@@ -234,10 +234,9 @@ class LogInTableViewCell: UITableViewCell {
                 if error == nil {
                     if let result = result {
                         print(result.user.uid)
-                        let ref = Database.database().reference(withPath: "istifadeciler")
-                        //ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
-                        //ref.updateChildValues(["name" : name, "email" : email])
-                        ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
+                        let ref = Database.database().reference().child("istifadeciler")
+//                        ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
+                        ref.child(result.user.uid).setValue(["email" : result.user.email] )
                     }
                 }else {
                     print("MELUMAT SEFFFF")
@@ -262,7 +261,9 @@ extension LogInTableViewCell: UITextFieldDelegate {
                         print(result.user.uid)
 //                        let ref = Database.database().reference().child("istifadeciler")
                         let ref = Database.database().reference(withPath: "istifadeciler")
-                        ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
+                        //ref.child(result.user.uid).updateChildValues(["name" : result.user.email, "email" : email])
+                        ref.child(result.user.uid).setValue(["email" : result.user.email] )
+
                     }
                 }else {
                     print("MELUMAT SEFFFF")
