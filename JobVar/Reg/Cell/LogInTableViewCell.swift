@@ -8,8 +8,12 @@
 import UIKit
 import Firebase
 
+protocol RegInfoDelegate {
+    func regInfo(name: String, email: String, password: String)
+}
+
 class LogInTableViewCell: UITableViewCell {
-    
+    var delegate: RegInfoDelegate?
     let textFiledTextSize = 18
 
     //mainLabel
@@ -141,7 +145,6 @@ class LogInTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         backgroundColor = UIColor(named: "TextColor")
-        
         setupItem()
     }
     
@@ -161,15 +164,9 @@ class LogInTableViewCell: UITableViewCell {
         passwordTextField.layer.borderColor = UIColor(named: "authTextFieldColor")?.cgColor
         
         logInButton.layer.cornerRadius = 10
-        
     }
-   
     
     func setupItem() {
-        nameTextFiled.delegate = self
-        emailTextFiled.delegate = self
-        passwordTextField.delegate = self
-        
         //mainLabel
         addSubview(mainLabel)
         mainLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 55).isActive = true
@@ -229,49 +226,6 @@ class LogInTableViewCell: UITableViewCell {
         let name = nameTextFiled.text!
         let email = emailTextFiled.text!
         let pas = passwordTextField.text!
-        if (!name.isEmpty && !email.isEmpty && !pas.isEmpty) {
-            Auth.auth().createUser(withEmail: email, password: pas) { (result, error) in
-                if error == nil {
-                    if let result = result {
-                        print(result.user.uid)
-                        let ref = Database.database().reference().child("allUsers")
-//                        ref.child(result.user.uid).updateChildValues(["name" : name, "email" : email])
-                        ref.child(result.user.uid).setValue(["email" : result.user.email] )
-                    }
-                }else {
-                    print("MELUMAT SEFFFF")
-                }
-            }
-        }else{
-            print("Melumati daxil edin")//burda alert olmalidi
-        }
-    }
-
-}
-
-extension LogInTableViewCell: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let name = nameTextFiled.text!
-        let email = emailTextFiled.text!
-        let pas = passwordTextField.text!
-        if (!name.isEmpty && !email.isEmpty && !pas.isEmpty) {
-            Auth.auth().createUser(withEmail: email, password: pas) { (result, error) in
-                if error == nil {
-                    if let result = result {
-                        print(result.user.uid)
-//                        let ref = Database.database().reference().child("istifadeciler")
-                        let ref = Database.database().reference(withPath: "allUsers")
-                        //ref.child(result.user.uid).updateChildValues(["name" : result.user.email, "email" : email])
-                        ref.child(result.user.uid).setValue(["email" : result.user.email] )
-
-                    }
-                }else {
-                    print("MELUMAT SEFFFF")
-                }
-            }
-        }else{
-            print("Melumati daxil edin")//burda alert olmalidi
-        }
-        return true
+        delegate?.regInfo(name: name, email: email, password: pas)
     }
 }

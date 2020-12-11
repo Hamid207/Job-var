@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 class UserViewController: UIViewController {
     var viewModel: UserViewModelProtocol?
     
@@ -16,14 +15,14 @@ class UserViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupItem()
-        viewModel?.firebaseSet?.currentUser(withPath: "allUsers", child: "user")
+        //viewModel?.firebaseSet?.currentUser(withPath: "allUsers", child: "user")
     }
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         //self.viewModel?.firebaseSet?.observe()
-        viewModel?.firebaseSet?.firebaseObserve(withPath: "allUsers", child: "user")
         DispatchQueue.main.async {
+            self.viewModel?.firebaseSet?.firebaseObserve(withPath: "allUsers", child: "user")
             self.tableView.reloadData()
         }
         

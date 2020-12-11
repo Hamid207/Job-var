@@ -8,12 +8,15 @@
 import Foundation
 
 protocol SignUpViewModelProtocol {
-    init(router: AuthRouterProtocol)
+    var firebaseSet: FirebaseSetAuthProtocol? { get set }
+    init(router: AuthRouterProtocol, firebaseSet: FirebaseSetAuthProtocol?)
 }
 
 final class SignUpViewModel: SignUpViewModelProtocol {
+    var firebaseSet: FirebaseSetAuthProtocol?
     private let router: AuthRouterProtocol?
-    init(router: AuthRouterProtocol) {
+    init(router: AuthRouterProtocol, firebaseSet: FirebaseSetAuthProtocol?) {
         self.router = router
+        self.firebaseSet = firebaseSet
     }
 }

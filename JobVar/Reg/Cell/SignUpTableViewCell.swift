@@ -6,10 +6,13 @@
 //
 
 import UIKit
-import Firebase
-
+protocol LogInInfoDelegate {
+    func logInInfo(email: String, pas: String)
+}
 
 class SignUpTableViewCell: UITableViewCell {
+    var delegate: LogInInfoDelegate?
+    
     //mainLabel
      private let mainLabel: UILabel = {
         let label = UILabel()
@@ -171,44 +174,17 @@ class SignUpTableViewCell: UITableViewCell {
     @objc func signInButtonTarget() {
         let email = emailTextFiled.text!
         let pas = pasTextField.text!
-        if (!email.isEmpty && !pas.isEmpty) {
-            Auth.auth().signIn(withEmail: email, password: pas) { (result, error) in
-                if error == nil {
-                    print("Signin \(result?.user.uid)")
-                }else{
-                    print("MELUMATI DUNGUN DAXIL EDIN")
-                }
-            }
-        }else {
-            print("Melumati daxilet SignUpTableViewCell") //burda alert olamlidi
-        }
+        delegate?.logInInfo(email: email, pas: pas)
     }
-
 }
 
 extension SignUpTableViewCell: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let email = emailTextFiled.text!
-        let pas = pasTextField.text!
-        if (!email.isEmpty && !pas.isEmpty) {
-            Auth.auth().signIn(withEmail: email, password: pas) { (result, error) in
-                if error == nil {
-                    print("Signin \(result?.user.uid)")
-                }
-            }
-        }else {
-            print("Melumati daxet SignUpTableViewCell") //burda alert olamlidi
-        }
-        return true
-    }
-    
     //password stong olanda bunu ele textFiled.isSecureTextEntry = true nin yerine
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
            if (textField == self.pasTextField
                && !self.pasTextField.isSecureTextEntry) {
                self.pasTextField.isSecureTextEntry = true
            }
-           
            return true
        }
 }

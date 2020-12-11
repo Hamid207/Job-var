@@ -33,6 +33,13 @@ extension LogInViewController {
     }
 }
 
+//MARK: - DELEGATE
+extension LogInViewController: RegInfoDelegate {
+    func regInfo(name: String, email: String, password: String) {
+        viewModel?.firebaseSet?.reg(name: name, email: email, pas: password)
+    }
+}
+
 //MARK: - UITableViewDataSource
 extension LogInViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +48,7 @@ extension LogInViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "logInTableViewCellId", for: indexPath) as? LogInTableViewCell {
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()
@@ -52,4 +60,7 @@ extension LogInViewController: UITableViewDelegate {
         return 600
     }
 }
+
+
+
 

@@ -34,6 +34,13 @@ extension SignUpViewController {
     
 }
 
+//MARK: - Delegate
+extension SignUpViewController: LogInInfoDelegate {
+    func logInInfo(email: String, pas: String) {
+        viewModel?.firebaseSet?.logIn(email: email, pas: pas)
+    }
+}
+
 //MARK: - UITableViewDataSource
 extension SignUpViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,6 +49,7 @@ extension SignUpViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "signUpTableViewCellId", for: indexPath) as? SignUpTableViewCell {
+            cell.delegate = self
             return cell
         }
         return UITableViewCell()

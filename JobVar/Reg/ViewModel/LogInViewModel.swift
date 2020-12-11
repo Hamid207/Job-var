@@ -8,14 +8,17 @@
 import Foundation
 
 protocol LogInViewModelProtocol {
+    var firebaseSet: FirebaseSetAuthProtocol? { get set }
     func popToRoot()
-    init(router: AuthRouterProtocol)
+    init(router: AuthRouterProtocol, firebaseSet: FirebaseSetAuthProtocol?)
 }
 
 final class LogInViewModel: LogInViewModelProtocol {
     private let router: AuthRouterProtocol?
-    init(router: AuthRouterProtocol) {
+    var firebaseSet: FirebaseSetAuthProtocol?
+    init(router: AuthRouterProtocol, firebaseSet: FirebaseSetAuthProtocol?) {
         self.router = router
+        self.firebaseSet = firebaseSet
     }
     
     func popToRoot() {

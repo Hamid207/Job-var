@@ -44,6 +44,13 @@ extension UserSettingViewController {
     }
 }
 
+//MARK: DELGATE
+extension UserSettingViewController: SetDelegate {
+    func setItem(userInfoModel: UserInfoModel) {
+        viewModel?.firebaseSet?.set(userInfoModel: userInfoModel, withPath: "allUsers", child: "user")
+    }
+}
+
 //MARK: - UITableViewDataSource
 extension UserSettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

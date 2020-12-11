@@ -52,7 +52,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = " "
+        label.text = "  "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -329,7 +329,6 @@ class UserTableViewCell: UITableViewCell {
     }
     
     @objc func exitButtonTarget() {
-        let viewController = UIViewController()
         do {
             try Auth.auth().signOut()
         } catch  {

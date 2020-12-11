@@ -33,7 +33,8 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     //creatMainModule
     func creatMainModule(router: RouterProtocol) -> UIViewController {
         let view = MainViewController()
-        let mainViewModel = MainViewModel(router: router)
+        let firebaseSet = FirebaseSet()
+        let mainViewModel = MainViewModel(router: router, firebaseSet: firebaseSet)
         view.mainViewModel = mainViewModel
         return view
     }
@@ -137,7 +138,8 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     //creatLogInModule
     func creatLogInModule(authRouter: AuthRouterProtocol) -> UIViewController {
         let view = LogInViewController()
-        let viewModel = LogInViewModel(router: authRouter)
+        let firebaseAuth = FirebaseSetAuth()
+        let viewModel = LogInViewModel(router: authRouter, firebaseSet: firebaseAuth)
         view.viewModel = viewModel
         return view
     }
@@ -145,7 +147,8 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     //creatSignUp
     func creatSignUpModule(authRouter: AuthRouterProtocol) -> UIViewController {
         let view = SignUpViewController()
-        let viewModel = SignUpViewModel(router: authRouter)
+        let firebaseAuth = FirebaseSetAuth()
+        let viewModel = SignUpViewModel(router: authRouter, firebaseSet: firebaseAuth)
         view.viewModel = viewModel
         return view
     }

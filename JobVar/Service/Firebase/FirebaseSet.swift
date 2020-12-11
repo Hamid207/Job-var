@@ -6,21 +6,24 @@
 //
 
 import Firebase
-protocol FirebaseSetProtocol {
+protocol FirebaseSetProtocol: class {
     func currentUser(withPath: String, child: String)
     func observe()
     func removeAllObserverr()
     func set(userInfoModel: UserInfoModel, withPath: String, child: String)
     func firebaseObserve( withPath: String, child: String)
     var setObserveValue: (([String : Any]) -> ())? { get set }
+    func mainVCset(name: String, email: String)
 }
 
-class FirebaseSet: FirebaseSetProtocol {
+final class FirebaseSet: FirebaseSetProtocol {
     private var user: UserModel!
     private var ref: DatabaseReference!
     private var userInfoModelArray = Array<UserInfoModel>()
     var setObserveValue: (([String : Any]) -> ())?
     private var aa = 0
+    
+    
     func currentUser(withPath: String, child: String) {
         firabaseadd(first: withPath, child: child)
     }
@@ -46,9 +49,14 @@ class FirebaseSet: FirebaseSetProtocol {
               let number = userInfoModel.number else { return }
         let userInfo = UserInfoModel(name: userInfoModel.name, lastName: lastName, userId: user.uid, city: userInfoModel.city, image: image, dateOfBirth: dateOfBirth, number: number, info: userInfoModel.info)
         let userRef = ref.child(userInfo.info.lowercased())
-//        let userRef = ref.child(ChildEnum.info.rawValue)  // bele alinmir sora bax gor niye
         userRef.setValue(userInfo.convertToDictinaryy())
-        print("HAMIDDD === \(userInfo)")
+    }
+    
+    func mainVCset(name: String, email: String) {
+        firabaseadd(first: "allUsers", child: "user")
+        let userInfo = UserInfoModel(name: name, lastName: " ", userId: user.uid, city: " ", image: nil, dateOfBirth: " ", number: " ", info: "info")
+        let userRef = ref.child(userInfo.info.lowercased())
+        userRef.setValue(userInfo.convertToDictinaryy())
     }
     
     private func firabaseadd(first: String, child: String) {

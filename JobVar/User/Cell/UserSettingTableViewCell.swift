@@ -291,13 +291,7 @@ class UserSettingTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        print("HAMIDMISMIAM")
-        print("test1")
-        
-        
-        //textLineViewColor()
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -321,22 +315,8 @@ class UserSettingTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         setupItem()
+        textrFirledTarget()
         //setData()
-    }
-    
-    
-    @objc func textrFirledTarget() { // bu isdemir sora bax
-//                    namelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        if nameTextFiled.text == "Hamid" {
-            namelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        }
-        if buttonTarget == false {
-            namelineVIew.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            buttonTarget = true
-        }else if buttonTarget == true {
-            namelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-            buttonTarget = false
-        }
     }
     
     
@@ -359,7 +339,7 @@ class UserSettingTableViewCell: UITableViewCell {
         nameTextFiled.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         nameTextFiled.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         nameTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        //nameTextFiled.addTarget(self, action: #selector(textrFirledTarget), for: .valueChanged)
+        nameTextFiled.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
         
         //nameLineView
         addSubview(namelineVIew)
@@ -382,6 +362,7 @@ class UserSettingTableViewCell: UITableViewCell {
         lastNameTextFiled.leadingAnchor.constraint(equalTo: lastNameLabel.leadingAnchor).isActive = true
         lastNameTextFiled.trailingAnchor.constraint(equalTo: lastNameLabel.trailingAnchor).isActive = true
         lastNameTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        lastNameTextFiled.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
         
         //lastNamelineView
         addSubview(lastNamelineVIew)
@@ -479,10 +460,11 @@ class UserSettingTableViewCell: UITableViewCell {
         emailTextField.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
         emailTextField.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
         emailTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        emailTextField.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
         
         //emailLineVIew
         addSubview(emailLineVIew)
-        emailLineVIew.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 15).isActive = true
+        emailLineVIew.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: -15).isActive = true
         emailLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         emailLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         emailLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
@@ -501,6 +483,7 @@ class UserSettingTableViewCell: UITableViewCell {
         numberTextField.leadingAnchor.constraint(equalTo: numberLabel.leadingAnchor).isActive = true
         numberTextField.trailingAnchor.constraint(equalTo: numberLabel.trailingAnchor).isActive = true
         numberTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        numberTextField.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
         
         //numberLineVIew
         addSubview(numberLineVIew)
@@ -517,5 +500,32 @@ class UserSettingTableViewCell: UITableViewCell {
         let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: " ", city: (cityButton.titleLabel?.text)!, image: "nil", dateOfBirth: dateButton.titleLabel?.text, number: numberTextField.text, info: "info")
         delegate?.setItem(userInfoModel: userInfoModel)
     }
+    
+    @objc func textrFirledTarget() {
+        if nameTextFiled.text == "" {
+            namelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        }else if nameTextFiled.text != "" {
+            namelineVIew.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        }
+        
+        if lastNameTextFiled.text == "" {
+            lastNamelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        }else if lastNameTextFiled.text != "" {
+            lastNamelineVIew.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        }
+        
+        if emailTextField.text == "" {
+            emailLineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        }else if emailTextField.text != "" {
+            emailLineVIew.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        }
+        
+        if numberTextField.text == "" {
+            numberLineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        }else if numberTextField.text != "" {
+            numberLineVIew.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        }
+    }
+    
 }
 

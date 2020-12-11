@@ -31,12 +31,4 @@ class UserSettingViewController: UIViewController {
         viewModel?.firebaseSet?.removeAllObserverr()
     }
     
-    
-}
-
-//MARK: DELGATE
-extension UserSettingViewController: SetDelegate {
-    func setItem(userInfoModel: UserInfoModel) {
-        viewModel?.firebaseSet?.set(userInfoModel: userInfoModel, withPath: "allUsers", child: "user")
-    }
 }
