@@ -40,6 +40,11 @@ class MainViewController: UIViewController {
             self.mainTableView.reloadData()
         }
         
+        teset(test: .allUsers)
+    }
+    
+    func teset(test: ChildEnum) {
+        print("testt=====++++========---------=======-==-= \(test)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

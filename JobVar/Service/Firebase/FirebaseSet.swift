@@ -12,15 +12,17 @@ protocol FirebaseSetProtocol {
     func removeAllObserverr()
     func set(userInfoModel: UserInfoModel, withPath: String, child: String)
     func firebaseObserve( withPath: String, child: String)
+    var setObserveValue: (([String : Any]) -> ())? { get set }
 }
 
 class FirebaseSet: FirebaseSetProtocol {
     private var user: UserModel!
-     var ref: DatabaseReference!
+    private var ref: DatabaseReference!
     private var userInfoModelArray = Array<UserInfoModel>()
-    var aa = 0
+    var setObserveValue: (([String : Any]) -> ())?
+    private var aa = 0
     func currentUser(withPath: String, child: String) {
-        firabaseadd(withPath: withPath, child: child)
+        firabaseadd(first: withPath, child: child)
     }
     
     func observe() {
@@ -39,45 +41,35 @@ class FirebaseSet: FirebaseSetProtocol {
     }
     
     func set(userInfoModel: UserInfoModel, withPath: String, child: String) {
-        firabaseadd(withPath: withPath, child: child)
+        firabaseadd(first: withPath, child: child)
         guard let lastName = userInfoModel.lastName, let image = userInfoModel.image, let dateOfBirth = userInfoModel.dateOfBirth,
               let number = userInfoModel.number else { return }
-        let userInfo = UserInfoModel(name: userInfoModel.name, lastName: lastName, userId: user.uid, city: userInfoModel.city, image: image, dateOfBirth: dateOfBirth, number: number, fbADD: userInfoModel.fbADD)
-        let userRef = ref.child(userInfo.fbADD.lowercased())
+        let userInfo = UserInfoModel(name: userInfoModel.name, lastName: lastName, userId: user.uid, city: userInfoModel.city, image: image, dateOfBirth: dateOfBirth, number: number, info: userInfoModel.info)
+        let userRef = ref.child(userInfo.info.lowercased())
+//        let userRef = ref.child(ChildEnum.info.rawValue)  // bele alinmir sora bax gor niye
         userRef.setValue(userInfo.convertToDictinaryy())
         print("HAMIDDD === \(userInfo)")
     }
     
-    private func firabaseadd(withPath: String, child: String) {
+    private func firabaseadd(first: String, child: String) {
         guard let currentUser = Auth.auth().currentUser else { return }
         user = UserModel(user: currentUser)
-        ref = Database.database().reference().child(withPath).child(String(user.uid)).child(child)
+        ref = Database.database().reference().child(first).child(String(user.uid)).child(child)
     }
     
     func firebaseObserve( withPath: String, child: String) {
         guard let currentUser = Auth.auth().currentUser else { return }
         user = UserModel(user: currentUser)
-        Database.database().reference().child("istifadeciler").child(String(user.uid)).child("userInfo").child("test").observe(.value, with: { (snapshot) in
-            guard let value = snapshot.value as? [String : AnyObject], snapshot.exists() else {
-                print("Error with getting data")
-                return
-            }
-            let name = value["name"] as? String ?? "seffff"
-            print(name)
-            self.aa += 1
-            print("value \(self.aa) == \(value) ")
-            
-        })
         let ref2 = Database.database().reference()
-        ref2.child("istifadeciler").child(String(user.uid)).child("userInfo").child("test").observe(.value) { (snapshot) in
-            if let value2 = snapshot.value as? [String : Any]{
-                let lastName = value2["name"] as? String ?? "sefff"
-                print(lastName)
+        ref2.child("allUsers").child(String(user.uid)).child("user").child("info").observe(.value) { [weak self] (snapshot) in
+            if let value2 = snapshot.value as? [String : Any], snapshot.exists(){
+                let lastName = value2["lastName"] as? String ?? "sefff"
+                let name = value2["name"] as? String ?? "nil"
+                self?.setObserveValue?(["lastName" : lastName, "name" : name])
             }
         } withCancel: { (error) in
             print("sefffff111")
         }
-
     }
    
 }

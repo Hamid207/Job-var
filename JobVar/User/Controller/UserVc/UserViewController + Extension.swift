@@ -45,7 +45,9 @@ extension UserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "userTableViewCellId", for: indexPath) as? UserTableViewCell {
-            //cell.refReshNamelabel.text = 
+            viewModel?.firebaseSet?.setObserveValue = { update in
+                cell.update(update: update)
+            }
             return cell
         }
         return UITableViewCell()
