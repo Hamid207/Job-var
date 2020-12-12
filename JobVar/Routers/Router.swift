@@ -25,7 +25,7 @@ protocol RouterProtocol: RouterMain {
     func showCreatResumeTarget()
     func showIshAxtaranlar()
     func showFavaritesDetail(testArray: FeedResponse)
-    func showUserSettings()
+    func showUserSettings(userInfoModel: UserInfoModel)
     func popUser()
 }
 
@@ -125,13 +125,12 @@ class Router: RouterProtocol {
     }
     
     //UserSettingViewController
-    func showUserSettings() {
+    func showUserSettings(userInfoModel: UserInfoModel) {
         if let userNaviGationController = userNaviGationController {
-            guard let userSettingDetail = assemblyBuilder?.creatUserSettingViewControllerModule(router: self) else { return }
+            guard let userSettingDetail = assemblyBuilder?.creatUserSettingViewControllerModule(router: self, userInfoModel: userInfoModel) else { return }
             userNaviGationController.pushViewController(userSettingDetail, animated: true)
         }
     }
-    
     
     func popUser() {
         if let userNaviGationController = userNaviGationController {

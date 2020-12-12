@@ -50,7 +50,6 @@ class UserSettingTableViewCell: UITableViewCell {
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
-        textFiled.text = "hamiddd"
         return textFiled
     }()
     
@@ -288,9 +287,9 @@ class UserSettingTableViewCell: UITableViewCell {
         return segment
     }()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupItem()
     }
     
     required init?(coder: NSCoder) {
@@ -312,192 +311,18 @@ class UserSettingTableViewCell: UITableViewCell {
 //        emailButton.layer.borderColor = UIColor.black.cgColor
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        setupItem()
-        textrFirledTarget()
-        //setData()
-    }
-    
-    
-    func setupItem() {
-        //-------------
-        //userImage
-        addSubview(userImage)
-        userImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        userImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
-        
-        //nameLabel
-        addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 30).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        
-        //nameTextFiled
-        addSubview(nameTextFiled)
-        nameTextFiled.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: -20).isActive = true
-        nameTextFiled.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
-        nameTextFiled.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
-        nameTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        nameTextFiled.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
-        
-        //nameLineView
-        addSubview(namelineVIew)
-        namelineVIew.topAnchor.constraint(equalTo: nameTextFiled.bottomAnchor, constant: -15).isActive = true
-        namelineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        namelineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        namelineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        //-------------lastName
-        
-        //lastNameLabel
-        addSubview(lastNameLabel)
-        lastNameLabel.topAnchor.constraint(equalTo: namelineVIew.bottomAnchor, constant: 20).isActive = true
-        lastNameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        lastNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        
-        //lastNameTextFiled
-        addSubview(lastNameTextFiled)
-        lastNameTextFiled.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: -20).isActive = true
-        lastNameTextFiled.leadingAnchor.constraint(equalTo: lastNameLabel.leadingAnchor).isActive = true
-        lastNameTextFiled.trailingAnchor.constraint(equalTo: lastNameLabel.trailingAnchor).isActive = true
-        lastNameTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        lastNameTextFiled.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
-        
-        //lastNamelineView
-        addSubview(lastNamelineVIew)
-        lastNamelineVIew.topAnchor.constraint(equalTo: lastNameTextFiled.bottomAnchor, constant: -15).isActive = true
-        lastNamelineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        lastNamelineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        lastNamelineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        //-------------cinsi
-        
-        //cinsSegmentControl
-        addSubview(cinsSegmentControl)
-        cinsSegmentControl.topAnchor.constraint(equalTo: lastNamelineVIew.bottomAnchor, constant: 20).isActive = true
-        cinsSegmentControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        cinsSegmentControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        
-        
-        //-------------userCity
-        
-        //userCityLabel
-        addSubview(userCityLabel)
-        userCityLabel.topAnchor.constraint(equalTo: cinsSegmentControl.bottomAnchor, constant: 20).isActive = true
-        userCityLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        userCityLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        
-        //cityButton
-        addSubview(cityButton)
-        cityButton.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor, constant: 10).isActive = true
-        cityButton.leadingAnchor.constraint(equalTo: userCityLabel.leadingAnchor).isActive = true
-        cityButton.trailingAnchor.constraint(equalTo: userCityLabel.trailingAnchor).isActive = true
-        cityButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        
-//        addSubview(cityTextFiled)
-//        cityTextFiled.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor, constant: -20).isActive = true
-//        cityTextFiled.leadingAnchor.constraint(equalTo: userCityLabel.leadingAnchor).isActive = true
-//        cityTextFiled.trailingAnchor.constraint(equalTo: userCityLabel.trailingAnchor).isActive = true
-//        cityTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
-//
-        //citylineVIew
-        addSubview(citylineVIew)
-        citylineVIew.topAnchor.constraint(equalTo: cityButton.bottomAnchor, constant: 15).isActive = true
-        citylineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        citylineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        citylineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        //-------------date
-        
-        //dateLabel
-        addSubview(dateLabel)
-        dateLabel.topAnchor.constraint(equalTo: citylineVIew.bottomAnchor, constant: 20).isActive = true
-        dateLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        dateLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        
-        //dateButton
-        addSubview(dateButton)
-        dateButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
-        dateButton.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
-        dateButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
-        dateButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-          
-        
-        //dateTextField
-//        addSubview(dateTextField)
-//        dateTextField.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: -20).isActive = true
-//        dateTextField.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
-//        dateTextField.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
-//        dateTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
-//
-        //dateLineVIew
-        addSubview(dateLineVIew)
-        dateLineVIew.topAnchor.constraint(equalTo: dateButton.bottomAnchor, constant: 15).isActive = true
-        dateLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        dateLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        dateLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        //-------------email
-        
-        //dateLabel
-        addSubview(emailLabel)
-        emailLabel.topAnchor.constraint(equalTo: dateLineVIew.bottomAnchor, constant: 20).isActive = true
-        emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        emailLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        
-        //emailButton
-//        addSubview(emailButton)
-//        emailButton.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10).isActive = true
-//        emailButton.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
-//        emailButton.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
-//        emailButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        
-        
-        //emailTextField
-        addSubview(emailTextField)
-        emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: -20).isActive = true
-        emailTextField.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
-        emailTextField.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
-        emailTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        emailTextField.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
-        
-        //emailLineVIew
-        addSubview(emailLineVIew)
-        emailLineVIew.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: -15).isActive = true
-        emailLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        emailLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        emailLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        //-------------number
-        
-        //numberLabel
-        addSubview(numberLabel)
-        numberLabel.topAnchor.constraint(equalTo: emailLineVIew.bottomAnchor, constant: 20).isActive = true
-        numberLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        numberLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        
-        //numberTextField
-        addSubview(numberTextField)
-        numberTextField.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: -20).isActive = true
-        numberTextField.leadingAnchor.constraint(equalTo: numberLabel.leadingAnchor).isActive = true
-        numberTextField.trailingAnchor.constraint(equalTo: numberLabel.trailingAnchor).isActive = true
-        numberTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        numberTextField.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
-        
-        //numberLineVIew
-        addSubview(numberLineVIew)
-        numberLineVIew.topAnchor.constraint(equalTo: numberTextField.bottomAnchor, constant: -15).isActive = true
-        numberLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        numberLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        numberLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+    func updateData(userInfoModel: UserInfoModel) {
+        nameTextFiled.text = userInfoModel.name
+        lastNameTextFiled.text = userInfoModel.lastName
+        emailTextField.text = userInfoModel.email
+        numberTextField.text = userInfoModel.number
     }
     
     func setData() {
 //        guard let name = nameTextFiled.text, let lastName = lastNameTextFiled.text, let city = cityButton.titleLabel?.text, let dateOfBirth = dateButton.titleLabel?.text, let email = emailTextField.text, let number = numberTextField.text  else { return}
         guard let name = nameTextFiled.text else { return  }
        // let lastName = lastNameTextFiled.text
-        let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: " ", city: (cityButton.titleLabel?.text)!, image: "nil", dateOfBirth: dateButton.titleLabel?.text, number: numberTextField.text, info: "info")
+        let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: " ", city: (cityButton.titleLabel?.text)!, image: "nil", dateOfBirth: dateButton.titleLabel?.text, number: numberTextField.text, info: "info", email: " emailllae")
         delegate?.setItem(userInfoModel: userInfoModel)
     }
     
@@ -526,6 +351,181 @@ class UserSettingTableViewCell: UITableViewCell {
             numberLineVIew.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         }
     }
+    
+    func setupItem() {
+        //------------- image
+        //userImage
+        contentView.addSubview(userImage)
+        userImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        userImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        
+        //nameLabel
+        contentView.addSubview(nameLabel)
+        nameLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 30).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        
+        //nameTextFiled
+        contentView.addSubview(nameTextFiled)
+        nameTextFiled.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: -20).isActive = true
+        nameTextFiled.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
+        nameTextFiled.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
+        nameTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        nameTextFiled.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
+        
+        //nameLineView
+        contentView.addSubview(namelineVIew)
+        namelineVIew.topAnchor.constraint(equalTo: nameTextFiled.bottomAnchor, constant: -15).isActive = true
+        namelineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        namelineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        namelineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+        //-------------lastName
+        
+        //lastNameLabel
+        contentView.addSubview(lastNameLabel)
+        lastNameLabel.topAnchor.constraint(equalTo: namelineVIew.bottomAnchor, constant: 20).isActive = true
+        lastNameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        lastNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        
+        //lastNameTextFiled
+        contentView.addSubview(lastNameTextFiled)
+        lastNameTextFiled.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: -20).isActive = true
+        lastNameTextFiled.leadingAnchor.constraint(equalTo: lastNameLabel.leadingAnchor).isActive = true
+        lastNameTextFiled.trailingAnchor.constraint(equalTo: lastNameLabel.trailingAnchor).isActive = true
+        lastNameTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        lastNameTextFiled.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
+        
+        //lastNamelineView
+        contentView.addSubview(lastNamelineVIew)
+        lastNamelineVIew.topAnchor.constraint(equalTo: lastNameTextFiled.bottomAnchor, constant: -15).isActive = true
+        lastNamelineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        lastNamelineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        lastNamelineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+        //-------------cins
+        
+        //cinsSegmentControl
+        contentView.addSubview(cinsSegmentControl)
+        cinsSegmentControl.topAnchor.constraint(equalTo: lastNamelineVIew.bottomAnchor, constant: 20).isActive = true
+        cinsSegmentControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        cinsSegmentControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        
+        
+        //-------------userCity
+        
+        //userCityLabel
+        contentView.addSubview(userCityLabel)
+        userCityLabel.topAnchor.constraint(equalTo: cinsSegmentControl.bottomAnchor, constant: 20).isActive = true
+        userCityLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        userCityLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        
+        //cityButton
+        contentView.addSubview(cityButton)
+        cityButton.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor, constant: 10).isActive = true
+        cityButton.leadingAnchor.constraint(equalTo: userCityLabel.leadingAnchor).isActive = true
+        cityButton.trailingAnchor.constraint(equalTo: userCityLabel.trailingAnchor).isActive = true
+        cityButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+//        addSubview(cityTextFiled)
+//        cityTextFiled.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor, constant: -20).isActive = true
+//        cityTextFiled.leadingAnchor.constraint(equalTo: userCityLabel.leadingAnchor).isActive = true
+//        cityTextFiled.trailingAnchor.constraint(equalTo: userCityLabel.trailingAnchor).isActive = true
+//        cityTextFiled.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//
+        //citylineVIew
+        contentView.addSubview(citylineVIew)
+        citylineVIew.topAnchor.constraint(equalTo: cityButton.bottomAnchor, constant: 15).isActive = true
+        citylineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        citylineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        citylineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+        //-------------date
+        
+        //dateLabel
+        contentView.addSubview(dateLabel)
+        dateLabel.topAnchor.constraint(equalTo: citylineVIew.bottomAnchor, constant: 20).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        dateLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        
+        //dateButton
+        contentView.addSubview(dateButton)
+        dateButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
+        dateButton.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
+        dateButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
+        dateButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+          
+        
+        //dateTextField
+//        addSubview(dateTextField)
+//        dateTextField.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: -20).isActive = true
+//        dateTextField.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
+//        dateTextField.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
+//        dateTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+//
+        //dateLineVIew
+        contentView.addSubview(dateLineVIew)
+        dateLineVIew.topAnchor.constraint(equalTo: dateButton.bottomAnchor, constant: 15).isActive = true
+        dateLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        dateLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        dateLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+        //-------------email
+        
+        //dateLabel
+        contentView.addSubview(emailLabel)
+        emailLabel.topAnchor.constraint(equalTo: dateLineVIew.bottomAnchor, constant: 20).isActive = true
+        emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        emailLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        
+        //emailButton
+//        addSubview(emailButton)
+//        emailButton.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 10).isActive = true
+//        emailButton.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
+//        emailButton.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
+//        emailButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        
+        //emailTextField
+        contentView.addSubview(emailTextField)
+        emailTextField.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: -20).isActive = true
+        emailTextField.leadingAnchor.constraint(equalTo: emailLabel.leadingAnchor).isActive = true
+        emailTextField.trailingAnchor.constraint(equalTo: emailLabel.trailingAnchor).isActive = true
+        emailTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        emailTextField.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
+        
+        //emailLineVIew
+        contentView.addSubview(emailLineVIew)
+        emailLineVIew.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: -15).isActive = true
+        emailLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        emailLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        emailLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+        //-------------number
+        
+        //numberLabel
+        contentView.addSubview(numberLabel)
+        numberLabel.topAnchor.constraint(equalTo: emailLineVIew.bottomAnchor, constant: 20).isActive = true
+        numberLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        numberLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        
+        //numberTextField
+        contentView.addSubview(numberTextField)
+        numberTextField.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: -20).isActive = true
+        numberTextField.leadingAnchor.constraint(equalTo: numberLabel.leadingAnchor).isActive = true
+        numberTextField.trailingAnchor.constraint(equalTo: numberLabel.trailingAnchor).isActive = true
+        numberTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        numberTextField.addTarget(self, action: #selector(textrFirledTarget), for: .editingChanged)
+        
+        //numberLineVIew
+        contentView.addSubview(numberLineVIew)
+        numberLineVIew.topAnchor.constraint(equalTo: numberTextField.bottomAnchor, constant: -15).isActive = true
+        numberLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        numberLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        numberLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+    }
+    
+ 
     
 }
 

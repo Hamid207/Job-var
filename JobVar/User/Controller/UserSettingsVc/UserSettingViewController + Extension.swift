@@ -37,17 +37,29 @@ extension UserSettingViewController {
     }
     
     @objc func saveBarbutton() {
-        viewModel?.popUser()
-        DispatchQueue.main.async {
-            self.userTabeleView.reloadData()
+        if viewModel?.userInfoModelName != ""{
+            viewModel?.popUser()
+            DispatchQueue.main.async {
+                self.userTabeleView.reloadData()
+            }
+        }else  if viewModel?.userInfoModelName == "" {
+            let alert = UIAlertController(title: "Adinizi daxil edin", message: nil, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
+       
     }
 }
 
 //MARK: DELGATE
 extension UserSettingViewController: SetDelegate {
     func setItem(userInfoModel: UserInfoModel) {
-        viewModel?.firebaseSet?.set(userInfoModel: userInfoModel, withPath: "allUsers", child: "user")
+        viewModel?.userInfoModelName = userInfoModel.name
+        print("aaaa \(userInfoModel.name)")
+        print("bbbb \(viewModel?.userInfoModelName)")
+        viewModel?.firebaseSet?.set(userInfoModel: userInfoModel, withPath: "allUsesrs", child: "user")
     }
 }
 
@@ -61,6 +73,11 @@ extension UserSettingViewController: UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "iserSettingTableViewCellId", for: indexPath) as? UserSettingTableViewCell {
             cell.delegate = self
             cell.setData()
+            cell.textrFirledTarget()
+            if let model = viewModel?.userInfoModel {
+                cell.updateData(userInfoModel: model)
+            }
+            
             return cell
         }
         return UITableViewCell()

@@ -16,9 +16,10 @@ struct UserInfoModel {
     let number: String?
     let userId: String
     let info: String
+    let email: String
     let ref: DatabaseReference?
     
-    init(name: String, lastName: String?, userId: String, city: String, image: String?, dateOfBirth: String?, number: String?, info: String) {
+    init(name: String, lastName: String?, userId: String, city: String, image: String?, dateOfBirth: String?, number: String?, info: String, email: String) {
         self.name = name
         self.lastName = lastName
         self.city = city
@@ -27,6 +28,7 @@ struct UserInfoModel {
         self.dateOfBirth = dateOfBirth
         self.number = number
         self.info = info
+        self.email = email
         self.ref = nil
     }
     
@@ -40,10 +42,11 @@ struct UserInfoModel {
         number = snapshotValue["number"] as? String
         dateOfBirth = snapshotValue["dataOfBirth"] as? String
         info = snapshotValue["info"] as! String
+        email = snapshotValue["email"] as! String
         ref = snapShot.ref
     }
     
     func convertToDictinaryy() -> Any {
-        return ["name" : name, "lastName" : lastName, "userId" : userId, "city" : city, "number" : number, "dataOfBirth" : dateOfBirth, "info" : info]
+        return ["name" : name, "lastName" : lastName, "userId" : userId, "city" : city, "number" : number, "dataOfBirth" : dateOfBirth, "info" : info, "email" : email]
     }
 }

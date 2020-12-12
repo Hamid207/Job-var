@@ -24,6 +24,10 @@ class UserSettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.viewModel?.firebaseSet?.observe()
+        DispatchQueue.main.async {
+            self.userTabeleView.reloadData()
+        }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -12,7 +12,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
      let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.backgroundColor = UIColor(named: "MainColor")
         label.textAlignment = .center

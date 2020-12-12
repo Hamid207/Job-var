@@ -6,9 +6,13 @@
 //
 
 import UIKit
-import Firebase
+
+protocol UserTableViewCellDelegate {
+    func userTableViewCellDelegate(userInfoModel: UserInfoModel)
+}
 
 class UserTableViewCell: UITableViewCell {
+    var delaget: UserTableViewCellDelegate?
     
     //userImage
     private let userImage: UIImageView = {
@@ -52,7 +56,7 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "  "
+//        label.text = "  "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -212,130 +216,117 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = " "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let exitButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Exit", for: .normal)
-        button.setTitleColor(.red, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        return button
-    }()
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        setupItem()
-        // Configure the view for the selected state
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupItem()        
     }
     
-    func addCell(model: UserInfoModel) {
-        refReshNamelabel.text = model.name
-        refReshLastNamelabel.text = model.lastName
-        refreshDateLabel.text = model.dateOfBirth
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+
     
     func update(update : [String : Any]) {
         refReshNamelabel.text = update["name"] as? String
         refReshLastNamelabel.text = update["lastName"] as? String
+        refreshUserCityLabel.text = update["city"] as? String
+        refreshDateLabel.text = update["dataOfBirth"] as? String
+        refreshEmailLabel.text = update["email"] as? String
+        refreshNumberLabel.text = update["number"] as? String
+        delegtaeFunc()
+    }
+    
+    func delegtaeFunc() {
+        
+        let userInfoModel = UserInfoModel(name: refReshNamelabel.text!, lastName: refReshLastNamelabel.text, userId: " ", city: refreshUserCityLabel.text!, image: "inagecell", dateOfBirth: refreshDateLabel.text, number: refreshNumberLabel.text, info: " ", email: refreshEmailLabel.text!)
+        
+        delaget?.userTableViewCellDelegate(userInfoModel: userInfoModel)
     }
     
     func setupItem() {
-        //-------------
         //userImage
-        addSubview(userImage)
+        contentView.addSubview(userImage)
         userImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         userImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         
         //nameLabel
-        addSubview(nameLabel)
+        contentView.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: userImage.bottomAnchor, constant: 30).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
         //refReshNamelabel
-        addSubview(refReshNamelabel)
+        contentView.addSubview(refReshNamelabel)
         refReshNamelabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0).isActive = true
         refReshNamelabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refReshNamelabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
         //lastNameLabel
-        addSubview(lastNameLabel)
+        contentView.addSubview(lastNameLabel)
         lastNameLabel.topAnchor.constraint(equalTo: refReshNamelabel.bottomAnchor, constant: 12).isActive = true
         lastNameLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         lastNameLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //refReshLastNameLabel
-        addSubview(refReshLastNamelabel)
+        contentView.addSubview(refReshLastNamelabel)
         refReshLastNamelabel.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: 0).isActive = true
         refReshLastNamelabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refReshLastNamelabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //userCityLabel
-        addSubview(userCityLabel)
+        contentView.addSubview(userCityLabel)
         userCityLabel.topAnchor.constraint(equalTo: refReshLastNamelabel.bottomAnchor, constant: 12).isActive = true
         userCityLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         userCityLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //refreshUserCityLabel
-        addSubview(refreshUserCityLabel)
+        contentView.addSubview(refreshUserCityLabel)
         refreshUserCityLabel.topAnchor.constraint(equalTo: userCityLabel.bottomAnchor).isActive = true
         refreshUserCityLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshUserCityLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //dateLabel
-        addSubview(dateLabel)
+        contentView.addSubview(dateLabel)
         dateLabel.topAnchor.constraint(equalTo: refreshUserCityLabel.bottomAnchor, constant: 12).isActive = true
         dateLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //refreshDateLabel
-        addSubview(refreshDateLabel)
+        contentView.addSubview(refreshDateLabel)
         refreshDateLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor).isActive = true
         refreshDateLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshDateLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //emailLabel
-        addSubview(emailLabel)
+        contentView.addSubview(emailLabel)
         emailLabel.topAnchor.constraint(equalTo: refreshDateLabel.bottomAnchor, constant: 12).isActive = true
         emailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         emailLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //refreshEmailLabel
-        addSubview(refreshEmailLabel)
+        contentView.addSubview(refreshEmailLabel)
         refreshEmailLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor).isActive =  true
         refreshEmailLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshEmailLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //numberLabel
-        addSubview(numberLabel)
+        contentView.addSubview(numberLabel)
         numberLabel.topAnchor.constraint(equalTo: refreshEmailLabel.bottomAnchor, constant: 12).isActive = true
         numberLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         numberLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
         
         //refreshNumberLabel
-        addSubview(refreshNumberLabel)
+        contentView.addSubview(refreshNumberLabel)
         refreshNumberLabel.topAnchor.constraint(equalTo: numberLabel.bottomAnchor).isActive = true
         refreshNumberLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshNumberLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
-        
-        addSubview(exitButton)
-        exitButton.topAnchor.constraint(equalTo: refreshNumberLabel.bottomAnchor, constant: 30).isActive = true
-        exitButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        exitButton.addTarget(self, action: #selector(exitButtonTarget), for: .touchDown)
     }
     
-    @objc func exitButtonTarget() {
-        do {
-            try Auth.auth().signOut()
-        } catch  {
-            print(error)
-        }
-        
-    }
+  
 
 }
 

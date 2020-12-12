@@ -58,9 +58,3 @@ class MainViewController: UIViewController {
         mainViewModel?.firebaseSet?.removeAllObserverr()
     }
 }
-
-extension MainViewController: SetDelegate { // bu heleki isdemir sebebi UserSettingTableViewCell deki delegate patpiska olmaq lazimdi birde ordaki funcksiyani isletmek
-    func setItem(userInfoModel: UserInfoModel) {
-        mainViewModel?.firebaseSet?.set(userInfoModel: userInfoModel, withPath: "allUsers", child: "user")
-    }
-}

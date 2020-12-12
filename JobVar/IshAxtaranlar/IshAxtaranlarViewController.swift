@@ -17,6 +17,7 @@ class IshAxtaranlarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        setupNavigationBar()
         setupItem()
         navigationItem.title = "IshAxtaranlarViewController"
         let aa = FeedResponse(name: "Ios devoloper Ios devoloper Ios devoloperIos devoloperIos devoloperIos devoloperIos devoloperIos devoloperIos devoloperIos devoloper", price: "300 AZN - 800 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "Hamid Manafov", odeme: .offline)

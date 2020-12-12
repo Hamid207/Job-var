@@ -10,7 +10,7 @@ class UserViewController: UIViewController {
     var viewModel: UserViewModelProtocol?
     
     var tableView = UITableView(frame: .zero, style: .plain)
-
+//    var nameee = String()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -23,7 +23,6 @@ class UserViewController: UIViewController {
         //self.viewModel?.firebaseSet?.observe()
         DispatchQueue.main.async {
             self.viewModel?.firebaseSet?.firebaseObserve(withPath: "allUsers", child: "user")
-            self.tableView.reloadData()
         }
         
     }

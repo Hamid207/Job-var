@@ -5,13 +5,17 @@
 //  Created by Hamid Manafov on 23.11.20.
 //
 
-import Foundation
+import Firebase
 import UIKit
 
 extension UserViewController {
+    
     func setupItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .done, target: self, action: #selector(barButtonTarget))
         navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Exit", style: .done, target: self, action: #selector(firebaseExit))
+        navigationItem.leftBarButtonItem?.tintColor = .red
         //tableView
         tableView.tableFooterView = UIView()
         tableView.delegate = self
@@ -31,9 +35,23 @@ extension UserViewController {
     }
     
     @objc func barButtonTarget() {
-        viewModel?.tapOnTheUserSettingsVc()
+        guard let userInfoModel = viewModel?.setUserInfoModel else {
+            print(" ERRO RESON userInfo model nil  -> UserViewController extension")
+            return }
+        viewModel?.tapOnTheUserSettingsVc(userInfoModel: userInfoModel)
     }
     
+    @objc func firebaseExit() {
+        viewModel?.userFirebaseExit(viewController: self)
+    }
+    
+}
+
+//MARK: - UserTableViewCellDelegate
+extension UserViewController: UserTableViewCellDelegate {
+    func userTableViewCellDelegate(userInfoModel: UserInfoModel) {
+        viewModel?.setUserInfoModel = userInfoModel
+    }
 }
 
 
@@ -45,21 +63,20 @@ extension UserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "userTableViewCellId", for: indexPath) as? UserTableViewCell {
+            cell.delaget = self
             viewModel?.firebaseSet?.setObserveValue = { update in
                 cell.update(update: update)
             }
             return cell
         }
         return UITableViewCell()
-    }
-    
-    
+    }    
 }
 
 //MARK: - UITableViewDelegate
 extension UserViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 700
+        return 500
     }
 }
 

@@ -10,17 +10,20 @@ import Foundation
 protocol UserSettingViewModelProtocol {
     var userInfoModel: UserInfoModel? { get set }
     var firebaseSet: FirebaseSetProtocol? { get set }
+    var userInfoModelName: String? { get set }
     func popUser()
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?)
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, userInfoModel: UserInfoModel?)
 }
 
 final class UserSettingViewModel: UserSettingViewModelProtocol {
     var userInfoModel: UserInfoModel?
     var firebaseSet: FirebaseSetProtocol?
+    var userInfoModelName: String?
     private let router: RouterProtocol?
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?) {
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, userInfoModel: UserInfoModel?) {
         self.router = router
         self.firebaseSet = firebaseSet
+        self.userInfoModel = userInfoModel
     }
     
     func popUser() {
