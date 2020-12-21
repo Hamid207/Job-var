@@ -54,13 +54,14 @@ class LogInTableViewCell: UITableViewCell {
     private let nameTextFiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        textFiled.textAlignment = .natural
-        //textFiled.backgroundColor = .blue
-        textFiled.borderStyle = .none
+        textFiled.textAlignment = .left
+        textFiled.contentVerticalAlignment = .center
         textFiled.textContentType = .name
         textFiled.returnKeyType = .next
         textFiled.autocapitalizationType = .words
         textFiled.autocorrectionType = .no
+        textFiled.borderStyle = .roundedRect
+        textFiled.backgroundColor = UIColor(named: "TextColor")
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -89,12 +90,13 @@ class LogInTableViewCell: UITableViewCell {
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.textAlignment = .natural
         //textFiled.backgroundColor = .blue
-        textFiled.borderStyle = .none
         textFiled.keyboardType = .emailAddress
         textFiled.textContentType = .emailAddress
         textFiled.autocapitalizationType = .none
-        textFiled.returnKeyType = .done
+        textFiled.returnKeyType = .next
         textFiled.autocorrectionType = .no
+        textFiled.borderStyle = .roundedRect
+        textFiled.backgroundColor = UIColor(named: "TextColor")
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -122,11 +124,12 @@ class LogInTableViewCell: UITableViewCell {
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.textAlignment = .natural
         //textFiled.backgroundColor = .blue
-        textFiled.borderStyle = .none
         textFiled.textContentType = .password
         textFiled.autocapitalizationType = .none
         textFiled.isSecureTextEntry = true
         textFiled.returnKeyType = .done
+        textFiled.borderStyle = .roundedRect
+        textFiled.backgroundColor = UIColor(named: "TextColor")
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -141,13 +144,17 @@ class LogInTableViewCell: UITableViewCell {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button
     }()
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor(named: "TextColor")
         setupItem()
+        
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -167,53 +174,57 @@ class LogInTableViewCell: UITableViewCell {
     }
     
     func setupItem() {
+        nameTextFiled.delegate = self
+        emailTextFiled.delegate = self
+        passwordTextField.delegate = self
+        
         //mainLabel
-        addSubview(mainLabel)
+        contentView.addSubview(mainLabel)
         mainLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 55).isActive = true
         mainLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         mainLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
         //nameTextFiled
-        addSubview(nameTextFiled)
+        contentView.addSubview(nameTextFiled)
         nameTextFiled.topAnchor.constraint(equalTo: mainLabel.bottomAnchor, constant: 80).isActive = true
         nameTextFiled.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         nameTextFiled.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         nameTextFiled.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         //nameLabel
-        addSubview(nameLabel)
+        contentView.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: nameTextFiled.topAnchor, constant: -10).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 35).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         //nameTextFiled
-        addSubview(emailTextFiled)
+        contentView.addSubview(emailTextFiled)
         emailTextFiled.topAnchor.constraint(equalTo: nameTextFiled.bottomAnchor, constant: 20).isActive = true
         emailTextFiled.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         emailTextFiled.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         emailTextFiled.heightAnchor.constraint(equalTo: nameTextFiled.heightAnchor).isActive = true
         
         //emailLabel
-        addSubview(emailLabel)
+        contentView.addSubview(emailLabel)
         emailLabel.topAnchor.constraint(equalTo: emailTextFiled.topAnchor, constant: -10).isActive = true
         emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 35).isActive = true
         emailLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         //passwordTextField
-        addSubview(passwordTextField)
+        contentView.addSubview(passwordTextField)
         passwordTextField.topAnchor.constraint(equalTo: emailTextFiled.bottomAnchor, constant: 20).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         passwordTextField.heightAnchor.constraint(equalTo: nameTextFiled.heightAnchor).isActive = true
         
         //passwordLabel
-        addSubview(passwordLabel)
+        contentView.addSubview(passwordLabel)
         passwordLabel.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10).isActive = true
         passwordLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 35).isActive = true
         passwordLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
         
         //logInButton
-        addSubview(logInButton)
+        contentView.addSubview(logInButton)
         logInButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 50).isActive = true
         logInButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         logInButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
@@ -229,3 +240,19 @@ class LogInTableViewCell: UITableViewCell {
         delegate?.regInfo(name: name, email: email, password: pas)
     }
 }
+
+extension LogInTableViewCell: UITextFieldDelegate {
+    //MARK: - ekrana basanta klavyatura gedir
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+       }
+    
+    //MARK: - return basanda klavyatura gedir
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        passwordTextField.resignFirstResponder()
+        return true
+    }
+    
+}
+
+

@@ -22,35 +22,28 @@ class MainViewController: UIViewController {
         return cv
     }()
     
-    var tesarray = [FeedResponse]()
-    
     var collectionVIewARRayTest = ["Elan yerləşdirin ", "Butun elanlar", "Is axtaranlar"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "MainViewController"
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
         setupView()
-        mainViewModel?.firebaseSet?.currentUser(withPath: "allUsers", child: "user")
-//        let aa = FeedResponse(name: "Ios devoloper Ios devoloper Ios devoloperIos devoloper", price: "300 AZN - 800 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "Hamid Manafov", odeme: .offline)
-//            tesarray.append(aa)
-//            let aaa = FeedResponse(name: "Ios devoloper", price: "300 AZN - 1000 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "Kapital Bank", odeme: .online)
-//            tesarray.append(aaa)
-//            let aaaa = FeedResponse(name: "Ios devoloper", price: "500 AZN - 150 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "MSQ", odeme: .online)
-//            tesarray.append(aaaa)
-        teset(test: .allUsers)
+        mainViewModel?.firebaseSet?.creatAllResume()
+        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
     }
-    
-    func teset(test: ChildEnum) {
-        print("testt=====++++========---------=======-==-= \(test)")
-    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
-        mainViewModel?.firebaseSet?.observe()
-        DispatchQueue.main.async {
-            self.mainViewModel?.firebaseSet?.firebaseObserve(withPath: "allUsers", child: "user")
-        }
+//        mainViewModel?.firebaseSet?.creatAllResume()
+        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

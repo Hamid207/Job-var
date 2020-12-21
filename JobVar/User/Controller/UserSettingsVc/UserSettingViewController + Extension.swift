@@ -37,29 +37,28 @@ extension UserSettingViewController {
     }
     
     @objc func saveBarbutton() {
-        if viewModel?.userInfoModelName != ""{
-            viewModel?.popUser()
-            DispatchQueue.main.async {
-                self.userTabeleView.reloadData()
-            }
-        }else  if viewModel?.userInfoModelName == "" {
-            let alert = UIAlertController(title: "Adinizi daxil edin", message: nil, preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+        viewModel?.popUser()
+        DispatchQueue.main.async {
+            self.userTabeleView.reloadData()
         }
-       
     }
+    //        if viewModel?.userInfoModelName != ""{
+    //
+    //        }else  if viewModel?.userInfoModelName == "" {
+    //            let alert = UIAlertController(title: "Adinizi daxil edin", message: nil, preferredStyle: .alert)
+    //            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    //
+    //            alert.addAction(action)
+    //            present(alert, animated: true, completion: nil)
+    //        }
+    //
 }
 
 //MARK: DELGATE
 extension UserSettingViewController: SetDelegate {
     func setItem(userInfoModel: UserInfoModel) {
-        viewModel?.userInfoModelName = userInfoModel.name
-        print("aaaa \(userInfoModel.name)")
-        print("bbbb \(viewModel?.userInfoModelName)")
-        viewModel?.firebaseSet?.set(userInfoModel: userInfoModel, withPath: "allUsesrs", child: "user")
+       // viewModel?.userInfoModelName = userInfoModel.name
+        viewModel?.firebaseSet?.setUserInfo(userInfoModel: userInfoModel, withPath: "allUsers", child: "user")
     }
 }
 
@@ -88,10 +87,6 @@ extension UserSettingViewController: UITableViewDataSource {
 
 //MARK: - UITableViewDelegate
 extension UserSettingViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 750
     }

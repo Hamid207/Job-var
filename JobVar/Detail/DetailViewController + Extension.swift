@@ -44,8 +44,8 @@ extension DetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "detailTableViewCellId", for: indexPath) as? DetailTableViewCell {
-            if let item = detailViewModel?.testArray {
-                cell.refResh(item)
+            if let item = detailViewModel?.addreseumeModel {
+                cell.detailRefresh(item)
                 return cell
             }
         }
@@ -57,7 +57,7 @@ extension DetailViewController: UITableViewDataSource {
 extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 1800
     }
     
    

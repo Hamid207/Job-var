@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol UserTableViewCellDelegate {
+protocol UserTableViewCellDelegate: class {
     func userTableViewCellDelegate(userInfoModel: UserInfoModel)
 }
 
 class UserTableViewCell: UITableViewCell {
-    var delaget: UserTableViewCellDelegate?
+    weak var delaget: UserTableViewCellDelegate?
     
     //userImage
     private let userImage: UIImageView = {
@@ -325,8 +325,5 @@ class UserTableViewCell: UITableViewCell {
         refreshNumberLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshNumberLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
     }
-    
-  
 
 }
-

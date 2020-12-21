@@ -8,28 +8,45 @@
 import Firebase
 protocol FirebaseSetProtocol: class {
     func currentUser(withPath: String, child: String)
-    func observe()
+    func curreentResume()
+    func creatAllResume()
+    func observeUserInfoModel()
+    func observeAddResumeModel(tableView: UITableView)
     func removeAllObserverr()
-    func set(userInfoModel: UserInfoModel, withPath: String, child: String)
+    func setUserInfo(userInfoModel: UserInfoModel, withPath: String, child: String)
+    func setResume(addResumeModel: AddResumeModel)
     func firebaseObserve( withPath: String, child: String)
     var setObserveValue: (([String : Any]) -> ())? { get set }
     func mainVCset(name: String, email: String)
+    var setResumeObserverValue: (([String : Any]) -> ())? { get set }
+    var addResumeArray:  Array<AddResumeModel>? { get set }
 }
 
 final class FirebaseSet: FirebaseSetProtocol {
     private var user: UserModel!
     private var ref: DatabaseReference!
     private var userInfoModelArray = Array<UserInfoModel>()
+//    var addResumeArray = Array<AddResumeModel>()
+    var addResumeArray:  Array<AddResumeModel>? = Array<AddResumeModel>()
     private var userEmail: String?
     var setObserveValue: (([String : Any]) -> ())?
-    private var aa = 0
-    
-    
+    var setResumeObserverValue: (([String : Any]) -> ())?
+    //info
     func currentUser(withPath: String, child: String) {
         firabaseadd(first: withPath, child: child)
     }
     
-    func observe() {
+    //resume
+    func curreentResume() {
+        firebaseResumeAdd()
+    }
+    
+    func creatAllResume() {
+        firebaseAllResume()
+    }
+    
+    func observeUserInfoModel() {
+        firabaseadd(first: "allUsers", child: "child")
         ref.observe(.value) { [weak self] (snapshot) in
             var _tasks = Array<UserInfoModel>()
             for item in snapshot.children {
@@ -40,11 +57,28 @@ final class FirebaseSet: FirebaseSetProtocol {
         }
     }
     
+    func observeAddResumeModel(tableView: UITableView) {
+        let ref = Database.database().reference()
+        ref.child("allResume").observe(.value) { [weak self] (snapshot) in
+            var _tasks = Array<AddResumeModel>()
+            for item in snapshot.children {
+                let task = AddResumeModel(snapShot: item as! DataSnapshot)
+                _tasks.append(task)
+            }
+            self?.addResumeArray = _tasks
+            DispatchQueue.main.async {
+                tableView.reloadData()
+            }
+            //print("adddresume = \(self?.addResumeArray)")
+        }
+    }
+    
     func removeAllObserverr() {
         ref.removeAllObservers()
     }
     
-    func set(userInfoModel: UserInfoModel, withPath: String, child: String) {
+    //Uset info add + update
+    func setUserInfo(userInfoModel: UserInfoModel, withPath: String, child: String) {
         firabaseadd(first: withPath, child: child)
         guard let lastName = userInfoModel.lastName, let image = userInfoModel.image, let dateOfBirth = userInfoModel.dateOfBirth,
               let number = userInfoModel.number else { return }
@@ -53,9 +87,24 @@ final class FirebaseSet: FirebaseSetProtocol {
         userRef.setValue(userInfo.convertToDictinaryy())
     }
     
+    //creart resume
+    func setResume(addResumeModel: AddResumeModel) {
+        let addResume = AddResumeModel(resume: addResumeModel.resume, cateqoryOneName: addResumeModel.cateqoryOneName, cateqoryTwoName: addResumeModel.cateqoryTwoName, companyName: addResumeModel.companyName, salary: addResumeModel.salary ?? "salary nil", city: addResumeModel.city, age: addResumeModel.age, education: addResumeModel.education, workExperience: addResumeModel.workExperience, detailedInfo: addResumeModel.detailedInfo, requirements: addResumeModel.requirements, email: addResumeModel.email, userId: "user.uid")
+        //userResume
+        firebaseResumeAdd()
+        let resumeRef = ref.child(addResume.resume.lowercased())
+        resumeRef.setValue(addResume.convertToDictinary())
+        
+        //allResume
+        firebaseAllResume()
+        let resumeRef2 = ref.child(addResume.resume.lowercased())
+        resumeRef2.setValue(addResume.convertToDictinary())
+    }
+    
+    //MainViewController acilan kimi bu isdeyir
     func mainVCset(name: String, email: String) {
         firabaseadd(first: "allUsers", child: "user")
-        let userInfo = UserInfoModel(name: name, lastName: "", userId: user.uid, city: "", image: nil, dateOfBirth: "", number: "", info: "info", email: email)
+        let userInfo = UserInfoModel(name: name, lastName: "", userId: user.uid, city: "", image: nil, dateOfBirth: "", number: "", info: "userinfo", email: email)
         let userRef = ref.child(userInfo.info.lowercased())
         userRef.setValue(userInfo.convertToDictinaryy())
     }
@@ -67,12 +116,24 @@ final class FirebaseSet: FirebaseSetProtocol {
         ref = Database.database().reference().child(first).child(String(user.uid)).child(child)
     }
     
-    //MARK: Firabeseden melumat goturmek
+    private func firebaseResumeAdd() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        user = UserModel(user: currentUser)
+        ref = Database.database().reference().child("allUsers").child(String(user.uid)).child("user").child("userResume")
+    }
+    
+    private func firebaseAllResume() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        user = UserModel(user: currentUser)
+        ref = Database.database().reference().child("allResume")
+    }
+    
+    //MARK: Firabeseden allUserden melumat goturmek
     func firebaseObserve( withPath: String, child: String) {
         guard let currentUser = Auth.auth().currentUser else { return }
         user = UserModel(user: currentUser)
         let ref2 = Database.database().reference()
-        ref2.child("allUsers").child(String(user.uid)).child("user").child("info").observe(.value) { [weak self] (snapshot) in
+        ref2.child(withPath).child(String(user.uid)).child(child).child("userinfo").observe(.value) { [weak self] (snapshot) in
             if let value2 = snapshot.value as? [String : Any], snapshot.exists(){
                 let lastName = value2["lastName"] as? String ?? "lastName nil firebaseSet"
                 let name = value2["name"] as? String ?? "name nil firebaseSet"
@@ -85,6 +146,20 @@ final class FirebaseSet: FirebaseSetProtocol {
         } withCancel: { (error) in
             print("ERROR RESON FirebaseSet")
         }
+    }
+    
+    func firebaseResumeObserve() {
+        let ref = Database.database().reference()
+//        ref.child("allResume")
+        ref.child("allResume").observe(.value) { [weak self ](snapshot) in
+            if let value = snapshot.value as? [String : Any], snapshot.exists() {
+                let cateqoryOneName = value["cateqoryOneName"] as? String ?? "cateqoryOneName nil farebaseSet"
+                self?.setResumeObserverValue?(["cateqoryOneName" : cateqoryOneName])
+            }
+        } withCancel: { (error) in
+            print("ERROR RESON FirebaseSet func firebaseResumeObserve()")
+        }
+
     }
    
 }

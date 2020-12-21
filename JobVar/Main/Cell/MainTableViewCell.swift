@@ -10,12 +10,28 @@ import UIKit
 class MainTableViewViewCell: UITableViewCell {
     
     var buttonTarget: Bool = false
-    //nameLabel
-     private let nameLabel: UILabel = {
+    //cateqoryOneName
+    let cateqoryOneName: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
-        //label.backgroundColor = .red
+//        label.backgroundColor = .red
+        label.textAlignment = .left
+        label.minimumScaleFactor = 0.2
+        label.numberOfLines = 2
+        label.sizeToFit()
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    //cateqoryTwoName
+    let cateqoryTwoName: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+//        label.backgroundColor = .red
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 2
@@ -73,7 +89,7 @@ class MainTableViewViewCell: UITableViewCell {
     //cilientNameLabel
     private let cilientNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         //label.backgroundColor = .brown
         label.textAlignment = .left
@@ -99,20 +115,23 @@ class MainTableViewViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupItem()
     }
     
-    public func refresh(_ model: FeedResponse) {
-        nameLabel.text = model.name
-        cityLabel.text = model.city
-        cilientNameLabel.text = model.clientName
-        infoTextLabel.text = model.infoText
-        priceLabel.text = model.price
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
+
+    func refresh(_ model: AddResumeModel) {
+        cateqoryOneName.text = model.cateqoryOneName
+        cateqoryTwoName.text = model.cateqoryTwoName
+        cityLabel.text = model.city
+        cilientNameLabel.text = model.companyName
+        infoTextLabel.text = model.detailedInfo
+        priceLabel.text = model.salary
+    }
     //favoritesButton target
     @objc func favoritesButtonTarget() {
         print("HAMIDDDDD TEST")
@@ -127,41 +146,47 @@ class MainTableViewViewCell: UITableViewCell {
     
     //MARK: - setupItem
     private func setupItem(){
-        //NAMELABEL
-        addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        //cateqoryOneName
+        contentView.addSubview(cateqoryOneName)
+        cateqoryOneName.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        cateqoryOneName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        cateqoryOneName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        
+        //cateqoryTwoName
+        contentView.addSubview(cateqoryTwoName)
+        cateqoryTwoName.topAnchor.constraint(equalTo: cateqoryOneName.bottomAnchor, constant: 0).isActive = true
+        cateqoryTwoName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        cateqoryTwoName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
 
         //CITYLABEL
-        addSubview(cityLabel)
-        cityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0).isActive = true
+        contentView.addSubview(cityLabel)
+        cityLabel.topAnchor.constraint(equalTo: cateqoryTwoName.bottomAnchor, constant: 0).isActive = true
         cityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //CILIENTNAMELABEL
-        addSubview(cilientNameLabel)
+        contentView.addSubview(cilientNameLabel)
         cilientNameLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 0).isActive = true
         cilientNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //INFOTEXTLABEL
-        addSubview(infoTextLabel)
+        contentView.addSubview(infoTextLabel)
         infoTextLabel.topAnchor.constraint(equalTo: cilientNameLabel.bottomAnchor, constant: 6).isActive = true
         infoTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         infoTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
         //PRICELABEL
-        addSubview(priceLabel)
+        contentView.addSubview(priceLabel)
         priceLabel.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //favoritesButton
-        addSubview(favoritesButton)
+        contentView.addSubview(favoritesButton)
         favoritesButton.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
         favoritesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         favoritesButton.addTarget(self, action: #selector(favoritesButtonTarget), for: .touchDown)
         
         //lineView
-        addSubview(lineView)
+        contentView.addSubview(lineView)
         //lineView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 5).isActive = true
         lineView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         lineView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true

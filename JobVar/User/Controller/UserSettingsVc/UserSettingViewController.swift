@@ -23,7 +23,8 @@ class UserSettingViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.viewModel?.firebaseSet?.observe()
+        viewModel?.firebaseSet?.currentUser(withPath: "allUsers", child: "user")
+        self.viewModel?.firebaseSet?.observeUserInfoModel()
         DispatchQueue.main.async {
             self.userTabeleView.reloadData()
         }

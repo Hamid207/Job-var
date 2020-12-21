@@ -34,15 +34,15 @@ struct UserInfoModel {
     
     init(snapShot: DataSnapshot) {
         let snapshotValue = snapShot.value as! [String : AnyObject]
-        name = snapshotValue["name"] as! String
-        lastName = snapshotValue["lastName"] as? String
-        city = snapshotValue["city"] as! String
-        userId = snapshotValue["userId"] as! String
-        image = snapshotValue["image"] as? String
-        number = snapshotValue["number"] as? String
-        dateOfBirth = snapshotValue["dataOfBirth"] as? String
-        info = snapshotValue["info"] as! String
-        email = snapshotValue["email"] as! String
+        name = snapshotValue["name"] as? String ?? "name = snapshotValue[name]"
+        lastName = snapshotValue["lastName"] as? String ?? "lastName = snapshotValue[lastName]"
+        city = snapshotValue["city"] as? String ?? "city = snapshotValue[city]"
+        userId = snapshotValue["userId"] as? String ?? "userId = snapshotValue[userId]"
+        image = snapshotValue["image"] as? String  ?? "image = snapshotValue[image]"
+        number = snapshotValue["number"] as? String ?? "number = snapshotValue[number]"
+        dateOfBirth = snapshotValue["dataOfBirth"] as?  String ?? "dateOfBirth = snapshotValue[dataOfBirth]"
+        info = snapshotValue["info"] as? String ?? "info = snapshotValue[info]"
+        email = snapshotValue["email"] as? String ?? "email = snapshotValue[email]"
         ref = snapShot.ref
     }
     

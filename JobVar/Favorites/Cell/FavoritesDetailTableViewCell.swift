@@ -111,18 +111,18 @@ class FavoritesDetailTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    public func refResh(_ model: FeedResponse) {
-        nameLabel.text = model.name
-        priceLabel.text = model.price
-        infoTextLabel.text = model.infoText
+    public func refResh(_ model: AddResumeModel) {
+        nameLabel.text = model.cateqoryOneName
+        priceLabel.text = model.salary
+        infoTextLabel.text = model.detailedInfo
         cityLabel.text = model.city
-        cilientNameLabel.text = model.clientName
-        switch model.odeme {
-        case .offline:
-            return odemeLabel.text = "Odeme Offline"
-        case .online:
-            return odemeLabel.text = "Odeme Online"
-        }
+//        cilientNameLabel.text = model.companyName
+//        switch model.odeme {
+//        case .offline:
+//            return odemeLabel.text = "Odeme Offline"
+//        case .online:
+//            return odemeLabel.text = "Odeme Online"
+//        }
     }
     
     //MARK: - setupItem

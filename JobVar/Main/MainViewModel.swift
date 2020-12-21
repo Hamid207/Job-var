@@ -12,10 +12,11 @@ protocol MainViewModelProtocol {
     var mainTableViewCellId: String { get set }
     var secondTableVIewCellId: String { get set }
     var firebaseSet: FirebaseSetProtocol? { get set }
-    func tapOnTheComment(testArray: FeedResponse)
+    func tapOnTheComment(addreseumeModel: AddResumeModel)
     func tapOnTheJobVacancy()
     func tapOnTheCreateResume()
     func tapOnTheIsAxtaranlar()
+    var arryy: [AddResumeModel]? { get set }
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol)
 }
 
@@ -23,15 +24,15 @@ final class MainViewModel: MainViewModelProtocol {
     var mainTableViewCellId: String = "MainTableViewCellId"
     var secondTableVIewCellId: String = "SecondTableVIewCellId"
     var firebaseSet: FirebaseSetProtocol?
-
+    var arryy: [AddResumeModel]?
     private let router: RouterProtocol?
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol) {
         self.router = router
         self.firebaseSet = firebaseSet
     }
     
-    func tapOnTheComment(testArray: FeedResponse) {
-        router?.showDetail(testArray: testArray)
+    func tapOnTheComment(addreseumeModel: AddResumeModel) {
+        router?.showDetail(addreseumeModel: addreseumeModel)
     }
     
     func tapOnTheCreateResume() {

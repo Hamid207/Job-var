@@ -9,7 +9,7 @@ import UIKit
 
 protocol AsseblyBuilderProtocol {
     func creatMainModule(router: RouterProtocol) -> UIViewController
-    func creatDetailModule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController
+    func creatDetailModule(router: RouterProtocol, addreseumeModel: AddResumeModel?) -> UIViewController
     func creatJobVacanxyModule(router: RouterProtocol) -> UIViewController
     func creatCreateResumeViewControllerModlue(router: RouterProtocol) -> UIViewController
     func creatPreciselyCreatResumeViewControllerModule(router: RouterProtocol) -> UIViewController
@@ -17,10 +17,9 @@ protocol AsseblyBuilderProtocol {
     func creatIshAxtaranlarModule(router: RouterProtocol) -> UIViewController
     func creatUserViewController(router: RouterProtocol) -> UIViewController
     func creatUserSettingViewControllerModule(router: RouterProtocol, userInfoModel: UserInfoModel?) -> UIViewController
-    func creatFavoritesViewControllerModeule(router: RouterProtocol) -> UIViewController
-    func creatFavaritesDetailModeule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController
-    
-    func testcreatUserViewController(router: RouterProtocol, userInfoModel: UserInfoModel?)
+    func creatFavoritesViewControllerModule(router: RouterProtocol) -> UIViewController
+    func creatFavaritesDetailModule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController
+    func creatCityDetaiLModule(router: RouterProtocol) -> UIViewController
     
     //AUTH
     func creatChoiceModule(authRouter: AuthRouterProtocol) -> UIViewController
@@ -40,9 +39,9 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     }
     
     //creatDetailModule
-    func creatDetailModule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController {
+    func creatDetailModule(router: RouterProtocol, addreseumeModel: AddResumeModel?) -> UIViewController {
         let view = DetailViewController()
-        let detailViewModel = DetailViewModel(router: router, testArray: testArray)
+        let detailViewModel = DetailViewModel(router: router, addreseumeModel: addreseumeModel)
         view.detailViewModel = detailViewModel
         return view
     }
@@ -50,7 +49,8 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     //creatJobVacanxyModule
     func creatJobVacanxyModule(router: RouterProtocol) -> UIViewController {
         let view = JobVacancyViewController()
-        let viewModel = JobVacancyViewModel(router: router)
+        let firebaseSet = FirebaseSet()
+        let viewModel = JobVacancyViewModel(router: router, firebaseSet: firebaseSet)
         view.jobVacancyViewModel = viewModel
         return view
     }
@@ -75,7 +75,10 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     //creatCreatResumeTargetViewControllerModule
     func creatCreatResumeTargetViewControllerModule(router: RouterProtocol) -> UIViewController {
         let view = CreatResumeTargetViewController()
-        let viewModel = CreatResumeTargetViewModel(router: router)
+        let firebaseSet = FirebaseSet()
+        let setDaata = SetData()
+        let cityVc = CityDetailViewController()
+        let viewModel = CreatResumeTargetViewModel(router: router, firebaseSet: firebaseSet, setData: setDaata, cityVC: cityVc)
         view.viewModel = viewModel
         return view
     }
@@ -107,7 +110,7 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     }
     
     //creatFavoritesViewControllerModeule
-    func creatFavoritesViewControllerModeule(router: RouterProtocol) -> UIViewController {
+    func creatFavoritesViewControllerModule(router: RouterProtocol) -> UIViewController {
         let view = FavoritesViewController()
         let viewModel = FavoritesViewModel(router: router)
         view.viewModel = viewModel
@@ -115,17 +118,21 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     }
     
     //creatFavaritesDetailModeule
-    func creatFavaritesDetailModeule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController {
+    func creatFavaritesDetailModule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController {
         let view = FavoritesDetailViewController()
         let viewModel = FavoritesDetailViewModel(router: router, testArray: testArray)
         view.viewModel = viewModel
         return view
     }
     
-    func testcreatUserViewController(router: RouterProtocol, userInfoModel: UserInfoModel?) {
-        //UserViewModel(router: router, userInfoModel: userInfoModel)
+    func creatCityDetaiLModule(router: RouterProtocol) -> UIViewController {
+        let view = CityDetailViewController()
+        let setData = SetData()
+        let viewModel = CityDetilViewModel(router: router, setData: setData)
+        view.viewModel = viewModel
+        return view
     }
-
+    
     
     //MARK: - AUTH
     //creatChoiceModule

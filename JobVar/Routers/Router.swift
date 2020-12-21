@@ -18,7 +18,7 @@ protocol RouterProtocol: RouterMain {
     func initialViewController()
     func userInitialViewController()
     func favoritesViewController()
-    func showDetail(testArray: FeedResponse)
+    func showDetail(addreseumeModel: AddResumeModel)
     func showJobVacancy()
     func showCreatResume()
     func showPreciselyCreatResume()
@@ -26,6 +26,8 @@ protocol RouterProtocol: RouterMain {
     func showIshAxtaranlar()
     func showFavaritesDetail(testArray: FeedResponse)
     func showUserSettings(userInfoModel: UserInfoModel)
+    func showCityButtonView()
+    func popVc()
     func popUser()
 }
 
@@ -62,16 +64,16 @@ class Router: RouterProtocol {
     //FavoritesViewController
     func favoritesViewController() {
         if let favoritesNavigationController = favoritesNavigationController {
-            guard let userViewController = assemblyBuilder?.creatFavoritesViewControllerModeule(router: self) else { return }
+            guard let userViewController = assemblyBuilder?.creatFavoritesViewControllerModule(router: self) else { return }
             favoritesNavigationController.viewControllers = [userViewController]
         }
     }
     
     
     //DetailViewController
-    func showDetail(testArray: FeedResponse) {
+    func showDetail(addreseumeModel: AddResumeModel) {
         if let navigationController = naviGationController {
-            guard let detailViewController = assemblyBuilder?.creatDetailModule(router: self, testArray: testArray) else { return }
+            guard let detailViewController = assemblyBuilder?.creatDetailModule(router: self, addreseumeModel: addreseumeModel ) else { return }
             navigationController.pushViewController(detailViewController, animated: true)
         }
     }
@@ -119,7 +121,7 @@ class Router: RouterProtocol {
     //FavoritesDetailViewController
     func showFavaritesDetail(testArray: FeedResponse) {
         if let favoritesNavigationController = favoritesNavigationController {
-            guard let creatFavaritesDetail = assemblyBuilder?.creatFavaritesDetailModeule(router: self, testArray: testArray) else { return }
+            guard let creatFavaritesDetail = assemblyBuilder?.creatFavaritesDetailModule(router: self, testArray: testArray) else { return }
             favoritesNavigationController.pushViewController(creatFavaritesDetail, animated: true)
         }
     }
@@ -129,6 +131,21 @@ class Router: RouterProtocol {
         if let userNaviGationController = userNaviGationController {
             guard let userSettingDetail = assemblyBuilder?.creatUserSettingViewControllerModule(router: self, userInfoModel: userInfoModel) else { return }
             userNaviGationController.pushViewController(userSettingDetail, animated: true)
+        }
+    }
+    
+    //CityDetailViewController
+    func showCityButtonView() {
+        if let navigationController = naviGationController {
+            guard let cityDetail = assemblyBuilder?.creatCityDetaiLModule(router: self) else { return }
+           // navigationController.present(cityDetail, animated: true, completion: nil)
+            navigationController.pushViewController(cityDetail, animated: true)
+        }
+    }
+    
+    func popVc() {
+        if let navigationController = naviGationController {
+            navigationController.dismiss(animated: true, completion: nil)
         }
     }
     

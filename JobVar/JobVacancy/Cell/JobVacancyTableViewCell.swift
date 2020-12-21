@@ -13,7 +13,7 @@ class JobVacancyTableViewCell: UITableViewCell {
     var buttonTarget = false
 
     //nameLabel
-     private let nameLabel: UILabel = {
+      let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)

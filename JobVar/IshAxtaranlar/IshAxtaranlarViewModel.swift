@@ -19,6 +19,6 @@ final class IshAxtaranlarViewModel: IshAxtaranlarViewModelProtocol {
     }
     
     func tapOnTheDetailVc(testArray: FeedResponse) {
-        router?.showDetail(testArray: testArray)
+        //router?.showDetail(testArray: testArray)
     }
 }

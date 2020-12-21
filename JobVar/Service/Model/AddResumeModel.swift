@@ -8,41 +8,59 @@
 import Firebase
 
 struct AddResumeModel {
+    let resume: String
     let cateqoryOneName: String
     let cateqoryTwoName: String
     let salary: String?
     let city: String
-    let cilientName: String
+    let companyName: String
+    let age: String
+    let education: String
+    let workExperience: String
     let detailedInfo: String
+    let requirements: String
+    let email: String
     let userId: String
     var favorit: Bool = false
     let ref: DatabaseReference?
     
-    init(cateqoryOneName: String, cateqoryTwoName: String, salary: String, city: String, cilirntName: String, detailedInfo: String, userId: String) {
+    init(resume: String, cateqoryOneName: String, cateqoryTwoName: String, companyName: String ,salary: String, city: String, age: String, education: String, workExperience: String, detailedInfo: String, requirements: String, email: String, userId: String) {
+        self.resume = resume
         self.cateqoryOneName = cateqoryOneName
         self.cateqoryTwoName = cateqoryTwoName
         self.salary = salary
         self.city = city
-        self.cilientName = cilirntName
+        self.companyName = companyName
+        self.age = age
+        self.education = education
+        self.workExperience = workExperience
         self.detailedInfo = detailedInfo
+        self.requirements = requirements
+        self.email = email
         self.userId = userId
         self.ref = nil
     }
     
     init(snapShot: DataSnapshot) {
         let snapShotValue = snapShot.value as! [String : AnyObject]
+        resume = snapShotValue["resume"] as! String
         cateqoryOneName = snapShotValue["cateqoryOneName"] as! String
         cateqoryTwoName = snapShotValue["cateqoryTwoName"] as! String
         salary = snapShotValue["salary"] as? String
         city = snapShotValue["city"] as! String
-        cilientName = snapShotValue["cilirntName"] as! String
+        companyName = snapShotValue["companyName"] as! String
+        age = snapShotValue["age"] as! String
+        education = snapShotValue["education"] as! String
+        workExperience = snapShotValue["workExperience"] as! String
         detailedInfo = snapShotValue["detailedInfo"] as! String
+        requirements = snapShotValue["requirements"] as! String
+        email = snapShotValue["email"] as! String
         userId = snapShotValue["userId"] as! String
-        favorit = snapShotValue["favoriy"] as! Bool
+        favorit = snapShotValue["favorit"] as! Bool
         ref = snapShot.ref
     }
     
     func convertToDictinary() -> Any {
-        return ["cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "salary" : salary ?? "+", "city" : city, "cilientName" : cilientName, "detailInfo" : detailedInfo, "favorit" : favorit, "userId" : userId]
+        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email,"favorit" : favorit, "userId" : userId]
     }
 }

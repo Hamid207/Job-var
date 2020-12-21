@@ -9,16 +9,16 @@ import Foundation
 
 protocol DetailViewModelProtocol {
     var mainTableViewCellId: String { get set }
-    var testArray: FeedResponse? { get set }
-    init(router: RouterProtocol, testArray: FeedResponse?)
+    var addreseumeModel: AddResumeModel? { get set }
+    init(router: RouterProtocol, addreseumeModel: AddResumeModel?)
 }
 
 final class DetailViewModel: DetailViewModelProtocol {
     var mainTableViewCellId: String = "MainTableViewCellId"
     private let router: RouterProtocol?
-    var testArray: FeedResponse?
-    init(router: RouterProtocol, testArray: FeedResponse?) {
+    var addreseumeModel: AddResumeModel?
+    init(router: RouterProtocol, addreseumeModel: AddResumeModel?) {
         self.router = router
-        self.testArray = testArray
+        self.addreseumeModel = addreseumeModel
     }
 }

@@ -31,23 +31,11 @@ class CreateResumeTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    
-    func setupItem() {
-        addSubview(nameLabel)
+    private func setupItem() {
+        contentView.addSubview(nameLabel)
         nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        //nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
     }
 
 }

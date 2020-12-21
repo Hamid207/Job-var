@@ -18,7 +18,16 @@ class LogInViewController: UIViewController {
         view.backgroundColor = UIColor(named: "TextColor")
         setupNavigationBar()
         setupItem()
+        //MARK: - klavyatura cixanda view yuxari qalxir
+        NotificationCenter.default.addObserver(forName: UITextField.keyboardWillShowNotification, object: nil, queue: nil) { (nc) in
+            self.view.frame.origin.y = -50
+        }
+        NotificationCenter.default.addObserver(forName: UITextField.keyboardWillHideNotification, object: nil, queue: nil) { (nc) in
+            self.view.frame.origin.y = 0.0
+        }
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

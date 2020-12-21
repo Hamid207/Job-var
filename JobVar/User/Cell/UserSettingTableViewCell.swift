@@ -6,13 +6,13 @@
 //
 
 import UIKit
-protocol SetDelegate {
+protocol SetDelegate: class {
     func setItem(userInfoModel: UserInfoModel)
 }
 
 class UserSettingTableViewCell: UITableViewCell {
     var buttonTarget = false
-    var delegate: SetDelegate?
+    weak var delegate: SetDelegate?
     
     //userImage
     private let userImage: UIImageView = {
@@ -266,6 +266,7 @@ class UserSettingTableViewCell: UITableViewCell {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.placeholder = "Daxil et..."
+        textFiled.keyboardType = .numbersAndPunctuation
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -322,11 +323,12 @@ class UserSettingTableViewCell: UITableViewCell {
 //        guard let name = nameTextFiled.text, let lastName = lastNameTextFiled.text, let city = cityButton.titleLabel?.text, let dateOfBirth = dateButton.titleLabel?.text, let email = emailTextField.text, let number = numberTextField.text  else { return}
         guard let name = nameTextFiled.text else { return  }
        // let lastName = lastNameTextFiled.text
-        let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: " ", city: (cityButton.titleLabel?.text)!, image: "nil", dateOfBirth: dateButton.titleLabel?.text, number: numberTextField.text, info: "info", email: " emailllae")
+        let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: " ", city: (cityButton.titleLabel?.text)!, image: "nil", dateOfBirth: dateButton.titleLabel?.text, number: numberTextField.text, info: "userInfo", email: " emailllae")
         delegate?.setItem(userInfoModel: userInfoModel)
     }
     
     @objc func textrFirledTarget() {
+        
         if nameTextFiled.text == "" {
             namelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         }else if nameTextFiled.text != "" {
@@ -350,9 +352,15 @@ class UserSettingTableViewCell: UITableViewCell {
         }else if numberTextField.text != "" {
             numberLineVIew.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         }
+     
     }
     
     func setupItem() {
+        nameTextFiled.delegate = self
+        lastNameTextFiled.delegate = self
+        emailTextField.delegate = self
+        numberTextField.delegate = self
+        
         //------------- image
         //userImage
         contentView.addSubview(userImage)
@@ -524,8 +532,20 @@ class UserSettingTableViewCell: UITableViewCell {
         numberLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         numberLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
     }
+}
+
+extension UserSettingTableViewCell: UITextFieldDelegate {
+    //MARK: - ekrana basanta klavyatura gedir
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
     
- 
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextFiled.resignFirstResponder()
+        lastNameTextFiled.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        numberTextField.resignFirstResponder()
+        return true
+    }
 }
 

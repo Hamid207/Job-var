@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BDB676EB78265187A9FEA09 /* Pods_JobVar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCFDD5AE836BE612351A5B0 /* Pods_JobVar.framework */; };
+		612377D725867C99003EAAFE /* ChildModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612377D625867C99003EAAFE /* ChildModel.swift */; };
 		612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9336256B20E0009DBCBF /* AppDelegate.swift */; };
 		612B9339256B20E0009DBCBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612B9338256B20E0009DBCBF /* SceneDelegate.swift */; };
 		612B9340256B20E2009DBCBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612B933F256B20E2009DBCBF /* Assets.xcassets */; };
@@ -81,6 +82,13 @@
 		61A415912583A30100F2945D /* FirebaseSetAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A415902583A30100F2945D /* FirebaseSetAuth.swift */; };
 		61B29119256B36F1006D13D1 /* AuthiewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B29118256B36F1006D13D1 /* AuthiewController.swift */; };
 		61B29121256B3D19006D13D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61B29120256B3D19006D13D1 /* GoogleService-Info.plist */; };
+		61C5462A258A7113007E0E4D /* TargetCreatResumeCell + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54629258A7113007E0E4D /* TargetCreatResumeCell + Extension.swift */; };
+		61C5462F258A744E007E0E4D /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C5462E258A744E007E0E4D /* CityModel.swift */; };
+		61C54634258AA06A007E0E4D /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54633258AA069007E0E4D /* CityDetailViewController.swift */; };
+		61C5463F258AA6C1007E0E4D /* CityDetailViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C5463E258AA6C1007E0E4D /* CityDetailViewController + Extension.swift */; };
+		61C54644258AA85A007E0E4D /* CityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54643258AA85A007E0E4D /* CityDetailTableViewCell.swift */; };
+		61C5464C258AAB1C007E0E4D /* CityDetilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C5464B258AAB1C007E0E4D /* CityDetilViewModel.swift */; };
+		61C54654258AB718007E0E4D /* SetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54653258AB718007E0E4D /* SetData.swift */; };
 		61D695F0257D7A3700326B53 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695EF257D7A3700326B53 /* UserModel.swift */; };
 		61D695F5257D7ADE00326B53 /* AddResumeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695F4257D7ADE00326B53 /* AddResumeModel.swift */; };
 		61D695FF257D844200326B53 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695FE257D844200326B53 /* UserInfoModel.swift */; };
@@ -106,6 +114,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		612377D625867C99003EAAFE /* ChildModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildModel.swift; sourceTree = "<group>"; };
 		612B9333256B20E0009DBCBF /* JobVar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JobVar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		612B9336256B20E0009DBCBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		612B9338256B20E0009DBCBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +194,13 @@
 		61A415902583A30100F2945D /* FirebaseSetAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSetAuth.swift; sourceTree = "<group>"; };
 		61B29118256B36F1006D13D1 /* AuthiewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthiewController.swift; sourceTree = "<group>"; };
 		61B29120256B3D19006D13D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		61C54629258A7113007E0E4D /* TargetCreatResumeCell + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TargetCreatResumeCell + Extension.swift"; sourceTree = "<group>"; };
+		61C5462E258A744E007E0E4D /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		61C54633258AA069007E0E4D /* CityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailViewController.swift; sourceTree = "<group>"; };
+		61C5463E258AA6C1007E0E4D /* CityDetailViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityDetailViewController + Extension.swift"; sourceTree = "<group>"; };
+		61C54643258AA85A007E0E4D /* CityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailTableViewCell.swift; sourceTree = "<group>"; };
+		61C5464B258AAB1C007E0E4D /* CityDetilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetilViewModel.swift; sourceTree = "<group>"; };
+		61C54653258AB718007E0E4D /* SetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetData.swift; sourceTree = "<group>"; };
 		61D695EF257D7A3700326B53 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		61D695F4257D7ADE00326B53 /* AddResumeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResumeModel.swift; sourceTree = "<group>"; };
 		61D695FE257D844200326B53 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
@@ -326,6 +342,7 @@
 				612B9381256B236C009DBCBF /* FeedResponSe.swift */,
 				613B04182576895A0029EB2C /* Comment.swift */,
 				613B0410257689340029EB2C /* NetworkService.swift */,
+				61C54653258AB718007E0E4D /* SetData.swift */,
 				61D695F9257D7B9100326B53 /* Model */,
 				61D696182582F30800326B53 /* Firebase */,
 			);
@@ -404,6 +421,7 @@
 				612B93E5256B26DE009DBCBF /* Category */,
 				612B93F6256B2751009DBCBF /* Pecisely */,
 				612B9407256B27D6009DBCBF /* Target */,
+				61C54638258AA07F007E0E4D /* AddCityDetail */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -451,6 +469,7 @@
 				612B941E256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift */,
 				612B942A256B28B8009DBCBF /* CreateResumeTableViewCell.swift */,
 				612B942F256B28D6009DBCBF /* TargetCreatResumeTableViewCell.swift */,
+				61C54629258A7113007E0E4D /* TargetCreatResumeCell + Extension.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -671,11 +690,24 @@
 			path = Reg;
 			sourceTree = "<group>";
 		};
+		61C54638258AA07F007E0E4D /* AddCityDetail */ = {
+			isa = PBXGroup;
+			children = (
+				61C5462E258A744E007E0E4D /* CityModel.swift */,
+				61C54633258AA069007E0E4D /* CityDetailViewController.swift */,
+				61C5463E258AA6C1007E0E4D /* CityDetailViewController + Extension.swift */,
+				61C5464B258AAB1C007E0E4D /* CityDetilViewModel.swift */,
+				61C54643258AA85A007E0E4D /* CityDetailTableViewCell.swift */,
+			);
+			path = AddCityDetail;
+			sourceTree = "<group>";
+		};
 		61D695F9257D7B9100326B53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				61D695EF257D7A3700326B53 /* UserModel.swift */,
 				61D695F4257D7ADE00326B53 /* AddResumeModel.swift */,
+				612377D625867C99003EAAFE /* ChildModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -875,6 +907,7 @@
 				612B9443256B296A009DBCBF /* JobVacancyViewModel.swift in Sources */,
 				612B943E256B294A009DBCBF /* JobVacancyViewController + Extension.swift in Sources */,
 				612B93B6256B2513009DBCBF /* DetailViewController.swift in Sources */,
+				61C54634258AA06A007E0E4D /* CityDetailViewController.swift in Sources */,
 				612B9478256B2B56009DBCBF /* FavoritesDetailViewController.swift in Sources */,
 				61D695FF257D844200326B53 /* UserInfoModel.swift in Sources */,
 				612B94C8256B2D97009DBCBF /* UserTableViewCell.swift in Sources */,
@@ -892,10 +925,12 @@
 				612B9462256B2A5C009DBCBF /* JobSeekersTableViewCell.swift in Sources */,
 				612B946D256B2B0D009DBCBF /* FavoritesViewController.swift in Sources */,
 				612B94D0256B2DB3009DBCBF /* UserSettingTableViewCell.swift in Sources */,
+				61C5462F258A744E007E0E4D /* CityModel.swift in Sources */,
 				613B04192576895A0029EB2C /* Comment.swift in Sources */,
 				61A29F7C256C826200580990 /* SignUpViewController.swift in Sources */,
 				612B9370256B22DE009DBCBF /* Router.swift in Sources */,
 				612B93DB256B2688009DBCBF /* CreateResumeViewController.swift in Sources */,
+				61C5463F258AA6C1007E0E4D /* CityDetailViewController + Extension.swift in Sources */,
 				612B94B7256B2D22009DBCBF /* UserSettingViewController + Extension.swift in Sources */,
 				612B9403256B27C1009DBCBF /* CreatResumeTargetViewController + Extension.swift in Sources */,
 				61B29119256B36F1006D13D1 /* AuthiewController.swift in Sources */,
@@ -907,6 +942,7 @@
 				612B9419256B285E009DBCBF /* CreatResumeTargetViewModel.swift in Sources */,
 				61A29F64256C67BB00580990 /* LogInViewController + Extension.swift in Sources */,
 				612B93BB256B2540009DBCBF /* DetailViewController + Extension.swift in Sources */,
+				61C5462A258A7113007E0E4D /* TargetCreatResumeCell + Extension.swift in Sources */,
 				612B9472256B2B25009DBCBF /* FavoritesViewController + Extension.swift in Sources */,
 				612B94BD256B2D4D009DBCBF /* UserViewModel.swift in Sources */,
 				61A29F69256C67E100580990 /* LogInViewModel.swift in Sources */,
@@ -916,6 +952,7 @@
 				612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */,
 				612B938E256B23E7009DBCBF /* CustomTabbarViewController.swift in Sources */,
 				612B93A5256B247F009DBCBF /* MainViewModel.swift in Sources */,
+				612377D725867C99003EAAFE /* ChildModel.swift in Sources */,
 				612B93FE256B2793009DBCBF /* CreatResumeTargetViewController.swift in Sources */,
 				61D695F0257D7A3700326B53 /* UserModel.swift in Sources */,
 				612B93B0256B24DF009DBCBF /* MainCollectionViewCell.swift in Sources */,
@@ -930,8 +967,10 @@
 				612B9449256B2993009DBCBF /* JobVacancyTableViewCell.swift in Sources */,
 				612B9480256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift in Sources */,
 				612B93A0256B2459009DBCBF /* MainViewController + Extension.swift in Sources */,
+				61C54644258AA85A007E0E4D /* CityDetailTableViewCell.swift in Sources */,
 				612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */,
 				61D6960F25801DA200326B53 /* FirebaseSet.swift in Sources */,
+				61C54654258AB718007E0E4D /* SetData.swift in Sources */,
 				612B941F256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift in Sources */,
 				612B9486256B2B95009DBCBF /* FavoritesViewModel.swift in Sources */,
 				61D696142582F1DC00326B53 /* ChildEnum.swift in Sources */,
@@ -940,6 +979,7 @@
 				61A29F9A256C8EEF00580990 /* SignUpTableViewCell.swift in Sources */,
 				612B93C0256B2559009DBCBF /* DetailViewModel.swift in Sources */,
 				612B949C256B2C3D009DBCBF /* FavoritesDetailTableViewCell.swift in Sources */,
+				61C5464C258AAB1C007E0E4D /* CityDetilViewModel.swift in Sources */,
 				612B93CF256B2654009DBCBF /* KateqoryModel.swift in Sources */,
 				612B94A4256B2CB6009DBCBF /* UserViewController.swift in Sources */,
 				612B9398256B2439009DBCBF /* MainViewController.swift in Sources */,

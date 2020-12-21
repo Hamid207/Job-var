@@ -44,23 +44,27 @@ extension JobVacancyViewController {
             self.refresh.endRefreshing()
             self.jobVacancyTableView.reloadData()
         }
-        
     }
-    
 }
 
 //MARK: - UITableViewDataSource
 extension JobVacancyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tesarray.count
+        return jobVacancyViewModel?.firebaseSet?.addResumeArray?.count ?? 1
+//        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "jobVacancyTableViewCellId", for: indexPath) as? JobVacancyTableViewCell {
-            let item = tesarray[indexPath.row]
-            cell.refresh(item)
+//            let item = tesarray[indexPath.row]
+//            cell.refresh(item)
+            let item = jobVacancyViewModel?.firebaseSet?.addResumeArray?[indexPath.row].cateqoryOneName
+            
+            cell.nameLabel.text = "asdasd"
+            jobVacancyTableView.reloadData()
             return cell
         }
+        jobVacancyTableView.reloadData()
         return UITableViewCell()
     }
     

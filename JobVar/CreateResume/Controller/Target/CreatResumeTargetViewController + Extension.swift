@@ -9,7 +9,7 @@
 import UIKit
 
 extension CreatResumeTargetViewController {
-    
+  
     func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
@@ -36,12 +36,26 @@ extension CreatResumeTargetViewController {
         createResumeTargetTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         createResumeTargetTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         createResumeTargetTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
     }
     
     @objc func sil() {
         navigationController?.popToRootViewController(animated: true)
     }
+    
+    @objc func showCityDetail() {
+        viewModel?.showCityDetailVC()
+    }
 }
+
+extension CreatResumeTargetViewController: AddResumeDelegate {
+    func setResume(addResumeModel: AddResumeModel) {
+        viewModel?.setResume(addResumeModel: addResumeModel)
+    }
+    
+    
+}
+
 
 //MARK: - UITableViewDataSource
 extension CreatResumeTargetViewController: UITableViewDataSource {
@@ -51,21 +65,23 @@ extension CreatResumeTargetViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TargetCreatResumeTableViewCell", for: indexPath) as? TargetCreatResumeTableViewCell {
+            cell.delegate = self
             cell.nameLabel.text = "Proqramlasdirma"
+            cell.cityButton.addTarget(self, action: #selector(showCityDetail), for: .touchDown)
             cell.saveButton.addTarget(self, action: #selector(sil), for: .touchDown)
+//            if let cityName = viewModel?.cityName(tableView: createResumeTargetTableView){
+//                cell.cityButton.titleLabel?.text = cityName
+//            }
             return cell
         }
-        
         return UITableViewCell()
     }
-    
-    
 }
 
 //MARK: - UITableViewDelegate
 extension CreatResumeTargetViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 1350
     }
 }
 

@@ -48,23 +48,24 @@ extension MainViewController {
 
 //MARK: - UICollectionViewDataSource
 extension MainViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        if section == 0 {
 //            return 1
 //        }
-        return tesarray.count
+        return mainViewModel?.firebaseSet?.addResumeArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: mainViewModel!.mainTableViewCellId, for: indexPath) as? MainTableViewViewCell {
-            let item = tesarray[indexPath.row]
-            cell.refresh(item)
+            let item = mainViewModel?.firebaseSet?.addResumeArray?[indexPath.row]
+            cell.refresh(item!)
             return cell
         }
+        
 //        if indexPath.section == 1 {
 //
 //        }
@@ -76,9 +77,7 @@ extension MainViewController: UITableViewDataSource {
 //        }
         return UITableViewCell()
     }
-    
 
-//
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        if section == 0 {
 //            return "Vakansiya"
@@ -105,8 +104,8 @@ extension MainViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setArray = tesarray[indexPath.row]
-        mainViewModel?.tapOnTheComment(testArray: setArray)
+        guard let model = mainViewModel?.firebaseSet?.addResumeArray?[indexPath.row] else { return  }
+        mainViewModel?.tapOnTheComment(addreseumeModel: model)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -114,12 +113,9 @@ extension MainViewController: UITableViewDelegate {
     //        if indexPath.section == 0 {
     //            return 150
     //        }
-            return 170
+            return 200
         }
-    
-   
 }
-
 
 //MARK: - ---------------------------------- UICollectionView
 

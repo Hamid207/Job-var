@@ -7,7 +7,7 @@
 
 import UIKit
 
-class JobVacancyViewController: UIViewController { //Is axtarmaq yeni butun vakansiyalar
+class JobVacancyViewController: UIViewController { //Is axtarmaq yeni butun elanlar
     
     var jobVacancyViewModel: JobVacancyViewModelProtocol?
     
@@ -25,14 +25,22 @@ class JobVacancyViewController: UIViewController { //Is axtarmaq yeni butun vaka
         searchControl.searchBar.placeholder = "Search"
         navigationItem.searchController = searchControl
         definesPresentationContext = true
-        let aa = FeedResponse(name: "Ios devoloper Ios devolope", price: "300 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "Hamid Manafov", odeme: .offline)
-        tesarray.append(aa)
-        let aaa = FeedResponse(name: "Ios devoloper", price: "300 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "Kapital Bank", odeme: .online)
-        tesarray.append(aaa)
-        let aaaa = FeedResponse(name: "Ios devoloper", price: "300 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "MSQ", odeme: .online)
-        tesarray.append(aaaa)
+        DispatchQueue.main.async {
+            self.jobVacancyTableView.reloadData()
+        }
+//        let aa = FeedResponse(name: "Ios devoloper Ios devolope", price: "300 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "Hamid Manafov", odeme: .offline)
+//        tesarray.append(aa)
+//        let aaa = FeedResponse(name: "Ios devoloper", price: "300 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "Kapital Bank", odeme: .online)
+//        tesarray.append(aaa)
+//        let aaaa = FeedResponse(name: "Ios devoloper", price: "300 AZN", location: "Baku", image: "nil", infoText: "aksmdaidmaiomdaiomdaiomsdioasmdioamdioamdioamdiamsdioamsdiomaiodmasid", city: "Baku", clientName: "MSQ", odeme: .online)
+//        tesarray.append(aaaa)
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        DispatchQueue.main.async {
+            self.jobVacancyTableView.reloadData()
+        }
+    }
 
 }
