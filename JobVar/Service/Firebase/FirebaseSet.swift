@@ -26,11 +26,13 @@ final class FirebaseSet: FirebaseSetProtocol {
     private var user: UserModel!
     private var ref: DatabaseReference!
     private var userInfoModelArray = Array<UserInfoModel>()
-//    var addResumeArray = Array<AddResumeModel>()
-    var addResumeArray:  Array<AddResumeModel>? = Array<AddResumeModel>()
+    private let resumeRandomIdNumber = Int.random(in: 1..<10000000000000000)
     private var userEmail: String?
+    var addResumeArray:  Array<AddResumeModel>? = Array<AddResumeModel>()
     var setObserveValue: (([String : Any]) -> ())?
     var setResumeObserverValue: (([String : Any]) -> ())?
+    
+    
     //info
     func currentUser(withPath: String, child: String) {
         firabaseadd(first: withPath, child: child)
@@ -89,7 +91,7 @@ final class FirebaseSet: FirebaseSetProtocol {
     
     //creart resume
     func setResume(addResumeModel: AddResumeModel) {
-        let addResume = AddResumeModel(resume: addResumeModel.resume, cateqoryOneName: addResumeModel.cateqoryOneName, cateqoryTwoName: addResumeModel.cateqoryTwoName, companyName: addResumeModel.companyName, salary: addResumeModel.salary ?? "salary nil", city: addResumeModel.city, age: addResumeModel.age, education: addResumeModel.education, workExperience: addResumeModel.workExperience, detailedInfo: addResumeModel.detailedInfo, requirements: addResumeModel.requirements, email: addResumeModel.email, userId: "user.uid")
+        let addResume = AddResumeModel(resume: "resume Number - \(resumeRandomIdNumber)N\(addResumeModel.resume)", cateqoryOneName: addResumeModel.cateqoryOneName, cateqoryTwoName: addResumeModel.cateqoryTwoName, position: addResumeModel.position, companyName: addResumeModel.companyName, salary: addResumeModel.salary ?? "salary nil", city: addResumeModel.city, age: addResumeModel.age, education: addResumeModel.education, workExperience: addResumeModel.workExperience, detailedInfo: addResumeModel.detailedInfo, requirements: addResumeModel.requirements, email: addResumeModel.email, userId: "user.uid")
         //userResume
         firebaseResumeAdd()
         let resumeRef = ref.child(addResume.resume.lowercased())

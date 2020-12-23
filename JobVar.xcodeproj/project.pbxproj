@@ -86,9 +86,10 @@
 		61C5462F258A744E007E0E4D /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C5462E258A744E007E0E4D /* CityModel.swift */; };
 		61C54634258AA06A007E0E4D /* CityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54633258AA069007E0E4D /* CityDetailViewController.swift */; };
 		61C5463F258AA6C1007E0E4D /* CityDetailViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C5463E258AA6C1007E0E4D /* CityDetailViewController + Extension.swift */; };
-		61C54644258AA85A007E0E4D /* CityDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54643258AA85A007E0E4D /* CityDetailTableViewCell.swift */; };
+		61C54644258AA85A007E0E4D /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54643258AA85A007E0E4D /* CityTableViewCell.swift */; };
 		61C5464C258AAB1C007E0E4D /* CityDetilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C5464B258AAB1C007E0E4D /* CityDetilViewModel.swift */; };
 		61C54654258AB718007E0E4D /* SetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C54653258AB718007E0E4D /* SetData.swift */; };
+		61D3B9082591726600AD1585 /* CityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D3B9072591726600AD1585 /* CityViewController.swift */; };
 		61D695F0257D7A3700326B53 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695EF257D7A3700326B53 /* UserModel.swift */; };
 		61D695F5257D7ADE00326B53 /* AddResumeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695F4257D7ADE00326B53 /* AddResumeModel.swift */; };
 		61D695FF257D844200326B53 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695FE257D844200326B53 /* UserInfoModel.swift */; };
@@ -198,9 +199,10 @@
 		61C5462E258A744E007E0E4D /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 		61C54633258AA069007E0E4D /* CityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailViewController.swift; sourceTree = "<group>"; };
 		61C5463E258AA6C1007E0E4D /* CityDetailViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CityDetailViewController + Extension.swift"; sourceTree = "<group>"; };
-		61C54643258AA85A007E0E4D /* CityDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailTableViewCell.swift; sourceTree = "<group>"; };
+		61C54643258AA85A007E0E4D /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		61C5464B258AAB1C007E0E4D /* CityDetilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetilViewModel.swift; sourceTree = "<group>"; };
 		61C54653258AB718007E0E4D /* SetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetData.swift; sourceTree = "<group>"; };
+		61D3B9072591726600AD1585 /* CityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewController.swift; sourceTree = "<group>"; };
 		61D695EF257D7A3700326B53 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		61D695F4257D7ADE00326B53 /* AddResumeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddResumeModel.swift; sourceTree = "<group>"; };
 		61D695FE257D844200326B53 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				612B93E4256B269C009DBCBF /* Controller */,
 				612B941D256B286C009DBCBF /* ViewModel */,
 				612B9426256B2892009DBCBF /* Cell */,
+				61FC639B259257A10056E04A /* Detail */,
 			);
 			path = CreateResume;
 			sourceTree = "<group>";
@@ -421,7 +424,6 @@
 				612B93E5256B26DE009DBCBF /* Category */,
 				612B93F6256B2751009DBCBF /* Pecisely */,
 				612B9407256B27D6009DBCBF /* Target */,
-				61C54638258AA07F007E0E4D /* AddCityDetail */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -697,7 +699,6 @@
 				61C54633258AA069007E0E4D /* CityDetailViewController.swift */,
 				61C5463E258AA6C1007E0E4D /* CityDetailViewController + Extension.swift */,
 				61C5464B258AAB1C007E0E4D /* CityDetilViewModel.swift */,
-				61C54643258AA85A007E0E4D /* CityDetailTableViewCell.swift */,
 			);
 			path = AddCityDetail;
 			sourceTree = "<group>";
@@ -728,6 +729,24 @@
 				61D696132582F1DC00326B53 /* ChildEnum.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		61FC639B259257A10056E04A /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				61FC63AA259269110056E04A /* City */,
+				61C54638258AA07F007E0E4D /* AddCityDetail */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		61FC63AA259269110056E04A /* City */ = {
+			isa = PBXGroup;
+			children = (
+				61D3B9072591726600AD1585 /* CityViewController.swift */,
+				61C54643258AA85A007E0E4D /* CityTableViewCell.swift */,
+			);
+			path = City;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -914,6 +933,7 @@
 				61A415912583A30100F2945D /* FirebaseSetAuth.swift in Sources */,
 				612B93AB256B24A7009DBCBF /* MainTableViewCell.swift in Sources */,
 				612B93ED256B2716009DBCBF /* PreciselyCreatResumeViewController.swift in Sources */,
+				61D3B9082591726600AD1585 /* CityViewController.swift in Sources */,
 				61A29FB6256C93B500580990 /* ChoiceViewModel.swift in Sources */,
 				612B9452256B29FD009DBCBF /* IshAxtaranlarViewController.swift in Sources */,
 				612B948E256B2BAB009DBCBF /* FavoritesDetailViewModel.swift in Sources */,
@@ -967,7 +987,7 @@
 				612B9449256B2993009DBCBF /* JobVacancyTableViewCell.swift in Sources */,
 				612B9480256B2B70009DBCBF /* FavoritesDetailViewController + Extension.swift in Sources */,
 				612B93A0256B2459009DBCBF /* MainViewController + Extension.swift in Sources */,
-				61C54644258AA85A007E0E4D /* CityDetailTableViewCell.swift in Sources */,
+				61C54644258AA85A007E0E4D /* CityTableViewCell.swift in Sources */,
 				612B94C2256B2D5A009DBCBF /* UserSettingViewModel.swift in Sources */,
 				61D6960F25801DA200326B53 /* FirebaseSet.swift in Sources */,
 				61C54654258AB718007E0E4D /* SetData.swift in Sources */,

@@ -35,8 +35,8 @@ extension CreatResumeTargetViewController {
         createResumeTargetTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         createResumeTargetTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         createResumeTargetTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        createResumeTargetTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
+//        createResumeTargetTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        createResumeTargetTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 35).isActive = true
     }
     
     @objc func sil() {
@@ -44,7 +44,15 @@ extension CreatResumeTargetViewController {
     }
     
     @objc func showCityDetail() {
-        viewModel?.showCityDetailVC()
+        let vc = CityViewController()
+        vc.setName = { [weak self] name in
+            DispatchQueue.main.async {
+                self?.viewModel?.name = name
+                self?.createResumeTargetTableView.reloadData()
+            }
+        }
+        navigationController?.present(vc, animated: true, completion: nil)
+//        viewModel?.showCityDetailVC() sora bax buna
     }
 }
 
@@ -55,7 +63,6 @@ extension CreatResumeTargetViewController: AddResumeDelegate {
     
     
 }
-
 
 //MARK: - UITableViewDataSource
 extension CreatResumeTargetViewController: UITableViewDataSource {
@@ -68,10 +75,8 @@ extension CreatResumeTargetViewController: UITableViewDataSource {
             cell.delegate = self
             cell.nameLabel.text = "Proqramlasdirma"
             cell.cityButton.addTarget(self, action: #selector(showCityDetail), for: .touchDown)
+            cell.cityButton.setTitle(viewModel?.name, for: .normal)
             cell.saveButton.addTarget(self, action: #selector(sil), for: .touchDown)
-//            if let cityName = viewModel?.cityName(tableView: createResumeTargetTableView){
-//                cell.cityButton.titleLabel?.text = cityName
-//            }
             return cell
         }
         return UITableViewCell()
@@ -81,7 +86,7 @@ extension CreatResumeTargetViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension CreatResumeTargetViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1350
+        return 1400
     }
 }
 

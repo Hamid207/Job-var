@@ -28,8 +28,6 @@ class CreatResumeTargetViewController: UIViewController {
         DispatchQueue.main.async {
             self.createResumeTargetTableView.reloadData()
         }
-        print("TEST")
-        viewModel?.firebaseObserve()
     }
     
 }

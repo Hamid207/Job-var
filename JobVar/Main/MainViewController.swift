@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     let mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
-//        layout.minimumInteritemSpacing = 0
+        //        layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -33,17 +33,13 @@ class MainViewController: UIViewController {
         setupView()
         mainViewModel?.firebaseSet?.creatAllResume()
         mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
-        DispatchQueue.main.async {
-            self.mainTableView.reloadData()
-        }
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
-//        mainViewModel?.firebaseSet?.creatAllResume()
-        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
+        //mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
+        //mainViewModel?.firebaseSet?.creatAllResume()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

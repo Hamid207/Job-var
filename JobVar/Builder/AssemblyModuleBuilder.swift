@@ -77,8 +77,7 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
         let view = CreatResumeTargetViewController()
         let firebaseSet = FirebaseSet()
         let setDaata = SetData()
-        let cityVc = CityDetailViewController()
-        let viewModel = CreatResumeTargetViewModel(router: router, firebaseSet: firebaseSet, setData: setDaata, cityVC: cityVc)
+        let viewModel = CreatResumeTargetViewModel(router: router, firebaseSet: firebaseSet, setData: setDaata)
         view.viewModel = viewModel
         return view
     }
@@ -126,10 +125,7 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     }
     
     func creatCityDetaiLModule(router: RouterProtocol) -> UIViewController {
-        let view = CityDetailViewController()
-        let setData = SetData()
-        let viewModel = CityDetilViewModel(router: router, setData: setData)
-        view.viewModel = viewModel
+        let view = CityViewController()
         return view
     }
     

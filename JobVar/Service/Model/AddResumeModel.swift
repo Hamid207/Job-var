@@ -11,6 +11,7 @@ struct AddResumeModel {
     let resume: String
     let cateqoryOneName: String
     let cateqoryTwoName: String
+    let position: String
     let salary: String?
     let city: String
     let companyName: String
@@ -24,10 +25,11 @@ struct AddResumeModel {
     var favorit: Bool = false
     let ref: DatabaseReference?
     
-    init(resume: String, cateqoryOneName: String, cateqoryTwoName: String, companyName: String ,salary: String, city: String, age: String, education: String, workExperience: String, detailedInfo: String, requirements: String, email: String, userId: String) {
+    init(resume: String, cateqoryOneName: String, cateqoryTwoName: String, position: String, companyName: String ,salary: String, city: String, age: String, education: String, workExperience: String, detailedInfo: String, requirements: String, email: String, userId: String) {
         self.resume = resume
         self.cateqoryOneName = cateqoryOneName
         self.cateqoryTwoName = cateqoryTwoName
+        self.position = position
         self.salary = salary
         self.city = city
         self.companyName = companyName
@@ -46,6 +48,7 @@ struct AddResumeModel {
         resume = snapShotValue["resume"] as! String
         cateqoryOneName = snapShotValue["cateqoryOneName"] as! String
         cateqoryTwoName = snapShotValue["cateqoryTwoName"] as! String
+        position = snapShotValue["position"] as! String
         salary = snapShotValue["salary"] as? String
         city = snapShotValue["city"] as! String
         companyName = snapShotValue["companyName"] as! String
@@ -61,6 +64,6 @@ struct AddResumeModel {
     }
     
     func convertToDictinary() -> Any {
-        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email,"favorit" : favorit, "userId" : userId]
+        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "position" : position, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email,"favorit" : favorit, "userId" : userId]
     }
 }

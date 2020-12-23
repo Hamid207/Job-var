@@ -15,21 +15,18 @@ protocol CreatResumeTargetViewModelProtocl {
     func setResume(addResumeModel: AddResumeModel)
     var name: String? {get set}
     var setData: SetDataProtocol? { get set}
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?, cityVC: CityNameTest?)
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?)
 }
 
 final class CreatResumeTargetViewModel: CreatResumeTargetViewModelProtocl {
     var setData: SetDataProtocol?
-    var cityVC: CityNameTest?
-    
     var name: String?
     private var firebaseSet: FirebaseSetProtocol?
     private let router: RouterProtocol?
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?, cityVC: CityNameTest?) {
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?) {
         self.router = router
         self.firebaseSet = firebaseSet
         self.setData = setData
-        self.cityVC = cityVC
     }
     
     func firebaseCurrentUser() {
@@ -38,9 +35,7 @@ final class CreatResumeTargetViewModel: CreatResumeTargetViewModelProtocl {
     
     func firebaseObserve() {
         //firebaseSet?.observeAddResumeModel()
-        name = setData?.cityName
-        print("TEST33 ===-== \(setData?.cityName)")
-        
+                
     }
     
     func removeAllObservers() {

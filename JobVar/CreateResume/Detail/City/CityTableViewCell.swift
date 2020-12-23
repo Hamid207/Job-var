@@ -8,9 +8,9 @@
 import UIKit
 
 
-class CityDetailTableViewCell: UITableViewCell {
+class CityTableViewCell: UITableViewCell {
         
-    private let cityName: UILabel = {
+     let cityName: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

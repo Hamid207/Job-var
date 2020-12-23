@@ -145,7 +145,7 @@ class Router: RouterProtocol {
     
     func popVc() {
         if let navigationController = naviGationController {
-            navigationController.dismiss(animated: true, completion: nil)
+            navigationController.popViewController(animated: true)
         }
     }
     

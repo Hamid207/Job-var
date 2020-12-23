@@ -11,7 +11,7 @@ extension MainViewController {
     
     func setupView() {
         
-    //MARK: - MAINCOLLECTIONVIEW
+        //MARK: - MAINCOLLECTIONVIEW
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: "mainCollectionViewCellId")
@@ -26,16 +26,16 @@ extension MainViewController {
         mainCollectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
         
         
-    //MARK - MAINTABLEVIEW
+        //MARK - MAINTABLEVIEW
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .none
         mainTableView.register(MainTableViewViewCell.self, forCellReuseIdentifier: mainViewModel!.mainTableViewCellId)
         //mainTableView.register(SecondMainTableViewCell.self, forCellReuseIdentifier: mainViewModel!.secondTableVIewCellId)
         mainTableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        mainTableView.rowHeight = UITableView.automaticDimension
-//        mainTableView.estimatedRowHeight = 300
-//        mainTableView.sectionFooterHeight = 10
+        //        mainTableView.rowHeight = UITableView.automaticDimension
+        //        mainTableView.estimatedRowHeight = 300
+        //        mainTableView.sectionFooterHeight = 10
         //mainTableView.sectionHeaderHeight = 15
         view.addSubview(mainTableView)
         mainTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -48,14 +48,7 @@ extension MainViewController {
 
 //MARK: - UICollectionViewDataSource
 extension MainViewController: UITableViewDataSource {
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return 1
-//        }
         return mainViewModel?.firebaseSet?.addResumeArray?.count ?? 0
     }
     
@@ -65,28 +58,11 @@ extension MainViewController: UITableViewDataSource {
             cell.refresh(item!)
             return cell
         }
-        
-//        if indexPath.section == 1 {
-//
-//        }
-        
-//        if let secondCell =  tableView.dequeueReusableCell(withIdentifier: mainViewModel!.secondTableVIewCellId, for: indexPath) as? SecondMainTableViewCell {
-//            let item = collectionVIewARRayTest
-//            secondCell.viewController = self
-//            secondCell.names = item
-//        }
         return UITableViewCell()
     }
-
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        if section == 0 {
-//            return "Vakansiya"
-//        }
-//        if section == 0 {
-//            return ""
-//        }
         return "Sizə uyğun elanlar"
-
     }
     
     //tableVIew section desing
@@ -98,7 +74,6 @@ extension MainViewController: UITableViewDataSource {
         header.textLabel?.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
         header.textLabel?.textColor =  UIColor.black
     }
-    
 }
 
 //MARK: - UITableViewDelegate
@@ -109,12 +84,9 @@ extension MainViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        if indexPath.section == 0 {
-    //            return 150
-    //        }
-            return 200
-        }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220
+    }
 }
 
 //MARK: - ---------------------------------- UICollectionView
@@ -162,5 +134,5 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     }
     
     
-
+    
 }

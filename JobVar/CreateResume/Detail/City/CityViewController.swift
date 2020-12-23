@@ -1,13 +1,28 @@
 //
-//  CityDetailViewController + Extension.swift
+//  Test1ViewController.swift
 //  JobVar
 //
-//  Created by Hamid Manafov on 17.12.20.
+//  Created by Hamid Manafov on 22.12.20.
 //
 
 import UIKit
 
-extension CityDetailViewController {
+class CityViewController: UIViewController {
+    
+    let tableView = UITableView(frame: .zero, style: .plain)
+    var cityArray = ["Baki", "Gence", "Sumqayit", "Sabran"]
+    public var setName: ((String) -> ())?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        setupNavigationBar()
+        itemSetup()
+    }
+    
+}
+
+extension CityViewController {
     func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
@@ -20,7 +35,7 @@ extension CityDetailViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .singleLine
-        tableView.register(CityDetailTableViewCell.self, forCellReuseIdentifier: "cityDetailTableViewCellId")
+        tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cityTableViewCellId")
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //createResumeTargetTableView.sectionFooterHeight = 10
         tableView.sectionHeaderHeight = 10
@@ -34,39 +49,30 @@ extension CityDetailViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension CityDetailViewController: UITableViewDataSource {
+extension CityViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.cityNameArray?.count ?? 1
+        return cityArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cityDetailTableViewCellId", for: indexPath) as? CityDetailTableViewCell{
-            if let item = viewModel?.cityNameArray?[indexPath.row] {
-                cell.update(item)
-            }
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "cityTableViewCellId", for: indexPath) as? CityTableViewCell{
+            let item = cityArray[indexPath.row]
+            cell.cityName.text = item
             return cell
         }
         return UITableViewCell()
     }
-    
-    
 }
 
 //MARK: - UITableViewDelegate
-extension CityDetailViewController: UITableViewDelegate {
+extension CityViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = viewModel?.cityNameArray?[indexPath.row]
-        print("item == \(item)")
-        name = item
-        viewModel?.cityName(name: item!)
-        navigationController?.popViewController(animated: true)
-        
-        //viewModel?.popToVC()
+        let item = cityArray[indexPath.row]
+        setName?(item)
+        dismiss(animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
     }
 }
-
-

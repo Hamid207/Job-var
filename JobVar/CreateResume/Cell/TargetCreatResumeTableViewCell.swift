@@ -48,6 +48,34 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         return label
     }()
     
+    //positionLabel
+    private let positionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        label.textAlignment = .left
+        label.minimumScaleFactor = 0.2
+        label.numberOfLines = 3
+        label.sizeToFit()
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Vəzifə"
+        return label
+    }()
+    
+    //positionTextfiled
+    let positionTextfiled: UITextField = {
+        let textFiled = UITextField()
+        textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        textFiled.textAlignment = .left
+        textFiled.borderStyle = .roundedRect
+//        textFiled.placeholder = "Daxil et..."
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
+        return textFiled
+    }()
+    
+    
     //companyNameLabel
     private let companyNameLabel: UILabel = {
         let label = UILabel()
@@ -70,7 +98,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         textFiled.textAlignment = .left
         textFiled.borderStyle = .roundedRect
-        textFiled.placeholder = "Daxil et..."
+//        textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -95,7 +123,6 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
      let cityButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.setTitle("Seher secin", for: .normal)
         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
@@ -308,7 +335,13 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         textFiled.textAlignment = .left
         textFiled.borderStyle = .roundedRect
-        textFiled.placeholder = "Daxil et..."
+        textFiled.keyboardType = .emailAddress
+        textFiled.textContentType = .emailAddress
+        textFiled.autocapitalizationType = .none
+        textFiled.returnKeyType = .next
+        textFiled.autocorrectionType = .no
+        textFiled.borderStyle = .roundedRect
+//        textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -338,7 +371,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     @objc private func setData() {
         resumeAddInt += 1
         userDefoltss.set(resumeAddInt, forKey: "reqem")
-        let addResume = AddResumeModel(resume: "resume Number - \(resumeAddInt)", cateqoryOneName: nameLabel.text!, cateqoryTwoName: secondNameLabel.text!, companyName: companyNameTextFiled.text!, salary: (minMaasButton.titleLabel?.text!)!, city: cityButton.titleLabel?.text ?? "BAKI ALINMADI(", age: "age", education: "education", workExperience: "workExperience", detailedInfo: infoTextView.text, requirements: requirementsTextView.text, email: emailTextFiled.text!, userId: "")
+        let addResume = AddResumeModel(resume: "\(resumeAddInt)", cateqoryOneName: nameLabel.text!, cateqoryTwoName: secondNameLabel.text!, position: positionTextfiled.text!, companyName: companyNameTextFiled.text!, salary: (minMaasButton.titleLabel?.text!)!, city: cityButton.titleLabel?.text ?? "BAKI ALINMADI(", age: "age", education: "education", workExperience: "workExperience", detailedInfo: infoTextView.text, requirements: requirementsTextView.text, email: emailTextFiled.text!, userId: "")
         delegate?.setResume(addResumeModel: addResume)
     }
     
@@ -354,6 +387,11 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+                
+        positionTextfiled.layer.cornerRadius = 5
+        positionTextfiled.layer.borderWidth = 0.5
+        positionTextfiled.layer.borderColor = UIColor.black.cgColor
+        
         companyNameTextFiled.layer.cornerRadius = 5
         companyNameTextFiled.layer.borderWidth = 0.5
         companyNameTextFiled.layer.borderColor = UIColor.black.cgColor
@@ -403,6 +441,10 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     
     //MARK: - ItemSetup
     private func itemSetup() {
+        positionTextfiled.delegate = self
+        companyNameTextFiled.delegate = self
+        emailTextFiled.delegate = self
+        
         //namelabel
         contentView.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
@@ -415,9 +457,22 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         secondNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         secondNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
+        //positionLabel
+        contentView.addSubview(positionLabel)
+        positionLabel.topAnchor.constraint(equalTo: secondNameLabel.bottomAnchor, constant: 25).isActive = true
+        positionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        positionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        
+        //positionTextfiled
+        contentView.addSubview(positionTextfiled)
+        positionTextfiled.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 10).isActive = true
+        positionTextfiled.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        positionTextfiled.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        positionTextfiled.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
         //companyNameLabel
         contentView.addSubview(companyNameLabel)
-        companyNameLabel.topAnchor.constraint(equalTo: secondNameLabel.bottomAnchor, constant: 30).isActive = true
+        companyNameLabel.topAnchor.constraint(equalTo: positionTextfiled.bottomAnchor, constant: 10).isActive = true
         companyNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //companyNameTextFiled
@@ -438,6 +493,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         cityButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         cityButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         cityButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+//        cityButton.addTarget(self, action: #selector(cityButtonTarget), for: .touchDown)
         
         //ageLabel
         contentView.addSubview(ageLabel)
@@ -549,5 +605,18 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         saveButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         saveButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         saveButton.addTarget(self, action: #selector(setData), for: .touchDown)
+    }
+}
+
+extension TargetCreatResumeTableViewCell: UITextFieldDelegate {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        positionTextfiled.resignFirstResponder()
+        companyNameTextFiled.resignFirstResponder()
+        emailTextFiled.resignFirstResponder()
+        return true
     }
 }
