@@ -8,7 +8,6 @@
 import UIKit
 
 class CreateResumeViewController: UIViewController { //Elan yerleesdirmek yeni istifadeci oz elanin yaradir ---- CreatResumeControllerdaki -> PreciselyCreatResumeViewController -> CreatResumeTargetViewController
-    
     var creatResumeViewModel: CreateResumeViewModelProtocol?
     let createResumeTableView = UITableView(frame: .zero, style: .plain)
     var testArry = [KateqoryModel]()
@@ -24,7 +23,12 @@ class CreateResumeViewController: UIViewController { //Elan yerleesdirmek yeni i
 //        add(string: "Programlasdirma")
         setupNavigationBar()
         tabBarController?.tabBar.isHidden = true
+       
         creatResumeViewModel?.getKateqory(table: createResumeTableView)
+        
+        DispatchQueue.main.async {
+            self.createResumeTableView.reloadData()
+        }
     }
     
     func add(string: String) {

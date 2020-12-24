@@ -23,13 +23,11 @@ class MainViewController: UIViewController {
     }()
     
     var collectionVIewARRayTest = ["Elan yerləşdirin ", "Butun elanlar", "Is axtaranlar"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationItem.title = "MainViewController"
-        DispatchQueue.main.async {
-            self.mainTableView.reloadData()
-        }
         setupView()
         mainViewModel?.firebaseSet?.creatAllResume()
         mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
@@ -38,7 +36,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
-        //mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
+        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
         //mainViewModel?.firebaseSet?.creatAllResume()
     }
     

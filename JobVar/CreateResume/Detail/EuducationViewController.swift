@@ -1,17 +1,18 @@
 //
-//  Test1ViewController.swift
+//  EuducationViewController.swift
 //  JobVar
 //
-//  Created by Hamid Manafov on 22.12.20.
+//  Created by Hamid Manafov on 23.12.20.
 //
 
 import UIKit
 
-class CityViewController: UIViewController {
-    
+class EuducationViewController: UIViewController {
+
     let tableView = UITableView(frame: .zero, style: .plain)
-    var cityArray = ["Baki", "Gence", "Sumqayit", "Sabran"]
-    public var setName: ((String) -> ())?
+    var educationArray = ["Elmi derece", "Ali", "Natamam ali", "Orta texniki", "Orta xususi", "Orta"]
+    
+    public var setEducation: ((String) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class CityViewController: UIViewController {
     
 }
 
-extension CityViewController {
+extension EuducationViewController {
     func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
@@ -35,7 +36,7 @@ extension CityViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .singleLine
-        tableView.register(CityTableViewCell.self, forCellReuseIdentifier: "cityTableViewCellId")
+        tableView.register(CreatResumeDetailTableViewCell.self, forCellReuseIdentifier: "creatResumeDetailTableViewCellId")
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //createResumeTargetTableView.sectionFooterHeight = 10
         tableView.sectionHeaderHeight = 10
@@ -49,15 +50,15 @@ extension CityViewController {
 }
 
 //MARK: - UITableViewDataSource
-extension CityViewController: UITableViewDataSource {
+extension EuducationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cityArray.count
+        return educationArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cityTableViewCellId", for: indexPath) as? CityTableViewCell{
-            let item = cityArray[indexPath.row]
-            cell.cityName.text = item
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "creatResumeDetailTableViewCellId", for: indexPath) as? CreatResumeDetailTableViewCell{
+            let item = educationArray[indexPath.row]
+            cell.update(item)
             return cell
         }
         return UITableViewCell()
@@ -65,10 +66,10 @@ extension CityViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension CityViewController: UITableViewDelegate {
+extension EuducationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = cityArray[indexPath.row]
-        setName?(item)
+        let item = educationArray[indexPath.row]
+        setEducation?(item)
         dismiss(animated: true, completion: nil)
     }
     

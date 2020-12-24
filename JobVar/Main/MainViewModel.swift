@@ -16,7 +16,7 @@ protocol MainViewModelProtocol {
     func tapOnTheJobVacancy()
     func tapOnTheCreateResume()
     func tapOnTheIsAxtaranlar()
-    var arryy: [AddResumeModel]? { get set }
+    var addResumeArray: [AddResumeModel]? { get set }
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol)
 }
 
@@ -24,7 +24,7 @@ final class MainViewModel: MainViewModelProtocol {
     var mainTableViewCellId: String = "MainTableViewCellId"
     var secondTableVIewCellId: String = "SecondTableVIewCellId"
     var firebaseSet: FirebaseSetProtocol?
-    var arryy: [AddResumeModel]?
+    var addResumeArray: [AddResumeModel]?
     private let router: RouterProtocol?
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol) {
         self.router = router

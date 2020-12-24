@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SalaryViewController" customModule="JobVar" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButtonoutlet" destination="DVM-Jc-orC" id="4UF-dW-4w7"/>
+                <outlet property="startButtonOutlet" destination="lgh-vn-tZB" id="597-lA-fDY"/>
+                <outlet property="timerPicker" destination="llY-lX-pPV" id="5mP-8X-fT5"/>
+                <outlet property="view" destination="7fA-4L-OqH" id="c0s-fT-BmP"/>
+                <outlet property="view1" destination="PL8-Pb-Edi" id="0Tf-0x-nd0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="7fA-4L-OqH">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="PL8-Pb-Edi">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="ULO-W2-3vD"/>
+                </view>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7rd-ss-Jwt">
+                    <rect key="frame" x="27" y="320" width="360" height="256"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llY-lX-pPV">
+                            <rect key="frame" x="0.0" y="0.0" width="360" height="216"/>
+                        </pickerView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgh-vn-tZB">
+                            <rect key="frame" x="180" y="216" width="180" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="180" id="cOb-OA-bhp"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="ec7-Zf-PIv"/>
+                                <constraint firstAttribute="height" constant="40" id="tdW-2Q-UUL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVM-Jc-orC">
+                            <rect key="frame" x="0.0" y="216" width="180" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="i9d-o1-4a4"/>
+                                <constraint firstAttribute="width" constant="180" id="xxL-nM-OaR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleColor" systemColor="darkTextColor"/>
+                            </state>
+                            <connections>
+                                <action selector="cancelButtonAction:" destination="-1" eventType="touchUpInside" id="iN4-d2-q4n"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="DVM-Jc-orC" firstAttribute="top" secondItem="llY-lX-pPV" secondAttribute="bottom" id="FQV-xb-y9V"/>
+                        <constraint firstAttribute="trailing" secondItem="lgh-vn-tZB" secondAttribute="trailing" id="Ptp-ev-3Rw"/>
+                        <constraint firstAttribute="trailing" secondItem="llY-lX-pPV" secondAttribute="trailing" id="YIQ-k2-NLq"/>
+                        <constraint firstAttribute="bottom" secondItem="lgh-vn-tZB" secondAttribute="bottom" id="gxu-uY-hcg"/>
+                        <constraint firstItem="lgh-vn-tZB" firstAttribute="top" secondItem="llY-lX-pPV" secondAttribute="bottom" id="nm2-eg-G9v"/>
+                        <constraint firstItem="llY-lX-pPV" firstAttribute="leading" secondItem="7rd-ss-Jwt" secondAttribute="leading" id="thB-Pr-I04"/>
+                        <constraint firstItem="llY-lX-pPV" firstAttribute="top" secondItem="7rd-ss-Jwt" secondAttribute="top" id="vO7-Cz-Gzx"/>
+                        <constraint firstItem="DVM-Jc-orC" firstAttribute="leading" secondItem="7rd-ss-Jwt" secondAttribute="leading" id="weS-Rp-dkJ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="hwI-4A-APs"/>
+            <constraints>
+                <constraint firstItem="7rd-ss-Jwt" firstAttribute="centerY" secondItem="7fA-4L-OqH" secondAttribute="centerY" id="YLz-Mb-Kil"/>
+                <constraint firstItem="7rd-ss-Jwt" firstAttribute="leading" secondItem="hwI-4A-APs" secondAttribute="leading" constant="27" id="Zhw-15-pmc"/>
+                <constraint firstItem="7rd-ss-Jwt" firstAttribute="top" secondItem="hwI-4A-APs" secondAttribute="top" constant="276" id="tJs-sD-oGf"/>
+                <constraint firstItem="7rd-ss-Jwt" firstAttribute="centerX" secondItem="7fA-4L-OqH" secondAttribute="centerX" id="xQ9-dD-I3g"/>
+            </constraints>
+            <point key="canvasLocation" x="-43.478260869565219" y="87.723214285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="darkTextColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

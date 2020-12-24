@@ -17,8 +17,16 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     var resumeAddInt = 0
     var userDefoltss = UserDefaults.standard
     
+    var minSalary = ["300", "400", "500", "600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000", "3100", "3200", "3400", "3500", "3600", "3700", "3800", "3900"]
+    var maxSalary = ["400", "500", "600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000", "3100", "3200", "3400", "3500", "3600", "3700", "3800", "3900", "4000", "4100", "4500", "4600"]
+    var age = ["18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
+               "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64"]
+    var maxAge = ["19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
+                  "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64"]
+
+    
     //nameLabel
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
@@ -44,7 +52,6 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Mobile developer"
         return label
     }()
     
@@ -145,26 +152,28 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         return label
     }()
     
-    //minAgeButton
-    private let minAgeButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle("Min", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        return button
+    //minAgeTextfiled
+    let minAgeTextfiled: UITextField = {
+        let textFiled = UITextField()
+        textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        textFiled.textAlignment = .left
+        textFiled.borderStyle = .roundedRect
+        textFiled.text = "18"
+        textFiled.textAlignment = .center
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
+        return textFiled
     }()
     
-    //maxAgeButton
-    private let maxAgeButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle("Max", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        return button
+    //maxAgeTextfiled
+    let maxAgeTextfiled: UITextField = {
+        let textFiled = UITextField()
+        textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        textFiled.textAlignment = .left
+        textFiled.borderStyle = .roundedRect
+        textFiled.placeholder = "Max"
+        textFiled.textAlignment = .center
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
+        return textFiled
     }()
     
     //maashLabel
@@ -179,32 +188,33 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Maaş"
+        label.text = "Maaş AZN"
         return label
     }()
     
-    
-    //minMaasButton
-    private let minMaasButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle("Min", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        return button
+    //minMaasTextfiled
+    let minMaasTextfiled: UITextField = {
+        let textFiled = UITextField()
+        textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        textFiled.textAlignment = .left
+        textFiled.borderStyle = .roundedRect
+        textFiled.text = "300"
+        textFiled.textAlignment = .center
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
+        return textFiled
     }()
     
     
-    //maxMaasButton
-    private let maxMaasButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        button.setTitle("Maks", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        return button
+    //maxMaasTextfiled
+    let maxMaasTextfiled: UITextField = {
+        let textFiled = UITextField()
+        textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        textFiled.textAlignment = .left
+        textFiled.borderStyle = .roundedRect
+        textFiled.textAlignment = .center
+        textFiled.placeholder = "Max"
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
+        return textFiled
     }()
     
     //euducationLabel
@@ -224,7 +234,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //educationButton
-    private let educationButton: UIButton = {
+     let educationButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         //button.setTitle("Seher secin", for: .normal)
@@ -251,7 +261,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //workExperienceButton
-    private let workExperienceButton: UIButton = {
+     let workExperienceButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         //button.setTitle("Seher secin", for: .normal)
@@ -357,10 +367,16 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         return button
     }()
     
+    var minAgePickerView = UIPickerView()
+    var maxAgePickerView = UIPickerView()
+    var minSalaryPickerView = UIPickerView()
+    var maxSalaryPickerView = UIPickerView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         itemSetup()
         resumeAddInt = userDefoltss.object(forKey: "reqem") as? Int ?? 0
+        doneButton()
     }
     
     required init?(coder: NSCoder) {
@@ -371,19 +387,50 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     @objc private func setData() {
         resumeAddInt += 1
         userDefoltss.set(resumeAddInt, forKey: "reqem")
-        let addResume = AddResumeModel(resume: "\(resumeAddInt)", cateqoryOneName: nameLabel.text!, cateqoryTwoName: secondNameLabel.text!, position: positionTextfiled.text!, companyName: companyNameTextFiled.text!, salary: (minMaasButton.titleLabel?.text!)!, city: cityButton.titleLabel?.text ?? "BAKI ALINMADI(", age: "age", education: "education", workExperience: "workExperience", detailedInfo: infoTextView.text, requirements: requirementsTextView.text, email: emailTextFiled.text!, userId: "")
+        var age = String()
+        var salary = String()
+        guard let minAge = minAgeTextfiled.text, let maxAge = maxAgeTextfiled.text, let minSalary = minMaasTextfiled.text, let maxSalary = maxMaasTextfiled.text else { return }
+        if maxAgeTextfiled.text == "" {
+            age = "\(minAge)"
+        }else {
+            age = "\(minAge) - \(maxAge)"
+        }
+        
+        if maxMaasTextfiled.text == "" {
+            salary = "\(minSalary) AZN"
+        }else {
+            salary = "\(minSalary) - \(maxSalary) AZN"
+        }
+        
+        let addResume = AddResumeModel(resume: "\(resumeAddInt)", cateqoryOneName: nameLabel.text!, cateqoryTwoName: secondNameLabel.text!, position: positionTextfiled.text!, companyName: companyNameTextFiled.text!, salary: salary, city: "\(String(describing: cityButton.titleLabel?.text))." , age: age, education: educationButton.titleLabel?.text ?? "", workExperience: workExperienceButton.titleLabel?.text ?? "", detailedInfo: infoTextView.text, requirements: requirementsTextView.text, email: emailTextFiled.text!, userId: "")
         delegate?.setResume(addResumeModel: addResume)
     }
     
     
-    @objc func minMaasButtonTarget() {
-        minMaasButton.setTitle("500 AZN", for: .normal)
+    func refresh(cityName: String, education: String, workExperiene: String, resumeModel: Kateqory?, target: String?) {
+        nameLabel.text = resumeModel?.name
+        secondNameLabel.text = target
+        educationButton.setTitle(education, for: .normal)
+        cityButton.setTitle(cityName, for: .normal)
+        workExperienceButton.setTitle(workExperiene, for: .normal)
     }
     
-    @objc func maxButtonTarget() {
-        maxMaasButton.setTitle("1500 AZN", for: .normal)
+    func doneButton() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
+        toolBar.setItems([doneButton], animated: true)
+        
+        minAgeTextfiled.inputAccessoryView = toolBar
+        maxAgeTextfiled.inputAccessoryView = toolBar
+        minMaasTextfiled.inputAccessoryView = toolBar
+        maxMaasTextfiled.inputAccessoryView = toolBar
     }
     
+    @objc func donePressed() {
+        self.endEditing(true)
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -400,21 +447,21 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         cityButton.layer.borderWidth = 0.5
         cityButton.layer.borderColor = UIColor.black.cgColor
         
-        minAgeButton.layer.cornerRadius = 5
-        minAgeButton.layer.borderWidth = 0.5
-        minAgeButton.layer.borderColor = UIColor.black.cgColor
+        minAgeTextfiled.layer.cornerRadius = 5
+        minAgeTextfiled.layer.borderWidth = 0.5
+        minAgeTextfiled.layer.borderColor = UIColor.black.cgColor
         
-        maxAgeButton.layer.cornerRadius = 5
-        maxAgeButton.layer.borderWidth = 0.5
-        maxAgeButton.layer.borderColor = UIColor.black.cgColor
+        maxAgeTextfiled.layer.cornerRadius = 5
+        maxAgeTextfiled.layer.borderWidth = 0.5
+        maxAgeTextfiled.layer.borderColor = UIColor.black.cgColor
         
-        minMaasButton.layer.cornerRadius = 5
-        minMaasButton.layer.borderWidth = 0.5
-        minMaasButton.layer.borderColor = UIColor.black.cgColor
+        minMaasTextfiled.layer.cornerRadius = 5
+        minMaasTextfiled.layer.borderWidth = 0.5
+        minMaasTextfiled.layer.borderColor = UIColor.black.cgColor
         
-        maxMaasButton.layer.cornerRadius = 5
-        maxMaasButton.layer.borderWidth = 0.5
-        maxMaasButton.layer.borderColor = UIColor.black.cgColor
+        maxMaasTextfiled.layer.cornerRadius = 5
+        maxMaasTextfiled.layer.borderWidth = 0.5
+        maxMaasTextfiled.layer.borderColor = UIColor.black.cgColor
         
         educationButton.layer.cornerRadius = 5
         educationButton.layer.borderWidth = 0.5
@@ -439,11 +486,36 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         saveButton.layer.cornerRadius = 5
     }
     
+    
     //MARK: - ItemSetup
     private func itemSetup() {
         positionTextfiled.delegate = self
         companyNameTextFiled.delegate = self
         emailTextFiled.delegate = self
+        minAgeTextfiled.delegate = self
+        maxAgeTextfiled.delegate = self
+        minMaasTextfiled.delegate = self
+        maxMaasTextfiled.delegate = self
+        
+        minAgePickerView.delegate = self
+        minAgePickerView.dataSource = self
+        maxAgePickerView.delegate = self
+        maxAgePickerView.dataSource = self
+    
+        minSalaryPickerView.delegate = self
+        minSalaryPickerView.dataSource = self
+        maxSalaryPickerView.delegate = self
+        maxSalaryPickerView.dataSource = self
+        
+        minAgePickerView.tag = 1
+        maxAgePickerView.tag = 2
+        minSalaryPickerView.tag = 3
+        maxSalaryPickerView.tag = 4
+        
+        minAgeTextfiled.inputView = minAgePickerView
+        maxAgeTextfiled.inputView = maxAgePickerView
+        minMaasTextfiled.inputView = minSalaryPickerView
+        maxMaasTextfiled.inputView = maxSalaryPickerView
         
         //namelabel
         contentView.addSubview(nameLabel)
@@ -472,7 +544,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         
         //companyNameLabel
         contentView.addSubview(companyNameLabel)
-        companyNameLabel.topAnchor.constraint(equalTo: positionTextfiled.bottomAnchor, constant: 10).isActive = true
+        companyNameLabel.topAnchor.constraint(equalTo: positionTextfiled.bottomAnchor, constant: 20).isActive = true
         companyNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //companyNameTextFiled
@@ -500,44 +572,42 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         ageLabel.topAnchor.constraint(equalTo: cityButton.bottomAnchor, constant: 20).isActive = true
         ageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
-        //minAgeButton
-        contentView.addSubview(minAgeButton)
-        minAgeButton.topAnchor.constraint(equalTo: ageLabel.bottomAnchor, constant: 10).isActive = true
-        minAgeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        minAgeButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
-        minAgeButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        //minAgeTextfiled
+        contentView.addSubview(minAgeTextfiled)
+        minAgeTextfiled.topAnchor.constraint(equalTo: ageLabel.bottomAnchor, constant: 10).isActive = true
+        minAgeTextfiled.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        minAgeTextfiled.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
+        minAgeTextfiled.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         //maxAgeButton
-        contentView.addSubview(maxAgeButton)
-        maxAgeButton.topAnchor.constraint(equalTo: ageLabel.bottomAnchor, constant: 10).isActive = true
-        maxAgeButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        maxAgeButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
-        maxAgeButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        contentView.addSubview(maxAgeTextfiled)
+        maxAgeTextfiled.topAnchor.constraint(equalTo: ageLabel.bottomAnchor, constant: 10).isActive = true
+        maxAgeTextfiled.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        maxAgeTextfiled.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
+        maxAgeTextfiled.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         //maashLabel
         contentView.addSubview(maashLabel)
-        maashLabel.topAnchor.constraint(equalTo: minAgeButton.bottomAnchor, constant: 20).isActive = true
+        maashLabel.topAnchor.constraint(equalTo: minAgeTextfiled.bottomAnchor, constant: 20).isActive = true
         maashLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //minMaasButton
-        contentView.addSubview(minMaasButton)
-        minMaasButton.topAnchor.constraint(equalTo: maashLabel.bottomAnchor, constant: 10).isActive = true
-        minMaasButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        minMaasButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
-        minMaasButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        minMaasButton.addTarget(self, action: #selector(minMaasButtonTarget), for: .touchDown)
+        contentView.addSubview(minMaasTextfiled)
+        minMaasTextfiled.topAnchor.constraint(equalTo: maashLabel.bottomAnchor, constant: 10).isActive = true
+        minMaasTextfiled.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        minMaasTextfiled.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
+        minMaasTextfiled.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
-        //maxButton
-        contentView.addSubview(maxMaasButton)
-        maxMaasButton.topAnchor.constraint(equalTo: maashLabel.bottomAnchor, constant: 10).isActive = true
-        maxMaasButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        maxMaasButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
-        maxMaasButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        maxMaasButton.addTarget(self, action: #selector(maxButtonTarget), for: .touchDown)
+        //maxMaasTextfiled
+        contentView.addSubview(maxMaasTextfiled)
+        maxMaasTextfiled.topAnchor.constraint(equalTo: maashLabel.bottomAnchor, constant: 10).isActive = true
+        maxMaasTextfiled.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        maxMaasTextfiled.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/2.5).isActive = true
+        maxMaasTextfiled.heightAnchor.constraint(equalToConstant: 44).isActive = true
         
         //euducationLabel
         contentView.addSubview(educationLabel)
-        educationLabel.topAnchor.constraint(equalTo: maxMaasButton.bottomAnchor, constant: 20).isActive = true
+        educationLabel.topAnchor.constraint(equalTo: maxMaasTextfiled.bottomAnchor, constant: 20).isActive = true
         educationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //educationButton
@@ -619,4 +689,56 @@ extension TargetCreatResumeTableViewCell: UITextFieldDelegate {
         emailTextFiled.resignFirstResponder()
         return true
     }
+}
+
+extension TargetCreatResumeTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView.tag {
+        case 1:
+            return age.count
+        case 2:
+            return maxAge.count
+        case 3:
+            return minSalary.count
+        case 4:
+            return maxSalary.count
+        default:
+           return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView.tag {
+        case 1:
+            return age[row]
+        case 2:
+            return maxAge[row]
+        case 3:
+            return minSalary[row]
+        case 4:
+            return maxSalary[row]
+        default:
+           return ""
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        switch pickerView.tag {
+        case 1:
+            minAgeTextfiled.text = age[row]
+        case 2:
+            maxAgeTextfiled.text = maxAge[row]
+        case 3:
+            minMaasTextfiled.text = minSalary[row]
+        case 4:
+            maxMaasTextfiled.text = maxSalary[row]
+        default:
+            break
+        }
+    }
+    
 }

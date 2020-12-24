@@ -30,16 +30,13 @@ extension CreateResumeViewController {
 extension CreateResumeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return testArry.count
-        return creatResumeViewModel?.kaeteqory?.count ?? 0
+        return creatResumeViewModel?.resumeModel?.result.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "createResumeTableViewCellId", for: indexPath) as! CreateResumeTableViewCell
-        //guard let item = creatResumeViewModel?.kateqoryArray?[indexPath.row] else { return UITableViewCell()}
-       // cell.nameLabel.text = testArry[indexPath.row].kateqory
-//        cell.nameLabel.text = item
-        let item = creatResumeViewModel?.kaeteqory?[indexPath.row]
-        cell.textLabel?.text = item?.email
+        let item = creatResumeViewModel?.resumeModel?.result[indexPath.row].name
+        cell.nameLabel.text = item
         cell.accessoryType = .disclosureIndicator// tableVIewda > isaresi olsundeye
         return cell
     }
@@ -48,12 +45,13 @@ extension CreateResumeViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension CreateResumeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        creatResumeViewModel?.tapOnThePeciselyVc()
+        let item = creatResumeViewModel?.resumeModel?.result[indexPath.row]
+        creatResumeViewModel?.tapOnThePeciselyVc(resumeModel: item)
         tableView.deselectRow(at: indexPath, animated: true)
         print("indexpath === \(indexPath)")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 55
     }
 }

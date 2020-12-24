@@ -29,12 +29,13 @@ extension PreciselyCreatResumeViewController{
 //MARK: - UITableViewDataSource
 extension PreciselyCreatResumeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return viewModel?.resumeModel?.nameTwo.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "preciselyCreatResumeTableViewCellId", for: indexPath) as? PreciselyCreatResumeTableViewCell {
-            cell.nameLabel.text = "Mobile Developer"
+            let item = viewModel?.resumeModel?.nameTwo[indexPath.row]
+            cell.nameLabel.text = item
             cell.accessoryType = .disclosureIndicator
             return cell
         }
@@ -47,12 +48,14 @@ extension PreciselyCreatResumeViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension PreciselyCreatResumeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.tapOnThePreciselyCreatResumeVc()
+        let item = viewModel?.resumeModel
+        let item2 = viewModel?.resumeModel?.nameTwo[indexPath.row]
+        viewModel?.tapOnThePreciselyCreatResumeVc(resumeModel: item, target: item2)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65
+        return 55
     }
 }
 

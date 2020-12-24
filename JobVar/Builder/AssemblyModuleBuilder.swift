@@ -12,8 +12,8 @@ protocol AsseblyBuilderProtocol {
     func creatDetailModule(router: RouterProtocol, addreseumeModel: AddResumeModel?) -> UIViewController
     func creatJobVacanxyModule(router: RouterProtocol) -> UIViewController
     func creatCreateResumeViewControllerModlue(router: RouterProtocol) -> UIViewController
-    func creatPreciselyCreatResumeViewControllerModule(router: RouterProtocol) -> UIViewController
-    func creatCreatResumeTargetViewControllerModule(router: RouterProtocol) -> UIViewController
+    func creatPreciselyCreatResumeViewControllerModule(router: RouterProtocol, resumeModel: Kateqory?) -> UIViewController
+    func creatCreatResumeTargetViewControllerModule(router: RouterProtocol, resumeModel: Kateqory?, target: String?) -> UIViewController
     func creatIshAxtaranlarModule(router: RouterProtocol) -> UIViewController
     func creatUserViewController(router: RouterProtocol) -> UIViewController
     func creatUserSettingViewControllerModule(router: RouterProtocol, userInfoModel: UserInfoModel?) -> UIViewController
@@ -65,19 +65,19 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
     }
     
     //creatPreciselyCreatResumeViewControllerModule
-    func creatPreciselyCreatResumeViewControllerModule(router: RouterProtocol) -> UIViewController {
+    func creatPreciselyCreatResumeViewControllerModule(router: RouterProtocol, resumeModel: Kateqory?) -> UIViewController {
         let view = PreciselyCreatResumeViewController()
-        let viewModel = PreciselyCreatResumeViewModel(router: router)
+        let viewModel = PreciselyCreatResumeViewModel(router: router, resumeModel: resumeModel)
         view.viewModel = viewModel
         return view
     }
     
     //creatCreatResumeTargetViewControllerModule
-    func creatCreatResumeTargetViewControllerModule(router: RouterProtocol) -> UIViewController {
+    func creatCreatResumeTargetViewControllerModule(router: RouterProtocol, resumeModel: Kateqory?, target: String?) -> UIViewController {
         let view = CreatResumeTargetViewController()
         let firebaseSet = FirebaseSet()
         let setDaata = SetData()
-        let viewModel = CreatResumeTargetViewModel(router: router, firebaseSet: firebaseSet, setData: setDaata)
+        let viewModel = CreatResumeTargetViewModel(router: router, firebaseSet: firebaseSet, setData: setDaata, resumeModel: resumeModel, target: target)
         view.viewModel = viewModel
         return view
     }

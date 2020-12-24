@@ -14,7 +14,7 @@ class MainTableViewViewCell: UITableViewCell {
     //positionLabel
     private let positionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
@@ -29,7 +29,7 @@ class MainTableViewViewCell: UITableViewCell {
     //cateqoryTwoName
     private let cateqoryTwoName: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
@@ -44,7 +44,7 @@ class MainTableViewViewCell: UITableViewCell {
     //cityLabel
     private let cityLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
         label.sizeToFit()
@@ -57,7 +57,7 @@ class MainTableViewViewCell: UITableViewCell {
     //priceLabel
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
         label.sizeToFit()
@@ -74,7 +74,7 @@ class MainTableViewViewCell: UITableViewCell {
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         label.minimumScaleFactor = 0.2
         label.textAlignment = .left
-        label.numberOfLines = 3
+        label.numberOfLines = 6
         label.lineBreakMode = .byWordWrapping
         label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
@@ -98,7 +98,7 @@ class MainTableViewViewCell: UITableViewCell {
     //resumeAddData
     private let resumeAddData: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
         label.sizeToFit()
@@ -162,30 +162,31 @@ class MainTableViewViewCell: UITableViewCell {
         positionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         positionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
-        //cateqoryTwoName
-        contentView.addSubview(cateqoryTwoName)
-        cateqoryTwoName.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 5).isActive = true
-        cateqoryTwoName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        cateqoryTwoName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+//        //cateqoryTwoName
+//        contentView.addSubview(cateqoryTwoName)
+//        cateqoryTwoName.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 5).isActive = true
+//        cateqoryTwoName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+//        cateqoryTwoName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
         //CITYLABEL
         contentView.addSubview(cityLabel)
-        cityLabel.topAnchor.constraint(equalTo: cateqoryTwoName.bottomAnchor, constant: 5).isActive = true
+        cityLabel.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 5).isActive = true
         cityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        
+        //PRICELABEL
+        contentView.addSubview(priceLabel)
+        priceLabel.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 5).isActive = true
+        priceLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 15).isActive = true
         
         //CILIENTNAMELABEL
         contentView.addSubview(cilientNameLabel)
         cilientNameLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 5).isActive = true
         cilientNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
-        //PRICELABEL
-        contentView.addSubview(priceLabel)
-        priceLabel.topAnchor.constraint(equalTo: cilientNameLabel.bottomAnchor, constant: 5).isActive = true
-        priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
         //INFOTEXTLABEL
         contentView.addSubview(infoTextLabel)
-        infoTextLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 6).isActive = true
+        infoTextLabel.topAnchor.constraint(equalTo: cilientNameLabel.bottomAnchor, constant: 6).isActive = true
         infoTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         infoTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
@@ -202,9 +203,10 @@ class MainTableViewViewCell: UITableViewCell {
         
         //lineView
         contentView.addSubview(lineView)
-        lineView.topAnchor.constraint(equalTo: favoritesButton.bottomAnchor, constant: 5).isActive = true
+//        lineView.topAnchor.constraint(equalTo: favoritesButton.bottomAnchor, constant: 5).isActive = true
         lineView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         lineView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        lineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true        
+        lineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        lineView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
     }
 }

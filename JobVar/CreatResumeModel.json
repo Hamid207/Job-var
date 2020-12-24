@@ -1,0 +1,42 @@
+{
+    "result":[
+        {
+            "name": "Maliyyə",
+            "nameTwo": ["Sığorta", "Audit", "Mühasibat", "Maliyyə analiz", "Bank xidməti", "Kassir", "İqtisadçı", "Digər"]
+        },
+        {
+            "name": "Marketinq",
+            "nameTwo": [ "Marketinq menecment", "İctimayətlə əlaqələ", "Reklam", "Kopiraytinq"]
+        },
+        {
+            "name": "İnformasiya texnologiyaları",
+            "nameTwo": ["Sistem idarəetməsi", "Məlumat bazasının idarə edilməsi və inkişaf", "İT mütəxəssisi / məsləhətçi", "Proqramlaşdırma", "İT layihələrin idarə edilməsi", "Texniki avadanlıq mütəxəssisi", "Digər"]
+        },
+        {
+            "name": "Satış",
+            "nameTwo": ["Daşınmaz əmlak agenti / makler", "Satış üzrə mütəxəssis"]
+        },
+        {
+            "name": "Dizayn",
+            "nameTwo": ["Veb-dizayn", "Memar / İnteryer dizaynı", "Geyim dizaynı", "Rəssam", "Digər"]
+        },
+        {
+            "name": "Hüquqşünaslıq",
+            "nameTwo": ["Vəkil", "Cinayət hüququ", "Hüquqşünas", "Digər"]
+        },
+        {
+            "name": "Təhsil və elm",
+            "nameTwo": ["Universitet tədrisi", "Repetitor", "Xüsusi təhsil/ Təlim", "Digər"]
+        },
+        {
+            "name": "Sənaye və kənd təsərrüfatı",
+            "nameTwo": ["Avtomatlaşdırılmış idarəetmə", "Tikinti", "Kənd təsərrüfatı", "Mühəndis", "Geologiya və ətraf mühit", "Digər"]
+        },
+        {
+            "name": "Xidmət",
+            "nameTwo": ["Xadimə", "Anbardar", "Restoran işi", "Sürücü", "Dayə", "Fəhlə", "Turizm və mehmanxana işi", "Tərcüməçi", "Mühafizə xidməti", "Digər", "Kuryer"]
+        }
+        ]
+    
+}
+

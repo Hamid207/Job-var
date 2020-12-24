@@ -30,6 +30,7 @@ extension MainViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .none
+        mainTableView.showsVerticalScrollIndicator = false
         mainTableView.register(MainTableViewViewCell.self, forCellReuseIdentifier: mainViewModel!.mainTableViewCellId)
         //mainTableView.register(SecondMainTableViewCell.self, forCellReuseIdentifier: mainViewModel!.secondTableVIewCellId)
         mainTableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)

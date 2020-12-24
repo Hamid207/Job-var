@@ -1,5 +1,5 @@
 //
-//  CityDetailTableViewCell.swift
+//  DetailTableViewCell.swift
 //  JobVar
 //
 //  Created by Hamid Manafov on 17.12.20.
@@ -8,9 +8,9 @@
 import UIKit
 
 
-class CityTableViewCell: UITableViewCell {
+class CreatResumeDetailTableViewCell: UITableViewCell {
         
-     let cityName: UILabel = {
+     private let cityName: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

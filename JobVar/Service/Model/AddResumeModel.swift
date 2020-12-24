@@ -64,6 +64,6 @@ struct AddResumeModel {
     }
     
     func convertToDictinary() -> Any {
-        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "position" : position, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email,"favorit" : favorit, "userId" : userId]
+        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "position" : position, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email, "favorit" : favorit, "userId" : userId]
     }
 }

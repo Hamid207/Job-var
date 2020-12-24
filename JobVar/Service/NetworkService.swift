@@ -8,6 +8,8 @@
 import Foundation
 protocol NetworkServiceProtocol {
     func getComment(completion: @escaping (Result<[Comment]?, Error >) -> Void)
+    func getResumeModel(completion: @escaping (Result<CreatResumeModel?, Error>) -> Void)
+    
 }
 
 class NetworkService: NetworkServiceProtocol {
@@ -31,6 +33,21 @@ class NetworkService: NetworkServiceProtocol {
     }
     
     
+    func getResumeModel(completion: @escaping (Result<CreatResumeModel?, Error>) -> Void) {
+        
+        guard let path = Bundle.main.path(forResource: "CreatResumeModel", ofType: "json") else {
+            return
+        }
+        let url = URL(fileURLWithPath: path)
+        do {
+            let jsonData = try Data(contentsOf: url)
+            let result = try JSONDecoder().decode(CreatResumeModel.self, from: jsonData)
+            completion(.success(result))
+        } catch  {
+            completion(.failure(error))
+            print("Error: \(error)")
+        }
+    }
     
     
 }

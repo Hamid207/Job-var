@@ -13,20 +13,30 @@ protocol CreatResumeTargetViewModelProtocl {
     func removeAllObservers()
     func showCityDetailVC()
     func setResume(addResumeModel: AddResumeModel)
-    var name: String? {get set}
+    var cityName: String? {get set}
+    var educationName: String? {get set}
+    var workExperiene: String? {get set}
     var setData: SetDataProtocol? { get set}
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?)
+    var resumeModel: Kateqory? { get set }
+    var target: String? { get set }
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?, resumeModel: Kateqory?, target: String?)
 }
 
 final class CreatResumeTargetViewModel: CreatResumeTargetViewModelProtocl {
     var setData: SetDataProtocol?
-    var name: String?
+    var resumeModel: Kateqory?
+    var target: String?
+    var cityName: String?
+    var educationName: String?
+    var workExperiene: String?
     private var firebaseSet: FirebaseSetProtocol?
     private let router: RouterProtocol?
-    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?) {
+    init(router: RouterProtocol, firebaseSet: FirebaseSetProtocol?, setData: SetDataProtocol?, resumeModel: Kateqory?, target: String?) {
         self.router = router
         self.firebaseSet = firebaseSet
         self.setData = setData
+        self.resumeModel = resumeModel
+        self.target = target
     }
     
     func firebaseCurrentUser() {

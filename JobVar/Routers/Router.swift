@@ -21,8 +21,8 @@ protocol RouterProtocol: RouterMain {
     func showDetail(addreseumeModel: AddResumeModel)
     func showJobVacancy()
     func showCreatResume()
-    func showPreciselyCreatResume()
-    func showCreatResumeTarget()
+    func showPreciselyCreatResume(resumeModel: Kateqory?)
+    func showCreatResumeTarget(resumeModel: Kateqory?, target: String?)
     func showIshAxtaranlar()
     func showFavaritesDetail(testArray: FeedResponse)
     func showUserSettings(userInfoModel: UserInfoModel)
@@ -95,17 +95,17 @@ class Router: RouterProtocol {
     }
     
     //PreciselyCreatResumeViewController
-    func showPreciselyCreatResume() {
+    func showPreciselyCreatResume(resumeModel: Kateqory?) {
         if let navigationController = naviGationController {
-            guard let preciselyCreatResume = assemblyBuilder?.creatPreciselyCreatResumeViewControllerModule(router: self) else { return }
+            guard let preciselyCreatResume = assemblyBuilder?.creatPreciselyCreatResumeViewControllerModule(router: self, resumeModel: resumeModel) else { return }
             navigationController.pushViewController(preciselyCreatResume, animated: true)
         }
     }
     
     //CreatResumeTargetViewController
-    func showCreatResumeTarget() {
+    func showCreatResumeTarget(resumeModel: Kateqory?, target: String?) {
         if let navigationController = naviGationController {
-            guard let creatResumeTarget = assemblyBuilder?.creatCreatResumeTargetViewControllerModule(router: self) else { return }
+            guard let creatResumeTarget = assemblyBuilder?.creatCreatResumeTargetViewControllerModule(router: self, resumeModel: resumeModel, target: target) else { return }
             navigationController.pushViewController(creatResumeTarget, animated: true)
         }
     }

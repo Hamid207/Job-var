@@ -8,17 +8,20 @@
 import Foundation
 
 protocol PreciselyCreatResumeViewModelPrtotocl {
-    func tapOnThePreciselyCreatResumeVc()
-    init(router: RouterProtocol)
+    func tapOnThePreciselyCreatResumeVc(resumeModel: Kateqory?, target: String?)
+    var resumeModel: Kateqory? { get set }
+    init(router: RouterProtocol, resumeModel: Kateqory?)
 }
 
 final class PreciselyCreatResumeViewModel: PreciselyCreatResumeViewModelPrtotocl {
     private let router: RouterProtocol?
-    init(router: RouterProtocol) {
+    var resumeModel: Kateqory?
+    init(router: RouterProtocol, resumeModel: Kateqory?) {
         self.router = router
+        self.resumeModel = resumeModel
     }
     
-    func tapOnThePreciselyCreatResumeVc() {
-        router?.showCreatResumeTarget()
+    func tapOnThePreciselyCreatResumeVc(resumeModel: Kateqory?, target: String?) {
+        router?.showCreatResumeTarget(resumeModel: resumeModel, target: target)
     }
 }
