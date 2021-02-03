@@ -8,6 +8,13 @@
 import UIKit
 
 extension CreateResumeViewController {
+    func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+            topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
+        }
+    }
+    
     func setupIem() {
         //createResumeTableView.tableFooterView = UIView()
         createResumeTableView.delegate = self
@@ -29,16 +36,17 @@ extension CreateResumeViewController {
 //MARK: - UITableViewDataSource
 extension CreateResumeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return testArry.count
         return creatResumeViewModel?.resumeModel?.result.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "createResumeTableViewCellId", for: indexPath) as! CreateResumeTableViewCell
-        let item = creatResumeViewModel?.resumeModel?.result[indexPath.row].name
-        cell.nameLabel.text = item
-        cell.accessoryType = .disclosureIndicator// tableVIewda > isaresi olsundeye
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "createResumeTableViewCellId", for: indexPath) as? CreateResumeTableViewCell {
+            guard let item = creatResumeViewModel?.resumeModel?.result[indexPath.row].name else { return UITableViewCell() }
+            cell.update(name: item)
+            cell.accessoryType = .disclosureIndicator// tableVIewda > isaresi olsundeye
+            return cell
+        }
+        return UITableViewCell()
     }
 }
 
@@ -48,7 +56,6 @@ extension CreateResumeViewController: UITableViewDelegate {
         let item = creatResumeViewModel?.resumeModel?.result[indexPath.row]
         creatResumeViewModel?.tapOnThePeciselyVc(resumeModel: item)
         tableView.deselectRow(at: indexPath, animated: true)
-        print("indexpath === \(indexPath)")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

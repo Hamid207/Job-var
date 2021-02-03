@@ -91,7 +91,8 @@ final class FirebaseSet: FirebaseSetProtocol {
     
     //creart resume
     func setResume(addResumeModel: AddResumeModel) {
-        let addResume = AddResumeModel(resume: "resume Number - \(resumeRandomIdNumber)N\(addResumeModel.resume)", cateqoryOneName: addResumeModel.cateqoryOneName, cateqoryTwoName: addResumeModel.cateqoryTwoName, position: addResumeModel.position, companyName: addResumeModel.companyName, salary: addResumeModel.salary ?? "salary nil", city: addResumeModel.city, age: addResumeModel.age, education: addResumeModel.education, workExperience: addResumeModel.workExperience, detailedInfo: addResumeModel.detailedInfo, requirements: addResumeModel.requirements, email: addResumeModel.email, userId: "user.uid")
+        let addResume = AddResumeModel(resume: "resume Number - \(resumeRandomIdNumber)N\(addResumeModel.resume)", cateqoryOneName: addResumeModel.cateqoryOneName, cateqoryTwoName: addResumeModel.cateqoryTwoName, position: addResumeModel.position, companyName: addResumeModel.companyName, salary: addResumeModel.salary ?? "salary nil", city: addResumeModel.city, age: addResumeModel.age, education: addResumeModel.education, workExperience: addResumeModel.workExperience, detailedInfo: addResumeModel.detailedInfo, requirements: addResumeModel.requirements, email: addResumeModel.email, userId: "user.uid", resumeAddTime: addResumeModel.resumeAddTime, resumeAddDate: addResumeModel.resumeAddDate)
+        
         //userResume
         firebaseResumeAdd()
         let resumeRef = ref.child(addResume.resume.lowercased())
@@ -150,7 +151,7 @@ final class FirebaseSet: FirebaseSetProtocol {
         }
     }
     
-    func firebaseResumeObserve() {
+    func firebaseResumeObserve() { // buna heleki ehtiyac yoxdu
         let ref = Database.database().reference()
 //        ref.child("allResume")
         ref.child("allResume").observe(.value) { [weak self ](snapshot) in

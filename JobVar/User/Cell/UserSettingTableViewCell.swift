@@ -45,10 +45,9 @@ class UserSettingTableViewCell: UITableViewCell {
     }()
     
     //nameTextField
-     let nameTextFiled: UITextField = {
+    private let nameTextFiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-        textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -125,10 +124,9 @@ class UserSettingTableViewCell: UITableViewCell {
 //    }()
     
     //cityButton
-    private let cityButton: UIButton = {
+    let cityButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Baki", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
@@ -161,26 +159,27 @@ class UserSettingTableViewCell: UITableViewCell {
         return label
     }()
     
-//    //dateTextField
-//    private let dateTextField: UITextField = {
-//        let textFiled = UITextField()
-//        textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
-//        textFiled.placeholder = "Daxil et..."
-//        textFiled.translatesAutoresizingMaskIntoConstraints = false
-//        return textFiled
-//    }()
-    
-    //dateButton
-    private let dateButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("03.26.1994", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        return button
+    //dateTextField
+    private let dateTextField: UITextField = {
+        let textFiled = UITextField()
+        textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        textFiled.textAlignment = .center
+        textFiled.borderStyle = .roundedRect
+        textFiled.translatesAutoresizingMaskIntoConstraints = false
+        return textFiled
     }()
+    
+//    //dateButton
+//    private let dateButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setTitle("03.26.1994", for: .normal)
+//        button.setTitleColor(.black, for: .normal)
+//        button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//
+//        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+//        return button
+//    }()
     
     //datelineVIew
     private let dateLineVIew: UIView = {
@@ -280,17 +279,20 @@ class UserSettingTableViewCell: UITableViewCell {
     }()
     
     //cinsSegmentControl
-    private let cinsSegmentControl: UISegmentedControl = {
-        let segmentArray = ["Kishi", "Qadin"]
-        var segment = UISegmentedControl()
-        segment = UISegmentedControl(items: segmentArray)
-        segment.translatesAutoresizingMaskIntoConstraints = false
-        return segment
-    }()
+//    private let cinsSegmentControl: UISegmentedControl = {
+//        let segmentArray = ["Kishi", "Qadin"]
+//        var segment = UISegmentedControl()
+//        segment = UISegmentedControl(items: segmentArray)
+//        segment.translatesAutoresizingMaskIntoConstraints = false
+//        return segment
+//    }()
+    
+    lazy private var datePickerView = UIDatePicker()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupItem()
+        doneToolbar()
     }
     
     required init?(coder: NSCoder) {
@@ -303,27 +305,35 @@ class UserSettingTableViewCell: UITableViewCell {
         cityButton.layer.cornerRadius = 5
         cityButton.layer.borderColor = UIColor.black.cgColor
         
-        dateButton.layer.borderWidth = 0.5
-        dateButton.layer.cornerRadius = 5
-        dateButton.layer.borderColor = UIColor.black.cgColor
+        dateTextField.layer.borderWidth = 0.5
+        dateTextField.layer.cornerRadius = 5
+        dateTextField.layer.borderColor = UIColor.black.cgColor
+        
+//        dateButton.layer.borderWidth = 0.5
+//        dateButton.layer.cornerRadius = 5
+//        dateButton.layer.borderColor = UIColor.black.cgColor
         
 //        emailButton.layer.borderWidth = 0.5
 //        emailButton.layer.cornerRadius = 5
 //        emailButton.layer.borderColor = UIColor.black.cgColor
     }
     
-    func updateData(userInfoModel: UserInfoModel) {
+    func updateData(userInfoModel: UserInfoModel, cityName: String) {
         nameTextFiled.text = userInfoModel.name
         lastNameTextFiled.text = userInfoModel.lastName
         emailTextField.text = userInfoModel.email
         numberTextField.text = userInfoModel.number
+        cityButton.setTitle(cityName, for: .normal)
+        if dateTextField.text == "" {
+            dateTextField.text = userInfoModel.dateOfBirth
+        }
     }
     
     func setData() {
 //        guard let name = nameTextFiled.text, let lastName = lastNameTextFiled.text, let city = cityButton.titleLabel?.text, let dateOfBirth = dateButton.titleLabel?.text, let email = emailTextField.text, let number = numberTextField.text  else { return}
         guard let name = nameTextFiled.text else { return  }
        // let lastName = lastNameTextFiled.text
-        let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: " ", city: (cityButton.titleLabel?.text)!, image: "nil", dateOfBirth: dateButton.titleLabel?.text, number: numberTextField.text, info: "userInfo", email: " emailllae")
+        let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: "", city: (cityButton.titleLabel?.text) ?? "", image: "nil", dateOfBirth: dateTextField.text, number: numberTextField.text, info: "userInfo", email: emailTextField.text ?? "email nil")
         delegate?.setItem(userInfoModel: userInfoModel)
     }
     
@@ -352,14 +362,57 @@ class UserSettingTableViewCell: UITableViewCell {
         }else if numberTextField.text != "" {
             numberLineVIew.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
         }
-     
     }
     
-    func setupItem() {
+    private func doneToolbar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([flexSpace, doneButton], animated: true)
+        
+        dateTextField.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneAction() {
+        getFormatter()
+        self.endEditing(true)
+    }
+    
+    //datePicker format ve dil
+    func getFormatter() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM yyyy"
+        formatter.locale = Locale.init(identifier: "az_Latn_AZ")
+        dateTextField.text = formatter.string(from: datePickerView.date)
+    }
+    
+    private func setupItem() {
         nameTextFiled.delegate = self
         lastNameTextFiled.delegate = self
         emailTextField.delegate = self
         numberTextField.delegate = self
+        dateTextField.delegate = self
+        
+ 
+        dateTextField.inputView = datePickerView
+        datePickerView.datePickerMode = .date
+        let loc = Locale.init(identifier: "az_Latn_AZ")
+        datePickerView.locale = loc
+       
+        if #available(iOS 13.4, *) {
+            datePickerView.preferredDatePickerStyle = .wheels
+        }
+        
+        //datePivker limit time
+        var components = DateComponents()
+         components.year = -65
+         let minDate = Calendar.current.date(byAdding: components, to: Date())
+         components.year = -18
+         let maxDate = Calendar.current.date(byAdding: components, to: Date())
+         datePickerView.minimumDate = minDate
+         datePickerView.maximumDate = maxDate
+        
         
         //------------- image
         //userImage
@@ -413,18 +466,18 @@ class UserSettingTableViewCell: UITableViewCell {
         
         //-------------cins
         
-        //cinsSegmentControl
-        contentView.addSubview(cinsSegmentControl)
-        cinsSegmentControl.topAnchor.constraint(equalTo: lastNamelineVIew.bottomAnchor, constant: 20).isActive = true
-        cinsSegmentControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        cinsSegmentControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        
+//        //cinsSegmentControl
+//        contentView.addSubview(cinsSegmentControl)
+//        cinsSegmentControl.topAnchor.constraint(equalTo: lastNamelineVIew.bottomAnchor, constant: 20).isActive = true
+//        cinsSegmentControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+//        cinsSegmentControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+//
         
         //-------------userCity
         
         //userCityLabel
         contentView.addSubview(userCityLabel)
-        userCityLabel.topAnchor.constraint(equalTo: cinsSegmentControl.bottomAnchor, constant: 20).isActive = true
+        userCityLabel.topAnchor.constraint(equalTo: lastNamelineVIew.bottomAnchor, constant: 20).isActive = true
         userCityLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         userCityLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
@@ -456,24 +509,24 @@ class UserSettingTableViewCell: UITableViewCell {
         dateLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         dateLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
         
-        //dateButton
-        contentView.addSubview(dateButton)
-        dateButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
-        dateButton.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
-        dateButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
-        dateButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
+//        //dateButton
+//        contentView.addSubview(dateButton)
+//        dateButton.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
+//        dateButton.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
+//        dateButton.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
+//        dateButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
           
         
         //dateTextField
-//        addSubview(dateTextField)
-//        dateTextField.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: -20).isActive = true
-//        dateTextField.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
-//        dateTextField.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
-//        dateTextField.heightAnchor.constraint(equalToConstant: 80).isActive = true
-//
+        addSubview(dateTextField)
+        dateTextField.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10).isActive = true
+        dateTextField.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor).isActive = true
+        dateTextField.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor).isActive = true
+        dateTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
+
         //dateLineVIew
         contentView.addSubview(dateLineVIew)
-        dateLineVIew.topAnchor.constraint(equalTo: dateButton.bottomAnchor, constant: 15).isActive = true
+        dateLineVIew.topAnchor.constraint(equalTo: dateTextField.bottomAnchor, constant: 15).isActive = true
         dateLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         dateLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         dateLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
@@ -548,4 +601,5 @@ extension UserSettingTableViewCell: UITextFieldDelegate {
         return true
     }
 }
+
 

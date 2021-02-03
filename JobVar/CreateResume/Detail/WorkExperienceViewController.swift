@@ -10,9 +10,9 @@ import UIKit
 class WorkExperienceViewController: UIViewController {
 
     let tableView = UITableView(frame: .zero, style: .plain)
-    var array = ["1 ilden asagi", "1 ilden 3 ile qeder", "3 ilden 5 ile qeder", "5 ilden artiq"]
+    private let array = ["Teleb olunmur", "1 ilden asagi", "1 ilden 3 ile qeder", "3 ilden 5 ile qeder", "5 ilden artiq"]
     
-    public var setWorkExperienc: ((String) -> ())?
+    var setWorkExperienc: ((String) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,17 +21,14 @@ class WorkExperienceViewController: UIViewController {
         itemSetup()
     }
     
-}
-
-extension WorkExperienceViewController {
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
             topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
         }
     }
     
-    func itemSetup() {
+    private func itemSetup() {
         //tableVIew
         tableView.delegate = self
         tableView.dataSource = self

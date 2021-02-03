@@ -15,10 +15,22 @@ extension IshAxtaranlarViewController {
         }
     }
     
+    func makeActivityIndicatorView() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = UIColor(named: "MainColor")
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        activityIndicator.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 5).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        return activityIndicator
+    }
+    
     func setupItem() {
         //tableView
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableFooterView = UIView()
         tableView.separatorStyle = .singleLine
         tableView.register(JobSeekersTableViewCell.self, forCellReuseIdentifier: "jobSeekersTableViewCellId")
         tableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -30,6 +42,18 @@ extension IshAxtaranlarViewController {
         tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    }
+    
+    func configureRefreshControl () {
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+            self?.refreshControl.endRefreshing()
+        }
     }
 }
 

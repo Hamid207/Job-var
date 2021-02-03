@@ -23,9 +23,11 @@ struct AddResumeModel {
     let email: String
     let userId: String
     var favorit: Bool = false
+    let resumeAddTime: String
+    let resumeAddDate: String
     let ref: DatabaseReference?
     
-    init(resume: String, cateqoryOneName: String, cateqoryTwoName: String, position: String, companyName: String ,salary: String, city: String, age: String, education: String, workExperience: String, detailedInfo: String, requirements: String, email: String, userId: String) {
+    init(resume: String, cateqoryOneName: String, cateqoryTwoName: String, position: String, companyName: String ,salary: String, city: String, age: String, education: String, workExperience: String, detailedInfo: String, requirements: String, email: String, userId: String, resumeAddTime: String, resumeAddDate: String) {
         self.resume = resume
         self.cateqoryOneName = cateqoryOneName
         self.cateqoryTwoName = cateqoryTwoName
@@ -40,6 +42,8 @@ struct AddResumeModel {
         self.requirements = requirements
         self.email = email
         self.userId = userId
+        self.resumeAddTime = resumeAddTime
+        self.resumeAddDate = resumeAddDate
         self.ref = nil
     }
     
@@ -60,10 +64,12 @@ struct AddResumeModel {
         email = snapShotValue["email"] as! String
         userId = snapShotValue["userId"] as! String
         favorit = snapShotValue["favorit"] as! Bool
+        resumeAddTime = snapShotValue["resumeAddTime"] as! String
+        resumeAddDate = snapShotValue["resumeAddDate"] as! String
         ref = snapShot.ref
     }
     
     func convertToDictinary() -> Any {
-        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "position" : position, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email, "favorit" : favorit, "userId" : userId]
+        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "position" : position, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email, "favorit" : favorit, "userId" : userId, "resumeAddTime" : resumeAddTime, "resumeAddDate" : resumeAddDate]
     }
 }

@@ -29,7 +29,7 @@ class UserTableViewCell: UITableViewCell {
     }()
     
     //lastNameLabel
-     private let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .light)
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -56,13 +56,13 @@ class UserTableViewCell: UITableViewCell {
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-//        label.text = "  "
+        //        label.text = "  "
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     //lastNameLabel
-     private let lastNameLabel: UILabel = {
+    private let lastNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .light)
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -94,7 +94,7 @@ class UserTableViewCell: UITableViewCell {
     }()
     
     //userCityLabel
-     private let userCityLabel: UILabel = {
+    private let userCityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .light)
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -126,7 +126,7 @@ class UserTableViewCell: UITableViewCell {
     }()
     
     //dateLabel
-     private let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .light)
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -158,7 +158,7 @@ class UserTableViewCell: UITableViewCell {
     }()
     
     //emailLabel
-     private let emailLabel: UILabel = {
+    private let emailLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .light)
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -190,7 +190,7 @@ class UserTableViewCell: UITableViewCell {
     }()
     
     //numberLabel
-     private let numberLabel: UILabel = {
+    private let numberLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .light)
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -228,7 +228,7 @@ class UserTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     func update(update : [String : Any]) {
         refReshNamelabel.text = update["name"] as? String
@@ -240,14 +240,12 @@ class UserTableViewCell: UITableViewCell {
         delegtaeFunc()
     }
     
-    func delegtaeFunc() {
-        
+    private func delegtaeFunc() {
         let userInfoModel = UserInfoModel(name: refReshNamelabel.text!, lastName: refReshLastNamelabel.text, userId: " ", city: refreshUserCityLabel.text!, image: "inagecell", dateOfBirth: refreshDateLabel.text, number: refreshNumberLabel.text, info: " ", email: refreshEmailLabel.text!)
-        
         delaget?.userTableViewCellDelegate(userInfoModel: userInfoModel)
     }
     
-    func setupItem() {
+    private func setupItem() {
         //userImage
         contentView.addSubview(userImage)
         userImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
@@ -325,5 +323,4 @@ class UserTableViewCell: UITableViewCell {
         refreshNumberLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
         refreshNumberLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor).isActive = true
     }
-
 }

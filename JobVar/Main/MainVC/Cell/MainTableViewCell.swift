@@ -9,12 +9,12 @@ import UIKit
 
 class MainTableViewViewCell: UITableViewCell {
     
-    var buttonTarget: Bool = false
+    private var buttonTarget: Bool = false
     
     //positionLabel
     private let positionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
@@ -26,20 +26,20 @@ class MainTableViewViewCell: UITableViewCell {
         return label
     }()
     
-    //cateqoryTwoName
-    private let cateqoryTwoName: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
-        label.textAlignment = .left
-        label.minimumScaleFactor = 0.2
-        label.numberOfLines = 2
-        label.sizeToFit()
-        label.lineBreakMode = .byWordWrapping
-        label.adjustsFontSizeToFitWidth = true
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+//    //cateqoryTwoName
+//    private let cateqoryTwoName: UILabel = {
+//        let label = UILabel()
+//        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+//        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+//        label.textAlignment = .left
+//        label.minimumScaleFactor = 0.2
+//        label.numberOfLines = 2
+//        label.sizeToFit()
+//        label.lineBreakMode = .byWordWrapping
+//        label.adjustsFontSizeToFitWidth = true
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
     
     //cityLabel
     private let cityLabel: UILabel = {
@@ -105,7 +105,6 @@ class MainTableViewViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "23.12.2020"
         return label
     }()
     
@@ -136,17 +135,19 @@ class MainTableViewViewCell: UITableViewCell {
     
     func refresh(_ model: AddResumeModel) {
         positionLabel.text = model.position
-        cateqoryTwoName.text = model.cateqoryOneName
-        cityLabel.text = model.city
+//        cateqoryTwoName.text = model.cateqoryOneName
+        cityLabel.text = "\(model.city)."
         cilientNameLabel.text = model.companyName
         infoTextLabel.text = model.detailedInfo
-        priceLabel.text = model.salary
+        priceLabel.text = "\(model.salary!) AZN"
+        resumeAddData.text = model.resumeAddDate
     }
     
     //favoritesButton target
-    @objc func favoritesButtonTarget() {
+    @objc private func favoritesButtonTarget() {
         if buttonTarget == false {
             favoritesButton.setImage(UIImage(named: "star2"), for: .normal)
+            print("PESHEEEE == \(positionLabel.text)")
             buttonTarget = true
         }else if buttonTarget == true {
             favoritesButton.setImage(UIImage(named: "star1"), for: .normal)
@@ -160,13 +161,22 @@ class MainTableViewViewCell: UITableViewCell {
         contentView.addSubview(positionLabel)
         positionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
         positionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        positionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        positionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
         
-//        //cateqoryTwoName
-//        contentView.addSubview(cateqoryTwoName)
-//        cateqoryTwoName.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 5).isActive = true
-//        cateqoryTwoName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-//        cateqoryTwoName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        //bunu sora elave et
+//        //favoritesButton
+//        contentView.addSubview(favoritesButton)
+//        favoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+//        favoritesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+//        favoritesButton.heightAnchor.constraint(equalToConstant: 33).isActive = true
+//        favoritesButton.widthAnchor.constraint(equalToConstant: 33).isActive = true
+//        favoritesButton.addTarget(self, action: #selector(favoritesButtonTarget), for: .touchDown)
+        
+        ////cateqoryTwoName
+        //contentView.addSubview(cateqoryTwoName)
+        //cateqoryTwoName.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 5).isActive = true
+        //cateqoryTwoName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        //cateqoryTwoName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
         //CITYLABEL
         contentView.addSubview(cityLabel)
@@ -180,10 +190,10 @@ class MainTableViewViewCell: UITableViewCell {
         
         //CILIENTNAMELABEL
         contentView.addSubview(cilientNameLabel)
-        cilientNameLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 5).isActive = true
+        cilientNameLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 5).isActive = true
         cilientNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        
-        
+        cilientNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+                
         //INFOTEXTLABEL
         contentView.addSubview(infoTextLabel)
         infoTextLabel.topAnchor.constraint(equalTo: cilientNameLabel.bottomAnchor, constant: 6).isActive = true
@@ -195,15 +205,9 @@ class MainTableViewViewCell: UITableViewCell {
         resumeAddData.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
         resumeAddData.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
-        //favoritesButton
-        contentView.addSubview(favoritesButton)
-        favoritesButton.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
-        favoritesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        favoritesButton.addTarget(self, action: #selector(favoritesButtonTarget), for: .touchDown)
-        
         //lineView
         contentView.addSubview(lineView)
-//        lineView.topAnchor.constraint(equalTo: favoritesButton.bottomAnchor, constant: 5).isActive = true
+        //        lineView.topAnchor.constraint(equalTo: favoritesButton.bottomAnchor, constant: 5).isActive = true
         lineView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         lineView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true

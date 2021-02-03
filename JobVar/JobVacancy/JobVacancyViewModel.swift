@@ -9,7 +9,7 @@ import Foundation
 
 protocol JobVacancyViewModelProtocol {
     var firebaseSet: FirebaseSetProtocol? { get set }
-    func test(test: FeedResponse)
+    func test(detailResume: AddResumeModel)
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol?)
 }
 
@@ -21,7 +21,7 @@ final class JobVacancyViewModel: JobVacancyViewModelProtocol {
         self.firebaseSet = firebaseSet
     }
     
-    func test(test: FeedResponse) {
-       // router?.showDetail(testArray: test)
+    func test(detailResume: AddResumeModel) {
+        router?.showDetail(addreseumeModel: detailResume)
     }
 }

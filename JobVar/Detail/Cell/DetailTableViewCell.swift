@@ -11,8 +11,9 @@ class DetailTableViewCell: UITableViewCell {
     //nameLabel
      private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 25, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+//        label.textColor = UIColor(named: "MainColor")
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 3
@@ -29,7 +30,6 @@ class DetailTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
-        label.minimumScaleFactor = 0.2
         label.numberOfLines = 3
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
@@ -51,6 +51,46 @@ class DetailTableViewCell: UITableViewCell {
         return label
        }()
     
+    //euducationLabel
+    private let educationLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        label.textAlignment = .left
+        label.sizeToFit()
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Təhsil"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    //workExperienceLabel
+    private let workExperienceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        label.textAlignment = .left
+        label.sizeToFit()
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    //ageLabel
+    private let ageLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        label.textAlignment = .left
+        label.sizeToFit()
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //priceLabel
      private let priceLabel: UILabel = {
         let label = UILabel()
@@ -59,19 +99,27 @@ class DetailTableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    //cilientUiview
+    private var cilientView: UIView = {
+       let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     //cilientNameLabel
     private let cilientNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17, weight: .heavy)
+        label.font = UIFont.systemFont(ofSize: 21, weight: .medium)
         label.textColor = UIColor(named: "MainColor")
-        label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.2
+        label.textAlignment = .center
+        label.minimumScaleFactor = 0.4
+        label.numberOfLines = 2
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -185,16 +233,25 @@ class DetailTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cilientView.layer.cornerRadius = 5
+        cilientView.layer.borderWidth = 2
+        cilientView.layer.borderColor = UIColor(named: "MainColor")?.cgColor
+    }
     
-    public func detailRefresh(_ model: AddResumeModel) {
+    
+    func detailRefresh(_ model: AddResumeModel) {
         nameLabel.text = model.position
         cateqoryOneName.text = model.cateqoryOneName
         requirementsLabel.text = model.requirements
-        priceLabel.text = model.salary
+        priceLabel.text = "Maaş:  \(model.salary!) AZN"
         infoTextLabel.text = model.detailedInfo
         cityLabel.text = model.city
         cilientNameLabel.text = model.companyName
-        
+        educationLabel.text = "Təhsil:  \(model.education)"
+        workExperienceLabel.text = "İş təcrübəsi:  \(model.workExperience)"
+        ageLabel.text = "Yaş:  \(model.age)"
         
 //        switch model.odeme {
 //        case .offline:
@@ -208,24 +265,36 @@ class DetailTableViewCell: UITableViewCell {
     private func setupItem() {
         //nameLabel
         addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 15).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         
-        //cateqoryOneName
-        addSubview(cateqoryOneName)
-        cateqoryOneName.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 7).isActive = true
-        cateqoryOneName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        cateqoryOneName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        
         //cityLabel
         addSubview(cityLabel)
-        cityLabel.topAnchor.constraint(equalTo: cateqoryOneName.bottomAnchor, constant: 7).isActive = true
+        cityLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10).isActive = true
         cityLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         
+        //educationLabel
+        contentView.addSubview(educationLabel)
+        educationLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 10).isActive = true
+        educationLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        educationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        
+        //workExperienceLabel
+        contentView.addSubview(workExperienceLabel)
+        workExperienceLabel.topAnchor.constraint(equalTo: educationLabel.bottomAnchor, constant: 10).isActive = true
+        workExperienceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        workExperienceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        
+        //ageLabel
+        contentView.addSubview(ageLabel)
+        ageLabel.topAnchor.constraint(equalTo: workExperienceLabel.bottomAnchor, constant: 10).isActive = true
+        ageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        ageLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        
         //priceLabel
-        addSubview(priceLabel)
-        priceLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 7).isActive = true
+        contentView.addSubview(priceLabel)
+        priceLabel.topAnchor.constraint(equalTo: ageLabel.bottomAnchor, constant: 10).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
 //
@@ -234,14 +303,24 @@ class DetailTableViewCell: UITableViewCell {
 //        odemeLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 10).isActive = true
 //        odemeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 120).isActive = true
 //
+        //cilientView
+        contentView.addSubview(cilientView)
+        cilientView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 20).isActive = true
+        cilientView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        cilientView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        cilientView.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        
         //cilientNameLabel
-        addSubview(cilientNameLabel)
-        cilientNameLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 15).isActive = true
-        cilientNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        contentView.addSubview(cilientNameLabel)
+        cilientNameLabel.topAnchor.constraint(equalTo: cilientView.topAnchor, constant: 5).isActive = true
+        cilientNameLabel.leadingAnchor.constraint(equalTo: cilientView.leadingAnchor, constant: 5).isActive = true
+        cilientNameLabel.trailingAnchor.constraint(equalTo: cilientView.trailingAnchor, constant: -5).isActive = true
+        cilientNameLabel.bottomAnchor.constraint(equalTo: cilientView.bottomAnchor, constant: -5).isActive = true
+        
         
         //lineView1
         contentView.addSubview(lineView1)
-        lineView1.topAnchor.constraint(equalTo: cilientNameLabel.bottomAnchor, constant: 10).isActive = true
+        lineView1.topAnchor.constraint(equalTo: cilientView.bottomAnchor, constant: 10).isActive = true
         lineView1.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         lineView1.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         lineView1.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
@@ -283,5 +362,11 @@ class DetailTableViewCell: UITableViewCell {
         lineView3.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         lineView3.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         lineView3.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+        //cateqoryOneName
+        addSubview(cateqoryOneName)
+        cateqoryOneName.topAnchor.constraint(equalTo: lineView3.bottomAnchor, constant: 25).isActive = true
+        cateqoryOneName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        cateqoryOneName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
     }
 }

@@ -6,10 +6,11 @@
 //
 
 import UIKit
+
 class UserViewController: UIViewController {
     var viewModel: UserViewModelProtocol?
     
-    var tableView = UITableView(frame: .zero, style: .plain)
+    let tableView = UITableView(frame: .zero, style: .plain)
 //    var nameee = String()
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -42,6 +42,18 @@ extension UserSettingViewController {
             self.userTabeleView.reloadData()
         }
     }
+    
+    @objc func showCityDetail() {
+        let vc = UserAddCityViewController()
+        vc.setCity = { [weak self] cityName in
+            DispatchQueue.main.async {
+                self?.viewModel?.cityName = cityName
+                self?.userTabeleView.reloadData()
+            }
+        }
+        navigationController?.present(vc, animated: true, completion: nil)
+    }
+    
     //        if viewModel?.userInfoModelName != ""{
     //
     //        }else  if viewModel?.userInfoModelName == "" {
@@ -57,7 +69,7 @@ extension UserSettingViewController {
 //MARK: DELGATE
 extension UserSettingViewController: SetDelegate {
     func setItem(userInfoModel: UserInfoModel) {
-       // viewModel?.userInfoModelName = userInfoModel.name
+        // viewModel?.userInfoModelName = userInfoModel.name
         viewModel?.firebaseSet?.setUserInfo(userInfoModel: userInfoModel, withPath: "allUsers", child: "user")
     }
 }
@@ -73,16 +85,15 @@ extension UserSettingViewController: UITableViewDataSource {
             cell.delegate = self
             cell.setData()
             cell.textrFirledTarget()
+            cell.cityButton.addTarget(self, action: #selector(showCityDetail), for: .touchDown)
             if let model = viewModel?.userInfoModel {
-                cell.updateData(userInfoModel: model)
+                cell.updateData(userInfoModel: model, cityName: viewModel?.cityName ?? model.city)
             }
             
             return cell
         }
         return UITableViewCell()
     }
-    
-    
 }
 
 //MARK: - UITableViewDelegate

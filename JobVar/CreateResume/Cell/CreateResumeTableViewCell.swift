@@ -10,7 +10,7 @@ import UIKit
 
 class CreateResumeTableViewCell: UITableViewCell {
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: "Avenir", size: 17)
@@ -29,6 +29,10 @@ class CreateResumeTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(name: String) {
+        nameLabel.text = name
     }
     
     private func setupItem() {

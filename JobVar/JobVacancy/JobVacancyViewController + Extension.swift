@@ -16,6 +16,17 @@ extension JobVacancyViewController {
         }
     }
     
+    func makeActivityIndicatorView() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = UIColor(named: "MainColor")
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        activityIndicator.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.bottomAnchor, multiplier: 5).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        return activityIndicator
+    }
+    
     func setupITem() {
         //jobVacancyTableView
         jobVacancyTableView.delegate = self
@@ -31,18 +42,25 @@ extension JobVacancyViewController {
         jobVacancyTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         jobVacancyTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         jobVacancyTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        
-        //refreshControl
-        refresh.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-        jobVacancyTableView.addSubview(refresh)
     }
     
     //handleRefresh
     @objc func handleRefresh() {
         DispatchQueue.main.async {
-            self.refresh.endRefreshing()
             self.jobVacancyTableView.reloadData()
+        }
+    }
+    
+    func configureRefreshControl() {
+        jobVacancyTableView.refreshControl = refreshControl
+            self.jobVacancyTableView.reloadData()
+            refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.refreshControl.endRefreshing()
         }
     }
 }
@@ -50,34 +68,31 @@ extension JobVacancyViewController {
 //MARK: - UITableViewDataSource
 extension JobVacancyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobVacancyViewModel?.firebaseSet?.addResumeArray?.count ?? 1
-//        return 5
+        return jobVacancyViewModel?.firebaseSet?.addResumeArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "jobVacancyTableViewCellId", for: indexPath) as? JobVacancyTableViewCell {
-//            let item = tesarray[indexPath.row]
-//            cell.refresh(item)
-            let item = jobVacancyViewModel?.firebaseSet?.addResumeArray?[indexPath.row].cateqoryOneName
-            
-            cell.nameLabel.text = "asdasd"
-            jobVacancyTableView.reloadData()
+            guard let item = jobVacancyViewModel?.firebaseSet?.addResumeArray?[indexPath.row] else { return UITableViewCell() }
+            if tableView.isOpaque {
+                actitvityIndicator.stopAnimating()
+            }
+            cell.refresh(item)
             return cell
         }
-        jobVacancyTableView.reloadData()
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 220
     }
 }
 
 //MARK: - UITableViewDelegate
 extension JobVacancyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setArray = tesarray[indexPath.row]
-        jobVacancyViewModel?.test(test: setArray)
+        let setArray = jobVacancyViewModel?.firebaseSet?.addResumeArray?[indexPath.row]
+        jobVacancyViewModel?.test(detailResume: setArray!)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

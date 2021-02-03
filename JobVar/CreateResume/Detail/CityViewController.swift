@@ -10,8 +10,8 @@ import UIKit
 class CityViewController: UIViewController {
     
     let tableView = UITableView(frame: .zero, style: .plain)
-    var cityArray = ["Baki", "Gence", "Sumqayit", "Sabran"]
-    public var setName: ((String) -> ())?
+    private let cityArray = ["Baki", "Gence", "Sumqayit", "Sabran"]
+    var setName: ((String) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,17 +20,14 @@ class CityViewController: UIViewController {
         itemSetup()
     }
     
-}
-
-extension CityViewController {
-    func setupNavigationBar() {
+    private func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
             topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
         }
     }
     
-    func itemSetup() {
+    private func itemSetup() {
         //tableVIew
         tableView.delegate = self
         tableView.dataSource = self

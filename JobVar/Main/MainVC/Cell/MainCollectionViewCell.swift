@@ -10,10 +10,10 @@ import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
     
-     let nameLabel: UILabel = {
+     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         label.backgroundColor = UIColor(named: "MainColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
@@ -30,13 +30,12 @@ class MainCollectionViewCell: UICollectionViewCell {
         setup()
     }
     
-    private func setup() {
-        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        addSubview(nameLabel)
-        nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
-        nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
-        nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        nameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func update(name: String) {
+        nameLabel.text = name
     }
     
     override func layoutSubviews() {
@@ -46,10 +45,14 @@ class MainCollectionViewCell: UICollectionViewCell {
         nameLabel.layer.masksToBounds = true
         //nameLabel.layer.borderColor = UIColor(named: "MainColor")?.cgColor
     }
-
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func setup() {
+        backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        addSubview(nameLabel)
+        nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5).isActive = true
+        nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        nameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
 }

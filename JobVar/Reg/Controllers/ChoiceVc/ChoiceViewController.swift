@@ -11,9 +11,9 @@ class ChoiceViewController: UIViewController {
     
     var viewModel: ChoiceViewModelProtocol?
     
-    var logoImage = UIImageView()
-    var logInButton = UIButton()
-    var signUpButton = UIButton()
+    lazy var logoImage = UIImageView()
+    lazy var logInButton = UIButton()
+    lazy var signUpButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()

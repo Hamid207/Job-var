@@ -11,19 +11,20 @@ protocol AddResumeDelegate: class {
     func setResume(addResumeModel: AddResumeModel)
 }
 
-class TargetCreatResumeTableViewCell: UITableViewCell {
-        
-    weak var delegate: AddResumeDelegate?
-    var resumeAddInt = 0
-    var userDefoltss = UserDefaults.standard
+class TargetCreatResumeTableViewCell: UITableViewCell, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var minSalary = ["300", "400", "500", "600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000", "3100", "3200", "3400", "3500", "3600", "3700", "3800", "3900"]
-    var maxSalary = ["400", "500", "600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000", "3100", "3200", "3400", "3500", "3600", "3700", "3800", "3900", "4000", "4100", "4500", "4600"]
-    var age = ["18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
-               "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64"]
-    var maxAge = ["19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48",
-                  "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64"]
-
+    weak var delegate: AddResumeDelegate?
+    lazy private var resumeAddInt = 0
+    lazy private var userDefoltss = UserDefaults.standard
+    lazy private var currentDateTime = Date()
+    lazy private var dateFormatter = DateFormatter()
+    lazy private var timeFormatter = DateFormatter()
+    
+    lazy private var minSalary = ["300", "400", "500", "600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000", "3100", "3200", "3400", "3500", "3600", "3700", "3800", "3900"]
+    lazy private var maxSalary = ["400", "500", "600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300", "2400", "2500", "2600", "2700", "2800", "2900", "3000", "3100", "3200", "3400", "3500", "3600", "3700", "3800", "3900", "4000", "4100", "4500", "4600"]
+    lazy private var age = ["18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64"]
+    lazy private var maxAge = ["18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64"]
+    
     
     //nameLabel
     private let nameLabel: UILabel = {
@@ -72,12 +73,12 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //positionTextfiled
-    let positionTextfiled: UITextField = {
+    private let positionTextfiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         textFiled.textAlignment = .left
         textFiled.borderStyle = .roundedRect
-//        textFiled.placeholder = "Daxil et..."
+        //        textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -100,12 +101,12 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //companyNameTextFiled
-    let companyNameTextFiled: UITextField = {
+    private let companyNameTextFiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         textFiled.textAlignment = .left
         textFiled.borderStyle = .roundedRect
-//        textFiled.placeholder = "Daxil et..."
+        //        textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -127,7 +128,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //cityButton
-     let cityButton: UIButton = {
+    let cityButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -153,10 +154,9 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //minAgeTextfiled
-    let minAgeTextfiled: UITextField = {
+    private let minAgeTextfiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        textFiled.textAlignment = .left
         textFiled.borderStyle = .roundedRect
         textFiled.text = "18"
         textFiled.textAlignment = .center
@@ -165,10 +165,9 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //maxAgeTextfiled
-    let maxAgeTextfiled: UITextField = {
+    private let maxAgeTextfiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        textFiled.textAlignment = .left
         textFiled.borderStyle = .roundedRect
         textFiled.placeholder = "Max"
         textFiled.textAlignment = .center
@@ -193,7 +192,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //minMaasTextfiled
-    let minMaasTextfiled: UITextField = {
+    private let minMaasTextfiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         textFiled.textAlignment = .left
@@ -206,7 +205,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     
     
     //maxMaasTextfiled
-    let maxMaasTextfiled: UITextField = {
+    private let maxMaasTextfiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         textFiled.textAlignment = .left
@@ -218,23 +217,22 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //euducationLabel
-    let educationLabel: UILabel = {
+    private let educationLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         label.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
-        label.numberOfLines = 3
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
-        label.adjustsFontSizeToFitWidth = true
         label.text = "Təhsil"
+        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     //educationButton
-     let educationButton: UIButton = {
+    let educationButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         //button.setTitle("Seher secin", for: .normal)
@@ -261,7 +259,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     }()
     
     //workExperienceButton
-     let workExperienceButton: UIButton = {
+    let workExperienceButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         //button.setTitle("Seher secin", for: .normal)
@@ -351,7 +349,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         textFiled.returnKeyType = .next
         textFiled.autocorrectionType = .no
         textFiled.borderStyle = .roundedRect
-//        textFiled.placeholder = "Daxil et..."
+        //        textFiled.placeholder = "Daxil et..."
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -367,10 +365,10 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         return button
     }()
     
-    var minAgePickerView = UIPickerView()
-    var maxAgePickerView = UIPickerView()
-    var minSalaryPickerView = UIPickerView()
-    var maxSalaryPickerView = UIPickerView()
+    lazy private var minAgePickerView = UIPickerView()
+    lazy private var maxAgePickerView = UIPickerView()
+    lazy private var minSalaryPickerView = UIPickerView()
+    lazy private var maxSalaryPickerView = UIPickerView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -381,6 +379,11 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layout()
     }
     
     //setData
@@ -397,15 +400,22 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         }
         
         if maxMaasTextfiled.text == "" {
-            salary = "\(minSalary) AZN"
+            salary = "\(minSalary)"
         }else {
-            salary = "\(minSalary) - \(maxSalary) AZN"
+            salary = "\(minSalary) - \(maxSalary)"
         }
         
-        let addResume = AddResumeModel(resume: "\(resumeAddInt)", cateqoryOneName: nameLabel.text!, cateqoryTwoName: secondNameLabel.text!, position: positionTextfiled.text!, companyName: companyNameTextFiled.text!, salary: salary, city: "\(String(describing: cityButton.titleLabel?.text))." , age: age, education: educationButton.titleLabel?.text ?? "", workExperience: workExperienceButton.titleLabel?.text ?? "", detailedInfo: infoTextView.text, requirements: requirementsTextView.text, email: emailTextFiled.text!, userId: "")
+        timeFormatter.timeStyle = .medium
+        dateFormatter.dateStyle = .long
+        dateFormatter.locale = Locale(identifier: "az_Latn")
+        
+        let dateString = dateFormatter.string(from: currentDateTime)
+        let timeString = timeFormatter.string(from: currentDateTime)
+        
+        let addResume = AddResumeModel(resume: "\(resumeAddInt)", cateqoryOneName: nameLabel.text!, cateqoryTwoName: secondNameLabel.text!, position: positionTextfiled.text!, companyName: companyNameTextFiled.text!, salary: salary, city: cityButton.titleLabel?.text ?? "Baki", age: age, education: educationButton.titleLabel?.text ?? "", workExperience: workExperienceButton.titleLabel?.text ?? "", detailedInfo: infoTextView.text, requirements: requirementsTextView.text, email: emailTextFiled.text!, userId: "", resumeAddTime: timeString, resumeAddDate: dateString)
+        
         delegate?.setResume(addResumeModel: addResume)
     }
-    
     
     func refresh(cityName: String, education: String, workExperiene: String, resumeModel: Kateqory?, target: String?) {
         nameLabel.text = resumeModel?.name
@@ -415,12 +425,13 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         workExperienceButton.setTitle(workExperiene, for: .normal)
     }
     
-    func doneButton() {
+    private func doneButton() {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
-        toolBar.setItems([doneButton], animated: true)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([flexSpace, doneButton], animated: true)
         
         minAgeTextfiled.inputAccessoryView = toolBar
         maxAgeTextfiled.inputAccessoryView = toolBar
@@ -428,13 +439,11 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         maxMaasTextfiled.inputAccessoryView = toolBar
     }
     
-    @objc func donePressed() {
+    @objc private func donePressed() {
         self.endEditing(true)
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-                
+    private func layout() {
         positionTextfiled.layer.cornerRadius = 5
         positionTextfiled.layer.borderWidth = 0.5
         positionTextfiled.layer.borderColor = UIColor.black.cgColor
@@ -486,7 +495,6 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         saveButton.layer.cornerRadius = 5
     }
     
-    
     //MARK: - ItemSetup
     private func itemSetup() {
         positionTextfiled.delegate = self
@@ -501,7 +509,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         minAgePickerView.dataSource = self
         maxAgePickerView.delegate = self
         maxAgePickerView.dataSource = self
-    
+        
         minSalaryPickerView.delegate = self
         minSalaryPickerView.dataSource = self
         maxSalaryPickerView.delegate = self
@@ -565,7 +573,7 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         cityButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         cityButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         cityButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-//        cityButton.addTarget(self, action: #selector(cityButtonTarget), for: .touchDown)
+        //        cityButton.addTarget(self, action: #selector(cityButtonTarget), for: .touchDown)
         
         //ageLabel
         contentView.addSubview(ageLabel)
@@ -676,9 +684,8 @@ class TargetCreatResumeTableViewCell: UITableViewCell {
         saveButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         saveButton.addTarget(self, action: #selector(setData), for: .touchDown)
     }
-}
-
-extension TargetCreatResumeTableViewCell: UITextFieldDelegate {
+    
+    //MARK: - UITextFieldDelegate -----------------
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true)
     }
@@ -689,9 +696,8 @@ extension TargetCreatResumeTableViewCell: UITextFieldDelegate {
         emailTextFiled.resignFirstResponder()
         return true
     }
-}
-
-extension TargetCreatResumeTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    //MARK: - UIPickerViewDataSource, UIPickerViewDelegate -----------------
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -707,7 +713,7 @@ extension TargetCreatResumeTableViewCell: UIPickerViewDataSource, UIPickerViewDe
         case 4:
             return maxSalary.count
         default:
-           return 1
+            return 1
         }
     }
     
@@ -722,7 +728,7 @@ extension TargetCreatResumeTableViewCell: UIPickerViewDataSource, UIPickerViewDe
         case 4:
             return maxSalary[row]
         default:
-           return ""
+            return ""
         }
     }
     

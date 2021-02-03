@@ -8,13 +8,13 @@
 import UIKit
 import Firebase
 
-protocol RegInfoDelegate {
+protocol RegInfoDelegate: class {
     func regInfo(name: String, email: String, password: String)
 }
 
 class LogInTableViewCell: UITableViewCell {
-    var delegate: RegInfoDelegate?
-    let textFiledTextSize = 18
+    weak var delegate: RegInfoDelegate?
+    private let textFiledTextSize = 18
 
     //mainLabel
      private let mainLabel: UILabel = {
@@ -139,7 +139,7 @@ class LogInTableViewCell: UITableViewCell {
         let button = UIButton(type: .roundedRect)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
-        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.setTitle("Daxil ol", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button
@@ -173,7 +173,7 @@ class LogInTableViewCell: UITableViewCell {
         logInButton.layer.cornerRadius = 10
     }
     
-    func setupItem() {
+    private func setupItem() {
         nameTextFiled.delegate = self
         emailTextFiled.delegate = self
         passwordTextField.delegate = self

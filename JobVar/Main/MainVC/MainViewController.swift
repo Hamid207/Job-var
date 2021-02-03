@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     var mainViewModel: MainViewModelProtocol?
-    
+    lazy var actitvityIndicator = makeActivityIndicatorView()
     let mainTableView = UITableView(frame: .zero, style: .plain)
     let mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -21,23 +21,32 @@ class MainViewController: UIViewController {
         cv.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         return cv
     }()
-    
-    var collectionVIewARRayTest = ["Elan yerləşdirin ", "Butun elanlar", "Is axtaranlar"]
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor(named: "MainColor")
+        return refreshControl
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        navigationItem.title = "MainViewController"
         setupView()
-        mainViewModel?.firebaseSet?.creatAllResume()
-        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
+//        mainViewModel?.firebaseSet?.creatAllResume()
+        configureRefreshControl ()
+        actitvityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+//        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        navigationController?.navigationBar.barStyle = .default
+        nav()
         tabBarController?.tabBar.isHidden = false
-        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
-        //mainViewModel?.firebaseSet?.creatAllResume()
+        DispatchQueue.main.async { [weak self] in
+            self?.mainViewModel?.firebaseSet?.creatAllResume()
+            self?.mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: self!.mainTableView)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,3 +54,5 @@ class MainViewController: UIViewController {
         mainViewModel?.firebaseSet?.removeAllObserverr()
     }
 }
+
+

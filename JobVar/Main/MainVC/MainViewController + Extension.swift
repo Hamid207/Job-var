@@ -9,8 +9,23 @@ import UIKit
 
 extension MainViewController {
     
+    func makeActivityIndicatorView() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = UIColor(named: "MainColor")
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicator)
+        activityIndicator.topAnchor.constraint(equalToSystemSpacingBelow: mainCollectionView.bottomAnchor, multiplier: 5).isActive = true
+        activityIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        return activityIndicator
+    }
+    
+    func nav() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .done, target: self, action: #selector(filterVC))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
+    }
+    
     func setupView() {
-        
         //MARK: - MAINCOLLECTIONVIEW
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
@@ -45,6 +60,24 @@ extension MainViewController {
         mainTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         mainTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
+    
+    
+    func configureRefreshControl () {
+        mainTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    }
+    
+    @objc func handleRefreshControl() {
+        DispatchQueue.main.async { [weak self] in
+            self?.mainTableView.reloadData()
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
+    @objc func filterVC() {
+        let vc = MainFilterViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 //MARK: - UICollectionViewDataSource
@@ -56,6 +89,9 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: mainViewModel!.mainTableViewCellId, for: indexPath) as? MainTableViewViewCell {
             let item = mainViewModel?.firebaseSet?.addResumeArray?[indexPath.row]
+            if tableView.isOpaque {
+                actitvityIndicator.stopAnimating()
+            }
             cell.refresh(item!)
             return cell
         }
@@ -72,7 +108,7 @@ extension MainViewController: UITableViewDataSource {
         view.heightAnchor.constraint(equalToConstant: 40).isActive = true
         let header = view as! UITableViewHeaderFooterView
         //header.textLabel?.textColor =  UIColor(named: "MainColor")
-        header.textLabel?.font = UIFont.systemFont(ofSize: 25, weight: .semibold)
+        header.textLabel?.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         header.textLabel?.textColor =  UIColor.black
     }
 }
@@ -95,13 +131,13 @@ extension MainViewController: UITableViewDelegate {
 //MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionVIewARRayTest.count
+        return mainViewModel?.collectionVIewARRayTest?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCollectionViewCellId", for: indexPath) as? MainCollectionViewCell {
-            let item = collectionVIewARRayTest[indexPath.row]
-            cell.nameLabel.text = item
+            guard let item = mainViewModel?.collectionVIewARRayTest?[indexPath.row] else { return UICollectionViewCell()}
+            cell.update(name: item)
             return cell
         }
         return UICollectionViewCell()
@@ -116,8 +152,8 @@ extension MainViewController: UICollectionViewDelegate {
             mainViewModel?.tapOnTheCreateResume()
         case 1:
             mainViewModel?.tapOnTheJobVacancy()
-        case 2:
-            mainViewModel?.tapOnTheIsAxtaranlar()
+//        case 2:
+//            mainViewModel?.tapOnTheIsAxtaranlar() //heleki hazir deyil 
         default:
             break
         }

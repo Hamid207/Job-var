@@ -6,12 +6,13 @@
 //
 
 import UIKit
-protocol LogInInfoDelegate {
+
+protocol LogInInfoDelegate: class {
     func logInInfo(email: String, pas: String)
 }
 
 class SignUpTableViewCell: UITableViewCell {
-    var delegate: LogInInfoDelegate?
+    weak var delegate: LogInInfoDelegate?
     
     //mainLabel
      private let mainLabel: UILabel = {
@@ -99,7 +100,7 @@ class SignUpTableViewCell: UITableViewCell {
         let button = UIButton(type: .roundedRect)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
-        button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         button.setTitle("Daxil ol", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button

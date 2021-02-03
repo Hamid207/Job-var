@@ -11,7 +11,7 @@ class SignUpViewController: UIViewController {
     
     var viewModel: SignUpViewModelProtocol?
     
-    var tableView = UITableView(frame: .zero, style: .plain)
+    let tableView = UITableView(frame: .zero, style: .plain)
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -11,7 +11,7 @@ class LogInViewController: UIViewController {
     
     var viewModel: LogInViewModelProtocol?
     
-    var tableView = UITableView(frame: .zero, style: .plain)
+    let tableView = UITableView(frame: .zero, style: .plain)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,6 @@ class LogInViewController: UIViewController {
         }
         
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

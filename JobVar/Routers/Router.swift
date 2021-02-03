@@ -36,11 +36,13 @@ class Router: RouterProtocol {
     var userNaviGationController: UINavigationController?
     var favoritesNavigationController: UINavigationController?
     var assemblyBuilder: AsseblyBuilderProtocol?
-    init(naviGationController: UINavigationController, userNaviGationController: UINavigationController, favoritesNavigationController: UINavigationController, assemblyBuilder: AsseblyBuilderProtocol) {
+//    init(naviGationController: UINavigationController, userNaviGationController: UINavigationController, favoritesNavigationController: UINavigationController, assemblyBuilder: AsseblyBuilderProtocol) {
+
+    init(naviGationController: UINavigationController, userNaviGationController: UINavigationController, assemblyBuilder: AsseblyBuilderProtocol) {
         self.naviGationController = naviGationController
         self.assemblyBuilder = assemblyBuilder
         self.userNaviGationController = userNaviGationController
-        self.favoritesNavigationController = favoritesNavigationController
+//        self.favoritesNavigationController = favoritesNavigationController
     }
     
     //MainViewController

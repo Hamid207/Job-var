@@ -45,7 +45,6 @@ final class CreatResumeTargetViewModel: CreatResumeTargetViewModelProtocl {
     
     func firebaseObserve() {
         //firebaseSet?.observeAddResumeModel()
-                
     }
     
     func removeAllObservers() {

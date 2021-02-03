@@ -16,6 +16,7 @@ extension UserViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Exit", style: .done, target: self, action: #selector(firebaseExit))
         navigationItem.leftBarButtonItem?.tintColor = .red
+        
         //tableView
         tableView.tableFooterView = UIView()
         tableView.delegate = self
@@ -36,7 +37,7 @@ extension UserViewController {
     
     @objc func barButtonTarget() {
         guard let userInfoModel = viewModel?.setUserInfoModel else {
-            print(" ERRO RESON userInfo model nil  -> UserViewController extension")
+            print("ERROR RESON userInfo model nil  -> UserViewController extension")
             return }
         viewModel?.tapOnTheUserSettingsVc(userInfoModel: userInfoModel)
     }

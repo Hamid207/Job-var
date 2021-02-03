@@ -9,7 +9,7 @@ import UIKit
 
 class UserSettingViewController: UIViewController {
     
-    var userTabeleView = UITableView(frame: .zero, style: .plain)
+    let userTabeleView = UITableView(frame: .zero, style: .plain)
     
     var viewModel: UserSettingViewModelProtocol?
     override func viewDidLoad() {

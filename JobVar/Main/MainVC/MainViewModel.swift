@@ -11,6 +11,7 @@ import Firebase
 protocol MainViewModelProtocol {
     var mainTableViewCellId: String { get set }
     var secondTableVIewCellId: String { get set }
+    var collectionVIewARRayTest: [String]? { get set }
     var firebaseSet: FirebaseSetProtocol? { get set }
     func tapOnTheComment(addreseumeModel: AddResumeModel)
     func tapOnTheJobVacancy()
@@ -21,8 +22,9 @@ protocol MainViewModelProtocol {
 }
 
 final class MainViewModel: MainViewModelProtocol {
-    var mainTableViewCellId: String = "MainTableViewCellId"
-    var secondTableVIewCellId: String = "SecondTableVIewCellId"
+    lazy var mainTableViewCellId: String = "MainTableViewCellId"
+    lazy var secondTableVIewCellId: String = "SecondTableVIewCellId"
+    lazy var collectionVIewARRayTest: [String]? = ["Elan yerləşdirin ", "Butun elanlar", "Is axtaranlar"]
     var firebaseSet: FirebaseSetProtocol?
     var addResumeArray: [AddResumeModel]?
     private let router: RouterProtocol?
@@ -45,10 +47,6 @@ final class MainViewModel: MainViewModelProtocol {
     
     func tapOnTheIsAxtaranlar() {
         router?.showIshAxtaranlar()
-    }
-    
-    func add() {
-        
     }
     
 }

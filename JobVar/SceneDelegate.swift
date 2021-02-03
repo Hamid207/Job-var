@@ -29,19 +29,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         let userNavigationController = UINavigationController()
-        let favoritesNavigationController = UINavigationController()
+//        let favoritesNavigationController = UINavigationController() //sora tabBarController.setViewControllers e elave et
         let choiceNavigationController = UINavigationController()
         
         let tabBarController = CustomTabbarViewController()
         let assemblyBuilder = AsseblyModelBuilder()
         
-        let router = Router(naviGationController: navigationController, userNaviGationController: userNavigationController, favoritesNavigationController: favoritesNavigationController, assemblyBuilder: assemblyBuilder)
+        let router = Router(naviGationController: navigationController, userNaviGationController: userNavigationController, assemblyBuilder: assemblyBuilder)
         let authRouter = AuthRouter(choiceNavigationController: choiceNavigationController, assemblyBuilder: assemblyBuilder)
         
-        tabBarController.setViewControllers([navigationController, favoritesNavigationController, userNavigationController], animated: false)
+        tabBarController.setViewControllers([navigationController, userNavigationController], animated: false)
         navigationController.tabBarItem = UITabBarItem(title: "Axtarış", image: UIImage(named: "magnifier"), tag: 0)
-        favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favoritlər", image: UIImage(named: "star"), tag: 1)
-        userNavigationController.tabBarItem = UITabBarItem(title: "İstifadəçi", image: UIImage(named: "user"), tag: 2)
+//        favoritesNavigationController.tabBarItem = UITabBarItem(title: "Favoritlər", image: UIImage(named: "star"), tag: 1) // bunu sora eleve et 
+        userNavigationController.tabBarItem = UITabBarItem(title: "İstifadəçi", image: UIImage(named: "user"), tag: 1)
         
         router.initialViewController()
         authRouter.initialAuthViewController()

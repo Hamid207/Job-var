@@ -41,7 +41,7 @@ extension ChoiceViewController {
         view.addSubview(signUpButton)
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
         signUpButton.setTitle("Daxil ol", for: .normal)
-        signUpButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        signUpButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
         signUpButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         signUpButton.backgroundColor = UIColor(named: "MainColor")
         signUpButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true

@@ -70,8 +70,9 @@ extension CreatResumeTargetViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
+    
     @objc func showCityDetail() {
-        let vc = CityViewController()
+        let vc = CityViewController() //bulari duzelt
         vc.setName = { [weak self] name in
             DispatchQueue.main.async {
                 self?.viewModel?.cityName = name
@@ -118,8 +119,6 @@ extension CreatResumeTargetViewController: AddResumeDelegate {
     func setResume(addResumeModel: AddResumeModel) {
         viewModel?.setResume(addResumeModel: addResumeModel)
     }
-    
-    
 }
 
 //MARK: - UITableViewDataSource

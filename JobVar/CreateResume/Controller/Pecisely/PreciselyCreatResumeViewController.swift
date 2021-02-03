@@ -19,13 +19,4 @@ class PreciselyCreatResumeViewController: UIViewController {//CreatResumeControl
         setupNavigationBar()
         setupIem()
     }
-    
-    func setupNavigationBar() {
-        if let topItem = navigationController?.navigationBar.topItem {
-            topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-            topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
-        }
-    }
-
-
 }
