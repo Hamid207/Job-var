@@ -45,7 +45,7 @@ class UserSettingTableViewCell: UITableViewCell {
     }()
     
     //nameTextField
-    private let nameTextFiled: UITextField = {
+    let nameTextFiled: UITextField = {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.translatesAutoresizingMaskIntoConstraints = false
@@ -265,7 +265,7 @@ class UserSettingTableViewCell: UITableViewCell {
         let textFiled = UITextField()
         textFiled.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         textFiled.placeholder = "Daxil et..."
-        textFiled.keyboardType = .numbersAndPunctuation
+        textFiled.keyboardType = .numberPad
         textFiled.translatesAutoresizingMaskIntoConstraints = false
         return textFiled
     }()
@@ -335,10 +335,10 @@ class UserSettingTableViewCell: UITableViewCell {
        // let lastName = lastNameTextFiled.text
         let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: "", city: (cityButton.titleLabel?.text) ?? "", image: "nil", dateOfBirth: dateTextField.text, number: numberTextField.text, info: "userInfo", email: emailTextField.text ?? "email nil")
         delegate?.setItem(userInfoModel: userInfoModel)
+        print("Setdata")
     }
     
     @objc func textrFirledTarget() {
-        
         if nameTextFiled.text == "" {
             namelineVIew.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         }else if nameTextFiled.text != "" {
@@ -394,7 +394,6 @@ class UserSettingTableViewCell: UITableViewCell {
         numberTextField.delegate = self
         dateTextField.delegate = self
         
- 
         dateTextField.inputView = datePickerView
         datePickerView.datePickerMode = .date
         let loc = Locale.init(identifier: "az_Latn_AZ")
@@ -442,7 +441,6 @@ class UserSettingTableViewCell: UITableViewCell {
         namelineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
         //-------------lastName
-        
         //lastNameLabel
         contentView.addSubview(lastNameLabel)
         lastNameLabel.topAnchor.constraint(equalTo: namelineVIew.bottomAnchor, constant: 20).isActive = true
@@ -465,15 +463,12 @@ class UserSettingTableViewCell: UITableViewCell {
         lastNamelineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
         //-------------cins
-        
 //        //cinsSegmentControl
 //        contentView.addSubview(cinsSegmentControl)
 //        cinsSegmentControl.topAnchor.constraint(equalTo: lastNamelineVIew.bottomAnchor, constant: 20).isActive = true
 //        cinsSegmentControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
 //        cinsSegmentControl.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
 //
-        
-        //-------------userCity
         
         //userCityLabel
         contentView.addSubview(userCityLabel)
@@ -500,8 +495,6 @@ class UserSettingTableViewCell: UITableViewCell {
         citylineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         citylineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         citylineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        //-------------date
         
         //dateLabel
         contentView.addSubview(dateLabel)
@@ -530,8 +523,6 @@ class UserSettingTableViewCell: UITableViewCell {
         dateLineVIew.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
         dateLineVIew.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         dateLineVIew.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-        //-------------email
         
         //dateLabel
         contentView.addSubview(emailLabel)

@@ -21,6 +21,7 @@ class UserViewController: UIViewController {
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
         //self.viewModel?.firebaseSet?.observe()
         DispatchQueue.main.async {
             self.viewModel?.firebaseSet?.firebaseObserve(withPath: "allUsers", child: "user")
@@ -28,7 +29,7 @@ class UserViewController: UIViewController {
         
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
+//    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillDisappear(true)
 //        viewModel?.firebaseSet?.removeAllObserverr()
 //    }

@@ -24,7 +24,7 @@ protocol MainViewModelProtocol {
 final class MainViewModel: MainViewModelProtocol {
     lazy var mainTableViewCellId: String = "MainTableViewCellId"
     lazy var secondTableVIewCellId: String = "SecondTableVIewCellId"
-    lazy var collectionVIewARRayTest: [String]? = ["Elan yerləşdirin ", "Butun elanlar", "Is axtaranlar"]
+    lazy var collectionVIewARRayTest: [String]? = ["Elan yerləşdir", "Butun elanlar", "Is axtaranlar"]
     var firebaseSet: FirebaseSetProtocol?
     var addResumeArray: [AddResumeModel]?
     private let router: RouterProtocol?

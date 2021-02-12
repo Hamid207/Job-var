@@ -14,11 +14,19 @@ extension UserSettingViewController {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: nil)
             topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarbutton))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
+        
+//        var aaa = String()
+//        viewModel?.firebaseSet?.setObserveValue = { name in
+//            aaa = name["name"] as? String ?? "HamidNIl"
+//           print("TEST == \(aaa)")
+//        }
     }
     
     func itemSetup() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarbutton))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
+        
         //MARK - USERTABLEVIEW
         userTabeleView.delegate = self
         userTabeleView.dataSource = self
@@ -41,6 +49,45 @@ extension UserSettingViewController {
         DispatchQueue.main.async {
             self.userTabeleView.reloadData()
         }
+//        let vc = UserSettingTableViewCell()
+//        vc.delegate = self
+//        vc.setData()
+//        DispatchQueue.main.async {
+//            self.userTabeleView.reloadData()
+//        }
+//       
+//        if aaa == "" {
+//            print("nil")
+//        }else {
+//            viewModel?.popUser()
+//            DispatchQueue.main.async {
+//                self.userTabeleView.reloadData()
+//            }
+//            print("QAQAQAQ")
+//        }
+//        var aaa = vc.nameTextFiled.text
+//        aaa = "Hamid"
+//        if viewModel?.modelName == "" {
+//            let alert = UIAlertController(title: "nil", message: "nil", preferredStyle: .alert)
+//            let action = UIAlertAction(title: "OK", style: .default) { (action) in
+//
+//            }
+//
+//            alert.addAction(action)
+//            present(alert, animated: true, completion: nil)
+//            print("1")
+//  
+//        }else if viewModel?.modelName != "" {
+//            print("2")
+//            DispatchQueue.main.async {
+//                self.userTabeleView.reloadData()
+//            }
+//        }
+//        print("hamidddd = \(viewModel?.modelName)")
+    }
+    
+    @objc func saveEnabled() {
+        
     }
     
     @objc func showCityDetail() {
@@ -69,7 +116,7 @@ extension UserSettingViewController {
 //MARK: DELGATE
 extension UserSettingViewController: SetDelegate {
     func setItem(userInfoModel: UserInfoModel) {
-        // viewModel?.userInfoModelName = userInfoModel.name
+        viewModel?.modelName = userInfoModel.name
         viewModel?.firebaseSet?.setUserInfo(userInfoModel: userInfoModel, withPath: "allUsers", child: "user")
     }
 }
@@ -89,7 +136,7 @@ extension UserSettingViewController: UITableViewDataSource {
             if let model = viewModel?.userInfoModel {
                 cell.updateData(userInfoModel: model, cityName: viewModel?.cityName ?? model.city)
             }
-            
+            cell.nameTextFiled.addTarget(self, action: #selector(saveEnabled), for: .editingChanged)
             return cell
         }
         return UITableViewCell()

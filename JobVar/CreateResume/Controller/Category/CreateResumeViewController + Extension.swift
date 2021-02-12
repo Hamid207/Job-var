@@ -20,6 +20,7 @@ extension CreateResumeViewController {
         createResumeTableView.delegate = self
         createResumeTableView.dataSource = self
         createResumeTableView.separatorStyle = .singleLine
+        createResumeTableView.tableFooterView = UIView()
         createResumeTableView.register(CreateResumeTableViewCell.self, forCellReuseIdentifier: "createResumeTableViewCellId")
         createResumeTableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         //createResumeTableView.sectionFooterHeight = 10

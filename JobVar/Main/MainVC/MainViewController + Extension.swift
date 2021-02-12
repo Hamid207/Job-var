@@ -45,6 +45,8 @@ extension MainViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .none
+//        mainTableView.rowHeight = UITableView.automaticDimension
+//        mainTableView.estimatedRowHeight = 100
         mainTableView.showsVerticalScrollIndicator = false
         mainTableView.register(MainTableViewViewCell.self, forCellReuseIdentifier: mainViewModel!.mainTableViewCellId)
         //mainTableView.register(SecondMainTableViewCell.self, forCellReuseIdentifier: mainViewModel!.secondTableVIewCellId)
@@ -70,17 +72,21 @@ extension MainViewController {
     @objc func handleRefreshControl() {
         DispatchQueue.main.async { [weak self] in
             self?.mainTableView.reloadData()
-            self?.refreshControl.endRefreshing()
         }
+        self.refreshControl.endRefreshing()
     }
     
     @objc func filterVC() {
         let vc = MainFilterViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc func search() {
+        
+    }
 }
 
-//MARK: - UICollectionViewDataSource
+//MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mainViewModel?.firebaseSet?.addResumeArray?.count ?? 0

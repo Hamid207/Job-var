@@ -13,8 +13,8 @@ class MainCollectionViewCell: UICollectionViewCell {
      private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
-        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        label.backgroundColor = UIColor(named: "MainColor")
+        label.textColor = UIColor(named: "MainColor")
+        label.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 2
@@ -41,9 +41,9 @@ class MainCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         nameLabel.layer.cornerRadius = 5
-        //nameLabel.layer.borderWidth = 1
+        nameLabel.layer.borderWidth = 2
         nameLabel.layer.masksToBounds = true
-        //nameLabel.layer.borderColor = UIColor(named: "MainColor")?.cgColor
+        nameLabel.layer.borderColor = UIColor(named: "MainColor")?.cgColor
     }
     
     private func setup() {

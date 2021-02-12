@@ -16,6 +16,7 @@ class UserSettingViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         navigationItem.title = "UserSettingViewController"
+        tabBarController?.tabBar.isHidden = true
         setupNavigationBar()
         itemSetup()
         viewModel?.firebaseSet?.currentUser(withPath: "allUsers", child: "user")

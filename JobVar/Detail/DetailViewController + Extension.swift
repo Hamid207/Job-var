@@ -22,8 +22,11 @@ extension DetailViewController {
             detailTableiew.delegate = self
             detailTableiew.dataSource = self
             detailTableiew.separatorStyle = .none
+            detailTableiew.rowHeight = UITableView.automaticDimension
+            detailTableiew.estimatedRowHeight = 2000
             detailTableiew.allowsSelection = false // tableViewnu basmaq olmur
-            detailTableiew.register(DetailTableViewCell.self, forCellReuseIdentifier: "detailTableViewCellId")
+//            detailTableiew.register(DetailTableViewCell.self, forCellReuseIdentifier: "detailTableViewCellId")
+            detailTableiew.register(UINib.init(nibName: deteailCell, bundle: nil), forCellReuseIdentifier: deteailCell)
             detailTableiew.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     //        mainTableView.sectionFooterHeight = 10
             detailTableiew.sectionHeaderHeight = 10
@@ -43,11 +46,12 @@ extension DetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "detailTableViewCellId", for: indexPath) as? DetailTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: deteailCell, for: indexPath) as? DetailTableViewCellTest {
             if let item = detailViewModel?.addreseumeModel {
                 cell.detailRefresh(item)
                 return cell
             }
+            return cell
         }
         return UITableViewCell()
     }
@@ -56,11 +60,10 @@ extension DetailViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension DetailViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1800
-    }
-    
-   
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 1800
+//    }
+
 }
 
 

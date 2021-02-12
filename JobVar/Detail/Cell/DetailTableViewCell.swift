@@ -8,6 +8,8 @@
 import UIKit
 
 class DetailTableViewCell: UITableViewCell {
+   
+    
     //nameLabel
      private let nameLabel: UILabel = {
         let label = UILabel()
@@ -200,6 +202,21 @@ class DetailTableViewCell: UITableViewCell {
         return label
     }()
     
+    //creatResumeDateLabel
+    private let creatResumeDateLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 19, weight: .light)
+        label.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        label.minimumScaleFactor = 0.2
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //lineView1
     private let lineView1: UIView = {
         let view = UIView()
@@ -223,7 +240,7 @@ class DetailTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupItem()
@@ -252,6 +269,7 @@ class DetailTableViewCell: UITableViewCell {
         educationLabel.text = "Təhsil:  \(model.education)"
         workExperienceLabel.text = "İş təcrübəsi:  \(model.workExperience)"
         ageLabel.text = "Yaş:  \(model.age)"
+        creatResumeDateLabel.text = "\(model.resumeAddDate)"
         
 //        switch model.odeme {
 //        case .offline:
@@ -364,9 +382,16 @@ class DetailTableViewCell: UITableViewCell {
         lineView3.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         
         //cateqoryOneName
-        addSubview(cateqoryOneName)
+        contentView.addSubview(cateqoryOneName)
         cateqoryOneName.topAnchor.constraint(equalTo: lineView3.bottomAnchor, constant: 25).isActive = true
         cateqoryOneName.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         cateqoryOneName.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        
+        //creatResumeDateLabel
+        contentView.addSubview(creatResumeDateLabel)
+        creatResumeDateLabel.topAnchor.constraint(equalTo: cateqoryOneName.bottomAnchor, constant: 10).isActive = true
+        creatResumeDateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        creatResumeDateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+//        creatResumeDateLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
 }

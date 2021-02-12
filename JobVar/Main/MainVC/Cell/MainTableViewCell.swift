@@ -70,11 +70,11 @@ class MainTableViewViewCell: UITableViewCell {
     //infoTextLabel
     private let infoTextLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         label.minimumScaleFactor = 0.2
         label.textAlignment = .left
-        label.numberOfLines = 6
+        label.numberOfLines = 5
         label.lineBreakMode = .byWordWrapping
         label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
@@ -147,7 +147,6 @@ class MainTableViewViewCell: UITableViewCell {
     @objc private func favoritesButtonTarget() {
         if buttonTarget == false {
             favoritesButton.setImage(UIImage(named: "star2"), for: .normal)
-            print("PESHEEEE == \(positionLabel.text)")
             buttonTarget = true
         }else if buttonTarget == true {
             favoritesButton.setImage(UIImage(named: "star1"), for: .normal)
@@ -159,7 +158,7 @@ class MainTableViewViewCell: UITableViewCell {
     private func setupItem(){
         //cateqoryOneName
         contentView.addSubview(positionLabel)
-        positionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        positionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
         positionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         positionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
         
@@ -202,8 +201,9 @@ class MainTableViewViewCell: UITableViewCell {
         
         //resumeAddData
         contentView.addSubview(resumeAddData)
-        resumeAddData.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
+//        resumeAddData.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
         resumeAddData.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        resumeAddData.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
         
         //lineView
         contentView.addSubview(lineView)
