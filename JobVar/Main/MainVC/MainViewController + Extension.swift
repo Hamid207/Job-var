@@ -26,6 +26,15 @@ extension MainViewController {
     }
     
     func setupView() {
+        mainTextField.delegate = self
+        mainTextField.backgroundColor = .orange
+        mainTextField.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(mainTextField)
+        mainTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 2).isActive = true
+        mainTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
+        mainTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
+        mainTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
         //MARK: - MAINCOLLECTIONVIEW
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
@@ -35,7 +44,7 @@ extension MainViewController {
         mainCollectionView.showsVerticalScrollIndicator = false
         view.addSubview(mainCollectionView)
         mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        mainCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        mainCollectionView.topAnchor.constraint(equalTo: mainTextField.bottomAnchor, constant: 5).isActive = true
         mainCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         mainCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         mainCollectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -45,15 +54,13 @@ extension MainViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.separatorStyle = .none
-//        mainTableView.rowHeight = UITableView.automaticDimension
-//        mainTableView.estimatedRowHeight = 100
+//      mainTableView.rowHeight = UITableView.automaticDimension
+//      mainTableView.estimatedRowHeight = 100
         mainTableView.showsVerticalScrollIndicator = false
         mainTableView.register(MainTableViewViewCell.self, forCellReuseIdentifier: mainViewModel!.mainTableViewCellId)
         //mainTableView.register(SecondMainTableViewCell.self, forCellReuseIdentifier: mainViewModel!.secondTableVIewCellId)
         mainTableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        //        mainTableView.rowHeight = UITableView.automaticDimension
-        //        mainTableView.estimatedRowHeight = 300
-        //        mainTableView.sectionFooterHeight = 10
+        //mainTableView.sectionFooterHeight = 10
         //mainTableView.sectionHeaderHeight = 15
         view.addSubview(mainTableView)
         mainTableView.translatesAutoresizingMaskIntoConstraints = false
@@ -86,6 +93,28 @@ extension MainViewController {
     }
 }
 
+extension MainViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text {
+            filterText(text+string)
+        }
+        return true
+    }
+    
+    func filterText(_ query: String) {
+        filterData.removeAll()
+//        for string in data {
+//            if string.lowercased().starts(with: query.lowercased()) {
+//                filterData.append(string)
+//            }
+//        }
+        mainTableView.reloadData()
+        filtered = true
+    }
+    
+}
+
 //MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,8 +126,8 @@ extension MainViewController: UITableViewDataSource {
             let item = mainViewModel?.firebaseSet?.addResumeArray?[indexPath.row]
             if tableView.isOpaque {
                 actitvityIndicator.stopAnimating()
+                cell.refresh(item!)
             }
-            cell.refresh(item!)
             return cell
         }
         return UITableViewCell()
@@ -128,7 +157,7 @@ extension MainViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return 180
     }
 }
 

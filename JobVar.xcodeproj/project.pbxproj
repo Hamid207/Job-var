@@ -420,9 +420,9 @@
 		612B93C4256B256F009DBCBF /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				612B93C5256B2583009DBCBF /* DetailTableViewCell.swift */,
 				6127E6DC25D5E95F00AD7FE8 /* DetailTableViewCellTest.swift */,
 				6127E6DD25D5E95F00AD7FE8 /* DetailTableViewCellTest.xib */,
+				612B93C5256B2583009DBCBF /* DetailTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

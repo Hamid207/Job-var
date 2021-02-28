@@ -56,6 +56,7 @@ final class FirebaseSet: FirebaseSetProtocol {
                 _tasks.append(task)
             }
             self?.userInfoModelArray = _tasks
+
         }
     }
     
@@ -67,7 +68,8 @@ final class FirebaseSet: FirebaseSetProtocol {
                 let task = AddResumeModel(snapShot: item as! DataSnapshot)
                 _tasks.append(task)
             }
-            self?.addResumeArray = _tasks
+            let task = _tasks.sorted(by: { $0.resumeAddDate > $1.resumeAddDate })
+            self?.addResumeArray = task
             DispatchQueue.main.async {
                 tableView.reloadData()
             }

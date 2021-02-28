@@ -70,11 +70,11 @@ class MainTableViewViewCell: UITableViewCell {
     //infoTextLabel
     private let infoTextLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        label.minimumScaleFactor = 0.2
+//        label.minimumScaleFactor = 0.2
         label.textAlignment = .left
-        label.numberOfLines = 5
+        label.numberOfLines = 4
         label.lineBreakMode = .byWordWrapping
         label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
@@ -86,7 +86,7 @@ class MainTableViewViewCell: UITableViewCell {
     private let cilientNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        label.textColor = UIColor(named: "MainColor")
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.2

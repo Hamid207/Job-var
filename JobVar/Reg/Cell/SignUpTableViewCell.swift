@@ -151,7 +151,7 @@ class SignUpTableViewCell: UITableViewCell {
         contentView.addSubview(emailLabel)
         emailLabel.topAnchor.constraint(equalTo: emailTextFiled.topAnchor, constant: -10).isActive = true
         emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 35).isActive = true
-        emailLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        emailLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
         contentView.addSubview(pasTextField)
         pasTextField.topAnchor.constraint(equalTo: emailTextFiled.bottomAnchor, constant: 20).isActive = true

@@ -53,7 +53,7 @@ class FilterMainVCTableViewCell: UITableViewCell {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
-        button.setTitle("Yerləşdirin", for: .normal)
+        button.setTitle("Axtar", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         return button

@@ -40,12 +40,10 @@ class LogInTableViewCell: UITableViewCell {
         label.backgroundColor = UIColor(named: "TextColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
-        label.numberOfLines = 1
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
-        label.text = "Full Name"
-        
+        label.text = "Name"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -75,7 +73,6 @@ class LogInTableViewCell: UITableViewCell {
         label.backgroundColor = UIColor(named: "TextColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
-        label.numberOfLines = 1
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
@@ -109,9 +106,7 @@ class LogInTableViewCell: UITableViewCell {
         label.backgroundColor = UIColor(named: "TextColor")
         label.textAlignment = .center
         label.minimumScaleFactor = 0.2
-        label.numberOfLines = 1
         label.sizeToFit()
-        label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
         label.text = "Password"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +190,7 @@ class LogInTableViewCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: nameTextFiled.topAnchor, constant: -10).isActive = true
         nameLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 35).isActive = true
-        nameLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        nameLabel.widthAnchor.constraint(equalToConstant: 55).isActive = true
         
         //nameTextFiled
         contentView.addSubview(emailTextFiled)
@@ -208,7 +203,7 @@ class LogInTableViewCell: UITableViewCell {
         contentView.addSubview(emailLabel)
         emailLabel.topAnchor.constraint(equalTo: emailTextFiled.topAnchor, constant: -10).isActive = true
         emailLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 35).isActive = true
-        emailLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        emailLabel.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
         //passwordTextField
         contentView.addSubview(passwordTextField)
