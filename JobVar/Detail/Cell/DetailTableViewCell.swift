@@ -262,7 +262,7 @@ class DetailTableViewCell: UITableViewCell {
         nameLabel.text = model.position
         cateqoryOneName.text = model.cateqoryOneName
         requirementsLabel.text = model.requirements
-        priceLabel.text = "Maaş:  \(model.salary!) AZN"
+        priceLabel.text = "Maaş:  \(model.salary) AZN"
         infoTextLabel.text = model.detailedInfo
         cityLabel.text = model.city
         cilientNameLabel.text = model.companyName

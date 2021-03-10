@@ -238,6 +238,13 @@ class UserTableViewCell: UITableViewCell {
         refreshEmailLabel.text = update["email"] as? String
         refreshNumberLabel.text = update["number"] as? String
         delegtaeFunc()
+        
+//        if refReshLastNamelabel.text == "" {
+//            lastNameLabel.isHidden = true
+//            refReshLastNamelabel.isHidden = true
+//            print("TESTEST============= \(refReshLastNamelabel.text)")
+//
+//        }
     }
     
     private func delegtaeFunc() {

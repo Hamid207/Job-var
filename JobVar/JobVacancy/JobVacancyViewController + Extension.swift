@@ -68,12 +68,12 @@ extension JobVacancyViewController {
 //MARK: - UITableViewDataSource
 extension JobVacancyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return jobVacancyViewModel?.firebaseSet?.addResumeArray?.count ?? 0
+        return jobVacancyViewModel?.firebaseSet?.addAllResumeArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "jobVacancyTableViewCellId", for: indexPath) as? JobVacancyTableViewCell {
-            guard let item = jobVacancyViewModel?.firebaseSet?.addResumeArray?[indexPath.row] else { return UITableViewCell() }
+            guard let item = jobVacancyViewModel?.firebaseSet?.addAllResumeArray?[indexPath.row] else { return UITableViewCell() }
             if tableView.isOpaque {
                 actitvityIndicator.stopAnimating()
             }
@@ -91,7 +91,7 @@ extension JobVacancyViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension JobVacancyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setArray = jobVacancyViewModel?.firebaseSet?.addResumeArray?[indexPath.row]
+        let setArray = jobVacancyViewModel?.firebaseSet?.addAllResumeArray?[indexPath.row]
         jobVacancyViewModel?.test(detailResume: setArray!)
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -9,6 +9,7 @@ import UIKit
 
 class MainFilterViewController: UIViewController {
     
+    var viewModel: MainFilterViewModelProtocol?
     let tableView = UITableView(frame: .zero, style: .plain)
     
     override func viewDidLoad() {
@@ -17,6 +18,20 @@ class MainFilterViewController: UIViewController {
         setupNavigationBar() 
         setupItem()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async { [weak self] in
+//            self?.viewModel?.firebaseSet?.filterVC()
+//            self?.viewModel?.firebaseSet?.test2(tableView: self!.tableView)
+
+            self?.viewModel?.firebaseSet?.userFilterObserve()
+        }
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(true)
+//        viewModel?.firebaseSet?.removeAllObserverr()
+//    }
     
     func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
@@ -44,6 +59,16 @@ class MainFilterViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
+    @objc func popVCButton() {
+        viewModel?.popView()
+    }
+    
+}
+extension MainFilterViewController: FilterDelegate {
+    func setFilterInfo(filterModel: FilterModel) {
+        viewModel?.firebaseSet(filterModel: filterModel)
+        viewModel?.position = filterModel.position
+    }
 }
 
 extension MainFilterViewController: UITableViewDelegate, UITableViewDataSource {
@@ -53,6 +78,11 @@ extension MainFilterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "filterMainVCTableViewCellId", for: indexPath) as? FilterMainVCTableViewCell {
+            cell.delegate = self
+            cell.filterButton.addTarget(self, action: #selector(popVCButton), for: .touchDown)
+            viewModel?.firebaseSet?.setFilterObserveValue = { update in
+                cell.update(update: update)
+            }
             return cell
         }
         return UITableViewCell()
@@ -62,4 +92,6 @@ extension MainFilterViewController: UITableViewDelegate, UITableViewDataSource {
         return 280
     }
 }
+
+
 

@@ -11,8 +11,6 @@ class MainViewController: UIViewController {
     var mainViewModel: MainViewModelProtocol?
     lazy var actitvityIndicator = makeActivityIndicatorView()
     
-    let mainTextField = UITextField()
-    var filterData = [AddResumeModel]()
     var filtered = false
     
     let mainTableView = UITableView(frame: .zero, style: .plain)
@@ -38,8 +36,8 @@ class MainViewController: UIViewController {
 //        mainViewModel?.firebaseSet?.creatAllResume()
         configureRefreshControl ()
         actitvityIndicator.startAnimating()
-        filterData = (mainViewModel?.firebaseSet?.addResumeArray)!
-        print(filterData)
+//        mainViewModel?.firebaseSet?.userFilterObserve()
+//        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +50,8 @@ class MainViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.mainViewModel?.firebaseSet?.creatAllResume()
             self?.mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: self!.mainTableView)
+            self?.mainViewModel?.firebaseSet?.userFilterObserve()
         }
-      
     }
     
     override func viewWillDisappear(_ animated: Bool) {

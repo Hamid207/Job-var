@@ -141,7 +141,7 @@ class JobVacancyTableViewCell: UITableViewCell {
         cityLabel.text = "\(model.city)."
         cilientNameLabel.text = model.companyName
         infoTextLabel.text = model.detailedInfo
-        priceLabel.text = "\(model.salary!) AZN"
+        priceLabel.text = "\(model.salary) AZN"
     }
     
     //favoritesButton target

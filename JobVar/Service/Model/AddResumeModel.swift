@@ -12,7 +12,7 @@ struct AddResumeModel {
     let cateqoryOneName: String
     let cateqoryTwoName: String
     let position: String
-    let salary: String?
+    let salary: String
     let city: String
     let companyName: String
     let age: String
@@ -53,7 +53,7 @@ struct AddResumeModel {
         cateqoryOneName = snapShotValue["cateqoryOneName"] as! String
         cateqoryTwoName = snapShotValue["cateqoryTwoName"] as! String
         position = snapShotValue["position"] as! String
-        salary = snapShotValue["salary"] as? String
+        salary = snapShotValue["salary"] as! String
         city = snapShotValue["city"] as! String
         companyName = snapShotValue["companyName"] as! String
         age = snapShotValue["age"] as! String
@@ -70,6 +70,6 @@ struct AddResumeModel {
     }
     
     func convertToDictinary() -> Any {
-        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "position" : position, "companyName" : companyName, "salary" : salary!, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email, "favorit" : favorit, "userId" : userId, "resumeAddTime" : resumeAddTime, "resumeAddDate" : resumeAddDate]
+        return [ "resume" : resume, "cateqoryOneName" : cateqoryOneName, "cateqoryTwoName" : cateqoryTwoName, "position" : position, "companyName" : companyName, "salary" : salary, "city" : city,  "age" : age, "education" : education, "workExperience" : workExperience, "detailedInfo" : detailedInfo, "requirements" : requirements, "email" : email, "favorit" : favorit, "userId" : userId, "resumeAddTime" : resumeAddTime, "resumeAddDate" : resumeAddDate]
     }
 }

@@ -27,6 +27,7 @@ protocol RouterProtocol: RouterMain {
     func showFavaritesDetail(testArray: FeedResponse)
     func showUserSettings(userInfoModel: UserInfoModel)
     func showCityButtonView()
+    func showMainFilterVC()
     func popVc()
     func popUser()
 }
@@ -142,6 +143,14 @@ class Router: RouterProtocol {
             guard let cityDetail = assemblyBuilder?.creatCityDetaiLModule(router: self) else { return }
            // navigationController.present(cityDetail, animated: true, completion: nil)
             navigationController.pushViewController(cityDetail, animated: true)
+        }
+    }
+    
+    //MainFilterViewController
+    func showMainFilterVC() {
+        if let navigationController = naviGationController {
+            guard let mainFilterVc = assemblyBuilder?.creatMainFilterModule(router: self) else { return }
+            navigationController.pushViewController(mainFilterVc, animated: true)
         }
     }
     

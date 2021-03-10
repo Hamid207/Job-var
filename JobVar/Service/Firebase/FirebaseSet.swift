@@ -17,9 +17,15 @@ protocol FirebaseSetProtocol: class {
     func setResume(addResumeModel: AddResumeModel)
     func firebaseObserve( withPath: String, child: String)
     var setObserveValue: (([String : Any]) -> ())? { get set }
+    var setFilterObserveValue: (([String : Any]) -> ())? { get set }
     func mainVCset(name: String, email: String)
     var setResumeObserverValue: (([String : Any]) -> ())? { get set }
     var addResumeArray:  Array<AddResumeModel>? { get set }
+    var addAllResumeArray: Array<AddResumeModel>? { get set }
+    var filterArray: FilterModel? { get set }
+    func UserResumeFilter(filterModel: FilterModel?)
+    func userFilterObserve()
+    func filterVC()
 }
 
 final class FirebaseSet: FirebaseSetProtocol {
@@ -29,9 +35,12 @@ final class FirebaseSet: FirebaseSetProtocol {
     private let resumeRandomIdNumber = Int.random(in: 1..<10000000000000000)
     private var userEmail: String?
     var addResumeArray:  Array<AddResumeModel>? = Array<AddResumeModel>()
+    var addAllResumeArray: Array<AddResumeModel>? = Array<AddResumeModel>()
+    var filterArray: FilterModel?
     var setObserveValue: (([String : Any]) -> ())?
     var setResumeObserverValue: (([String : Any]) -> ())?
-    
+    var setFilterObserveValue: (([String : Any]) -> ())?
+    private var filterr: FilterModel?
     
     //info
     func currentUser(withPath: String, child: String) {
@@ -47,7 +56,11 @@ final class FirebaseSet: FirebaseSetProtocol {
         firebaseAllResume()
     }
     
-    func observeUserInfoModel() {
+    func filterVC() {
+        firebaseFilter()
+    }
+    
+    func observeUserInfoModel() { //bu isdemir bunun yerine firebaseObserve di
         firabaseadd(first: "allUsers", child: "child")
         ref.observe(.value) { [weak self] (snapshot) in
             var _tasks = Array<UserInfoModel>()
@@ -56,24 +69,30 @@ final class FirebaseSet: FirebaseSetProtocol {
                 _tasks.append(task)
             }
             self?.userInfoModelArray = _tasks
-
+            print("TESTTASKK = \(_tasks)")
         }
     }
     
     func observeAddResumeModel(tableView: UITableView) {
         let ref = Database.database().reference()
+       
         ref.child("allResume").observe(.value) { [weak self] (snapshot) in
             var _tasks = Array<AddResumeModel>()
             for item in snapshot.children {
                 let task = AddResumeModel(snapShot: item as! DataSnapshot)
                 _tasks.append(task)
             }
-            let task = _tasks.sorted(by: { $0.resumeAddDate > $1.resumeAddDate })
-            self?.addResumeArray = task
+            //JobVacancyViewController
+            self?.addAllResumeArray = _tasks
+            //MainVC
+            let task = _tasks.sorted(by: { $0.resumeAddDate > $1.resumeAddDate})
+            self?.addResumeArray = task.filter({$0.position.contains(self?.filterr?.position ?? "") && $0.city.contains(self?.filterr?.city ?? "") || $0.position.lowercased().contains(self?.filterr?.position?.lowercased() ?? "") && $0.city.contains(self?.filterr?.city ?? "") || $0.companyName.lowercased().contains(self?.filterr?.companyName?.lowercased() ?? "")})
+//            self?.addResumeArray = task.filter({$0.companyName.contains(self?.filterr?.companyName ?? "tesr")})
+            print("resume==-=====\(self?.filterr)")
+            print("Taskk - = \(task)")
             DispatchQueue.main.async {
                 tableView.reloadData()
             }
-            //print("adddresume = \(self?.addResumeArray)")
         }
     }
     
@@ -114,6 +133,17 @@ final class FirebaseSet: FirebaseSetProtocol {
         userRef.setValue(userInfo.convertToDictinaryy())
     }
     
+    //FilterVc
+    func UserResumeFilter(filterModel: FilterModel?) {
+        firabaseadd(first: "allUsers", child: "user")
+        guard let postion = filterModel?.position, let companyName = filterModel?.companyName, let city = filterModel?.city, let salary = filterModel?.salary else { return }
+        let model = FilterModel(position: postion, companyName: companyName, city: city, salary: salary, info: "userFilter")
+        filterArray = model
+        print("Filter MODel =============== \(filterArray)")
+        let userRef = ref.child(model.info.lowercased())
+        userRef.setValue(model.convertToDictinary())
+    }
+    
     private func firabaseadd(first: String, child: String) {
         guard let currentUser = Auth.auth().currentUser else { return }
         user = UserModel(user: currentUser)
@@ -125,6 +155,12 @@ final class FirebaseSet: FirebaseSetProtocol {
         guard let currentUser = Auth.auth().currentUser else { return }
         user = UserModel(user: currentUser)
         ref = Database.database().reference().child("allUsers").child(String(user.uid)).child("user").child("userResume")
+    }
+    
+    private func firebaseFilter() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        user = UserModel(user: currentUser)
+        ref = Database.database().reference().child("allUsers").child(String(user.uid)).child("user").child("userfilter")
     }
     
     private func firebaseAllResume() {
@@ -150,6 +186,26 @@ final class FirebaseSet: FirebaseSetProtocol {
             }
         } withCancel: { (error) in
             print("ERROR RESON FirebaseSet")
+        }
+    }
+    
+    //MARK: -  Firabeseden userFilterden melumat goturmek
+    func userFilterObserve() {
+        guard let currentUser = Auth.auth().currentUser else { return }
+        user = UserModel(user: currentUser)
+//        filterr = FilterModel(position: "position", companyName: "companyName", city: "city", salary: "salary", info: "")
+        let ref2 = Database.database().reference()
+        ref2.child("allUsers").child(String(user.uid)).child("user").child("userfilter").observe(.value) { [weak self] (snapshot) in
+            if let value = snapshot.value as? [String : Any], snapshot.exists() {
+                let position = value["position"] as? String ?? "position nil firebaseSet"
+                let companyName = value["companyName"] as? String ?? "companyName nil firebaseSet"
+                let city = value["city"] as? String ?? "city nil firebaseSet"
+                let salary = value["salary"] as? String ?? "salary nil firebaseSet"
+                self?.setFilterObserveValue?(["position" : position, "companyName" : companyName, "city" : city, "salary" : salary])
+                self?.filterr = FilterModel(position: position, companyName: companyName, city: city, salary: salary, info: "")
+            }
+        } withCancel: { (error) in
+            print("ERROR RESON FirebaseSet userFilterObserve")
         }
     }
     

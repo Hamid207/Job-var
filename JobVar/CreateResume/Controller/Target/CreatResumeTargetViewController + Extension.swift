@@ -115,6 +115,7 @@ extension CreatResumeTargetViewController {
 //    }
 }
 
+//MARK: - Delegate
 extension CreatResumeTargetViewController: AddResumeDelegate {
     func setResume(addResumeModel: AddResumeModel) {
         viewModel?.setResume(addResumeModel: addResumeModel)

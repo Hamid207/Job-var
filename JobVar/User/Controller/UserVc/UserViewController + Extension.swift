@@ -5,7 +5,6 @@
 //  Created by Hamid Manafov on 23.11.20.
 //
 
-import Firebase
 import UIKit
 
 extension UserViewController {

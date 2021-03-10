@@ -7,7 +7,12 @@
 
 import UIKit
 
+protocol FilterDelegate: class {
+    func setFilterInfo(filterModel: FilterModel)
+}
+
 class FilterMainVCTableViewCell: UITableViewCell {
+    weak var delegate: FilterDelegate?
     
     private let positionTextField: UITextField = {
         let textFiled = UITextField()
@@ -49,7 +54,7 @@ class FilterMainVCTableViewCell: UITableViewCell {
         return textFiled
     }()
     
-    private let filterButton: UIButton = {
+    let filterButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor(named: "MainColor")
@@ -67,6 +72,7 @@ class FilterMainVCTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         positionTextField.layer.cornerRadius = 5
@@ -87,6 +93,18 @@ class FilterMainVCTableViewCell: UITableViewCell {
         
         filterButton.layer.cornerRadius = 5
         
+    }
+    
+    func update(update : [String : Any]) {
+        positionTextField.text = update["position"] as? String
+        companyTextFiled.text = update["companyName"] as? String
+        cityTextFiled.text = update["city"] as? String
+        salaryTextFiled.text = update["salary"] as? String
+    }
+    
+    @objc private func setData() {
+        let filterModel = FilterModel(position: positionTextField.text ?? "", companyName: companyTextFiled.text ?? "", city: cityTextFiled.text ?? "", salary: salaryTextFiled.text ?? "", info: "")
+        delegate?.setFilterInfo(filterModel: filterModel)
     }
     
     private func itemSetup() {
@@ -130,6 +148,7 @@ class FilterMainVCTableViewCell: UITableViewCell {
         filterButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         filterButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         filterButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        filterButton.addTarget(self, action: #selector(setData), for: .touchDown)
         
     }
 }   

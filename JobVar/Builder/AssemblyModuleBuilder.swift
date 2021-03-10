@@ -20,6 +20,7 @@ protocol AsseblyBuilderProtocol {
     func creatFavoritesViewControllerModule(router: RouterProtocol) -> UIViewController
     func creatFavaritesDetailModule(router: RouterProtocol, testArray: FeedResponse?) -> UIViewController
     func creatCityDetaiLModule(router: RouterProtocol) -> UIViewController
+    func creatMainFilterModule(router: RouterProtocol) -> UIViewController
     
     //AUTH
     func creatChoiceModule(authRouter: AuthRouterProtocol) -> UIViewController
@@ -155,4 +156,14 @@ class AsseblyModelBuilder: AsseblyBuilderProtocol {
         view.viewModel = viewModel
         return view
     }
+    
+    //creatMainFilterModule
+    func creatMainFilterModule(router: RouterProtocol) -> UIViewController {
+        let view = MainFilterViewController()
+        let fireBaseSet = FirebaseSet()
+        let viewModel = MainFilterViewModel(router: router, firebaseSet: fireBaseSet)
+        view.viewModel = viewModel
+        return view
+    }
+
 }

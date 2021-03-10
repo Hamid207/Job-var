@@ -10,6 +10,7 @@
 		2BDB676EB78265187A9FEA09 /* Pods_JobVar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FCFDD5AE836BE612351A5B0 /* Pods_JobVar.framework */; };
 		6110A659259389F90039C1AD /* CreatResumeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6110A658259389F90039C1AD /* CreatResumeModel.swift */; };
 		6110A66D25938BEC0039C1AD /* CreatResumeModel.json in Resources */ = {isa = PBXBuildFile; fileRef = 6110A66C25938BEC0039C1AD /* CreatResumeModel.json */; };
+		6116C22625F0078B0002A2E0 /* MainFilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6116C22525F0078B0002A2E0 /* MainFilterViewModel.swift */; };
 		612377D725867C99003EAAFE /* ChildModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612377D625867C99003EAAFE /* ChildModel.swift */; };
 		61275F4825C871D500D4E6BA /* UserAddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61275F4725C871D500D4E6BA /* UserAddCityViewController.swift */; };
 		6127E6DE25D5E95F00AD7FE8 /* DetailTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127E6DC25D5E95F00AD7FE8 /* DetailTableViewCellTest.swift */; };
@@ -105,6 +106,7 @@
 		61D695FF257D844200326B53 /* UserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D695FE257D844200326B53 /* UserInfoModel.swift */; };
 		61D6960F25801DA200326B53 /* FirebaseSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D6960E25801DA200326B53 /* FirebaseSet.swift */; };
 		61D696142582F1DC00326B53 /* ChildEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D696132582F1DC00326B53 /* ChildEnum.swift */; };
+		61DFAAB925EFF801003DB4E7 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DFAAB825EFF801003DB4E7 /* FilterModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,7 @@
 /* Begin PBXFileReference section */
 		6110A658259389F90039C1AD /* CreatResumeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatResumeModel.swift; sourceTree = "<group>"; };
 		6110A66C25938BEC0039C1AD /* CreatResumeModel.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CreatResumeModel.json; sourceTree = "<group>"; };
+		6116C22525F0078B0002A2E0 /* MainFilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFilterViewModel.swift; sourceTree = "<group>"; };
 		612377D625867C99003EAAFE /* ChildModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildModel.swift; sourceTree = "<group>"; };
 		61275F4725C871D500D4E6BA /* UserAddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddCityViewController.swift; sourceTree = "<group>"; };
 		6127E6DC25D5E95F00AD7FE8 /* DetailTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCellTest.swift; sourceTree = "<group>"; };
@@ -228,6 +231,7 @@
 		61D695FE257D844200326B53 /* UserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoModel.swift; sourceTree = "<group>"; };
 		61D6960E25801DA200326B53 /* FirebaseSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSet.swift; sourceTree = "<group>"; };
 		61D696132582F1DC00326B53 /* ChildEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildEnum.swift; sourceTree = "<group>"; };
+		61DFAAB825EFF801003DB4E7 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		7FCFDD5AE836BE612351A5B0 /* Pods_JobVar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JobVar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7B914EEDD3D501CC3A6564 /* Pods-JobVar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobVar.debug.xcconfig"; path = "Target Support Files/Pods-JobVar/Pods-JobVar.debug.xcconfig"; sourceTree = "<group>"; };
 		BF1C1A646EB9B46F0867170E /* Pods-JobVar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JobVar.release.xcconfig"; path = "Target Support Files/Pods-JobVar/Pods-JobVar.release.xcconfig"; sourceTree = "<group>"; };
@@ -669,7 +673,9 @@
 			isa = PBXGroup;
 			children = (
 				6186436E25A1D6A000AB6235 /* MainFilterViewController.swift */,
+				6116C22525F0078B0002A2E0 /* MainFilterViewModel.swift */,
 				6186437325A1D6C200AB6235 /* FilterMainVCTableViewCell.swift */,
+				61DFAAB825EFF801003DB4E7 /* FilterModel.swift */,
 			);
 			path = FilterVC;
 			sourceTree = "<group>";
@@ -1027,6 +1033,7 @@
 				612B94BD256B2D4D009DBCBF /* UserViewModel.swift in Sources */,
 				61A29F69256C67E100580990 /* LogInViewModel.swift in Sources */,
 				612B94B2256B2D0E009DBCBF /* UserSettingViewController.swift in Sources */,
+				6116C22625F0078B0002A2E0 /* MainFilterViewModel.swift in Sources */,
 				61A29F81256C827600580990 /* SignUpViewController + Etension.swift in Sources */,
 				61D695F5257D7ADE00326B53 /* AddResumeModel.swift in Sources */,
 				612B9337256B20E0009DBCBF /* AppDelegate.swift in Sources */,
@@ -1055,6 +1062,7 @@
 				61C54654258AB718007E0E4D /* SetData.swift in Sources */,
 				612B941F256B288B009DBCBF /* PreciselyCreatResumeTableViewCell.swift in Sources */,
 				612B9486256B2B95009DBCBF /* FavoritesViewModel.swift in Sources */,
+				61DFAAB925EFF801003DB4E7 /* FilterModel.swift in Sources */,
 				6110A659259389F90039C1AD /* CreatResumeModel.swift in Sources */,
 				61D696142582F1DC00326B53 /* ChildEnum.swift in Sources */,
 				61A29FB1256C932300580990 /* ChoiceViewController + Extension.swift in Sources */,

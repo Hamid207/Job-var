@@ -17,6 +17,7 @@ protocol MainViewModelProtocol {
     func tapOnTheJobVacancy()
     func tapOnTheCreateResume()
     func tapOnTheIsAxtaranlar()
+    func showFilterVC()
     var addResumeArray: [AddResumeModel]? { get set }
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol)
 }
@@ -31,6 +32,7 @@ final class MainViewModel: MainViewModelProtocol {
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol) {
         self.router = router
         self.firebaseSet = firebaseSet
+        firebaseSet.userFilterObserve()
     }
     
     func tapOnTheComment(addreseumeModel: AddResumeModel) {
@@ -47,6 +49,10 @@ final class MainViewModel: MainViewModelProtocol {
     
     func tapOnTheIsAxtaranlar() {
         router?.showIshAxtaranlar()
+    }
+    
+    func showFilterVC() {
+        router?.showMainFilterVC()
     }
     
 }

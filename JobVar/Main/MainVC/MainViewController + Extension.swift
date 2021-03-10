@@ -26,15 +26,6 @@ extension MainViewController {
     }
     
     func setupView() {
-        mainTextField.delegate = self
-        mainTextField.backgroundColor = .orange
-        mainTextField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(mainTextField)
-        mainTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 2).isActive = true
-        mainTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15).isActive = true
-        mainTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15).isActive = true
-        mainTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
         //MARK: - MAINCOLLECTIONVIEW
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
@@ -44,7 +35,7 @@ extension MainViewController {
         mainCollectionView.showsVerticalScrollIndicator = false
         view.addSubview(mainCollectionView)
         mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        mainCollectionView.topAnchor.constraint(equalTo: mainTextField.bottomAnchor, constant: 5).isActive = true
+        mainCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         mainCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         mainCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
         mainCollectionView.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -84,8 +75,7 @@ extension MainViewController {
     }
     
     @objc func filterVC() {
-        let vc = MainFilterViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        mainViewModel?.showFilterVC()
     }
     
     @objc func search() {
@@ -93,27 +83,7 @@ extension MainViewController {
     }
 }
 
-extension MainViewController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text {
-            filterText(text+string)
-        }
-        return true
-    }
-    
-    func filterText(_ query: String) {
-        filterData.removeAll()
-//        for string in data {
-//            if string.lowercased().starts(with: query.lowercased()) {
-//                filterData.append(string)
-//            }
-//        }
-        mainTableView.reloadData()
-        filtered = true
-    }
-    
-}
+
 
 //MARK: - UITableViewDataSource
 extension MainViewController: UITableViewDataSource {
@@ -208,3 +178,4 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     
 }
+
