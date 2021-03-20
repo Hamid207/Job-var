@@ -32,7 +32,6 @@ final class MainViewModel: MainViewModelProtocol {
     init(router: RouterProtocol?, firebaseSet: FirebaseSetProtocol) {
         self.router = router
         self.firebaseSet = firebaseSet
-        firebaseSet.userFilterObserve()
     }
     
     func tapOnTheComment(addreseumeModel: AddResumeModel) {

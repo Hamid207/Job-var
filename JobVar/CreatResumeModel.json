@@ -34,7 +34,11 @@
         },
         {
             "name": "Xidmət",
-            "nameTwo": ["Xadimə", "Anbardar", "Restoran işi", "Sürücü", "Dayə", "Fəhlə", "Turizm və mehmanxana işi", "Tərcüməçi", "Mühafizə xidməti", "Digər", "Kuryer"]
+            "nameTwo": ["Xadimə", "Anbardar", "Restoran işi", "Sürücü", "Dayə", "Fəhlə", "Turizm və mehmanxana işi", "Tərcüməçi", "Mühafizə xidməti", "SPA və gözəllik", "Kuryer", "Digər"]
+        },
+        {
+            "name": "İnzibati",
+            "nameTwo": ["İnzibati dəstək", "Menecment", "Ofis menecmenti", "Katibə / Resepşn", "Heyətin idarəolunması", "Digər"]
         }
         ]
     

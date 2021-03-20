@@ -14,7 +14,7 @@ class MainTableViewViewCell: UITableViewCell {
     //positionLabel
     private let positionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
@@ -72,11 +72,11 @@ class MainTableViewViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-//        label.minimumScaleFactor = 0.2
         label.textAlignment = .left
-        label.numberOfLines = 4
+        label.numberOfLines = 5
         label.lineBreakMode = .byWordWrapping
         label.sizeToFit()
+//        label.minimumScaleFactor = 0.2
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -198,6 +198,7 @@ class MainTableViewViewCell: UITableViewCell {
         infoTextLabel.topAnchor.constraint(equalTo: cilientNameLabel.bottomAnchor, constant: 6).isActive = true
         infoTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         infoTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        infoTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25).isActive = true
         
         //resumeAddData
         contentView.addSubview(resumeAddData)

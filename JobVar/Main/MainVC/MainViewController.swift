@@ -33,11 +33,11 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupView()
-//        mainViewModel?.firebaseSet?.creatAllResume()
         configureRefreshControl ()
         actitvityIndicator.startAnimating()
-//        mainViewModel?.firebaseSet?.userFilterObserve()
+        //        mainViewModel?.firebaseSet?.creatAllResume()\
 //        mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: mainTableView)
+//        mainViewModel?.firebaseSet?.userFilterObserve()
     }
     
     override func viewWillAppear(_ animated: Bool) {

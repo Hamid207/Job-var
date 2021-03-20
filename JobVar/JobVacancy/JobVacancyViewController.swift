@@ -30,7 +30,8 @@ class JobVacancyViewController: UIViewController { //Is axtarmaq yeni butun elan
 //        searchControl.searchBar.placeholder = "Search"
 //        navigationItem.searchController = searchControl
         definesPresentationContext = true
-        configureRefreshControl()
+        jobVacancyTableView.refreshControl = refreshControl
+        refreshCOntroll()
         jobVacancyViewModel?.firebaseSet?.creatAllResume()
         jobVacancyViewModel?.firebaseSet?.observeAddResumeModel(tableView: jobVacancyTableView)
         DispatchQueue.main.async {
@@ -41,6 +42,11 @@ class JobVacancyViewController: UIViewController { //Is axtarmaq yeni butun elan
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         actitvityIndicator.startAnimating()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        jobVacancyViewModel?.firebaseSet?.removeAllObserverr()
     }
 
 }

@@ -62,6 +62,7 @@ final class FirebaseSet: FirebaseSetProtocol {
     
     func observeUserInfoModel() { //bu isdemir bunun yerine firebaseObserve di
         firabaseadd(first: "allUsers", child: "child")
+//        ref.obse
         ref.observe(.value) { [weak self] (snapshot) in
             var _tasks = Array<UserInfoModel>()
             for item in snapshot.children {
@@ -69,27 +70,25 @@ final class FirebaseSet: FirebaseSetProtocol {
                 _tasks.append(task)
             }
             self?.userInfoModelArray = _tasks
-            print("TESTTASKK = \(_tasks)")
         }
     }
     
     func observeAddResumeModel(tableView: UITableView) {
-        let ref = Database.database().reference()
-       
-        ref.child("allResume").observe(.value) { [weak self] (snapshot) in
+        let ref = Database.database().reference().child("allResume")
+        let test1 = ref.queryLimited(toLast: 5)
+        ref.observe(.value) { [weak self] (snapshot) in
             var _tasks = Array<AddResumeModel>()
             for item in snapshot.children {
                 let task = AddResumeModel(snapShot: item as! DataSnapshot)
                 _tasks.append(task)
             }
             //JobVacancyViewController
-            self?.addAllResumeArray = _tasks
+            let allJobTask = _tasks.sorted(by: { $0.resumeAddDate > $1.resumeAddDate})
+            self?.addAllResumeArray = allJobTask
             //MainVC
             let task = _tasks.sorted(by: { $0.resumeAddDate > $1.resumeAddDate})
-            self?.addResumeArray = task.filter({$0.position.contains(self?.filterr?.position ?? "") && $0.city.contains(self?.filterr?.city ?? "") || $0.position.lowercased().contains(self?.filterr?.position?.lowercased() ?? "") && $0.city.contains(self?.filterr?.city ?? "") || $0.companyName.lowercased().contains(self?.filterr?.companyName?.lowercased() ?? "")})
-//            self?.addResumeArray = task.filter({$0.companyName.contains(self?.filterr?.companyName ?? "tesr")})
-            print("resume==-=====\(self?.filterr)")
-            print("Taskk - = \(task)")
+            self?.addResumeArray = task
+            self?.addResumeArray = task.filter({$0.position.contains(self?.filterr?.position ?? "") && $0.city.contains(self?.filterr?.city ?? "") || $0.position.lowercased().contains(self?.filterr?.position?.lowercased() ?? "") && $0.city.contains(self?.filterr?.city ?? "") || $0.companyName.lowercased().contains(self?.filterr?.companyName?.lowercased() ?? "") || $0.salary.lowercased().contains(self?.filterr?.salary ?? "")})
             DispatchQueue.main.async {
                 tableView.reloadData()
             }
@@ -112,8 +111,7 @@ final class FirebaseSet: FirebaseSetProtocol {
     
     //creart resume
     func setResume(addResumeModel: AddResumeModel) {
-        let addResume = AddResumeModel(resume: "resume Number - \(resumeRandomIdNumber)N\(addResumeModel.resume)", cateqoryOneName: addResumeModel.cateqoryOneName, cateqoryTwoName: addResumeModel.cateqoryTwoName, position: addResumeModel.position, companyName: addResumeModel.companyName, salary: addResumeModel.salary ?? "salary nil", city: addResumeModel.city, age: addResumeModel.age, education: addResumeModel.education, workExperience: addResumeModel.workExperience, detailedInfo: addResumeModel.detailedInfo, requirements: addResumeModel.requirements, email: addResumeModel.email, userId: "user.uid", resumeAddTime: addResumeModel.resumeAddTime, resumeAddDate: addResumeModel.resumeAddDate)
-        
+        let addResume = AddResumeModel(resume: "resume Number - \(resumeRandomIdNumber)N\(addResumeModel.resume)", cateqoryOneName: addResumeModel.cateqoryOneName, cateqoryTwoName: addResumeModel.cateqoryTwoName, position: addResumeModel.position, companyName: addResumeModel.companyName, salary: addResumeModel.salary , city: addResumeModel.city, age: addResumeModel.age, education: addResumeModel.education, workExperience: addResumeModel.workExperience, detailedInfo: addResumeModel.detailedInfo, requirements: addResumeModel.requirements, email: addResumeModel.email, userId: "user.uid", resumeAddTime: addResumeModel.resumeAddTime, resumeAddDate: addResumeModel.resumeAddDate)
         //userResume
         firebaseResumeAdd()
         let resumeRef = ref.child(addResume.resume.lowercased())
@@ -136,10 +134,12 @@ final class FirebaseSet: FirebaseSetProtocol {
     //FilterVc
     func UserResumeFilter(filterModel: FilterModel?) {
         firabaseadd(first: "allUsers", child: "user")
-        guard let postion = filterModel?.position, let companyName = filterModel?.companyName, let city = filterModel?.city, let salary = filterModel?.salary else { return }
+        guard let postion = filterModel?.position, let companyName = filterModel?.companyName, var city = filterModel?.city, let salary = filterModel?.salary else { return }
+        if city == "" {
+            city = "Baki"
+        }
         let model = FilterModel(position: postion, companyName: companyName, city: city, salary: salary, info: "userFilter")
         filterArray = model
-        print("Filter MODel =============== \(filterArray)")
         let userRef = ref.child(model.info.lowercased())
         userRef.setValue(model.convertToDictinary())
     }

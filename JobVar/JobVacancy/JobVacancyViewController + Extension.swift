@@ -15,7 +15,7 @@ extension JobVacancyViewController {
             topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
         }
     }
-    
+        
     func makeActivityIndicatorView() -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.color = UIColor(named: "MainColor")
@@ -51,18 +51,20 @@ extension JobVacancyViewController {
         }
     }
     
-    func configureRefreshControl() {
-        jobVacancyTableView.refreshControl = refreshControl
-            self.jobVacancyTableView.reloadData()
-            refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+    func refreshCOntroll() {
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl(sender:)), for: .valueChanged)
     }
     
-    @objc func handleRefreshControl() {
-        DispatchQueue.main.async { [weak self] in
-            
-            self?.refreshControl.endRefreshing()
+    @objc func handleRefreshControl(sender: UIRefreshControl) {
+        jobVacancyViewModel?.firebaseSet?.observeAddResumeModel(tableView: jobVacancyTableView)
+        jobVacancyTableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now()+2) {
+            sender.endRefreshing()
         }
+        print("hamisdadasdasdasdiajidjasiodjqio")
     }
+    
+ 
 }
 
 //MARK: - UITableViewDataSource
@@ -84,7 +86,7 @@ extension JobVacancyViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 220
+        return 200
     }
 }
 
@@ -95,4 +97,8 @@ extension JobVacancyViewController: UITableViewDelegate {
         jobVacancyViewModel?.test(detailResume: setArray!)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        print(scrollView.contentOffset.y > scrollView.contentSize.height - scrollView.frame.size.height)
+//    }
 }

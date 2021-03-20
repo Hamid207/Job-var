@@ -15,11 +15,12 @@ class JobVacancyTableViewCell: UITableViewCell {
     //positionLabel
     private let positionLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        label.backgroundColor = .red
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
-        label.numberOfLines = 2
+        label.numberOfLines = 1
         label.sizeToFit()
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontSizeToFitWidth = true
@@ -73,9 +74,9 @@ class JobVacancyTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
-        label.minimumScaleFactor = 0.2
-        label.textAlignment = .left
-        label.numberOfLines = 6
+//        label.minimumScaleFactor = 0.2
+        label.textAlignment = .natural
+        label.numberOfLines = 5
         label.lineBreakMode = .byWordWrapping
         label.sizeToFit()
         label.adjustsFontSizeToFitWidth = true
@@ -87,7 +88,7 @@ class JobVacancyTableViewCell: UITableViewCell {
     private let cilientNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        label.textColor = UIColor(named: "MainColor")
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.2
@@ -106,7 +107,6 @@ class JobVacancyTableViewCell: UITableViewCell {
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.2
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "23.12.2020"
         return label
     }()
     
@@ -142,6 +142,7 @@ class JobVacancyTableViewCell: UITableViewCell {
         cilientNameLabel.text = model.companyName
         infoTextLabel.text = model.detailedInfo
         priceLabel.text = "\(model.salary) AZN"
+        resumeAddData.text = model.resumeAddDate
     }
     
     //favoritesButton target
@@ -159,11 +160,13 @@ class JobVacancyTableViewCell: UITableViewCell {
     private func setupItem(){
         //cateqoryOneName
         contentView.addSubview(positionLabel)
-        positionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
+        positionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
         positionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         positionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
+        positionLabel.heightAnchor.constraint(equalToConstant: 21).isActive = true
         
-        //favoritesButton
+        //bunu sora elave et
+//        //favoritesButton
 //        contentView.addSubview(favoritesButton)
 //        favoritesButton.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
 //        favoritesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
@@ -186,25 +189,27 @@ class JobVacancyTableViewCell: UITableViewCell {
         contentView.addSubview(priceLabel)
         priceLabel.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 5).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: cityLabel.trailingAnchor, constant: 15).isActive = true
+        priceLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
         //CILIENTNAMELABEL
         contentView.addSubview(cilientNameLabel)
         cilientNameLabel.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 5).isActive = true
         cilientNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         cilientNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
-        
+        cilientNameLabel.heightAnchor.constraint(equalToConstant: 16).isActive = true
+                
         //INFOTEXTLABEL
         contentView.addSubview(infoTextLabel)
         infoTextLabel.topAnchor.constraint(equalTo: cilientNameLabel.bottomAnchor, constant: 6).isActive = true
         infoTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         infoTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+//        infoTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25).isActive = true  eger text date ustune cixsa
         
         //resumeAddData
         contentView.addSubview(resumeAddData)
-        resumeAddData.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
+//        resumeAddData.topAnchor.constraint(equalTo: infoTextLabel.bottomAnchor, constant: 6).isActive = true
         resumeAddData.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
-        
-      
+        resumeAddData.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
         
         //lineView
         contentView.addSubview(lineView)
@@ -215,4 +220,3 @@ class JobVacancyTableViewCell: UITableViewCell {
         lineView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
     }
 }
-

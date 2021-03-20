@@ -335,7 +335,6 @@ class UserSettingTableViewCell: UITableViewCell {
        // let lastName = lastNameTextFiled.text
         let userInfoModel = UserInfoModel(name: name, lastName: lastNameTextFiled.text, userId: "", city: (cityButton.titleLabel?.text) ?? "", image: "nil", dateOfBirth: dateTextField.text, number: numberTextField.text, info: "userInfo", email: emailTextField.text ?? "email nil")
         delegate?.setItem(userInfoModel: userInfoModel)
-        print("Setdata")
     }
     
     @objc func textrFirledTarget() {

@@ -10,7 +10,7 @@ import Firebase
 struct FilterModel {
     let position: String?
     let companyName: String?
-    let city: String?
+    var city: String?
     let salary: String?
     let info: String
     let ref: DatabaseReference?
