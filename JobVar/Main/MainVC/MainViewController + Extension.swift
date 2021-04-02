@@ -21,7 +21,9 @@ extension MainViewController {
     }
     
     func nav() {
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Filter", style: .done, target: self, action: #selector(filterVC))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .done, target: self, action: #selector(filterVC))
+//        navigationItem.rightBarButtonItem?.tintColor =  #colorLiteral(red: 1, green: 0.3294117647, blue: 0, alpha: 1)
         navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
     }
     
@@ -141,7 +143,7 @@ extension MainViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "mainCollectionViewCellId", for: indexPath) as? MainCollectionViewCell {
-            guard let item = mainViewModel?.collectionVIewARRayTest?[indexPath.row] else { return UICollectionViewCell()}
+            guard let item = mainViewModel?.collectionVIewARRayTest?[indexPath.item] else { return UICollectionViewCell()}
             cell.update(name: item)
             return cell
         }

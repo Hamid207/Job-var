@@ -19,7 +19,7 @@ extension DetailViewController {
 
         func setupView() {
         //MARK - DETAILTABLEVIEW
-            detailTableiew.delegate = self
+//            detailTableiew.delegate = self
             detailTableiew.dataSource = self
             detailTableiew.separatorStyle = .none
             detailTableiew.rowHeight = UITableView.automaticDimension
@@ -58,12 +58,12 @@ extension DetailViewController: UITableViewDataSource {
 }
 
 //MARK: - UITableViewDelegate
-extension DetailViewController: UITableViewDelegate {
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 1800
-//    }
-
-}
+//extension DetailViewController: UITableViewDelegate {
+//
+////    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        return 1800
+////    }
+//
+//}
 
 

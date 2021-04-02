@@ -22,6 +22,8 @@ class UserViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tabBarController?.tabBar.isHidden = false
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        navigationController?.navigationBar.barStyle = .black
         //self.viewModel?.firebaseSet?.observe()
         DispatchQueue.main.async {
             self.viewModel?.firebaseSet?.firebaseObserve(withPath: "allUsers", child: "user")

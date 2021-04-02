@@ -19,10 +19,10 @@ extension CreatResumeTargetViewController {
     
     func setupIem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Legv et ", style: .done, target: self, action: #selector(legvEtBarNutton))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.3294117647, blue: 0, alpha: 1)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .done, target: self, action: #selector(back))
-        navigationItem.leftBarButtonItem?.tintColor = UIColor(named: "MainColor")
+        navigationItem.leftBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.3294117647, blue: 0, alpha: 1)
         
         //tableVIew
         createResumeTargetTableView.delegate = self

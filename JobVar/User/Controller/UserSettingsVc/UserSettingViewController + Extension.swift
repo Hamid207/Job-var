@@ -12,11 +12,11 @@ extension UserSettingViewController {
     func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: nil)
-            topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
+            topItem.backBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.3294117647, blue: 0, alpha: 1)
         }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarbutton))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.3294117647, blue: 0, alpha: 1)
         
 //        var aaa = String()
 //        viewModel?.firebaseSet?.setObserveValue = { name in

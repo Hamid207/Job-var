@@ -17,7 +17,7 @@ class JobVacancyTableViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
         label.textColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
-        label.backgroundColor = .red
+//        label.backgroundColor = .red
         label.textAlignment = .left
         label.minimumScaleFactor = 0.2
         label.numberOfLines = 1

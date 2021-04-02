@@ -11,7 +11,8 @@ extension UserViewController {
     
     func setupItem() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings"), style: .done, target: self, action: #selector(barButtonTarget))
-        navigationItem.rightBarButtonItem?.tintColor = UIColor(named: "MainColor")
+//        navigationItem.rightBarButtonItem?.tintColor =  UIColor(named: "MainColor")
+        navigationItem.rightBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.3294117647, blue: 0, alpha: 1)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Exit", style: .done, target: self, action: #selector(firebaseExit))
         navigationItem.leftBarButtonItem?.tintColor = .red

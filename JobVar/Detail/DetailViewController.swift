@@ -18,9 +18,6 @@ class DetailViewController: UIViewController {
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         setupNavigationBar()
         setupView()
-//        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//        navigationController?.navigationBar.barStyle = .blackOpaque
     }
    
 }

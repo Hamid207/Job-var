@@ -12,7 +12,7 @@ extension JobVacancyViewController {
     func setupNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-            topItem.backBarButtonItem?.tintColor = UIColor(named: "MainColor")
+            topItem.backBarButtonItem?.tintColor = #colorLiteral(red: 1, green: 0.3294117647, blue: 0, alpha: 1)
         }
     }
         

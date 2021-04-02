@@ -42,9 +42,13 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        nav()
 //        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 //        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        navigationController?.navigationBar.barStyle = .default
+//        navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
         nav()
         tabBarController?.tabBar.isHidden = false
         DispatchQueue.main.async { [weak self] in
@@ -52,6 +56,7 @@ class MainViewController: UIViewController {
             self?.mainViewModel?.firebaseSet?.observeAddResumeModel(tableView: self!.mainTableView)
             self?.mainViewModel?.firebaseSet?.userFilterObserve()
         }
+        nav()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
